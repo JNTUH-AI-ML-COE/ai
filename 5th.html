@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emerging Topics in Modern AI (2025 Graduate Syllabus)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #2c5f8d;
+            --accent: #3a7ca5;
+            --light: #81b7d2;
+            --bg-main: #f8f9fa;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-muted: #6b7280;
+            --border-light: #e5e7eb;
+            --border-accent: #d1d5db;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: movePattern 30s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes movePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background: var(--bg-card);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            background: var(--bg-main);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.7rem 1.4rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--accent);
+            transition: width 0.4s ease, height 0.4s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        nav a:hover {
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--success);
+            transition: width 0.4s ease;
+        }
+
+        section:hover h2::after {
+            width: 150px;
+        }
+
+        h3 {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 2rem 0 1.5rem;
+        }
+
+        section > p {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        section > ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        section > ul li {
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+        }
+
+        section > ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+            transition: var(--transition-fast);
+        }
+
+        section > ul li:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        section > ul li:hover::before {
+            color: var(--success);
+            transform: scale(1.2);
+        }
+
+        .week {
+            background: linear-gradient(to right, var(--bg-main), var(--bg-card));
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--accent);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .week::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--success), var(--warning));
+            transition: height 0.5s ease;
+        }
+
+        .week:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            border-left-color: var(--success);
+        }
+
+        .week:hover::before {
+            height: 100%;
+        }
+
+        details {
+            margin-bottom: 1rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        details:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        details[open] {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        summary {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.05rem;
+            background: linear-gradient(to right, transparent, var(--bg-main));
+            transition: var(--transition);
+            user-select: none;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        summary::marker {
+            content: '';
+        }
+
+        summary::before {
+            content: '▶';
+            position: absolute;
+            left: 1rem;
+            transition: transform 0.3s ease;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        summary:hover {
+            background: var(--bg-main);
+            color: var(--accent);
+            padding-left: 2.8rem;
+        }
+
+        details > div {
+            padding: 1.5rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-light);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .refs {
+            background: linear-gradient(135deg, var(--bg-main) 0%, var(--bg-card) 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .refs h2 {
+            border-bottom: none;
+            margin-bottom: 2rem;
+        }
+
+        .refs ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .refs ul li {
+            margin-bottom: 1.25rem;
+            padding-left: 2.5rem;
+            position: relative;
+            transition: var(--transition-fast);
+            line-height: 1.8;
+        }
+
+        .refs ul li::before {
+            content: '📚';
+            position: absolute;
+            left: 0;
+            transition: var(--transition-fast);
+            font-size: 1.3rem;
+        }
+
+        .refs ul li:hover {
+            transform: translateX(10px);
+            color: var(--primary);
+        }
+
+        .refs ul li:hover::before {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent), var(--success));
+            transition: width 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 6px;
+            transition: var(--transition-fast);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            main {
+                margin: 2rem 1.5rem;
+                padding: 2.5rem;
+            }
+
+            header {
+                padding: 3rem 1.5rem 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 2.5rem 1.5rem 2rem;
+            }
+
+            nav {
+                padding: 0.75rem;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            main {
+                margin: 1.5rem 1rem;
+                padding: 2rem 1.5rem;
+                border-radius: 16px;
+            }
+
+            .week {
+                padding: 1.5rem;
+            }
+
+            details > div {
+                padding: 1.25rem;
+            }
+
+            .refs {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            nav {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem 1rem;
+            }
+
+            main {
+                margin: 1rem 0.5rem;
+                padding: 1.5rem 1rem;
+                border-radius: 12px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            .week {
+                padding: 1.25rem 1rem;
+            }
+
+            summary {
+                padding: 1rem;
+                padding-left: 2.5rem;
+                font-size: 0.95rem;
+            }
+
+            details > div {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .refs {
+                padding: 1.5rem;
+            }
+
+            section > ul li {
+                padding-left: 1.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header {
+                background: var(--primary);
+                color: white;
+            }
+
+            nav {
+                display: none;
+            }
+
+            main {
+                box-shadow: none;
+            }
+
+            details {
+                border: 1px solid var(--border-light);
+            }
+
+            details[open] summary {
+                page-break-after: avoid;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Emerging Topics in Modern AI</h1>
+    <p>2025 Graduate Syllabus</p>
+</header>
+<nav>
+    <a href="#overview">Overview</a>
+    <a href="#format">Format</a>
+    <a href="#prereq">Prerequisites</a>
+    <a href="#sem1">Semester 1</a>
+    <a href="#sem2">Semester 2</a>
+    <a href="#refs">References</a>
+</nav>
+<main>
+<section id="overview">
+    <h2>Course Overview</h2>
+    <p>
+        This two-semester graduate-level sequence explores cutting-edge research and emerging architectures in modern AI. Students gain a broad perspective across multiple subfields (NLP, computer vision, robotics, multimodal, etc.), engaging with frontier research and open-ended projects. Focus areas include large-scale foundation models, generative AI, autonomous agents, and early AGI paradigms, along with ASL-3/ASL-4 level safety. Graduates will understand the state of the art in foundation and generative models, advanced self-improvement, autonomous research agents, and ethical challenges in advanced deployments.
+    </p>
+</section>
+<section id="format">
+    <h2>Format</h2>
+    <ul>
+        <li>Meets twice weekly: lecture, advanced reading discussions, hands-on experimentation.</li>
+        <li>Weekly assigned research papers, critical debate sessions.</li>
+        <li>Evaluation: reading responses, a midterm exam (Semester 1), and capstone project (Semester 2).</li>
+    </ul>
+</section>
+<section id="prereq">
+    <h2>Prerequisites</h2>
+    <ul>
+        <li>Strong background in machine learning and deep learning.</li>
+        <li>Recommended: NLP or CV course; experience with neural net frameworks.
+        <li>Basic reinforcement learning helpful but not required.</li>
+    </ul>
+</section>
+<section id="weekly-syllabus">
+  <h2>Weekly Syllabus (Click to expand each week)</h2>
+  <div class="week">
+
+    <!-- WEEK 1 -->
+    <details>
+      <summary><strong>Week 1: Introduction to Modern AI Landscape</strong></summary>
+      <div>
+        · Block 1: Course Overview & AI Taxonomy – Introduce course structure and objectives, defining ANI (Artificial Narrow Intelligence) vs AGI (Artificial General Intelligence) vs ASI (Artificial Superintelligence). Technical focus: clarify these concepts and set expectations for current AI capabilities vs. long-term goals. Instructor-led overview of AI history and recent breakthroughs (e.g. GPT-4’s leap to trillion-parameter scale). Emphasize clear terminology and the importance of ethical principles from day one.<br>
+        · Block 2: State of AI in 2025 – Survey the latest milestones of 2025. Highlight cutting-edge AI systems and capabilities: GPT-4 multimodal reasoning, Google’s Gemini 2.5, scaling trends, and efficiency/cost-awareness.<br>
+        · Block 3: Frontier AI Models & AGI Ambitions – Labs pushing toward AGI. Case studies of Anthropic’s Claude-Next roadmaps, DeepMind’s Gemini and Genie models. Class discussion: what does “human-level AI” entail? Encourage modular/generality thinking.<br>
+        · Block 4: Course Logistics & Tools – Prepare students for hands-on work. Intro to frameworks (PyTorch, JAX, Hugging Face) and cloud resources. Demo: Setting up notebook with an open-source LLM.<br>
+        · Block 5: Discussion: Hopes and Fears – Seminar on opportunities and risks in AI. Student brainstorm for dream vs nightmare scenarios (motivate safety/ethics modules).<br>
+        · Block 6: Ethical Foundations – Talk on guidelines from OECD, IEEE, value alignment as a design goal. Set stage for rigorous safety modules.<br>
+        Lab/Assignment: Ensure computing resources. Deliverable: student background summary and learning goals for the course.
+      </div>
+    </details>
+
+    <!-- WEEK 2 -->
+    <details>
+      <summary><strong>Week 2: Frontier Large Language Models (LLMs) and Multimodal AI</strong></summary>
+      <div>
+        · Block 1: Next-T LLM Architectures – Model scales, transformer improvements, GPT-4 and Gemini 2.5 as multimodal models. Trillion-parameter breakthroughs.<br>
+        · Block 2: Anthropic Claude/“Claude-Next” – Long context, scaling. Claude 2/4/Next capabilities and scaling laws.<br>
+        · Block 3: Open-Source Foundation Models – LLaMA-2, Falcon, Mixtral: democratizing research, mixture-of-experts architectures.<br>
+        · Block 4: Multimodality and Beyond-Text Input – Models handling images, audio, etc. PaLM-E for robotics, aligning text/visual.<br>
+        · Block 5: Hands-on LLM Tuning – Fine-tuning a small open-source model with LoRA, prompt engineering basics, evaluating outputs.<br>
+        · Block 6: Design/Deployment – Inference challenges, distillation, quantization, client-server patterns, privacy/scalability.<br>
+        Lab: Load a pre-trained LLM, text generation and Q&A, evaluate outputs, short report due.
+      </div>
+    </details>
+
+    <!-- WEEK 3 -->
+    <details>
+      <summary><strong>Week 3: Agentic AI and Multi-Agent Systems</strong></summary>
+      <div>
+        · Block 1: Chatbots to Agents – Persistent autonomy, perception-decision-action loop.<br>
+        · Block 2: Multi-Agent Orchestration – Collaboration frameworks, agent communication, team task breakdown.<br>
+        · Block 3: Agent Communication/Protocols – Model Context Protocol, Agent-to-Agent messaging, service-oriented patterns.<br>
+        · Block 4: Emergent Behaviors – Negotiation, feedback, bounded autonomy.<br>
+        · Block 5: Case Study: Stanford Generative Agents – Memory, reflection, planning.<br>
+        · Block 6: Hands-on Team Activity – Design and demo a multi-agent workflow; implement simple system via LangChain/IBM watsonx.<br>
+        Lab: Demo of multi-agent system, interaction log, team writeup.
+      </div>
+    </details>
+        <!-- WEEK 4 -->
+    <details>
+      <summary><strong>Week 4: Chain-of-Thought Reasoning & ReAct Agents</strong></summary>
+      <div>
+        · Block 1: Introduction to CoT prompting – Logic chains, explicit task breakdown. Examples: arithmetic, multi-hop QA.<br>
+        · Block 2: ReAct pattern – Thought-action-observation loop, building agents that plan, reason, and act. Reference recent papers (Wei et al., Zhou et al.).<br>
+        · Block 3: LLM Tool Use – APIs, search engine calls, calculator extensions (Toolformer, HuggingGPT).<br>
+        · Block 4: Prompt Engineering Workshop – Crafting effective prompts, self-consistency methods, controlling output.<br>
+        · Block 5: Interactive Lab – Students build a simple CoT or ReAct agent to reason step-by-step.<br>
+        Lab: Deliver code and prompt scripts, self-evaluate agent reasoning process.
+      </div>
+    </details>
+
+    <!-- WEEK 5 -->
+    <details>
+      <summary><strong>Week 5: Memory Architectures & Persistent Knowledge</strong></summary>
+      <div>
+        · Block 1: Short-term context length – Technical limits of transformer context, trade-offs, sliding windows.<br>
+        · Block 2: Episodic and Long-term Memory – Vector databases, retrieval-augmented generation, persistent knowledge systems.<br>
+        · Block 3: Structured memory design – Replay/injection, memory pruning, computation vs recall.<br>
+        · Block 4: Privacy in Memory Architectures – Secure storage, GDPR, right to be forgotten.<br>
+        · Block 5: Retrieval-augmented chatbots – RAG pattern, hybrid search+generation systems.<br>
+        · Block 6: Interactive Lab – Build a chatbot with persistent user memory; use vector database backend.<br>
+        Lab: Chatbot demo and report on memory retrieval quality.
+      </div>
+    </details>
+
+    <!-- WEEK 6 -->
+    <details>
+      <summary><strong>Week 6: Simulation Environments & World Models</strong></summary>
+      <div>
+        · Block 1: Simulation in RL – Sim-to-real transfer, physics engines, synthetic data generation.<br>
+        · Block 2: Generative World Models – DeepMind Genie; learning from interactive, persistent worlds.<br>
+        · Block 3: Multi-agent behaviors in simulation – Emergent collaboration, adversarial training, sandbox experiments.<br>
+        · Block 4: Projects – Brainstorm using simulation for project application.<br>
+        · Block 5: Design Challenge – Propose a new world model scenario for AI research.<br>
+        Lab: Prepare a mini-project proposal involving simulation.
+      </div>
+    </details>
+
+    <!-- WEEK 7 -->
+    <details>
+      <summary><strong>Week 7: Synthetic Data Generation & Augmentation</strong></summary>
+      <div>
+        · Block 1: Need for synthetic data – Data scarcity, labeling cost, privacy.<br>
+        · Block 2: Self-Instruct & Data Augmentation – Techniques for generating synthetic tasks with LLMs.<br>
+        · Block 3: Quality and risk validation for synthetic data – Statistical checks, bias, adversarial attacks.<br>
+        · Block 4: Use cases – Robustness, domain adaptation, multilingual expansion.<br>
+        · Block 5: Lab competition – Teams generate synthetic training data, compare model accuracy to baseline.<br>
+        Lab: Competition deliverables, performance report.
+      </div>
+    </details>
+
+    <!-- WEEK 8 -->
+    <details>
+      <summary><strong>Week 8: Embodied AI & Robotics Integration</strong></summary>
+      <div>
+        · Block 1: LLMs for robotics – High-level planners, vision-language-action models.<br>
+        · Block 2: PaLM-SayCan, PaLM-E – Integrating LLMs with sensor streams.<br>
+        · Block 3: RT-2 transfer learning – Sim-to-real robot adaptation.<br>
+        · Block 4: Safety - Geofencing, ASL constraint, human-in-the-loop.<br>
+        · Block 5: Labs – Simulate robot tasks with LLM policy planners.<br>
+        Lab: Robot simulation task submission and analysis.
+      </div>
+    </details>
+
+    <!-- WEEK 9 -->
+    <details>
+      <summary><strong>Week 9: Creative AI in Art, Design & Media</strong></summary>
+      <div>
+        · Block 1: Generative text, image, and audio models – Architecture, style transfer, training pipelines.<br>
+        · Block 2: Integrated creative workflows – Tools (Adobe Firefly, DALL-E, Stable Diffusion) in professional pipelines.<br>
+        · Block 3: Responsible AI in creative domains – Copyright, content filters, societal impact.<br>
+        · Block 4: Hands-on lab – Students generate and manipulate creative work using generative models.<br>
+        Lab: Portfolio of generated items and commentary.
+      </div>
+    </details>
+
+    <!-- WEEK 10 -->
+    <details>
+      <summary><strong>Week 10: AI in Healthcare & Decision-Making</strong></summary>
+      <div>
+        · Block 1: Medical LLMs – Domain adaptation, custom QA pipelines, imaging diagnostics.<br>
+        · Block 2: Law, finance, and business AI – AI advice generation, retrieval-augmented QA.<br>
+        · Block 3: Guardrails and privacy/security – Federated learning for sensitive domains, certification.<br>
+        · Block 4: Lab – Simulate a medical QA task, analyze responses.<br>
+        Lab: Student writeup and safety/efficacy review.
+      </div>
+    </details>
+        <!-- WEEK 11 -->
+    <details>
+      <summary><strong>Week 11: Alignment & Responsible AI Development</strong></summary>
+      <div>
+        · Block 1: The AI Alignment Problem – Why goal misalignment occurs, classic failures, securing intention from data.<br>
+        · Block 2: RLHF (Reinforcement Learning from Human Feedback) – Overview, applications in OpenAI/Anthropic LLMs, workflow for feedback-based tuning.<br>
+        · Block 3: Constitutional AI – Using rules/principles to supervise LLM outputs, Anthropic’s approach.<br>
+        · Block 4: Scaling Policies (ASL) – Recent advances, ASL-3/ASL-4, red-teaming, robustness.<br>
+        · Block 5: Reward Hacking/Adversarial Attacks – Types of attacks, model resilience, lessons from competitions.<br>
+        · Block 6: Ethics Debates & Safety Tests – Student-led debate on AGI scaling, propose tests for large models.<br>
+        Lab: Analyze published system cards and design a test for model safety claims.
+      </div>
+    </details>
+
+    <!-- WEEK 12 -->
+    <details>
+      <summary><strong>Week 12: Safety Scaffolds & Guardrails in Autonomous Agents</strong></summary>
+      <div>
+        · Block 1: Runtime Filters, Tools, and Human Approval – Overview of safety scaffolds, layered defense.<br>
+        · Block 2: Guardrail Patterns – Interpreter wrappers, policy injectors, external approval agents.<br>
+        · Block 3: Interpretable Self-Critique – Letting the model generate justifications, root-cause analysis.<br>
+        · Block 4: Evaluation Harnesses – Benchmarks, reporting frameworks (HELM, Robustness Gym).<br>
+        · Block 5: Case: Claude’s Safety Filter System – Architecture, lessons, limitations.<br>
+        · Block 6: Lab – Draft a safety/guardrail protocol for agents in a student scenario.<br>
+        Lab: Submit safety proposal and reflection; class feedback.
+      </div>
+    </details>
+
+    <!-- WEEK 13 -->
+    <details>
+      <summary><strong>Week 13: Student Paper Seminars on Emerging Research</strong></summary>
+      <div>
+        · Block 1: Research Seminar Format – Student teams select recent papers on a syllabus topic (ex: memory, agents, alignment, simulation).<br>
+        · Block 2: Presentation Skills – Slides, Q&A, identifying open challenges, technical significance.<br>
+        · Block 3: Critique & Discussion – Peer questions, highlight strong/weak methodology, reproducibility.<br>
+        · Block 4: Connecting to Real-World Practice – From papers to projects, lessons from industry and open-source.<br>
+        Lab: Each student presents and peer-evaluates, submit critique.
+      </div>
+    </details>
+
+    <!-- WEEK 14 -->
+    <details>
+      <summary><strong>Week 14: Project Proposal Presentations, Milestones & Ethics Check</strong></summary>
+      <div>
+        · Block 1: Teams present project abstracts and planned approach, relate to core course themes (modality, safety, generalization, societal impact).<br>
+        · Block 2: Peer Feedback – Questions, suggestions, risk assessment.<br>
+        · Block 3: Milestones and Division of Labor – Timeline checkpoints, documentation and project management advice.<br>
+        · Block 4: Ethics Review – Potential risks and upside of each project, basic responsible AI checklist.<br>
+        · Block 5: Open Feedback & Approval – Instructor/peer approval and next steps.<br>
+        Lab: Deliver project doc draft with technical/ethical checklist.
+      </div>
+    </details>
+
+    <!-- WEEK 15 -->
+    <details>
+      <summary><strong>Week 15: Self-Study and Independent Project Work</strong></summary>
+      <div>
+        · Week reserved for research, prototyping and deep work.<br>
+        · Teams use this time for literature review, model iteration, and preparing for Semester 2 capstone execution.<br>
+        · Office hours and team syncs available; milestone status check-in due by end of week.
+      </div>
+    </details>
+        <!-- WEEK 16 -->
+    <details>
+      <summary><strong>Week 16: Autonomous Research Agents & AI Scientists</strong></summary>
+      <div>
+        · Block 1: Scientific discovery loops – How AI can automate hypothesis generation, experiment design, and data analysis.<br>
+        · Block 2: Modular multi-agent architectures for research – Combining specialized agents for literature review, data pipeline, experiment orchestration.<br>
+        · Block 3: Reliable decision support – Benchmarks, trust, error checking, recovery.<br>
+        · Block 4: Autonomous laboratory systems – Early real-world examples, physical and virtual labs.<br>
+        · Block 5: Hands-on lab – Use AI to plan/execute a research experiment (on tabular/text/image dataset).<br>
+        Lab: Report and peer feedback, evaluate autonomy, creativity, and rigor.
+      </div>
+    </details>
+
+    <!-- WEEK 17 -->
+    <details>
+      <summary><strong>Week 17: AI Coding Assistants & Software 2.0</strong></summary>
+      <div>
+        · Block 1: Code generation agents – Evolution from Copilot to full-stack multi-agent systems (e.g. ChatDev, StarCoder).<br>
+        · Block 2: IDE and CI/CD integration – Pairing agents with development workflows, automated test/code review.<br>
+        · Block 3: Security, policy, and collaboration – Trust, privacy, and compliance concerns in software AI.<br>
+        · Block 4: Hands-on software labs – Students use an agent to automate a coding task; report on strengths, failure modes.<br>
+        Lab: Submit agent-generated code, peer review and bug finding.
+      </div>
+    </details>
+
+    <!-- WEEK 18 -->
+    <details>
+      <summary><strong>Week 18: Emergent Behaviors & Interpretability in AI Systems</strong></summary>
+      <div>
+        · Block 1: Scaling phase transitions – Emergent skills and qualitative improvements, “sudden jumps” in ability.<br>
+        · Block 2: Interpretability – Methods to explain LLM/agent behavior, feature attribution, layer analysis.<br>
+        · Block 3: Benchmarks and harnesses for new behaviors – Project milestone check, peer collaboration.<br>
+        · Block 4: Integration challenges – Labs present integration findings and new emergent behaviors.<br>
+        Lab: Interpretability report on model/agent; what can/can’t be explained.
+      </div>
+    </details>
+
+    <!-- WEEK 19 -->
+    <details>
+      <summary><strong>Week 19: Evaluation & Benchmarking of Advanced AI Systems</strong></summary>
+      <div>
+        · Block 1: Metrics for generative/agentic AI – Beyond accuracy, including efficiency, robustness, safety, creativity.<br>
+        · Block 2: HELM multi-metric evaluation – HumanEval and automated frameworks.<br>
+        · Block 3: Benchmarks for agents – How to score dialog, tool use, reasoning, multi-agent tasks.<br>
+        · Block 4: Reward function design – Shaping agent behavior, avoiding exploitation.<br>
+        · Block 5: Milestone – Teams plan project-specific evaluation.<br>
+        Lab: Deliver evaluation benchmark/report for a project or agent.
+      </div>
+    </details>
+
+    <!-- WEEK 20 -->
+    <details>
+      <summary><strong>Week 20: Knowledge Integration & Neuro-Symbolic Methods</strong></summary>
+      <div>
+        · Block 1: Hybrid neural-symbolic approaches – Motivation, architectures, combining deep learning with knowledge graphs.<br>
+        · Block 2: Planning/solver integration – Use external modules for logic, math, multi-step problem solving.<br>
+        · Block 3: Retriever-reader design – Memory graphs and structured retrieval, blending search + generation.<br>
+        · Block 4: Hands-on: build a neuro-symbolic pipeline, compare to baseline deep model.<br>
+        Lab: Project report: benefits and challenges of integration.
+      </div>
+    </details>
+        <!-- WEEK 21 -->
+    <details>
+      <summary><strong>Week 21: Scaling, Efficiency, and Future Model Trends</strong></summary>
+      <div>
+        · Block 1: Trends in Scaling Laws – Revisit scaling: more data, parameters, compute. Technical focus: scaling law predictions and limits. Content: Summarize known scaling law research – e.g. performance improves as a power-law with model size, data size, and compute, but with diminishing returns. Discuss where we are: models in hundreds of billions of params, trained on trillions of tokens. Ask: Can this continue indefinitely? Note physical and economic limits (at some point, we can’t double GPUs or data every few months). Design insight: Efficiency becomes crucial as raw scaling hits limits; thus, the importance of the next topics (distillation, MoE, etc.).<br>
+        · Block 2: Model Compression and Distillation – Techniques to make models smaller and faster without (much) loss. Technical focus: knowledge distillation, quantization. Content: Explain distillation: train a smaller “student” model on the outputs of the large “teacher” model to approximate it. Mention that companies distilled GPT-3 into smaller models for deployment. Also cover quantization – reducing precision (float16 -> int8 etc.) to cut memory and compute. Perhaps give numbers: 8-bit quantization can drastically speed up inference with minimal accuracy drop in some cases. Best practice: Optimize for deployment – encourage students to think: it’s not just about achieving results, but doing so efficiently. For project, if something is slow, consider distilling or caching responses.<br>
+        · Block 3: Sparse Models and Mixture-of-Experts (MoE) – Using sparsity to scale efficiently. Technical focus: model architectures where not all parameters are used for every input. Content: Describe the MoE idea (like Mixtral from Mistral AI): the model has many “experts” but only a few are active per token. This way, total parameters can be huge (hundreds of billions or more) but computation per token stays low. Google’s Switch Transformer or GLaM are examples. Discuss trade-offs: routing complexity, need for massive parallelism. Design pattern: Conditional computation – a trend in models where they dynamically decide which parts of the network to use (could be experts, or skipping layers, etc.), making computation input-dependent. Agents might similarly choose algorithms based on scenario (analogy: an agent might run a heavy reasoning routine only if needed).<br>
+        · Block 4: Hardware and Infrastructure – How advances in hardware influence model development. Technical focus: GPUs, TPUs, neuromorphic chips. Content: Quick tour: GPUs are still mainstay, TPUs (Google’s) also widely used; neuromorphic chips (brain-inspired) and optical computing are experimental but could disrupt things by offering efficiency at scale. Also mention memory bandwidth and IO as bottlenecks – loading a huge model from disk can be a pain; this led to innovations like model parallelism and offloading. Possibly mention cloud-based infrastructures (distributed inference across many machines, using techniques like ZeRO from Microsoft for parallelism). Best practice: Design with hardware in mind – e.g., if deploying on mobile, use a smaller model; if you have GPU cluster, design to utilize it (like batch requests). Engineers must co-design software with hardware capabilities.<br>
+        · Block 5: Frontier Models on the Horizon – Speculate/outline what’s coming (based on 2025 info). Technical focus: any rumored or planned models. Content: For example, mention OpenAI GPT-5 if it’s expected (and indeed Observer suggests it was unveiled in Aug 2025 with “PhD-level” performance). Also DeepMind’s next moves (perhaps a multimodal Gemini 3 or beyond), Anthropic’s Claude-Next. The trend toward multimodal and agentic abilities in models – e.g. models that can not only chat, but also see, hear, act. Mention the concept of ASI (superintelligence) carefully – not here yet, but labs are starting to discuss governance of models more powerful than current AGI-level (point to the policies from Week 11). Design takeaway: Keep architecture flexible – future might require integrating vision, long text, perhaps continuous learning. Students should architect their projects to be as modular as possible so components can be swapped for better future models easily.<br>
+        · Block 6: Reflection and Course Synthesis – Summarize what scaling and efficiency means for designers of AI. Content: Emphasize that not every problem needs the biggest model; often a well-fine-tuned smaller model or a combination of specialized models (ensemble) can work better and cheaper. Recap a bit: We started with giant models and fancy abilities, but end by noting practicality – the real world calls for right-sizing solutions. Encourage students to be mindful of compute costs, environmental impact* of training huge models, etc. Final thought: The frontier of AI is not just about making models larger, but making them better – more reliable, interpretable, and energy-efficient. This aligns all the themes: we want advanced AI and safe, manageable AI.<br>
+        Lab: Efficiency challenge – each team revisits their project implementation and identifies one efficiency improvement (could be model size reduction, caching results, moving some logic out of the LLM into a simpler heuristic, etc.). They don’t have to fully implement it now, but outline how they would scale down or speed up their solution for real-world use. They can try a quick experiment like quantizing their model or using a smaller model to see quality vs speed trade-off. Deliverable: A short note added to their project documentation about an efficiency modification and (if measured) its impact (e.g. “quantized model X ran 2x faster with only minor drop in accuracy”).
+      </div>
+    </details>
+
+    <!-- WEEK 22 -->
+    <details>
+      <summary><strong>Week 22: Ethics, Policy, and Societal Impact Panel</strong></summary>
+      <div>
+        · Block 1: Guest Panel Introduction – The class welcomes 2–3 guest experts (could be faculty or industry practitioners in AI ethics, policy, or safety engineering). Each briefly introduces their background and a key perspective on AI in society. Content: For instance, one might be an AI policy advisor talking about upcoming regulations (like the EU AI Act), another a startup founder discussing responsible AI practices, another a researcher from an AI safety group.<br>
+        · Block 2: Discussion: Current AI Governance – Moderator (instructor) asks panel: “What are the most important steps being taken to ensure AI develops safely and beneficially?” Technical/policy focus: content could include discussion of AI model audits, government regulations, industry self-governance pledges (like not releasing certain capabilities without safeguards). Panelists might mention the need for standards (as introduced in frontier safety frameworks). Students see the real-world extension of topics from Week 11 and 12.<br>
+        · Block 3: Student Q&A to Panel – Students ask the panelists questions. Likely areas: “How will regulations affect AI research?”, “What career paths exist in AI policy or safety?”, “How do we balance innovation with caution?” Panelists give candid answers. This helps students contextualize their technical work with larger societal issues.<br>
+        · Block 4: Debate: Long-term AI Risks – The panel and students engage in a friendly debate on AGI and ASI. Some may argue superintelligence is far off or not a concern, others that we need to prepare now. Content: Refer to concepts like the control problem, international coordination (e.g. avoiding an AI arms race). Possibly a panelist brings up the idea of AI pause or global monitoring of large training runs. Students can chime in with thoughts from course (they have learned how quickly things progressed with GPT-5 claims, so they might have opinions).<br>
+        · Block 5: Ethical Case Studies – Panel or instructor presents a couple of brief real scenarios: e.g., “An AI mental health chatbot gives a user harmful advice – who is responsible and how to prevent this?” or “Deepfake technology used in a political campaign.” Students and panel brainstorm solutions: better training? user education? legal restrictions? Design tie-in: highlight how technical design (adding guardrails, verification, etc.) intersects with policy (laws, guidelines) and end-user responsibility.<br>
+        · Block 6: Wrap-up: The Role of AI Engineers in Society – Each panelist gives a final one-minute advice to the students. Content: Common thread likely: as future AI leaders, they should uphold ethical standards, be transparent, and engage with the policy domain, not just coding. Instructor closes by reinforcing that building state-of-the-art AI (everything we learned technically) goes hand in hand with ensuring those AI are used for good – a theme of the course.<br>
+        Lab/Assignment: Write a reflection (1–2 pages) on the panel discussion. Deliverable: Each student shares their takeaways: How will considerations of ethics and policy influence their approach to AI projects? Do they feel more inclined to contribute to governance efforts? They should mention any insight from the panel that struck them, and how they might apply it (e.g. “I will make sure to include a model card and ethical risk section for any model I build”). This solidifies the integration of societal awareness into their technical skillset.
+      </div>
+    </details>
+
+    <!-- WEEK 23 -->
+    <details>
+      <summary><strong>Week 23: In-Class Hackathon – Building an Autonomous Agent</strong></summary>
+      <div>
+        · Block 1: Hackathon Kick-off – The class is challenged to build (or improve) a small autonomous agent in a single session (or single day, if this extends beyond class hours). Instructor defines the goal: for example, “Construct an agent that can research a given topic and produce a well-organized summary with sources.” Teams (or individuals) will compete or just all attempt this. Technical focus: integration of multiple skills – web tool use, summarization, citing. The goal is to apply many course concepts quickly.<br>
+        · Block 2: Planning Phase (30 min) – Teams plan their agent architecture. Content: They decide, for example, to have a search tool (maybe using an API or a stub that returns pre-fetched info), an LLM for summarization, a memory to store found facts, and a cite-checker. They write down the modules and how they communicate.<br>
+        · Block 3: Coding/Building Phase – Teams implement as much as possible. Content: They might use a provided scaffold code (the instructor might have given a basic agent loop code from earlier labs that they can modify). If internet access is allowed: possibly use a real API like Wikipedia search; if not, the instructor can provide a mini knowledge base to query. Teams integrate their LLM of choice (maybe a local model or an API).<br>
+        · Block 4: Testing Phase – Each team tests their agent on a sample task (e.g., “Summarize the key findings on climate change impact on agriculture”). They observe performance and fix bugs.<br>
+        · Block 5: Showcase – Each team (or selected teams if many) demos their agent briefly. Content: They describe their design (which modules, any innovative twist like using memory or a particular prompt trick) and show it handle a query. The class and instructor observe outputs, noting strengths and weaknesses. It’s a friendly competition feel.<br>
+        · Block 6: Debrief: – Instructor leads a discussion: what was easy, what was hard?<br>
+        Assignment: Write a brief report on your hackathon agent design. Deliverable: What approach did the team take? What worked and what didn’t? If you had another day, what would you improve?
+      </div>
+    </details>
+
+    <!-- WEEK 24 -->
+    <details>
+      <summary><strong>Week 24: Advanced Topics Roundtable and Open Q&A</strong></summary>
+      <div>
+        · Block 1: Open Roundtable – Student Interests – Flexible exploration of cutting-edge or trending topics based on student interest and recent industry developments.<br>
+        · Block 2: Topic 1 Discussion – Deep-dive on a philosophical or technical frontier, e.g. AI consciousness, quantum ML, climate modeling.<br>
+        · Block 3: Topic 2 Lightning Lecture – Instructor covers another recent frontier or student-suggested area.<br>
+        · Block 4: Student Q&A – Open time for any questions from throughout the course.<br>
+        · Block 5: Course Synthesis Exercise – Articulate learned principles for modern AI design.<br>
+        · Block 6: Looking Ahead and Final Advice – Instructor wraps up and points to lifelong learning strategies.<br>
+        Lab/Assignment: None; focus is on synthesis and wrap-up.
+      </div>
+    </details>
+
+    <!-- WEEK 25 -->
+    <details>
+      <summary><strong>Week 25: Project Midpoint Progress Presentations</strong></summary>
+      <div>
+        · Block 1: Status Update Presentations – Each team presents progress: implementation, initial findings, challenges.<br>
+        · Block 2: Feedback & Troubleshooting – Class and instructor offer suggestions.<br>
+        · Block 3: Common Challenges Discussion – Recap recurring issues and course solutions.<br>
+        · Block 4: Milestone Check: Are Goals Realistic? – Scope review, possible adjustments.<br>
+        · Block 5: Peer Collaboration – Announce/catalyze resource-sharing or team-ups.<br>
+        · Block 6: Next Steps & Timeline – Prepare for final presentations and reports.<br>
+        Deliverable: Team progress report, instructor feedback.
+      </div>
+    </details>
+
+    <!-- WEEK 26 -->
+    <details>
+      <summary><strong>Week 26: Independent Project Development (no formal class)</strong></summary>
+      <div>
+        · Reserved for project development, feedback implementation, milestone progress.<br>
+        · Instructor/TAs hold office hours for questions.<br>
+        · No new structured blocks; emphasis on self-managed work.
+      </div>
+    </details>
+
+    <!-- WEEK 27 -->
+    <details>
+      <summary><strong>Week 27: Independent Project Development (no formal class)</strong></summary>
+      <div>
+        · Reserved for project work and final presentation preparation.<br>
+        · Instructor available for guidance; teams focus on implementation and experiments.<br>
+        · No formal lectures or assignments.
+      </div>
+    </details>
+
+    <!-- WEEK 28 -->
+    <details>
+      <summary><strong>Week 28: Final Project Presentations – Part 1</strong></summary>
+      <div>
+        · Block 1: Introduction to Final Presentations – Outline schedule and criteria, possible guest/faculty panel.<br>
+        · Block 2–6: Team project presentations, Q&A, live demo or video (structure repeats per team).<br>
+        · Block 6: Feedback/Critique from panel/audience.<br>
+        Deliverable: Final report, demo, presentation slides.
+      </div>
+    </details>
+
+    <!-- WEEK 29 -->
+    <details>
+      <summary><strong>Week 29: Final Project Presentations – Part 2</strong></summary>
+      <div>
+        · Completion of remaining team presentations, demos, and Q&A.<br>
+        · Block 6: Awards (optional), reflection, informal closing remarks.<br>
+        Deliverables: Award nominations, submission of final documents/code.
+      </div>
+    </details>
+
+    <!-- WEEK 30 -->
+    <details>
+      <summary><strong>Week 30: Course Wrap-up and Future Outlook</strong></summary>
+      <div>
+        · Block 1: High-level course summary and narrative tying together major themes.<br>
+        · Block 2: Student reflections; open discussion of most useful concepts and future areas.<br>
+        · Block 3: Future of AI – Student predictions.<br>
+        · Block 4: Course feedback – poll, review, or comments.<br>
+        · Block 5: Closing inspiration and advice.<br>
+        · Block 6: Networking, community, group photo/celebration.<br>
+        No further deliverables; final grades based on project and participation.
+      </div>
+    </details>
+
+  </div>
+</section>
+
+
+<section id="refs" class="refs">
+    <h2>References & Resources</h2>
+    <ul>
+        <li><a href="https://blog.google/technology/ai/musiclm-google-ai-test-kitchen/">Google AI - MusicLM</a> (Music generation, 2023)</li>
+        <li><a href="https://en.wikipedia.org/wiki/AlphaFold">AlphaFold - Wikipedia</a> (protein folding breakthrough)</li>
+        <li><a href="https://www.richwashburn.com/post/ai-scientist-2-0-a-step-closer-to-agi">AI Scientist 2.0</a> (Autonomous Science AI, 2024-2025)</li>
+        <li><a href="https://www.scribd.com/document/848982882/CS372-AI-for-Reasoning-Planning-and-Decision-Making-Spring-2025">Stanford CS372 Spring 2025</a> (Reasoning and AGI research)</li>
+        <li>...and seminal research/papers as listed in weekly readings above.</li>
+    </ul>
+</section>
+</main>
+</body>
+</html>

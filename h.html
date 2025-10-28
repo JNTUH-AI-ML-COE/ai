@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Powered Modern Software Development | Course Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #2c5f8d;
+            --accent: #3a7ca5;
+            --light: #81b7d2;
+            --bg-main: #f8f9fa;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-muted: #6b7280;
+            --border-light: #e5e7eb;
+            --border-accent: #d1d5db;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: movePattern 30s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes movePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background: var(--bg-card);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            background: var(--bg-main);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.7rem 1.4rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--accent);
+            transition: width 0.4s ease, height 0.4s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        nav a:hover {
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--success);
+            transition: width 0.4s ease;
+        }
+
+        section:hover h2::after {
+            width: 150px;
+        }
+
+        h3 {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 2rem 0 1.5rem;
+        }
+
+        section > p {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        section > ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        section > ul li {
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+        }
+
+        section > ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+            transition: var(--transition-fast);
+        }
+
+        section > ul li:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        section > ul li:hover::before {
+            color: var(--success);
+            transform: scale(1.2);
+        }
+    /* Highlighted Key Info/References/Important */
+    .key, .important, .references, .prereq, .sources {
+      background: var(--highlight);
+      border-left: 6px solid var(--emphasis);
+      padding: 1.2em 1em 1.2em 1.3em;
+      border-radius: 7px;
+      font-size: 1.05em;
+      margin-bottom: 1.5em;
+      transition: all 0.3s ease;
+    }
+    .key:hover, .important:hover, .references:hover, .prereq:hover, .sources:hover {
+      box-shadow: 0 4px 16px rgba(44,152,99, 0.12);
+      background: #e9f4fb;
+      transform: translateX(4px);
+    }
+
+    /* Week section */
+    .week {
+      transition: all 0.3s ease;
+    }
+
+    /* Unique badge for titles */
+    .domain-head, .week-title {
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.09em;
+      font-weight: 600;
+      border-radius: 7px;
+      padding: 0.7em 1.1em;
+      display: inline-block;
+      margin-bottom: .9em;
+      margin-top: 1.2em;
+      transition: all 0.3s ease;
+    }
+    .domain-head:hover, .week-title:hover {
+      background: var(--primary);
+      transform: translateX(6px);
+      box-shadow: 0 4px 12px rgba(23,74,124,0.2);
+    }
+
+    /* Timeline Steps (horizontal, scrollable) */
+    .timeline {
+      margin: 24px 0 40px 0;
+      display: flex;
+      overflow-x: auto;
+      gap: 14px;
+      scrollbar-color: var(--accent) #f3f8fe;
+      scrollbar-width: thin;
+    }
+    .timeline-step {
+      flex: 0 0 175px;
+      background: var(--highlight);
+      border: 2px solid var(--accent);
+      border-radius: 13px;
+      padding: 16px 8px;
+      text-align: center;
+      font-weight: 600;
+      font-size: .96em;
+      box-shadow: 0 1px 3px 0 rgba(87,162,230,.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .timeline-step:hover {
+      background: #dbefff;
+      border-color: var(--danger);
+      box-shadow: 0 6px 20px 0 rgba(87,162,230,.15);
+      color: var(--primary);
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    ul {
+      margin-bottom: 1em;
+      margin-left: 24px;
+    }
+
+    /* Objectives and inline item hover */
+    .objectives li, ul li {
+      transition: all 0.3s ease;
+    }
+    .objectives li:hover, ul li:hover {
+      color: var(--emphasis);
+      transform: translateX(4px);
+    }
+
+    a, .ref-link {
+      color: var(--accent);
+      text-underline-offset: 2px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    a:hover, .ref-link:hover {
+      color: var(--danger);
+      transform: translateX(2px);
+    }
+
+    details {
+      margin-bottom: 14px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 8px;
+    }
+    details:hover {
+      background: #f9fcff;
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(87,162,230,0.1);
+    }
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.3s ease;
+      padding: 8px;
+      border-radius: 4px;
+    }
+    summary:hover {
+      color: var(--primary);
+      background-color: #e8f1ff;
+      transform: translateX(4px);
+    }
+    details[open] summary {
+      color: var(--primary);
+      background-color: #e8f1ff;
+    }
+
+    /* Reference list items */
+    .ref-list li {
+      transition: all 0.3s ease;
+      padding: 4px 0;
+    }
+    .ref-list li:hover {
+      padding-left: 8px;
+    }
+
+    /* Responsive Design Tweaks */
+    @media (max-width: 900px) {
+      main { padding: 1.2em 0.7em; }
+      .timeline-step { flex-basis: 125px; font-size: .93em; }
+    }
+    @media (max-width: 700px) {
+      main { padding: 1.1em 0.2em; }
+      .timeline-step { flex-basis: 90px; font-size: .84em; padding: 9px 3px; }
+      .domain-head, .week-title { font-size: 1em; padding: .5em .7em; }
+    }
+    @media (max-width: 480px) {
+      body { font-size: .95em; }
+      .key, .important, .references, .sources, .prereq { padding: 0.7em 0.55em 0.7em 0.7em; }
+      .week, .timeline-step { padding: 9px 2px;}
+      nav a { font-size: 0.97em; padding: 0.4rem 0.7rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Advanced Domain-Specific Applied AI</h1>
+    <p>Graduate Syllabus &nbsp;·&nbsp; 2025</p>
+  </header>
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#objectives">Objectives</a>
+    <a href="#prerequisites">Prerequisites</a>
+    <a href="#structure">Structure</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#semester1">Semester 1</a>
+    <a href="#semester2">Semester 2</a>
+    <a href="#readings">Readings</a>
+  </nav>
+  <main>
+    <section class="key" id="overview">
+      <strong><h2>Course Overview:</h2></strong>
+      This graduate sequence explores advanced techniques for developing AI tailored to multiple industries—healthcare, finance, legal, retail, and more. Students learn to specialize and adapt deep learning and foundation models for application in real-world, high-impact settings, with strong focus on hands-on implementation, using state-of-the-art methods like transfer learning, knowledge distillation, synthetic data generation, and efficient fine-tuning.
+    </section>
+
+    <section id="objectives">
+      <h2>Learning Objectives</h2>
+      <ul>
+        <li>Specialize and adapt pre-trained AI models to various domains using advanced transfer learning and domain adaptation techniques.</li>
+        <li>Implement model compression, knowledge distillation, and efficient deployment.</li>
+        <li>Create and evaluate synthetic data for domains with limited/sensitive datasets.</li>
+        <li>Develop domain-specific solutions for at least 4–7 verticals, demonstrating awareness of unique requirements and ethics in each field.</li>
+        <li>Translate recent research to practical implementations (projects, assignments).</li>
+      </ul>
+    </section>
+    
+    <section id="prerequisites" class="prereq">
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Strong background in ML/deep learning (coursework or equivalent experience)</li>
+        <li>Solid Python, PyTorch/TensorFlow skills</li>
+        <li>Basic AI ethics and privacy understanding suggested</li>
+      </ul>
+    </section>
+    
+    <section id="structure">
+      <h2>Course Structure</h2>
+      <ul>
+        <li><b>Two Semesters</b> (Fall 2025 + Spring 2026) · 12–13 weeks instruction per semester</li>
+        <li><b>Semester 1:</b> Core methods & foundational domains, practical mini-projects each module</li>
+        <li><b>Semester 2:</b> Advanced topics, extra domains, major capstone project in chosen vertical</li>
+        <li>Weekly lectures, paper discussions, hands-on labs, guest speakers from industry/academia</li>
+        <li>Frequent problem sets, project checkpoints, final capstone project</li>
+      </ul>
+    </section>
+
+    <section id="timeline">
+      <h2>Course Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-step">Intro & Domains</div>
+        <div class="timeline-step">Transfer & Adaptation</div>
+        <div class="timeline-step">Distillation</div>
+        <div class="timeline-step">Synthetic Data</div>
+        <div class="timeline-step">Healthcare AI</div>
+        <div class="timeline-step">Finance AI</div>
+        <div class="timeline-step">Legal AI</div>
+        <div class="timeline-step">Adv. Fine-Tuning</div>
+        <div class="timeline-step">Multi-Modal</div>
+        <div class="timeline-step">Retail/E-commerce</div>
+        <div class="timeline-step">Capstone</div>
+      </div>
+    </section>
+        <section id="semester1">
+  <h2>Semester 1: Foundations of Domain-Specific AI (Fall 2025)</h2>
+  <div class="domain-head">Weeks 1–2: Introduction to Domain-Specific AI</div>
+  <ul>
+    <li>
+      <strong>Overview:</strong> Why AI must be adapted for specific domains. Typical shortcomings of generic models (e.g. general NLP vs. medical/legal NLP). High-stakes errors and data scarcity.
+    </li>
+    <li>
+      <strong>Case Studies:</strong>
+      <ul>
+        <li>BloombergGPT: 50B param finance LLM, trained on domain-specific corpora, dramatically outperforms general models on finance tasks <a href="https://www.bloomberg.com/company/press/bloomberggpt-50-billion-parameter-llm-tuned-finance/" target="_blank">[BloombergGPT]</a>.</li>
+        <li>Med-PaLM 2: Aligning LLMs to medicine, achieves >85% expert performance on USMLE-style questions <a href="https://cloud.google.com/blog/topics/healthcare-life-sciences/sharing-google-med-palm-2-medical-large-language-model" target="_blank">[Med-PaLM 2]</a>.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Discussion/Lab:</strong>
+      <ul>
+        <li>Domain challenges: regulatory burdens, explainability, bias/fairness, updates for domain shifts.</li>
+        <li>Team formation around multiple domains for semester projects.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="domain-head">Weeks 3–4: Transfer Learning and Domain Adaptation</div>
+  <ul>
+    <li>
+      <strong>Objectives:</strong> Deep dive into transfer learning to adapt LLMs for new domains. Understand fine-tuning, continued pre-training, feature alignment, adversarial domain adaptation, multi-task learning.
+    </li>
+    <li>
+      <strong>Techniques:</strong>
+      <ul>
+        <li>Parameter-Efficient Fine-Tuning (PEFT): Only update a small subset of the model—LoRA, adapters, QLoRA <a href="https://medium.com/@akankshasinha247/peft-lora-qlora-smarter-faster-fine-tuning-for-domain-llms-3d7b7fdf9671" target="_blank">[PEFT, LoRA]</a>.</li>
+        <li>Feature alignment, domain-adversarial adaptation (esp. in vision).</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Lab:</strong> Students fine-tune or adapt a base model for a chosen domain, comparing full vs. parameter-efficient adaptation.
+    </li>
+  </ul>
+
+  <div class="domain-head">Weeks 5–6: Knowledge Distillation & Teacher/Professor Models</div>
+  <ul>
+    <li>
+      <strong>Content:</strong> Learn to compress large models for deployment via distillation. Study teacher-student (classic) and professor-teacher-student (QUILL) multi-stage approaches <a href="https://dejan.ai/blog/query-intent-via-retrieval-augmentation-and-model-distillation/" target="_blank">[QUILL]</a>.
+    </li>
+    <li>
+      <strong>Applications:</strong> Edge deployment (hospital devices, low-latency trading), ensemble and self-distillation.
+    </li>
+    <li>
+      <strong>Lab:</strong> Distill a teacher into a student model using domain data. Evaluate efficiency and accuracy.
+    </li>
+    <li>
+      <strong>Reference:</strong> <a href="https://www.amazon.science/publications/knowledge-distillation-with-training-wheels" target="_blank">Knowledge Distillation with Training Wheels</a>.
+    </li>
+  </ul>
+
+  <div class="domain-head">Weeks 7–8: Synthetic Data Generation & Data Augmentation</div>
+  <ul>
+    <li>
+      <strong>Motivation:</strong> How generative AI (GANs, VAEs, Diffusion, LLMs) can fill gaps with high-quality synthetic medical, legal, or financial data.
+    </li>
+    <li>
+      <strong>Case Study:</strong> RoentGen, Stanford’s text-to-image X-ray generator — creates lifelike images for rare conditions, supports privacy <a href="https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/" target="_blank">[Stanford Synthetic Data]</a>.
+    </li>
+    <li>
+      <strong>Lab:</strong> Build and benchmark a model using real + synthetic data augmentation; discuss risks and validation.
+    </li>
+  </ul>
+
+  <div class="domain-head">Weeks 9–10: Domain Focus – AI in Healthcare</div>
+  <ul>
+    <li>
+      <strong>Applications:</strong> Diagnostic imaging, EHR analytics, medical Q&A with LLMs. Emphasis on interpretability, federated learning, bias mitigation, regulatory constraints.
+    </li>
+    <li>
+      <strong>Case:</strong> Use real datasets to build models (e.g., radiology classification, patient outcome prediction). Explore Med-PaLM 2, BioGPT, and federated learning.
+    </li>
+    <li>
+      <strong>Lab:</strong> Adapt models for a healthcare task and analyze fairness metrics. Guest speaker discusses practical deployment.
+    </li>
+    <li>
+      <strong>Reading:</strong> <a href="https://mlhcmit.github.io/" target="_blank">Machine Learning for Health MIT</a>.
+    </li>
+  </ul>
+
+  <div class="domain-head">Weeks 11–12: Domain Focus – AI in Finance</div>
+  <ul>
+    <li>
+      <strong>Topics:</strong> NLP for finance (sentiment analysis, credit scoring), time-series modeling for trading/forecasting, fraud detection.
+    </li>
+    <li>
+      <strong>Customization:</strong> BloombergGPT, FinBERT, continual/adaptive learning. Discuss bias, explainability, regulatory risks.
+    </li>
+    <li>
+      <strong>Lab:</strong> Work with financial data—stock prices/news, and model for prediction/classification using domain customization.
+    </li>
+    <li>
+      <strong>Reference:</strong> <a href="https://www.bloomberg.com/company/press/bloomberggpt-50-billion-parameter-llm-tuned-finance/" target="_blank">BloombergGPT overview</a>.
+    </li>
+  </ul>
+
+  <div class="domain-head">Week 13: Domain Focus – AI in Legal</div>
+  <ul>
+    <li>
+      <strong>Applications:</strong> eDiscovery, contract review, legal research Q&A, drafting. LLMs for law (GPT-4 bar exam performance) <a href="https://openai.com/index/gpt-4-research/" target="_blank">[GPT-4 Research]</a>.
+    </li>
+    <li>
+      <strong>Challenges:</strong> Verification, avoidance of hallucinations, use of RAG, bias, and legal ethics in AI.
+    </li>
+    <li>
+      <strong>Lab:</strong> Evaluate output from legal AI systems vs. human analysis; propose capstone project ideas.
+    </li>
+  </ul>
+</section>
+
+
+<section id="semester2">
+  <h2>Semester 2: Advanced Topics and Capstone (Spring 2026)</h2>
+  <div class="domain-head">Weeks 1–2: Advanced Fine-Tuning & Adaptation</div>
+  <ul>
+    <li>
+      <strong>Objectives:</strong> Master RLHF and instruction tuning for specific domains (aligning models with expert feedback), support continual/multi-domain learning and parameter isolation.
+    </li>
+    <li>
+      <strong>Lab:</strong> Practice with open-source adapter tools, rapidly fine-tune and test foundation models in chosen domains.
+    </li>
+  </ul>
+
+  <div class="domain-head">Weeks 3–4: Multi-Modal & Knowledge-Integrated Domain AI</div>
+  <ul>
+    <li>
+      <strong>Multi-Modal Fusion:</strong> Combine vision, text, and signals for complex reasoning in healthcare, retail, or manufacturing.
+    </li>
+    <li>
+      <strong>Knowledge Integration:</strong> Use ontologies, knowledge graphs, and symbolic rules to power reasoning and compliance-checking.
+    </li>
+    <li>
+      <strong>Lab:</strong> Build a multi-modal or knowledge-integrated model for a class project.
+    </li>
+  </ul>
+
+  <div class="domain-head">Week 5: Domain Focus – AI in Retail & E-commerce</div>
+  <ul>
+    <li>
+      <strong>Applications:</strong> Personalized recommendation, demand forecasting, chatbots, visual search, dynamic content generation.
+    </li>
+    <li>
+      <strong>Case Study:</strong> Conversational commerce, Amazon Bedrock, hyper-personalization <a href="https://aws.amazon.com/blogs/industries/how-generative-ai-and-data-are-redefining-retail-experiences/" target="_blank">[AWS Retail AI]</a>.
+    </li>
+    <li>
+      <strong>Lab:</strong> Prototype and measure improvements from domain-specific recsys/channel bots.
+    </li>
+  </ul>
+
+  <div class="domain-head">Week 6: Domain Focus – Manufacturing & Industry</div>
+  <ul>
+    <li>
+      <strong>Apps:</strong> Predictive maintenance, robotics, quality control. Work with sensor data, edge deployment, sim-to-real transfer.
+    </li>
+    <li>
+      <strong>Lab:</strong> Model equipment failures or forecast operations on manufacturing datasets.
+    </li>
+  </ul>
+
+  <div class="domain-head">Week 7: Domain Focus – AI in Education</div>
+  <ul>
+    <li>
+      <strong>Topics:</strong> Intelligent tutors, grading, student progress, personalized feedback, ethics/fairness.
+    </li>
+    <li>
+      <strong>Lab:</strong> Build and validate an educational chatbot or auto-grader; test for learning outcomes.
+    </li>
+  </ul>
+
+  <div class="domain-head">Weeks 8–10: Capstone Project Development</div>
+  <ul>
+    <li>
+      Design, implement, and evaluate domain-specific AI projects. Weekly progress reviews and just-in-time lectures for knowledge gaps.
+    </li>
+    <li>
+      Milestones at Weeks 8, 9 for results and troubleshooting.
+    </li>
+  </ul>
+
+  <div class="domain-head">Weeks 11–12: Final Presentations & Synthesis</div>
+  <ul>
+    <li>
+      Present projects, compare strengths and weaknesses across domains, discuss generalization vs. customization.
+    </li>
+    <li>
+      Reflect on lessons learned, future outlook, and responsible deployment.
+    </li>
+  </ul>
+</section>
+
+    
+    <section id="readings">
+  <h2>Recommended Readings & Key Research</h2>
+  <ul>
+    <li>
+      <strong>Query Intent Classification, RAG & Distillation:</strong>
+      <br>
+      <a href="https://dejan.ai/blog/query-intent-via-retrieval-augmentation-and-model-distillation/" target="_blank">
+        QUILL: Query Intent with Large Language Models using Retrieval Augmentation and Multi-stage Distillation
+      </a>
+      – DEJAN  
+      <ul>
+        <li>
+          <a href="https://dejan.ai/blog/query-intent-via-retrieval-augmentation-and-model-distillation/#:~:text=Two" target="_blank">Professor-Teacher-Student multi-stage distillation</a>
+        </li>
+        <li>
+          <a href="https://dejan.ai/blog/query-intent-via-retrieval-augmentation-and-model-distillation/#:~:text=Second%20Stage%3A%20The%20Teacher%20model,than%20the%20Professor%20or%20Teacher" target="_blank">Teacher model distillation details</a>
+        </li>
+        <li>
+          <a href="https://dejan.ai/blog/query-intent-via-retrieval-augmentation-and-model-distillation/#:~:text=using%20a%20larger%20dataset,than%20the%20Professor%20or%20Teacher" target="_blank">Student model efficiency</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>Synthetic Data in Healthcare & Biomedicine:</strong>
+      <br>
+      <a href="https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/" target="_blank">
+        AI steps into the looking glass with synthetic data – Stanford Medicine Magazine
+      </a>
+      <ul>
+        <li>
+          <a href="https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/#:~:text=Leaders%20of%20this%20emerging%20field,all%20in%20a%20single%20stroke" target="_blank">Synthetic data promise</a>
+        </li>
+        <li>
+          <a href="https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/#:~:text=biomedical%20data%20science%2C%20Chaudhari%2C%20assistant,August%20in%20Nature%20Biomedical%20Engineering" target="_blank">Biomedical engineering applications</a>
+        </li>
+        <li>
+          <a href="https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/#:~:text=everyday%20work,trained%20eyes%20of%20medical%20professionals" target="_blank">Medical professional impact</a>
+        </li>
+        <li>
+          <a href="https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/#:~:text=Data%20from%20scratch" target="_blank">Data from scratch examples</a>
+        </li>
+        <li>
+          <a href="https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/#:~:text=While%20RoentGen%20is%20impressive%20in,help%20circumvent%20patient%20privacy%20concerns" target="_blank">RoentGen and privacy</a>
+        </li>
+        <li>
+          <a href="https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/#:~:text=Yet%20many%20leaders%20also%20urge,implications%20of%20this%20new%20field" target="_blank">Ethical concerns</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>Fine-Tuning Domain LLMs (PEFT, LoRA, QLoRA):</strong>
+      <br>
+      <a href="https://medium.com/@akankshasinha247/peft-lora-qlora-smarter-faster-fine-tuning-for-domain-llms-3d7b7fdf9671" target="_blank">
+        PEFT, LoRA & QLoRA: Smarter, Faster Fine-Tuning for Domain LLMs – Akanksha Sinha (Medium)
+      </a>
+      <ul>
+        <li>
+          <a href="https://medium.com/@akankshasinha247/peft-lora-qlora-smarter-faster-fine-tuning-for-domain-llms-3d7b7fdf9671#:~:text=Fine,training%20on%20a%20curated%20dataset" target="_blank">Fine-tuning process</a>
+        </li>
+        <li>
+          <a href="https://medium.com/@akankshasinha247/peft-lora-qlora-smarter-faster-fine-tuning-for-domain-llms-3d7b7fdf9671#:~:text=%E2%98%BC%20What%20is%20PEFT%3F" target="_blank">What is PEFT?</a>
+        </li>
+        <li>
+          <a href="https://medium.com/@akankshasinha247/peft-lora-qlora-smarter-faster-fine-tuning-for-domain-llms-3d7b7fdf9671#:~:text=%E2%80%A2%20Risky" target="_blank">Risks and limitations</a>
+        </li>
+        <li>
+          <a href="https://medium.com/@akankshasinha247/peft-lora-qlora-smarter-faster-fine-tuning-for-domain-llms-3d7b7fdf9671#:~:text=Meta%E2%80%99s%20fine,tune%20%E2%80%94%20options%20include" target="_blank">Meta's implementation</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>Model Compression & Knowledge Distillation:</strong>
+      <br>
+      <a href="https://www.amazon.science/publications/knowledge-distillation-with-training-wheels" target="_blank">
+        Knowledge distillation with training wheels – Amazon Science
+      </a>
+    </li>
+    <li>
+      <strong>Deep Learning Course & Tutorials:</strong>
+      <br>
+      <a href="https://phillipi.github.io/6.7960/" target="_blank">
+        6.7960 Deep Learning, Fall 2024 (Sara Beery, MIT)
+      </a>
+    </li>
+    <li>
+      <strong>Domain Case Studies:</strong>
+      <ul>
+        <li>
+          <a href="https://www.bloomberg.com/company/press/bloomberggpt-50-billion-parameter-llm-tuned-finance/" target="_blank">
+            BloombergGPT, Purpose-built 50B parameter LLM for Finance – Bloomberg [performance, applications]
+          </a>
+        </li>
+        <li>
+          <a href="https://cloud.google.com/blog/topics/healthcare-life-sciences/sharing-google-med-palm-2-medical-large-language-model" target="_blank">
+            Med-PaLM 2 Medical LLM – Google Cloud Blog
+          </a>
+        </li>
+          <li>
+          <a href="https://mlhcmit.github.io/" target="_blank">
+            Machine Learning for Healthcare – MLHC MIT
+          </a>
+        </li>
+        <li>
+          <a href="https://openai.com/index/gpt-4-research/" target="_blank">
+            GPT-4 Research – OpenAI
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>Generative AI in Retail:</strong>
+      <br>
+      <a href="https://aws.amazon.com/blogs/industries/how-generative-ai-and-data-are-redefining-retail-experiences/" target="_blank">
+        How generative AI and data are redefining retail experiences – AWS for Industries
+      </a>
+      <ul>
+        <li>
+          <a href="https://aws.amazon.com/blogs/industries/how-generative-ai-and-data-are-redefining-retail-experiences/#:~:text=Take%20The%20Very%20Group%20,the%20quality%20of%20product%20descriptions" target="_blank">Generative product content</a>
+        </li>
+        <li>
+          <a href="https://aws.amazon.com/blogs/industries/how-generative-ai-and-data-are-redefining-retail-experiences/#:~:text=product%20recommendations%2C%20dynamic%20content%20generation%2C,from%205%20to%2025%20percent" target="_blank">Product recommendations, dynamic content</a>
+        </li>
+        <li>
+          <a href="https://aws.amazon.com/blogs/industries/how-generative-ai-and-data-are-redefining-retail-experiences/#:~:text=These%20innovations%20reflect%20a%20trend,Consumers%20are%20already" target="_blank">Industry impact/trends</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+  </main>
+</body>
+</html>

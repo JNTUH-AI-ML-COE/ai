@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elite Applied AI Agent Engineering – Graduate Syllabus 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #2c5f8d;
+            --accent: #3a7ca5;
+            --light: #81b7d2;
+            --bg-main: #f8f9fa;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-muted: #6b7280;
+            --border-light: #e5e7eb;
+            --border-accent: #d1d5db;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: movePattern 30s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes movePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background: var(--bg-card);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            background: var(--bg-main);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.7rem 1.4rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--accent);
+            transition: width 0.4s ease, height 0.4s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        nav a:hover {
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--success);
+            transition: width 0.4s ease;
+        }
+
+        section:hover h2::after {
+            width: 150px;
+        }
+
+        h3 {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 2rem 0 1.5rem;
+        }
+
+        section > p {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        section > ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        section > ul li {
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+        }
+
+        section > ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+            transition: var(--transition-fast);
+        }
+
+        section > ul li:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        section > ul li:hover::before {
+            color: var(--success);
+            transform: scale(1.2);
+        }
+
+        .week {
+            background: linear-gradient(to right, var(--bg-main), var(--bg-card));
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--accent);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .week::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--success), var(--warning));
+            transition: height 0.5s ease;
+        }
+
+        .week:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            border-left-color: var(--success);
+        }
+
+        .week:hover::before {
+            height: 100%;
+        }
+
+        details {
+            margin-bottom: 1rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        details:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        details[open] {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        summary {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.05rem;
+            background: linear-gradient(to right, transparent, var(--bg-main));
+            transition: var(--transition);
+            user-select: none;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        summary::marker {
+            content: '';
+        }
+
+        summary::before {
+            content: '▶';
+            position: absolute;
+            left: 1rem;
+            transition: transform 0.3s ease;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        summary:hover {
+            background: var(--bg-main);
+            color: var(--accent);
+            padding-left: 2.8rem;
+        }
+
+        details > div {
+            padding: 1.5rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-light);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .refs {
+            background: linear-gradient(135deg, var(--bg-main) 0%, var(--bg-card) 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .refs h2 {
+            border-bottom: none;
+            margin-bottom: 2rem;
+        }
+
+        .refs ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .refs ul li {
+            margin-bottom: 1.25rem;
+            padding-left: 2.5rem;
+            position: relative;
+            transition: var(--transition-fast);
+            line-height: 1.8;
+        }
+
+        .refs ul li::before {
+            content: '📚';
+            position: absolute;
+            left: 0;
+            transition: var(--transition-fast);
+            font-size: 1.3rem;
+        }
+
+        .refs ul li:hover {
+            transform: translateX(10px);
+            color: var(--primary);
+        }
+
+        .refs ul li:hover::before {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent), var(--success));
+            transition: width 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 6px;
+            transition: var(--transition-fast);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            main {
+                margin: 2rem 1.5rem;
+                padding: 2.5rem;
+            }
+
+            header {
+                padding: 3rem 1.5rem 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 2.5rem 1.5rem 2rem;
+            }
+
+            nav {
+                padding: 0.75rem;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            main {
+                margin: 1.5rem 1rem;
+                padding: 2rem 1.5rem;
+                border-radius: 16px;
+            }
+
+            .week {
+                padding: 1.5rem;
+            }
+
+            details > div {
+                padding: 1.25rem;
+            }
+
+            .refs {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            nav {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem 1rem;
+            }
+
+            main {
+                margin: 1rem 0.5rem;
+                padding: 1.5rem 1rem;
+                border-radius: 12px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            .week {
+                padding: 1.25rem 1rem;
+            }
+
+            summary {
+                padding: 1rem;
+                padding-left: 2.5rem;
+                font-size: 0.95rem;
+            }
+
+            details > div {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .refs {
+                padding: 1.5rem;
+            }
+
+            section > ul li {
+                padding-left: 1.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header {
+                background: var(--primary);
+                color: white;
+            }
+
+            nav {
+                display: none;
+            }
+
+            main {
+                box-shadow: none;
+            }
+
+            details {
+                border: 1px solid var(--border-light);
+            }
+
+            details[open] summary {
+                page-break-after: avoid;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <h1>Elite Applied AI Agent Engineering</h1>
+    <p>Graduate Syllabus &nbsp;·&nbsp; 2025</p>
+  </header>
+  <nav>
+    <a href="#description">Description</a>
+    <a href="#outcomes">Outcomes</a>
+    <a href="#prereq">Prerequisites</a>
+    <a href="#format">Format</a>
+    <a href="#weeks">Weekly Syllabus</a>
+    <a href="#refs">References</a>
+  </nav>
+  <main>
+    <section id="description">
+      <h2>Course Description</h2>
+      <p>
+        This advanced course explores agentic AI: autonomous intelligent agents capable of perceiving, reasoning, planning, and acting to accomplish complex goals in the real world. Students will learn to build agents using LLM reasoning, agentic frameworks, tool use protocols, and multi-agent collaboration—covering topics from agent memory and planning to security and system design.<br>
+        <em>Applications span coding assistants, web automation, robotics, scientific discovery, and more.</em>
+      </p>
+    </section>
+    <section id="outcomes">
+      <h2>Learning Outcomes</h2>
+      <ul>
+        <li>Design full agent architectures: memory, tool APIs, planning/logic, collaboration.</li>
+        <li>Apply frameworks for agent reasoning (Chain-of-Thought, ReAct) and tool use.</li>
+        <li>Integrate LLMs with tools, APIs, databases, and feedback loops.</li>
+        <li>Evaluate and debug agent performance and collaboration (multi-agent, human-in-the-loop).</li>
+        <li>Implement ethics and security: prevent unsafe behaviors and secure tool use.</li>
+        <li>Deploy applied agent systems, culminating with a capstone project.</li>
+      </ul>
+    </section>
+    <section id="prereq">
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Graduate-level background in machine learning/AI (CS188/189 or equivalent)</li>
+        <li>Strong Python programming skills</li>
+        <li>Exposure to NLP or reinforcement learning is beneficial</li>
+        <li>Active interest in research papers and engineering complex systems</li>
+      </ul>
+    </section>
+    <section id="format">
+      <h2>Course Format & Assessment</h2>
+      <ul>
+        <li>Weekly seminars: lectures + discussion of agentic AI research and demos</li>
+        <li>Bi-weekly programming assignments & mini-projects (hands-on agent building and security)</li>
+        <li>Midterm quiz on core concepts and research</li>
+        <li>Capstone Project: Design, build, and demonstrate a fully functional agent</li>
+        <li>Grading: 50% project, 30% assignments, 10% paper presentation, 10% participation</li>
+      </ul>
+    </section>
+    <section id="weeks">
+      <h2>Weekly Syllabus</h2>
+      <div class="week">
+        <h3>Week 1: Introduction to AI Agents</h3>
+        <ul>
+          <li>Defining agents vs. chatbots; multi-step reasoning, persistent state, goal pursuit</li>
+          <li>Evolution of agent systems; examples across domains</li>
+          <li><b>Reading:</b> <a href="https://ar5iv.labs.arxiv.org/html/2503.16416">Survey on LLM Agents</a></li>
+        </ul>
+        <div class="lab">Mini-project: Run and analyze an open-source agent (AutoGPT or AgentGPT) on a real-world goal.</div>
+      </div>
+      <div class="week">
+        <h3>Week 2: LLMs as Reasoning Engines & Prompting</h3>
+        <ul>
+          <li>Using LLMs for step-by-step reasoning (Chain-of-Thought, CoT)</li>
+          <li>ReAct framework: interleaving reasoning and tool use; prompt engineering for agents</li>
+          <li>Self-feedback and reliability improvements</li>
+          <li><b>Readings:</b> <a href="https://cs329a.stanford.edu/">Stanford CS329A Agent Architectures</a>,
+            <a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai">ReAct: Reason+Act</a>
+          </li>
+        </ul>
+        <div class="lab">Hands-on: Write and test prompts for tool-using agents, compare with/without CoT prompting.</div>
+      </div>
+      <div class="week">
+        <h3>Week 3: Agent Architecture and Frameworks</h3>
+        <ul>
+          <li>Agent system components: planning, memory, orchestration, tools</li>
+          <li>Classical symbolic vs. modern data-driven and LLM-based agents</li>
+          <li>Survey of top agent frameworks: LangChain, Crew, AutoGen</li>
+          <li><b>Reading:</b> <a href="https://www.scribd.com/document/864913175/AI-Agent-Engineering-Syllabus">Agent Engineering Syllabus PDF</a></li>
+        </ul>
+        <div class="lab">Diagram architecture of a modern agent; mini-project using LangChain or similar.</div>
+      </div>
+      <div class="week">
+        <h3>Week 4: Tool Use and Agent Interoperability Protocols</h3>
+        <ul>
+          <li>Plugin/function integration (APIs, databases, web automation)</li>
+          <li>Introduction to Model Context Protocol (MCP), Agent-to-Agent (A2A) comms, AG-UI standards
+            <a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b">[MCP, A2A, AG-UI]</a>
+          </li>
+        </ul>
+        <div class="lab">Lab: Implement MCP client to enable external tool use for your agent.</div>
+      </div>
+      <div class="week">
+        <h3>Week 5: Multi-Agent Systems and Collaboration</h3>
+        <ul>
+          <li>MAS: cooperation, competition, distributed task allocation</li>
+          <li>Multi-agent protocols and prompt optimization (MASS, A2A)</li>
+          <li><b>Reading:</b> <a href="https://openreview.net/forum?id=uCKvHweh1g">Multi-Agent Design, Prompt/Topology Optimization</a></li>
+        </ul>
+        <div class="lab">Assignment: Script and analyze multi-agent interactions and team performance.</div>
+      </div>
+      <div class="week">
+        <h3>Week 6: Memory and Knowledge Management</h3>
+        <ul>
+          <li>Persistent agent memory: vector stores, MemGPT, retrieval-based architectures</li>
+          <li>Knowledge graphs, episodic/semantic memory, recall and up-to-date info</li>
+          <li><b>Reading:</b> <a href="https://cs329a.stanford.edu/">MemGPT benchmarks</a></li>
+        </ul>
+        <div class="lab">Augment agent with conversation and tool memory; empirical analysis of context improvements.</div>
+      </div>
+      <div class="week">
+        <h3>Week 7: Planning and Decision-Making</h3>
+        <ul>
+          <li>Classical AI planning, LLM agent planning, decision trees, Tree of Thoughts</li>
+          <li>Integrating lookahead and goal decomposition in agents</li>
+          <li><b>Reading:</b> <a href="https://cs329a.stanford.edu/">Language Agent Tree Search</a>,
+            <a href="https://www.cs.ox.ac.uk/teaching/courses/2024-2025/foundagent/">Oxford Self-Programming Agents</a>
+          </li>
+        </ul>
+        <div class="lab">Assignment: Implement stepwise plan execution for a multi-step task using LLMs or planning libraries.</div>
+      </div>
+      <div class="week">
+        <h3>Week 8: Learning, Adaptation, and Self-Improvement</h3>
+        <ul>
+          <li>Reinforcement learning, self-reflection, automated self-correction (Constitutional AI)</li>
+          <li>Agent evolution, goal generation, continual improvement; case studies in code, science agents</li>
+          <li><b>Reading:</b> <a href="https://cs329a.stanford.edu/">Self-Improving Agents CS329A</a></li>
+        </ul>
+        <div class="lab">Lab: Build feedback/self-correction loop for agents and analyze learning curves.</div>
+      </div>
+      <div class="week">
+        <h3>Week 9: Evaluation and Benchmarking</h3>
+        <ul>
+          <li>Metrics and benchmarks for agent abilities, open-ended tasks, robustness, safety</li>
+          <li>Tools: OpenAI Evals, BrowseBench, SWE-Bench, HELM, AgentBench</li>
+          <li><b>Reading:</b> <a href="https://ar5iv.labs.arxiv.org/html/2503.16416">Survey on Evaluation of LLM Agents</a></li>
+        </ul>
+        <div class="lab">Assignment: Create and run agent benchmarks, compare agents on web, code, or dialogue tasks.</div>
+      </div>
+      <div class="week">
+        <h3>Week 10: Agent Safety and Security</h3>
+        <ul>
+          <li>Prompt injection attacks, design patterns for secure agents, compliance and alignment</li>
+          <li>Sandboxing, threat modeling, role separation, secure tool access</li>
+          <li><b>Reading:</b> <a href="https://arxiv.org/abs/2506.08837">Securing LLM Agents - Design Patterns</a></li>
+        </ul>
+        <div class="lab">Lab: Simulate attacks and defenses in agent prompts; implement mitigation strategies.</div>
+      </div>
+      <div class="week">
+        <h3>Week 11: Agents in Software Engineering and DevOps</h3>
+        <ul>
+          <li>Copilot systems, autonomous code agents, SWE-Agent for code generation/maintenance</li>
+          <li>DevOps: agents for software delivery, bug fixing, infrastructure management</li>
+          <li><b>Reading:</b> <a href="https://cs329a.stanford.edu/">SWE-Agent research</a></li>
+        </ul>
+        <div class="lab">Project checkpoint: Review agent designs for code/tooling; demo and feedback sessions.</div>
+      </div>
+      <div class="week">
+        <h3>Week 12: Agents in the Physical World and Scientific Discovery</h3>
+        <ul>
+          <li>Robotics: grounding language in actions, integrating LLM agents with IoT</li>
+          <li>Scientific discovery: hypothesis generation, virtual experimentation, agent-based modeling</li>
+          <li>Open problems: reliability, domain knowledge, ethical considerations</li>
+        </ul>
+        <div class="lab">Capstone demos: Present applied agent projects; discuss future challenges.</div>
+      </div>
+    </section>
+    <section id="refs" class="refs">
+      <strong>Major References & Resources:</strong>
+      <ul>
+        <li><a href="https://ar5iv.labs.arxiv.org/html/2503.16416" target="_blank">Survey on Evaluation of LLM-based Agents</a></li>
+        <li><a href="https://rdi.berkeley.edu/agentic-ai/f25" target="_blank">CS294/194-196 Agentic AI at Berkeley</a></li>
+        <li><a href="https://cs329a.stanford.edu/" target="_blank">Stanford CS329A Self-Improving Agents</a></li>
+        <li><a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai" target="_blank">JHU Agentic AI Certificate</a></li>
+        <li><a href="https://www.scribd.com/document/864913175/AI-Agent-Engineering-Syllabus" target="_blank">AI Agent Engineering Syllabus PDF</a></li>
+        <li><a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b" target="_blank">Rise of Agent Ecosystems: MCP, A2A, AG-UI</a></li>
+        <li><a href="https://openreview.net/forum?id=uCKvHweh1g" target="_blank">Multi-Agent Design: OpenReview</a></li>
+        <li><a href="https://arxiv.org/abs/2506.08837" target="_blank">Design Patterns for Securing LLM Agents</a></li>
+        <li><a href="https://www.cs.ox.ac.uk/teaching/courses/2024-2025/foundagent/" target="_blank">Foundations of Self-Programming Agents (Oxford)</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

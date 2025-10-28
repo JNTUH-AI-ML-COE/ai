@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Powered Modern Software Development | Course Details</title>
+    <style>
+    :root {
+      --primary: #060d21;
+      --primary-dark: #1e3a8a;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --highlight: #eff6ff;
+      --emphasis: #059669;
+      --danger: #dc2626;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --bg: #f9fafb;
+      --white: #ffffff;
+      --border: #e5e7eb;
+    }
+    .hi{
+      text-align: center;
+      margin-bottom: 1rem;
+      background-color: #1e3a5f;
+      height: 6cm;
+      padding-top: 2cm;
+    }
+    .hi h1{
+      color: white;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(30, 64, 175, 0.15);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    header h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.02em;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    header h3 {
+      font-size: 1.25rem;
+      font-weight: 400;
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      padding: 1rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.3s ease;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: var(--primary);
+      background: var(--white);
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 0.625rem 1.25rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: 2px solid var(--border);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    nav a:hover::before {
+      left: 0;
+    }
+
+    nav a:hover {
+      color: var(--white);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    main {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    main:hover {
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 1.875rem;
+      margin-top: 2rem;
+    }
+
+    /* Week Section */
+    .week {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInSection 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeInSection {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .week:nth-child(1) { animation-delay: 0.1s; }
+    .week:nth-child(2) { animation-delay: 0.2s; }
+    .week:nth-child(3) { animation-delay: 0.3s; }
+
+    .week-title {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .week-title:hover {
+      transform: translateX(8px);
+      box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Objectives */
+    .objectives {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .objectives li {
+      padding: 0.75rem 0 0.75rem 2rem;
+      position: relative;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .objectives li::before {
+      content: '→';
+      position: absolute;
+      left: 0.5rem;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .objectives li:hover {
+      background: var(--highlight);
+      transform: translateX(8px);
+      padding-left: 2.5rem;
+    }
+
+    .objectives li:hover::before {
+      color: var(--emphasis);
+      transform: scale(1.2);
+    }
+
+    /* Details/Summary */
+    details {
+      margin: 1.5rem 0;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      transition: all 0.3s ease;
+      background: var(--white);
+    }
+
+    details:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1);
+    }
+
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      color: var(--primary);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    summary::before {
+      content: '▶';
+      display: inline-block;
+      transition: transform 0.3s ease;
+      color: var(--accent);
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    summary:hover {
+      background: var(--highlight);
+      transform: translateX(4px);
+    }
+
+    details ul {
+      margin-top: 1rem;
+      margin-left: 1.5rem;
+    }
+
+    details ul li {
+      margin: 0.5rem 0;
+      transition: all 0.2s ease;
+    }
+
+    details ul li:hover {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* Highlighted Boxes */
+    .important, .references, .sources {
+      background: linear-gradient(135deg, var(--highlight) 0%, #dbeafe 100%);
+      border-left: 5px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+    }
+
+    .important:hover, .references:hover, .sources:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+      background: linear-gradient(135deg, #dbeafe 0%, var(--highlight) 100%);
+    }
+
+    .important strong, .references strong, .sources strong {
+      color: var(--primary);
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Links */
+    a.ref-link {
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+    }
+
+    a.ref-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    a.ref-link:hover {
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    a.ref-link:hover::after {
+      width: 100%;
+    }
+
+    /* HR */
+    hr {
+      border: none;
+      border-top: 2px solid var(--border);
+      margin: 3rem 0;
+      opacity: 0.5;
+    }
+
+    /* Lists */
+    .ref-list {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .ref-list li {
+      padding: 0.5rem 0;
+      transition: all 0.2s ease;
+    }
+
+    .ref-list li:hover {
+      padding-left: 0.5rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header h3 {
+        font-size: 1rem;
+      }
+
+      main {
+        padding: 2rem 1.5rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+        margin: 2rem auto;
+      }
+
+      nav a {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .week-title {
+        font-size: 1.1rem;
+        padding: 0.875rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      main {
+        padding: 1.5rem 1rem;
+      }
+
+      .objectives li {
+        padding-left: 1.5rem;
+      }
+    }
+
+    /* Scroll animations */
+    @media (prefers-reduced-motion: no-preference) {
+      .week {
+        transition: all 0.3s ease;
+      }
+
+      .week:hover {
+        transform: scale(1.01);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hi">
+      <h1>AI-Powered Modern Software Development</h1>
+    </div>
+    <h3>Comprehensive Curriculum & Course Details</h3>
+
+    <section>
+      <div class="important">
+        <strong>About this course:</strong>
+        <br>
+        This curriculum provides a deep-dive into <b>how AI and large language models (LLMs) are transforming software engineering</b>. Each module below contains clear learning objectives, hands-on topics, and the latest industry references to prepare you for the future of development.
+      </div>
+    </section>
+
+    <!-- WEEK 1 -->
+    <section class="week">
+      <div class="week-title">Week 1: Introduction to Coding LLMs and AI Development</div>
+      <ul class="objectives">
+        <li>Understand large language models (LLMs) and their code generation</li>
+        <li>Learn effective prompt engineering for software tasks</li>
+        <li>Explore why LLMs sparked a new paradigm (“vibe coding”) and how to harness them responsibly</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>Foundations of LLMs: Overview, transformer-based LLMs, and their training on code</li>
+          <li>Code-Specific LLMs: GPT-4.1, Claude 4, Code Llama-2 (capabilities as of 2025)</li>
+          <li>Prompt Engineering Basics: Clear prompts, specifying language, step-by-step, function signatures</li>
+          <li>Evolving Best Practices: Formatting, reasoning scaffolds, role prompting, model-specific styles</li>
+          <li>Prompting for Reliability: Secure prompting, input validation, constraints</li>
+          <li>Impact on Workflow: AI coding assistants (e.g. GitHub Copilot), productivity and acceptance, remaining limitations</li>
+          <li>“Vibe Coding” Concept: Natural language prototyping for software, democratization, security omissions</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://a16z.com/podcast/whos-coding-now-ai-and-the-future-of-software-development/" target="_blank">Who's Coding Now? AI and the Future of Software Development (a16z Podcast)</a></li>
+          <li><a class="ref-link" href="https://www.lakera.ai/blog/prompt-engineering-guide" target="_blank">The Ultimate Guide to Prompt Engineering in 2025 | Lakera</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEK 2 -->
+    <section class="week">
+      <div class="week-title">Week 2: The Anatomy of Coding Agents</div>
+      <ul class="objectives">
+        <li>Break down an AI coding agent into core components</li>
+        <li>Build an LLM-based coding agent (planner, tools, memory, MCP)</li>
+        <li>Understand planning, control, tool APIs, Model Context Protocol</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>Planning & Autonomy: Workflow planning, improved planning algorithms, managing errors</li>
+          <li>Tool Use & Function Calling: Standardized APIs for external tools, code execution, documentation queries</li>
+          <li>Model Context Protocol (MCP): Open standard for connecting tools, secure integration, industry adoption</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://community.ibm.com/community/user/blogs/patrick-meyer/2025/07/21/anatomy-of-an-ai-agent-watsonx-orchestrate" target="_blank">Anatomy of an AI Agent (IBM Blog)</a></li>
+          <li><a class="ref-link" href="https://www.anthropic.com/news/model-context-protocol" target="_blank">Introducing the Model Context Protocol | Anthropic</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEK 3 -->
+    <section class="week">
+      <div class="week-title">Week 3: The AI IDE (Intelligent Development Environment)</div>
+      <ul class="objectives">
+        <li>Explore AI-powered IDEs, context management with embeddings</li>
+        <li>Practice AI pair programming and code understanding</li>
+        <li>Integrate AI with code review, doc generation, and navigation tools</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>Context Management: Embeddings for code retrieval, workspace context</li>
+          <li>Large Codebases: Summarization, long-context models, retrieval vs. full context</li>
+          <li>AI-Based Code Understanding: Bug finding, code explanations, multi-agent debugging</li>
+          <li>AI IDE Integrations: VS Code, Copilot agent mode, Open Source VS Subscription tools</li>
+          <li>Best Practices: Structured queries, manual validation, discipline in AI-driven development</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode" target="_blank">Introducing GitHub Copilot Agent Mode (VS Code Blog)</a></li>
+          <li><a class="ref-link" href="https://www.infoq.com/news/2025/10/github-embedding-model/" target="_blank">GitHub Introduces New Embedding Model | InfoQ</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEK 4 -->
+    <section class="week">
+      <div class="week-title">Week 4: Coding Agent Patterns - Autonomy and Collaboration</div>
+      <ul class="objectives">
+        <li>Evaluate agent autonomy, human-in-the-loop and collaboration designs</li>
+        <li>Apply tool orchestration, co-reviewer, pair programming patterns</li>
+        <li>Develop trust and audit trails in agentic workflows</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>Human/AI Hybrid Workflows: Autonomy spectrum, oversight, best practices</li>
+          <li>Patterns: Handoff, tool orchestrator, pair programming, co-reviewer with industry examples</li>
+          <li>Audit, Logging, Gradual Autonomy: Best practices for safe agent deployment</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://skywork.ai/blog/agent-vs-human-in-the-loop-2025-comparison/" target="_blank">Agent vs Human-in-the-Loop in 2025: The Definitive Comparison Guide | Skywork</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEK 5 -->
+    <section class="week">
+      <div class="week-title">Week 5: The Modern Terminal – AI at the Command Line</div>
+      <ul class="objectives">
+        <li>Leverage AI for CLI and DevOps, automation and safety</li>
+        <li>Explore natural language interfaces, sandboxed commands, approval patterns</li>
+        <li>Automate scripts and troubleshooting with AI</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>AI-Enhanced Command Line: Warp AI, agent mode, multi-step workflows</li>
+          <li>Sandboxed Environments: Containers, safe script execution</li>
+          <li>Terminal Automation: Natural language to script, looped workflows, intelligent CLI UI</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://www.warp.dev/warp-ai" target="_blank">AI: Natural‑Language Coding Agents - Warp</a></li>
+          <li><a class="ref-link" href="https://thenewstack.io/warp-goes-agentic-a-developer-walk-through-of-warp-2-0/" target="_blank">Warp Goes Agentic: A Developer Walk-Through of Warp 2.0</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEK 6 -->
+    <section class="week">
+      <div class="week-title">Week 6: AI Testing and Security</div>
+      <ul class="objectives">
+        <li>Automate unit/regression testing with LLMs</li>
+        <li>Address “secure vibe coding” risks and mitigate vulnerabilities</li>
+        <li>Use AI tools for review, static analysis, and penetration testing</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>AI-Generated Tests: Use LLMs for broad input coverage, compare model reliability</li>
+          <li>Security Risks: Omitted checks, secure prompting, & AI-specific issues</li>
+          <li>Secure Coding Workflow: Guidelines for safe delivery, audit, and review</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://thehackernews.com/2025/06/secure-vibe-coding-complete-new-guide.html" target="_blank">Secure Vibe Coding: The Complete New Guide (Hacker News)</a></li>
+          <li><a class="ref-link" href="https://semgrep.dev/solutions/secure-vibe-coding" target="_blank">Secure Vibe Coding - Semgrep</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEK 7 -->
+    <section class="week">
+      <div class="week-title">Week 7: Modern Software Support – AI for Debugging, Diagnostics, Docs</div>
+      <ul class="objectives">
+        <li>Use AI for automated debugging, code review, error logs</li>
+        <li>Generate, validate, and update documentation with AI</li>
+        <li>Balance trust and reliability: strategies for intelligent support</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>Trust Calibration: Formal verification, explainable AI suggestions</li>
+          <li>Debugging & Error Analysis: Contextual assistance, root cause identification</li>
+          <li>Intelligent Docs: Docstring/comment generation, Q&A bots, documentation audit</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://graphite.dev/features/ai-reviews" target="_blank">AI Reviews - Graphite</a></li>
+          <li><a class="ref-link" href="https://www.index.dev/blog/best-ai-tools-for-coding-documentation" target="_blank">6 Best AI Tools for Coding Documentation - Index.dev</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEK 8 -->
+    <section class="week">
+      <div class="week-title">Week 8: Automated UI and App Building</div>
+      <ul class="objectives">
+        <li>Explore text-to-UI, multimodal prototyping, rapid MVP creation</li>
+        <li>Iterate on design/layout using AI</li>
+        <li>Address maintainability, accessibility, and IP concerns in AI-generated apps</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>Text/Image to UI: Figma plugins, Google Gemini, Galileo AI demos</li>
+          <li>App Scaffolding: Full-stack agents, one-prompt apps, maintainability challenges</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://a16z.com/one-prompt-zero-engineers-your-new-internal-dev/" target="_blank">One Prompt, Zero Engineers: Your New Internal Dev | a16z</a></li>
+          <li><a class="ref-link" href="https://www.datacamp.com/tutorial/gpt-4-vision-comprehensive-guide" target="_blank">GPT-4 Vision: A Comprehensive Guide for Beginners - DataCamp</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEK 9 -->
+    <section class="week">
+      <div class="week-title">Week 9: Agents Post-Deployment – Monitoring, Observability, Ops Automation</div>
+      <ul class="objectives">
+        <li>Monitor AI systems, analyze logs/metrics, use AI for triage/root cause</li>
+        <li>Implement automated incident response, actionable remediations, guardrails</li>
+        <li>Adapt to real-time challenges with human-AI SRE collaboration</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>Deployment Phase: Monitoring, logs, telemetry, output drift detection</li>
+          <li>Automated SRE: NeuBird Hawkeye, incident clustering, response recommendation</li>
+          <li>Real-World Integration: Slack/PagerDuty/DevOps tool APIs, lessons from ops</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://neubird.ai/blog/ai-sre-devops-ai-incident-management/" target="_blank">The Future of DevOps with AI SRE: From Alert Fatigue to Agentic AI | Neubird</a></li>
+          <li><a class="ref-link" href="https://incident.io/blog/sre-ai-tools-transform-devops-2025" target="_blank">5 AI-powered SRE tools transforming DevOps | Incident.io</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEK 10 -->
+    <section class="week">
+      <div class="week-title">Week 10: The Future for AI Software Engineering</div>
+      <ul class="objectives">
+        <li>Forecast next-gen developer roles, prompt-based programming, evolving skills</li>
+        <li>Manage AI-driven codebases, policy for self-modifying systems</li>
+        <li>Explore research frontiers, productivity booms, and new industry patterns</li>
+      </ul>
+      <details>
+        <summary>Topics & Subtopics</summary>
+        <ul>
+          <li>AI-Augmented Teams: New team structures, hybrid developer/AI roles, solopreneurs</li>
+          <li>Prompt DSLs, continual learning, AI audit/compliance, regulatory outlook</li>
+          <li>Grand Challenges: Formal verification, AI reasoning, collaborative paradigms</li>
+        </ul>
+      </details>
+      <div class="references">
+        <strong>References:</strong>
+        <ul class="ref-list">
+          <li><a class="ref-link" href="https://a16z.com/nine-emerging-developer-patterns-for-the-ai-era/" target="_blank">Emerging Developer Patterns for the AI Era | Andreessen Horowitz</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <hr>
+    <section class="sources">
+      <strong>Full References and Further Reading:</strong>
+      <ul class="ref-list">
+        <li><a class="ref-link" href="https://a16z.com/podcast/whos-coding-now-ai-and-the-future-of-software-development/" target="_blank">Who's Coding Now? AI and the Future of Software Development (a16z Podcast)</a></li>
+        <li><a class="ref-link" href="https://www.lakera.ai/blog/prompt-engineering-guide" target="_blank">The Ultimate Guide to Prompt Engineering in 2025 | Lakera</a></li>
+        <li><a class="ref-link" href="https://thehackernews.com/2025/06/secure-vibe-coding-complete-new-guide.html" target="_blank">Secure Vibe Coding: The Complete New Guide (Hacker News)</a></li>
+        <li><a class="ref-link" href="https://www.infoq.com/news/2025/10/github-embedding-model/" target="_blank">GitHub Introduces New Embedding Model | InfoQ</a></li>
+        <li><a class="ref-link" href="https://skywork.ai/blog/agent-vs-human-in-the-loop-2025-comparison/" target="_blank">Agent vs Human-in-the-Loop in 2025: The Definitive Comparison Guide | Skywork</a></li>
+        <li><a class="ref-link" href="https://neubird.ai/blog/ai-sre-devops-ai-incident-management/" target="_blank">The Future of DevOps with AI SRE: From Alert Fatigue to Agentic AI | Neubird</a></li>
+        <li><a class="ref-link" href="https://community.ibm.com/community/user/blogs/patrick-meyer/2025/07/21/anatomy-of-an-ai-agent-watsonx-orchestrate" target="_blank">Anatomy of an AI Agent (IBM Blog)</a></li>
+        <li><a class="ref-link" href="https://code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode" target="_blank">Introducing GitHub Copilot Agent Mode (VS Code Blog)</a></li>
+        <li><a class="ref-link" href="https://www.anthropic.com/news/model-context-protocol" target="_blank">Introducing the Model Context Protocol | Anthropic</a></li>
+        <li><a class="ref-link" href="https://semgrep.dev/solutions/secure-vibe-coding" target="_blank">Secure Vibe Coding - Semgrep</a></li>
+        <li><a class="ref-link" href="https://graphite.dev/features/ai-reviews" target="_blank">AI Reviews - Graphite</a></li>
+        <li><a class="ref-link" href="https://www.index.dev/blog/best-ai-tools-for-coding-documentation" target="_blank">6 Best AI Tools for Coding Documentation - Index.dev</a></li>
+        <li><a class="ref-link" href="https://www.warp.dev/warp-ai" target="_blank">AI: Natural‑Language Coding Agents - Warp</a></li>
+        <li><a class="ref-link" href="https://thenewstack.io/warp-goes-agentic-a-developer-walk-through-of-warp-2-0/" target="_blank">Warp Goes Agentic: A Developer Walk-Through of Warp 2.0</a></li>
+        <li><a class="ref-link" href="https://a16z.com/one-prompt-zero-engineers-your-new-internal-dev/" target="_blank">One Prompt, Zero Engineers: Your New Internal Dev | a16z</a></li>
+        <li><a class="ref-link" href="https://www.datacamp.com/tutorial/gpt-4-vision-comprehensive-guide" target="_blank">GPT-4 Vision: A Comprehensive Guide for Beginners - DataCamp</a></li>
+        <li><a class="ref-link" href="https://incident.io/blog/sre-ai-tools-transform-devops-2025" target="_blank">5 AI-powered SRE tools transforming DevOps | Incident.io</a></li>
+        <li><a class="ref-link" href="https://a16z.com/nine-emerging-developer-patterns-for-the-ai-era/" target="_blank">Emerging Developer Patterns for the AI Era | Andreessen Horowitz</a></li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
