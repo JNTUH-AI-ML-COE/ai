@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerging Topics in Modern AI - Course Outline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f7 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin: 40px 0 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e8f0f7;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        h2:hover::before {
+            width: 150px;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.6em;
+            margin: 30px 0 20px;
+            padding-left: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        h3:hover {
+            padding-left: 30px;
+            color: #667eea;
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        li {
+            margin: 15px 0;
+            padding: 18px 25px;
+            background: #f8f9fc;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.05), transparent);
+            transition: width 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.15);
+        }
+
+        li:hover::before {
+            width: 100%;
+        }
+
+        strong {
+            color: #764ba2;
+            font-weight: 600;
+        }
+
+        em {
+            color: #5a67d8;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        p {
+            margin: 15px 0;
+            text-align: justify;
+            line-height: 1.9;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        .semester-section {
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .semester-section:hover {
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        .week-block {
+            margin: 30px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #e8f0f7;
+            transition: all 0.3s ease;
+        }
+
+        .week-block:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.12);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+            border-left: 4px solid #f56565;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            transform: translateX(5px);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateX(5px);
+        }
+
+        .reference-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fc;
+            border-radius: 12px;
+            font-size: 0.9em;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .semester-section {
+                padding: 25px;
+            }
+
+            .week-block {
+                padding: 20px;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Emerging Topics in Modern AI</h1>
+            <p class="subtitle">Course Outline (Two-Semester Graduate Syllabus)</p>
+        </header>
+
+        <div class="content">
+            <div class="semester-section">
+                <h2>Semester 1: Foundations and Key Innovations (Weeks 1–15)</h2>
+                Here is a structured “Week 1” outline for your AI course, using a format parallel to the provided Week 2 block. Each section clearly describes objectives, technical focus, content, and best practices, consistent with current 2025 AI progress.
+
+<div class="week-block">
+    <h3>Week 1: Introduction to Modern AI Landscape</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Course Overview & AI Taxonomy</em> – Introduction to course structure, objectives, and terminology. <strong>Technical focus:</strong> Defining ANI (Artificial Narrow Intelligence) vs AGI (Artificial General Intelligence) vs ASI (Artificial Superintelligence). <em>Content:</em> Instructor-led overview of AI history and recent breakthroughs, e.g., GPT-4’s leap to trillion-parameter scale and implications for language models. <em>Best practice:</em> Emphasize standard terminology and introduce core ethical principles early.</li>
+
+        <li><strong>Block 2:</strong> <em>State of AI in 2025</em> – Survey of the latest milestones and existing capabilities in AI. <strong>Technical focus:</strong> Highlight cutting-edge AI systems such as OpenAI’s GPT-4 and Google Gemini 2.5 with multimodal reasoning. <em>Content:</em> Discuss advances in handling complex tasks, multimodal inputs (text, images), and the “bigger is better” paradigm balanced with efficiency and cost-awareness in model deployment.</li>
+
+        <li><strong>Block 3:</strong> <em>Frontier AI Models & AGI Ambitions</em> – Exploration of major labs’ roadmaps toward AGI. <strong>Technical focus:</strong> Overview of next-gen models aiming for greater generality, e.g., Anthropic’s Claude-Next (targeting 10× current performance), DeepMind’s Gemini and Genie world models for higher generality. <em>Design principle:</em> Encourage thinking about modularity and scalability in AI design.</li>
+
+        <li><strong>Block 4:</strong> <em>Course Logistics & Tools</em> – Prepare students for hands-on experimentation. <strong>Technical focus:</strong> Introduction to computing environment (Jupyter, Colab), frameworks (PyTorch, JAX, Hugging Face), and cloud resources. <em>Content:</em> Live demo: running an open-source small GPT model, “Hello World” AI agent, and experiment tracking best practices.</li>
+
+        <li><strong>Block 5:</strong> <em>Discussion: Hopes and Fears in Modern AI</em> – Seminar on societal expectations, opportunities (e.g., AI in medicine), and risks (job disruption, misuse). <strong>Technical focus:</strong> None (discussion). <em>Activity:</em> Brainstorm “dream AI applications” vs “nightmare scenarios” in small groups to motivate future safety and ethics modules.</li>
+
+        <li><strong>Block 6:</strong> <em>Ethical Foundations</em> – Framing the need for safety and responsible AI development. <strong>Technical focus:</strong> AI ethics principles. <em>Content:</em> Review guidelines from organizations (OECD, IEEE) and examples of AI failures. <em>Best practice:</em> Introduce value alignment as a design goal to set the groundwork for later lectures.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>Lab:</strong> Ensure all students have access to required computing resources. No graded lab this week. <strong>Deliverable:</strong> Submit a one-page student background summary and learning goals for the course (due by Week 2).
+    </div>
+</div>
+                <div class="week-block">
+                    <h3>Week 2: Frontier Large Language Models (LLMs) and Multimodal AI</h3>
+                    <ul>
+                        <li><strong>Block 1:</strong> <em>Next-Gen LLM Architectures</em> – Dive into today's most advanced language models. <strong>Technical focus:</strong> model scales (parameters), transformer improvements. <em>Content:</em> Lecture on GPT-4's capabilities and architecture hints, and Google <strong>Gemini 2.5</strong> as a multimodal model surpassing prior benchmarks<a href="#ref2">[2]</a>. Discuss how trillion-parameter models achieved breakthroughs in reasoning and code generation. <em>Design pattern:</em> <strong>Transformer</strong> architecture recap and its scalability.</li>
+                        
+                        <li><strong>Block 2:</strong> <em>Anthropic Claude and "Claude-Next"</em> – Examine an alternate frontier model. <strong>Technical focus:</strong> long context and model scaling. <em>Content:</em> Case study of <strong>Claude 2</strong> (100k-token context) and Claude 4, and the plan for <strong>Claude-Next</strong> (~10× current capability) requiring 10^25 FLOPs<a href="#ref4">[4]</a>. Discuss how context length and training compute impact capabilities. <em>Best practice:</em> Emphasize the <strong>scaling laws</strong> design pattern – understanding how performance scales with data/model size and where diminishing returns set in.</li>
+                        
+                        <li><strong>Block 3:</strong> <em>Open-Source Foundation Models</em> – Highlight advances outside big tech. <strong>Technical focus:</strong> recent high-performing open models. <em>Content:</em> Review Meta's LLaMA-2 (70B) and Falcon 180B, noting how open models democratized research<a href="#ref6">[6]</a>. Introduce <strong>Mixtral 8×7B</strong> (Mistral AI's sparse MoE model) as a design innovation that outperforms a 70B dense model with only ~12.9B active parameters per token<a href="#ref7">[7]</a><a href="#ref8">[8]</a>. <em>Design pattern:</em> <strong>Mixture-of-Experts (MoE)</strong> networks – explain how routing to expert subnetworks can boost quality and efficiency.</li>
+                        
+                        <li><strong>Block 4:</strong> <em>Multimodality and Beyond-Text Input</em> – Explore models that handle images, audio, etc. <strong>Technical focus:</strong> multimodal fusion. <em>Content:</em> Discuss how GPT-4 and Gemini handle image inputs, and Google's <strong>PaLM-E</strong> which integrates vision into an LLM for robotics<a href="#ref9">[9]</a>. Cover the challenges in aligning text and visual representations. <em>Hands-on:</em> small demo where an image captioning model is used via an API to illustrate vision+language. <em>Best practice:</em> Use <strong>embeddings</strong> as a design pattern to unify modalities in a common vector space.</li>
+                        
+                        <li><strong>Block 5:</strong> <em>Hands-on LLM Tuning</em> – Interactive session fine-tuning a small model. <strong>Technical focus:</strong> transfer learning for LLMs. <em>Content:</em> Walk through fine-tuning a smaller open-source model (e.g. 7B) on a new task or domain using low-rank adaptation (LoRA). <em>Activity:</em> Students (in pairs) attempt to fine-tune and evaluate model outputs. <em>Best practice:</em> Introduce <strong>prompt engineering</strong> basics and show how prompting can often achieve effects similar to fine-tuning for prototyping.</li>
+                        
+                        <li><strong>Block 6:</strong> <em>Design and Deployment Considerations</em> – Discuss best practices in using large models. <strong>Technical focus:</strong> inference challenges (latency, cost). <em>Content:</em> Strategies like model distillation, quantization, and batching to deploy LLMs at scale. Mention that ever-larger models improve performance but raise deployment costs, spurring optimization research<a href="#ref3">[3]</a>. <em>Design pattern:</em> <strong>Client-server AI pattern</strong> – using remote APIs vs local models, and considerations (privacy, scalability).</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <strong>Lab:</strong> Use the HuggingFace Transformers library to load a pre-trained LLM and perform simple tasks (text generation, Q&A). Evaluate its outputs. <strong>Deliverable:</strong> Short report on one strength and one limitation observed in the model's behavior.
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 3: Agentic AI and Multi-Agent Systems</h3>
+                    <ul>
+                        <li><strong>Block 1:</strong> <em>From Chatbots to Agents</em> – Define <strong>agentic AI</strong> and how it differs from a single-turn chatbot. <strong>Technical focus:</strong> persistent goals and autonomy. <em>Content:</em> Explain that an <strong>AI agent</strong> perceives, decides, and acts in an environment, often over multiple steps. Highlight the early 2025 trend of using AI systems as autonomous agents that can act on our behalf<a href="#ref10">[10]</a>. <em>Design pattern:</em> <strong>Perception-Decision-Action loop</strong> – the foundational loop for agent behavior (sense, think, act).</li>
+                        
+                        <li><strong>Block 2:</strong> <em>Multi-Agent Orchestration</em> – Explore systems of multiple AI agents collaborating. <strong>Technical focus:</strong> frameworks for agent communication. <em>Content:</em> Describe how developers now orchestrate <strong>multiple specialized agents</strong> that communicate and cooperate<a href="#ref11">[11]</a>. Example: one agent breaks down a task, others execute subtasks, akin to a team. Discuss an example workflow (e.g. customer service automation with summary, database lookup, response drafting by different agents<a href="#ref12">[12]</a>). <em>Best practice:</em> Use <strong>modular design</strong>, assigning clear roles to agents to mirror human team structures.</li>
+                        
+                        <li><strong>Block 3:</strong> <em>Agent Communication & Tool Use Protocols</em> – Introduce new standards enabling agent interoperability. <strong>Technical focus:</strong> agent communication protocols. <em>Content:</em> Learn about Anthropic's <strong>Model Context Protocol (MCP)</strong> – a "USB-C for AI" allowing any model to plug into tools<a href="#ref13">[13]</a> – and Google's <strong>Agent-to-Agent (A2A)</strong> protocol for inter-agent messaging<a href="#ref14">[14]</a>. Explain how MCP standardizes tool APIs for agents<a href="#ref15">[15]</a>, and how A2A enables a vendor-neutral "internet of agents" exchanging messages securely. <em>Design pattern:</em> <strong>Service-oriented agents</strong> – designing agents as services with defined interfaces (inspired by MCP/A2A).</li>
+                        
+                        <li><strong>Block 4:</strong> <em>Emergent Behaviors in Multi-Agent Systems</em> – Discuss what new capabilities (and challenges) emerge when agents work together. <strong>Technical focus:</strong> cooperation vs. competition, swarm intelligence. <em>Content:</em> Cover phenomena like agents double-checking each other's work for accuracy and safety<a href="#ref16">[16]</a>, or negotiating to divide tasks. Include cautionary examples (e.g. feedback loops or conflict among agents) and the need for coordination mechanisms. <em>Best practice:</em> Introduce <strong>bounded autonomy</strong> – setting limits (time, role, authority) for each agent to prevent chaos while preserving usefulness.</li>
+                        
+                        <li><strong>Block 5:</strong> <em>Case Study: Generative Agents Simulation</em> – Look at a research example of multiple agents in a simulated world. <strong>Technical focus:</strong> agent architecture in simulations. <em>Content:</em> Discuss Stanford's <strong>Generative Agents</strong> (2023) where 25 AI agents lived in a sandbox town, planning and remembering daily activities. Review the architecture (memory stream, reflection, planning modules)<a href="#ref17">[17]</a><a href="#ref18">[18]</a>. <em>Design pattern:</em> <strong>Cognitive architecture for agents</strong> – e.g. the generative agent design with long-term memory and periodic reflection as a template for complex agent design.</li>
+                        
+                        <li><strong>Block 6:</strong> <em>Hands-on Team Activity:</em> Design a Multi-Agent Workflow – <strong>Technical focus:</strong> applying concepts to a real scenario. <em>Activity:</em> Small groups brainstorm an automation scenario (e.g. an "AI office assistant team" handling email, scheduling, and research). They outline 2–3 agents and define how they would communicate (what messages or data pass between). <em>Best practice:</em> Each group identifies potential failure points (miscommunication, conflicting actions) and proposes a <strong>governance rule</strong> (like a coordinator agent or approval step) as a safeguard.</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <strong>Lab/Assignment:</strong> Set up an environment with an agent framework (e.g. LangChain or IBM watsonx Orchestration). Implement a simple multi-agent system: e.g. one agent generates a question, another answers it. <strong>Deliverable:</strong> Short demo or recorded output of agents interacting, plus a description of how they coordinate.
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 4: Chain-of-Thought Reasoning and ReAct Agents</h3>
+                    <ul>
+                        <li><strong>Block 1:</strong> <em>Reasoning via Chain-of-Thought (CoT)</em> – Introduce prompting techniques that improve logical reasoning. <strong>Technical focus:</strong> CoT prompting. <em>Content:</em> Explain how instructing an LLM to "think step by step" enables it to break down complex problems<a href="#ref19">[19]</a>. Show examples where CoT helps solve a math word problem by generating intermediate steps. <em>Design pattern:</em> <strong>Chain-of-Thought</strong> – treating the prompt and generation as a scratchpad for intermediate reasoning before the final answer.</li>
+                        
+                        <li><strong>Block 2:</strong> <em>The ReAct Framework (Reason + Act)</em> – Present the <strong>ReAct agent paradigm</strong> that interleaves reasoning with actions<a href="#ref20">[20]</a>. <strong>Technical focus:</strong> allowing LLMs to both think (generate thoughts) and use tools (take actions). <em>Content:</em> Based on Yao et al. (2022), show how a ReAct agent prints a thought, decides on an action (e.g. a web search), then observes the result, and repeats<a href="#ref21">[21]</a><a href="#ref22">[22]</a>. Walk through a simple ReAct prompt format: "Thought: …; Action: …; Observation: …". <em>Design pattern:</em> <strong>Thought-Action-Observation Loop</strong> – key pattern for agentic prompting that integrates an inner monologue with external tool use.</li>
+                        
+                        <li><strong>Block 3:</strong> <em>Tool Use and APIs in Agents</em> – Explore how agents invoke external tools. <strong>Technical focus:</strong> function calling and tool APIs. <em>Content:</em> Cover OpenAI's function calling interface and how agents decide to call e.g. a calculator or search function when needed. Mention <strong>Toolformer</strong> (research by Meta) that augments model training to call tools. <em>Hands-on:</em> Show a coded example where an LLM is asked a factual question and uses a search tool (via an API call) to find the answer. <em>Best practice:</em> Emphasize designing <strong>safe tool plugins</strong> – e.g. limiting tool actions to a whitelist and validating tool outputs.</li>
+                        
+                        <li><strong>Block 4:</strong> <em>Inner Monologue & Self-Reflection</em> – Highlight techniques where an agent <strong>talks to itself</strong> to improve outcomes. <strong>Technical focus:</strong> self-reflection loops. <em>Content:</em> Introduce <strong>Reflexion</strong> (Shinn et al., 2023) where an agent writes down errors and lessons after failed attempts<a href="#ref23">[23]</a>. Discuss how prompting an LLM to critique its last answer and try again can yield better results. <em>Design pattern:</em> <strong>Inner monologue</strong> – separating an agent's private reasoning (which can be more verbose and critical) from the final answer to the user.</li>
+                        
+                        <li><strong>Block 5:</strong> <em>Hands-on Prompt Engineering Workshop</em> – <strong>Technical focus:</strong> crafting ReAct prompts. <em>Activity:</em> Students are given a poorly performing agent prompt for a task (e.g. a trivia QA that fails). In teams, they modify the prompt to include chain-of-thought cues and tool use instructions. Everyone tests the improved prompt with an LLM and shares results. <em>Best practice:</em> Iterative prompt refinement – a design skill to incrementally improve agent performance.</li>
+                        
+                        <li><strong>Block 6:</strong> <em>Design Best Practices for Agent Prompts</em> – Summarize lessons learned. <strong>Technical focus:</strong> none (recap). <em>Content:</em> Instructor highlights patterns like specifying format clearly, providing examples of Thought/Action, and avoiding ambiguity in prompts. Mention how <strong>guardrails</strong> can be embedded in prompts (e.g. "If the query is about health, first do X"). Connect these to upcoming safety lectures. <em>Best practice:</em> Always test prompts extensively and use <strong>evaluation harnesses</strong> (introduced later) to catch prompt weaknesses.</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <strong>Lab:</strong> Implement a simple ReAct agent that uses a calculator API to solve a multi-step arithmetic word problem. (Students can use an existing framework or a provided template.) <strong>Deliverable:</strong> Code and a brief explanation of how the agent's chain-of-thought led it to use the calculator tool.
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 6: Simulation Environments and World Models</h3>
+                    <ul>
+                        <li><strong>Block 1:</strong> <em>Simulated Environments for AI Training</em> – Introduce the role of simulation in developing intelligent agents. <strong>Technical focus:</strong> reinforcement learning (RL) environments and world models. <em>Content:</em> Discuss historical examples (Atari games, DeepMind's DQN, AlphaGo simulations) and why simulations provide safe, rich playgrounds for AI. Present the concept of a <strong>world model</strong> – an AI model that can simulate aspects of the world to help agents predict outcomes<a href="#ref29">[29]</a>. <em>Design principle:</em> <strong>Curriculum learning</strong> – using progressively complex simulated scenarios to train robust agents.</li>
+                        
+                        <li><strong>Block 2:</strong> <em>DeepMind's Genie World Models</em> – Case study of cutting-edge world generation. <strong>Technical focus:</strong> generative environment modeling. <em>Content:</em> Describe <strong>Genie 1 & 2</strong> (2024) which could generate new environments for agents, and then <strong>Genie 3</strong> (2025) which allows real-time interactive simulation<a href="#ref30">[30]</a><a href="#ref31">[31]</a>. Explain how Genie 3 takes a text prompt and creates a dynamic 3D world at 24 fps, maintaining coherence for minutes<a href="#ref32">[32]</a>. Emphasize why DeepMind calls world models a "stepping stone" toward AGI<a href="#ref33">[33]</a> – unlimited diverse training scenarios for embodied agents. <em>Hands-on (demo):</em> Watch clips of Genie 3 environments (e.g. navigating volcanic terrain) to visualize the technology.</li>
+                        
+                        <li><strong>Block 3:</strong> <em>Using Simulations for Agent Training</em> – How agents learn in virtual worlds. <strong>Technical focus:</strong> reinforcement learning in simulation vs. real world. <em>Content:</em> Explain that agents can practice tasks in simulators (from video games to physics engines) millions of times faster than real time. Give examples: teaching robots to walk in Mujoco, or self-driving car AI in simulated cities. Highlight that simulation-trained policies often then transfer (with adaptation) to the real world. <em>Design pattern:</em> <strong>Domain Randomization</strong> – intentionally varying simulator conditions (lighting, textures, parameters) so that agents don't overfit to one scenario, improving real-world transfer.</li>
+                        
+                        <li><strong>Block 4:</strong> <em>Emergent Behaviors in Simulated Multi-Agent Worlds</em> – Discuss what happens when multiple agents are put in a sandbox. <strong>Technical focus:</strong> open-ended environments. <em>Content:</em> Reference the Generative Agents town simulation again for social behavior emergence<a href="#ref18">[18]</a>. Mention OpenAI's <strong>Hide-and-Seek</strong> experiment where agents developed novel tool use in a physics sim. Class discussion: What surprising strategies might an AI develop in an unconstrained world? <em>Safety note:</em> Recognize that simulation can surface <strong>emergent behaviors</strong> (some unintended), so researchers need evaluation and guardrails even in virtual settings.</li>
+                        
+                        <li><strong>Block 5:</strong> <em>Simulator Platforms and Tools</em> – Overview of available simulation platforms. <strong>Technical focus:</strong> software for creating environments. <em>Content:</em> Present tools like OpenAI Gym/Universe (for games), DeepMind's DM Lab, Microsoft's AirSim, Unity ML-Agents, and newer ones like MineDojo (Minecraft as a training ground). Also mention physics-based simulators for robotics (PyBullet, Isaac Gym). <em>Best practice:</em> Encourage use of <strong>simulation for safe testing</strong> – e.g. an autonomous car AI should first encounter hazards in sim, not on real roads. Also, stress documenting <strong>sim-to-real differences</strong> (simulators are not perfect replicas of reality).</li>
+                        
+                        <li><strong>Block 6:</strong> <em>Design Project Brainstorm:</em> Simulated Environment Use Case – <strong>Technical focus:</strong> application design. <em>Activity:</em> Students brainstorm an idea for using a simulator or world model in their course project or research. For example, designing an AI scientist agent that tests hypotheses in a simulated chemistry lab, or a virtual patient simulator for a medical diagnosis agent. Each student writes a few sentences describing their idea. <em>Best practice:</em> Ensure that for each idea, they consider how they would validate the simulator's fidelity and what metrics to evaluate on (introducing the notion of an <strong>evaluation harness</strong> in simulations).</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <strong>Lab:</strong> Explore DeepMind's open environments or OpenAI Gym. Students choose a simple Gym environment (e.g. CartPole) and train a baseline RL agent (provided code). Then they modify one aspect of the environment (or the reward function) and observe the agent's behavior change. <strong>Deliverable:</strong> Short report on how the agent's policy adapted to the modified simulation and what that suggests about the agent's learning.
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 7: Synthetic Data Generation and Augmentation</h3>
+                    <ul>
+                        <li><strong>Block 1:</strong> <em>The Need for Synthetic Data</em> – Discuss why generating data is useful. <strong>Technical focus:</strong> data scarcity and bias. <em>Content:</em> Examples where real data is limited or sensitive (e.g. medical records, rare failure cases in aviation). Note that by 2025, synthetic data is seen as crucial to fill such gaps<a href="#ref34">[34]</a>. <em>Design principle:</em> <strong>Data augmentation</strong> – a long-standing concept now supercharged by AI (LLMs creating new text, generative models creating images).</li>
+                        
+                        <li><strong>Block 2:</strong> <em>LLMs Generating Training Data</em> – Show how large models can produce new examples for fine-tuning. <strong>Technical focus:</strong> prompt-based data generation. <em>Content:</em> Cover methods like <em>Self-Instruct</em> (using an AI to generate instruction-response pairs to fine-tune another AI) and <em>Synthetic QA pairs</em> (LLM makes question-answer sets from unlabeled text). Highlight a 2025 result: fully self-synthetic fine-tuning can align models without human examples<a href="#ref35">[35]</a>. <em>Best practice:</em> Use synthetic data to <strong>complement</strong>, not completely replace, real data – and always review auto-generated data for errors or bias.</li>
+                        
+                        <li><strong>Block 3:</strong> <em>Simulators for Data Generation</em> – Beyond text: using simulators to create diverse scenarios. <strong>Technical focus:</strong> synthetic images, video, and sensor data. <em>Content:</em> Example: generating thousands of simulated driving scenes (with varied weather, pedestrians) to train an autonomous car's vision model – far cheaper and safer than collecting real footage of near-crashes. Mention GANs and diffusion models for creating realistic images. <em>Design pattern:</em> <strong>Domain Randomization</strong> (again) – when synthesizing data, randomize non-essential attributes to encourage model generalization.</li>
+                        
+                        <li><strong>Block 4:</strong> <em>Benefits and Risks of Synthetic Data</em> – Examine quality and safety implications. <strong>Technical focus:</strong> data quality metrics. <em>Content:</em> List benefits: scalability, cost-effectiveness, addressing class imbalance<a href="#ref36">[36]</a><a href="#ref37">[37]</a>, privacy (no personal data needed if you simulate it). Then risks: synthetic data might <em>carry model biases</em>, or not perfectly reflect reality, potentially misleading the model. Discuss a study where RAG (retrieval-augmented generation) was applied in a medical setting and improved reliability of a local LLM<a href="#ref38">[38]</a> – showing synthetic context can enhance safety if done right. <em>Best practice:</em> <strong>Validation of synthetic data</strong> – use statistical checks and expert review to ensure generated data is realistic and doesn't introduce new biases<a href="#ref39">[39]</a>.</li>
+                        
+                        <li><strong>Block 5:</strong> <em>Tools for Synthetic Data</em> – Overview of frameworks and services. <strong>Technical focus:</strong> data generation tools. <em>Content:</em> Introduce libraries like Hugging Face's <em>Datasets</em> augmentation modules, simulation platforms for data (e.g. CARLA for driving data, Blender for 3D scenes). Mention companies offering synthetic data (AI Reverie, Gretel.ai, etc.). <em>Hands-on:</em> Show a quick example: use an LLM to generate a synthetic dataset (e.g. 100 chatbot dialogues on a topic) and fine-tune a small model on it. <em>Design pattern:</em> <strong>Feedback loop</strong> – sometimes models can iteratively improve by generating data, training on it, then generating more ("self-play" or self-training loop).</li>
+                        
+                        <li><strong>Block 6:</strong> <em>Lab Planning – Synthetic Data Competition</em> – <strong>Activity:</strong> Announce a mini-competition: each student will design a strategy to generate synthetic data for a chosen task (e.g. sentiment analysis, named entity recognition) and see if a model fine-tuned on it can beat a baseline. They will work on this as a take-home lab for the next week. <em>Best practice:</em> Encourage creativity (using multiple models, multiple modalities) but remind to evaluate the results on a small real validation set to gauge realism.</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <strong>Lab:</strong> (Spans two weeks) <strong>"Synthetic Data Challenge."</strong> Students select a small baseline model and task. They use an LLM or simulator to generate a synthetic training dataset (e.g. create 500 labeled examples). They fine-tune the model on this synthetic data and evaluate on real test data (provided). <strong>Deliverable (due Week 8):</strong> A brief report on their approach, the performance of the fine-tuned model vs. baseline, and an analysis of synthetic data quality (with example outputs).
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 8: Embodied AI and Robotics Integration</h3>
+                    <ul>
+                        <li><strong>Block 1:</strong> <em>LLMs Meet Robotics</em> – Introduction to how modern AI models control physical robots. <strong>Technical focus:</strong> high-level planning vs low-level control. <em>Content:</em> Explain that traditionally robots used carefully engineered planners, but now LLMs can interpret human instructions and break them into actions for robots<a href="#ref40">[40]</a>. Present <strong>PaLM-SayCan</strong> (Google, 2022) as a pioneering framework: an LLM ("Say") suggests possible actions and a robotics affordance model ("Can") verifies feasibility<a href="#ref41">[41]</a><a href="#ref42">[42]</a>. <em>Design pattern:</em> <strong>Planner-Controller split</strong> – using AI for high-level decisions and dedicated controllers for execution (ensuring physical feasibility).</li>
+                        
+                        <li><strong>Block 2:</strong> <em>Vision-Language-Action Models</em> – Discuss multimodal models that perceive and act. <strong>Technical focus:</strong> embodied multimodal modeling. <em>Content:</em> Highlight <strong>PaLM-E</strong> (540B parameters) which takes images from a robot's camera and generates plans in natural language<a href="#ref9">[9]</a>. Note that PaLM-E can both understand visual scenes and issue commands, achieving new SOTA on vision-language tasks while controlling robots. <em>Best practice:</em> Emphasize <strong>situational awareness</strong> – the design principle that an embodied AI must integrate real-time sensor data (vision, audio, etc.) with its knowledge to act appropriately (avoid hallucinating in physical tasks).</li>
+                        
+                        <li><strong>Block 3:</strong> <em>Foundation Models for Robotics</em> – Examine how "generalist" models are emerging in robotics. <strong>Technical focus:</strong> large models trained on diverse data for action. <em>Content:</em> Describe <strong>Robotics Transformer 2 (RT-2)</strong> from Google DeepMind, trained on internet-scale image/text data plus months of robot experiences<a href="#ref43">[43]</a>. RT-2 can identify objects in the real world and suggest actions for a robot manipulator, even in situations not in its training. <em>Design pattern:</em> <strong>Transfer learning</strong> in robotics – using knowledge learned from the web (e.g. recognizing a spatula from images) to perform a task in reality (using the spatula).</li>
+                        
+                        <li><strong>Block 4:</strong> <em>Simulation to Reality (Sim2Real)</em> – How simulation training applies to physical robots. <strong>Technical focus:</strong> domain transfer techniques. <em>Content:</em> Discuss the challenges of moving from a perfect sim to the noisy real world (sensor noise, unseen variables). Methods: domain randomization (covered earlier), fine-tuning on a small amount of real data, or using real-time corrections. Example: agents trained in <strong>Genie 3</strong> virtual environments for navigation could then be deployed in analogous real scenarios<a href="#ref33">[33]</a> (with fine-tuning). <em>Best practice:</em> <strong>Evaluation harness for robotics</strong> – always test in a controlled physical environment or with human oversight before full deployment; build in fail-safes (emergency stop).</li>
+                        
+                        <li><strong>Block 5:</strong> <em>Safety in Embodied AI</em> – Address the extra safety concerns when AI moves in the real world. <strong>Technical focus:</strong> safety protocols for robots. <em>Content:</em> Highlight guidelines like ISO 13482 for personal care robots, but now how do we constrain an LLM-driven robot? Discuss requiring <em>explicit approval</em> for high-risk actions (robot must ask a human for permission if an action could be dangerous). Mention Anthropic's notion of <strong>"AI Safety Levels"</strong> where an ASL-3 model with dangerous capabilities would not be deployed openly<a href="#ref44">[44]</a> – analogous thinking can apply to powerful robotic AI. <em>Design pattern:</em> <strong>Geofencing and Constraints</strong> – impose hard limits on where/what a robot agent can do (virtually and physically) as part of its operating system.</li>
+                        
+                        <li><strong>Block 6:</strong> <em>Lab Demo: Language-Controlled Robot (Simulation)</em> – <strong>Activity:</strong> Use a simulated robot (e.g. a virtual home with a robot arm) and a language model planner. Show a live or recorded demo: e.g. an instruction "Robot, please pick up the red block and put it on the shelf" – the LLM breaks it into steps and the sim robot executes. Analyze in class where the system succeeded or failed (did it understand spatial references? etc.). <em>Best practice:</em> Reinforce the <strong>human-in-the-loop</strong> pattern for real deployments – while our demo is fully autonomous, real world use should involve human oversight until the system is proven safe.</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <strong>Lab:</strong> Work with a simple robotics simulation (e.g. using OpenAI Gym's robotics environments or PyBullet). Students will program a <em>scripted</em> high-level controller (not an LLM) for a task like moving an object, to appreciate the complexity. Then they will replace the scripted logic with an LLM prompt (using a provided small model) describing the steps to take. <strong>Deliverable:</strong> A comparison of the performance: where did the LLM planner succeed or need improvement compared to the hardcoded planner? (This write-up builds intuition for when learned planners are effective.)
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 9: Creative AI in Art, Design, and Media</h3>
+                    <ul>
+                        <li><strong>Block 1:</strong> <em>Text-to-Image and Image Generation Advances</em> – Survey state-of-the-art generative models for images. <strong>Technical focus:</strong> diffusion models and generative adversarial networks (GANs). <em>Content:</em> Discuss models like <strong>Stable Diffusion 2</strong> and <strong>DALL·E 3</strong> (2024) that can produce photorealistic or artistic images from text prompts. Show examples of prompt engineering to achieve different art styles. <em>Design pattern:</em> <strong>Guidance and conditioning</strong> – explaining how these models steer generation based on text (and how classifiers or embeddings can guide style).</li>
+                        
+                        <li><strong>Block 2:</strong> <em>Creative Tools Integration</em> – How AI generation is embedded in creative software. <strong>Technical focus:</strong> APIs and toolchains. <em>Content:</em> Example: <strong>Adobe Firefly</strong> generative engine integrated in Photoshop (Generative Fill feature). Emphasize Firefly's training on licensed content to ensure IP-safe outputs<a href="#ref45">[45]</a>. Show how designers can use natural language to extend images or create variations. <em>Best practice:</em> <strong>Responsible training data</strong> – highlight Adobe's approach of using licensed/public domain data<a href="#ref46">[46]</a> as a design pattern to mitigate intellectual property issues in generative AI.</li>
+                        
+                        <li><strong>Block 3:</strong> <em>Music and Audio Generation</em> – Explore AI in music composition and voice synthesis. <strong>Technical focus:</strong> sequence modeling for audio. <em>Content:</em> Briefly cover models like OpenAI's Jukebox (music generation) and modern vocoders/text-to-speech that can clone voices. Discuss use cases: background music generation, adaptive game soundtracks, AI voice assistants with emotion. <em>Design pattern:</em> <strong>Generative adversarial training</strong> – often used in music generation (discriminator ensures output sounds plausible). Also note need for <strong>temporal coherence</strong> in music, analogous to coherence in long text.</li>
+                        
+                        <li><strong>Block 4:</strong> <em>Creative Writing and Co-Creation</em> – LLMs as writing partners. <strong>Technical focus:</strong> style transfer and control in text generation. <em>Content:</em> Explain how tools like <strong>ChatGPT</strong> or <strong>Sudowrite</strong> assist authors by generating story ideas, character dialog, or even entire drafts. Demonstrate prompt techniques to enforce style (e.g. "Write in the style of Hemingway"). <em>Hands-on:</em> In-class, collectively use an LLM to outline a short story based on student prompts. <em>Best practice:</em> <strong>Iterative refinement</strong> in creative work – treat AI output as a draft; creators should review and edit, ensuring the final product meets their standards (the AI is a collaborator, not an infallible oracle).</li>
+                        
+                        <li><strong>Block 5:</strong> <em>Domain-Specific Creative AI</em> – AI in visual arts, architecture, gaming, etc. <strong>Technical focus:</strong> customization and fine-tuning. <em>Content:</em> Examples: AI generating game levels or character designs (procedural content generation enhanced by LLMs), AI helping architects by generating floor plan options from descriptions, or fashion design with generative models proposing new clothing patterns. Discuss how fine-tuning a model on a specific artist's style (with permission) can yield an assistant that generates in that niche style. <em>Best practice:</em> <strong>Style preservation and originality</strong> – caution that AI can inadvertently plagiarize training data (e.g. copy an artist's signature), so ethical design dictates filtering and adding noise during training, and watermarking outputs.</li>
+                        
+                        <li><strong>Block 6:</strong> <em>Ethics and Guardrails in Creative AI</em> – Address potential misuses. <strong>Technical focus:</strong> content filters and watermarking. <em>Content:</em> Discuss deepfake concerns (e.g. voice or image generation for misinformation) and industry responses like Google's and OpenAI's watermarking research or metadata tagging of AI-generated content. Mention initiatives like <strong>Coalition for Content Provenance and Authenticity (C2PA)</strong> for tracking provenance. <em>Design pattern:</em> <strong>Content moderation pipeline</strong> – e.g. every user prompt and AI output in a creative tool is run through filters (for disallowed content) before finalizing. Adobe's approach of reviewing outputs for safety can be cited as a model. Encourage students to incorporate safety checks if they build creative AI apps.</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <strong>Lab:</strong> Use a generative image model (via an online demo or local if GPU available) to create a series of images from prompts. Students will then take one image and use an AI upscaler or editor (like Firefly in Photoshop if accessible) to modify it (e.g. change background or style). <strong>Deliverable:</strong> A before-and-after image and a description of the prompt or tool adjustments used, discussing the quality of the result and any artifacts or surprises.
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 10: AI in Healthcare and High-Stakes Decision Making</h3>
+                    <ul>
+                        <li><strong>Block 1:</strong> <em>AI for Medical Diagnosis</em> – Examine how AI assists in healthcare. <strong>Technical focus:</strong> medical LLMs and imaging models. <em>Content:</em> Examples of AI systems diagnosing conditions from images (e.g. skin lesion classification, radiology reports summarization by an LLM). Mention that GPT-4 has shown <strong>medical exam-level</strong> performance, but emphasize need for validation. <em>Design pattern:</em> <strong>Human-AI team</strong> – in high stakes domains, AI is designed to assist a professional, not replace them (e.g. AI suggests a diagnosis, doctor confirms).</li>
+                        
+                        <li><strong>Block 2:</strong> <em>Case Study: Clinical Assistant LLM</em> – Discuss a scenario of an AI chatbot for patient triage. <strong>Technical focus:</strong> retrieval-augmented clinical Q&A. <em>Content:</em> Suppose an "AI doctor" model answers patient questions. Describe adding a <strong>retrieval step from medical literature</strong> to ground its answers, to prevent hazardous hallucinations. Cite a study where using retrieval made an AI's answers in radiology more reliable<a href="#ref38">[38]</a>. <em>Best practice:</em> <strong>Evidence-based reasoning</strong> – design medical AI to provide sources or rationales for its advice that a human can double-check, as a safety scaffold.</li>
+                        
+                        <li><strong>Block 3:</strong> <em>AI in Law and Finance</em> – Other high-stakes fields. <strong>Technical focus:</strong> specialization and compliance. <em>Content:</em> Note the rise of AI legal assistants (e.g. for drafting contracts) and financial advisors. Cover the famous incident of a lawyer using ChatGPT and getting fictitious case citations – a cautionary tale about unverified outputs. Discuss how legal AI must be tuned on jurisdiction-specific knowledge and have strict <strong>approval workflows</strong> (no filing to court without human lawyer review!). <em>Design pattern:</em> <strong>Approval workflow</strong> – require human sign-off on AI-generated content in regulated fields (integrate this into system design).</li>
+                        
+                        <li><strong>Block 4:</strong> <em>Guardrails: Safety and Regulation</em> – How to implement guardrails for domain-specific AIs. <strong>Technical focus:</strong> policy engines and checkers. <em>Content:</em> For a medical AI, for example, integrate a symptom severity checker that decides when to advise the user to seek immediate care (to avoid underdiagnosis). Or a law AI that refuses to give certain types of advice (like speculation on illegal activities). Introduce the concept of <strong>constitutional AI</strong> in domain context: e.g. an AI's "constitution" might include "Do not provide medical advice that contradicts established guidelines" as a rule. <em>Best practice:</em> Leverage domain experts to write the rules and to <em>red-team</em> the AI – test it against tricky cases to probe its limits.</li>
+                        
+                        <li><strong>Block 5:</strong> <em>Privacy and Security Considerations</em> – Challenges of using AI with sensitive data. <strong>Technical focus:</strong> data anonymization and secure model deployment. <em>Content:</em> Cover techniques like de-identifying patient data so it can be safely used to fine-tune models, and federated learning (models trained across hospitals without aggregating patient data centrally). Discuss model <strong>memory risk</strong> – an LLM fine-tuned on sensitive data might inadvertently regurgitate it, hence policies like OpenAI's and Anthropic's that avoid training on personal data. <em>Design pattern:</em> <strong>Secure enclaves & audit logs</strong> – for any deployment in healthcare/finance, ensure the system logs all AI recommendations and actions for later auditing, and runs in secure environments compliant with regulations (HIPAA, etc.).</li>
+                        
+                        <li><strong>Block 6:</strong> <em>Future of AI in High-Stakes Domains</em> – Forward-looking discussion. <strong>Technical focus:</strong> validation and certification. <em>Content:</em> Ask, how will we <strong>certify</strong> an AI as safe for medical use? Introduce ideas like FDA approval for AI tools (already happening for some narrow AI), and the need for continuous monitoring even after deployment (model updates could change behavior). Possibly touch on Anthropic's <strong>AI safety levels</strong> again – an <strong>ASL-3</strong> model capable of harmful actions would need extreme safeguards<a href="#ref44">[44]</a>, which is analogous to requiring special review for an AI doctor model that could impact lives. <em>Best practice:</em> Build <strong>evaluation harnesses</strong> that specifically test the AI on edge cases in the domain regularly (e.g. does the medical AI catch signs of a heart attack consistently? Does the legal AI avoid giving defamatory advice?). This ties into the broader evaluation techniques covered in a later week.</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <strong>Lab:</strong> Explore a public medical AI tool (if available, e.g. Infermedica API for symptom checking or a simplified fake medical Q&A dataset). Students will pair up: one acts as patient, one as AI (with help of GPT or rules). They go through a mock consultation. Then, compare this with an actual output from a medical chatbot (or GPT-4 with a medical prompt) if possible. <strong>Deliverable:</strong> A reflection on the differences and an identification of one thing the AI did well and one concerning mistake it made during the exercise.
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 11: Alignment Techniques and Responsible AI Development</h3>
+                    <ul>
+                        <li><strong>Block 1:</strong> <em>The Alignment Problem</em> – Introduce what it means to align AI with human values/intents. <strong>Technical focus:</strong> define objectives vs. behaviors. <em>Content:</em> Explain that a model trained purely to predict text may not always follow a user's intent or ethical norms – hence <em>alignment</em> processes. Give a simple example: base GPT-3 vs. instructed GPT-3 (GPT-3 Instruct) where alignment made it more helpful and less toxic. <em>Design principle:</em> <strong>Outer vs. inner alignment</strong> – mention the concept that we align the model's <em>behavior</em> with goals (outer), and hope its <em>internal goals</em> are also aligned (inner, a more complex issue).</li>
+                        
+                        <li><strong>Block 2:</strong> <em>Reinforcement Learning from Human Feedback (RLHF)</em> – Key method for alignment. <strong>Technical focus:</strong> reward modeling and policy optimization. <em>Content:</em> Walk through how ChatGPT was trained: collect human preference data (model A vs B responses, which is better), train a reward model, then fine-tune the AI using RL to increase reward (using e.g. PPO). Show a before-and-after example of a response to a sensitive prompt. <em>Best practice:</em> <strong>Human in the loop</strong> – highlight that humans are still crucial in evaluating and providing feedback, and how open-ended that remains (feedback is only as good as the humans providing it).</li>
+                        
+                        <li><strong>Block 3:</strong> <em>Constitutional AI (Anthropic's Approach)</em> – An alternate alignment method with AI feedback. <strong>Technical focus:</strong1:</strong> <em>Course Overview & AI Taxonomy</em> – Introduce course structure and objectives, defining <strong>ANI (Artificial Narrow Intelligence)</strong> vs <strong>AGI (Artificial General Intelligence)</strong> vs <strong>ASI (Artificial Superintelligence)</strong>. <strong>Technical focus:</strong> clarify these concepts and set expectations for current AI capabilities vs. long-term goals. <em>Content:</em> Instructor-led overview of AI history and recent breakthroughs (e.g. GPT-4's leap to trillion-parameter scale<a href="#ref1">[1]</a>). <em>Best practice:</em> Emphasize clear terminology and the importance of ethical principles from day one (no specific design pattern yet).</li>
+                        
+                        <li><strong>Block 2:</strong> <em>State of AI in 2025</em> – Survey the latest milestones as of 2025. <strong>Technical focus:</strong> highlight cutting-edge AI systems and their capabilities. <em>Content:</em> Lecture on recent developments like OpenAI's GPT-4 (multimodal reasoning), Google's Gemini 2.5, etc., and their performance on complex tasks<a href="#ref2">[2]</a>. Discuss how multimodal models can handle text, images, and more. <em>Best practice:</em> Note the trend of scaling models and the "bigger is better" paradigm, alongside the need for efficiency and cost-awareness in deployment<a href="#ref3">[3]</a>.</li>
+                        
+                        <li><strong>Block 3:</strong> <em>Frontier AI Models & AGI Ambitions</em> – Explain how labs are pushing toward AGI. <strong>Technical focus:</strong> overview of frontier model roadmaps. <em>Content:</em> Case study of Anthropic's plan for <strong>Claude-Next</strong> (targeting a model 10× more capable than today's best<a href="#ref4">[4]</a>) and DeepMind's Gemini and <strong>Genie</strong> world models aimed at higher generality<a href="#ref5">[5]</a>. Class discussion on what achieving human-level AI (AGI) entails. <em>Design principle:</em> Encourage students to think about modularity and generality in AI design when scaling up systems.</li>
+                        
+                        <li><strong>Block 4:</strong> <em>Course Logistics & Tools</em> – Prepare students for hands-on work. <strong>Technical focus:</strong> introduce the computing environment, key frameworks (e.g. PyTorch, JAX, Hugging Face), and any cloud resources. <em>Content:</em> Live demo of setting up a simple notebook using an open-source LLM (e.g. running a small GPT model locally). <em>Best practice:</em> Demonstrate a "Hello World" AI agent and stress good experiment tracking habits from the start.</li>
+                        
+                        <li><strong>Block 5:</strong> <em>Discussion: Hopes and Fears in Modern AI</em> – Interactive seminar on expectations. <strong>Technical focus:</strong> none (discussion). <em>Content:</em> Students share their perspectives on opportunities (e.g. AI in medicine) versus risks (job disruption, misuse). Connect these to course topics ahead (safety, ethics). <em>Design pattern:</em> N/A (discussion-based). <em>Hands-on:</em> brainstorm in small groups a list of "dream AI applications" vs "nightmare scenarios" to motivate later safety modules.</li>
+                        
+                        <li><strong>Block 6:</strong> <em>Ethical Foundations</em> – Frame the need for safety and responsibility. <strong>Technical focus:</strong> AI ethics principles. <em>Content:</em> Brief talk on guidelines from AI organizations (e.g. OECD, IEEE) and examples of AI failures. <em>Best practice:</em> Introduce the concept of <strong>value alignment</strong> as a core design goal; no advanced pattern yet, but set the stage for rigorous guardrails in later lectures.</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <strong>Lab/Assignment:</strong> Ensure all students have access to required computing resources. No graded lab this week, but <strong>deliverable:</strong> a one-page student background summary and their learning goals for the course (due by Week 2).
+                    </div>
+                </div>
+
+                <div class="week-block">
+    <h3>Week 12: Safety Scaffolds and Guardrails in Autonomous Agents</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Runtime Safety Mechanisms</em> – Focus on techniques to keep agents safe during operation. <strong>Technical focus:</strong> real-time content filters and action limiters. <em>Content:</em> Revisit the need for safeguards even after training (alignment). Describe a setup where an agent’s outputs are passed through a toxicity filter or a compliance checker before execution. For instance, Anthropic’s deployed Claude has ASL-3 protections including real-time classifier guards to block disallowed content/actions<a href="https://www.anthropic.com/asl3-deployment-safeguards#:~:text=standard%3A%20%E2%97%8F%20We%20implement%20real,%E2%80%9D%202"><em></em></a>. <strong>Design pattern:</strong> Sandboxing – run agents in a restricted environment (no direct access to critical systems) and require escalation for high-impact moves.</li>
+        
+        <li><strong>Block 2:</strong> <em>Tool Governance and API Sandboxing</em> – Controlling what an autonomous agent can do with tools. <strong>Technical focus:</strong> permission systems for tool use. <em>Content:</em> Explain that when agents can execute code or make API calls, we need a governance layer: e.g., allow only read access to certain databases, only allow file writes in a temp directory, etc. Mention OpenAI’s “function calling” which only lets the model call predefined functions (preventing arbitrary code exec). <strong>Best practice:</strong> Allowlist and monitoring – give agents the minimal set of tools needed, and log every tool invocation for review. Possibly introduce the concept of an automated policy engine that can revoke or modify an agent’s tool request if it seems abnormal (this could be learned or hardcoded).</li>
+        
+        <li><strong>Block 3:</strong> <em>Human Approval Workflows</em> – Incorporating humans in the loop for critical decisions. <strong>Technical focus:</strong> when and how to hand off control. <em>Content:</em> Present a pattern: an agent must get human approval for actions above a risk threshold. For example, an autonomous research agent that wants to run an experiment with biohazardous materials must pause and request a human’s OK (no agent is actually allowed to do that autonomously!). This is akin to a chain-of-command in organizations. <strong>Design pattern:</strong> Two-man rule (borrowed from nuclear command control) – require at least two humans or a human+AI agreement for especially sensitive actions. Implementing this could be as simple as a yes/no confirmation prompt that only a human operator can provide.</li>
+        
+        <li><strong>Block 4:</strong> <em>Internal Dialogue and Self-Critique</em> – Revisit inner monologue as a safety tool. <strong>Technical focus:</strong> agents evaluating their own actions. <em>Content:</em> Discuss how prompting an agent to reflect “Is this action safe and aligned with my instructions?” before executing can catch mistakes. Tie to the ReAct and Reflexion approaches covered earlier – those weren’t just for task success, but also often naturally curtail some risky behaviors by forcing reasoning steps. <strong>Best practice:</strong> Interpretable reasoning – design agents to produce a trace (thoughts, justifications) that can be audited in real-time either by a human or another automated system. This transparency makes it easier to spot a dangerous decision before it’s acted on.</li>
+        
+        <li><strong>Block 5:</strong> <em>Evaluation Harnesses and Unit Tests for Agents</em> – Software engineering analogies for AI safety. <strong>Technical focus:</strong> systematic testing of agent behavior. <em>Content:</em> Propose treating an autonomous agent like software that needs unit tests and integration tests. For example, write test scenarios: “Agent should refuse if asked to do X” or “Agent given task Y should achieve outcome Z within N steps.” Use an evaluation harness to run these regularly (e.g. every new version of the agent). Mention how OpenAI and others use suites of such tests and even adversarial agents to continually probe their models<a href="https://medium.com/enkrypt-ai/frontier-safety-frameworks-a-comprehensive-picture-e070efb4d0a7#:~:text=match%20at%20L484%20,risk%20cases"><em></em></a>. <strong>Design pattern:</strong> Red Team Agent – an idea of having one agent in the system whose role is to critique or try to break the main agent’s decisions (like an internal adversary to keep it honest). This relates to debate-style AI and can be an automated guardrail.</li>
+        
+        <li><strong>Block 6:</strong> <em>Case Study: Claude’s Safety System</em> – Examine Anthropic Claude’s safety layers as a real example. <strong>Technical focus:</strong> combining multiple guardrails. <em>Content:</em> Summarize how Claude 4.5 was shipped with “AI Safety Level 3” protections<a href="https://splx.ai/blog/red-teaming-claude-sonnet-4-5#:~:text=How%20Safe%20Is%20Anthropic%27s%20%E2%80%9CSafest%E2%80%9D,matches%20model%20capabilities%20with%20safeguards"><em></em></a>: extensive pre-deployment testing, a fine-tuned refusal policy (Claude will kindly refuse disallowed requests), continuous monitoring for anomalies, and security measures to prevent model weights theft or misuse<a href="https://metr.org/common-elements.pdf#:~:text=,protected%20against%20most%20attackers%27"><em></em></a>. Highlight the interplay: model training (constitution) gave it initial guardrails, but they still added realtime classifiers and strict platform policies. <strong>Best practice:</strong> Defense in depth – do not rely on one single safety mechanism. Use multiple layers (model self-regulation, external filters, human oversight, secure infrastructure) so that if one fails, others still protect against harm<a href="https://medium.com/enkrypt-ai/frontier-safety-frameworks-a-comprehensive-picture-e070efb4d0a7#:~:text=The%20frontier%20safety%20frameworks%20developed,This%20section"><em></em></a>.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>Lab:</strong> Design a safety protocol for a given agent. Students pick one scenario (e.g. an AI research assistant agent with internet access, or an AI therapist bot). They must outline a set of safety scaffolds for it: what it should never do, how to enforce that (rules or classifiers), when a human should be consulted, etc. In class or as homework, they write a brief “safety plan” for their agent. <strong>Deliverable:</strong> 1-2 page safety plan that identifies potential failure modes of the agent and proposes specific safeguards (approval steps, filters, sandbox limits, logging/auditing, etc.) to mitigate them.
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 13: Student-Led Seminar on Emerging Research</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Paper Presentation 1</em> – Student (or team) presents a 2025 research paper relevant to course topics (e.g. a new memory architecture, or a novel multi-agent algorithm). <strong>Technical focus:</strong> depends on paper – class engages with advanced concepts beyond what was formally covered. <em>Content:</em> Presenter explains the problem, method, and key results of the paper. For example, a paper on Tree-of-Thoughts (search-based CoT) or Large Context Transformers. <strong>Design discussion:</strong> How does this new approach compare to patterns we learned? Could it be integrated into the systems we’ve discussed?</li>
+        
+        <li><strong>Block 2:</strong> <em>Q&A and Discussion for Paper 1</em> – Class and instructor ask questions. <strong>Technical focus:</strong> probe understanding and implications. <em>Content:</em> Discuss strengths, weaknesses, and possible extensions of the presented work. Consider cross-domain applicability – e.g., can a new memory system from an NLP paper benefit a robotics agent? <strong>Best practice:</strong> Encourage critical thinking: not every new idea is practical. Identify what would be needed to bring the research idea into a real-world system (e.g. more compute, combining with other components).</li>
+        
+        <li><strong>Block 3:</strong> <em>Paper Presentation 2</em> – Another student/team presents a different frontier topic (e.g. Multimodal Agent Benchmarks, or AI for scientific discovery). <em>Content:</em> Similar structure – motivation, approach, results. For instance, if the paper is on AutoGPT analysis, they might discuss what emergent behaviors were observed when scaling autonomous agents and how the community addressed those. <strong>Design discussion:</strong> Tie it back to our course’s themes – does it introduce a new design pattern or anti-pattern? (Maybe the paper noted an agent often falls into loops – highlighting need for better loop-breaking strategies.)</li>
+        
+        <li><strong>Block 4:</strong> <em>Q&A and Discussion for Paper 2</em> – Engage with the content. <em>Content:</em> Class questions may include: How does this approach handle safety? What assumptions does it make? Could this be reproduced with open-source tools? <strong>Best practice:</strong> Foster a habit of reading research critically – check if claims are backed by data, if baselines are fairly compared, etc. This block solidifies that skill.</li>
+        
+        <li><strong>Block 5:</strong> <em>Lightning Talks (if time permits)</em> – A few 5-minute informal shares. <em>Content:</em> Students who read an extra paper or saw a relevant news item (like a new model release) give a lightning summary. For example, someone might summarize “Mixtral-10B just released by Mistral AI last week” or “OpenAI’s new interpretability tool”. This keeps the class up-to-date.</li>
+        
+        <li><strong>Block 6:</strong> <em>Instructor Synthesis & Wrap-up</em> – The instructor connects the dots between the presented works and the course objectives. <em>Content:</em> Highlight how the emerging research either reinforces or challenges the design patterns we’ve learned. For instance, if a new memory paper suggests a totally different architecture, what does that mean for our understanding? Summarize key insights and encourage students to incorporate any useful ideas into their projects. Reiterate that staying literate in research is crucial in this rapidly advancing field.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>Lab/Assignment:</strong> Each student must submit a short summary (1 page) of an additional recent paper or article they found interesting (different from those presented). They should describe the core idea and how it relates to topics in the class. <strong>Deliverable:</strong> The paper summary, focusing on relevance to agent design, safety, or advanced AI capabilities.
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 14: Midterm Project Proposal Presentations</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Project Overview Talks</em> – Teams/students take turns presenting their project ideas. <strong>Technical focus:</strong> varies by project. <em>Content:</em> Each presentation (~10 minutes) outlines the problem they aim to tackle, related work, proposed method (which should involve course topics like an agent or a safety mechanism), and evaluation plan. Class gets to see a range: e.g. one project might be “Autonomous Research Agent for Data Analysis,” another “AI Coach for Diabetes Patients” – spanning domains but all focusing on emerging AI techniques.</li>
+        
+        <li><strong>Block 2:</strong> <em>Feedback and Discussion</em> – After each talk, peers and instructor ask questions. <em>Content:</em> Ensure each proposal is well-scoped and leverages appropriate methods. The class might suggest relevant papers (“Have you seen X paper? It could help”) or point out potential pitfalls (“How will you ensure the agent doesn’t do Y if it fails?”). This collaborative feedback helps refine projects.</li>
+        
+        <li><strong>Block 3:</strong> <em>Common Threads</em> – Instructor notes common elements among projects. <em>Content:</em> Perhaps many projects plan to use an LLM with memory and tools – instructor reminds everyone of key design patterns (ReAct, retrieval augmentation, etc.) they should consider. If some plan risky autonomous behaviors, remind about safety scaffolds. <strong>Design best practice:</strong> Project planning – emphasize good experimental design: include a baseline, plan for ablation tests, etc., so projects are scientifically rigorous.</li>
+        
+        <li><strong>Block 4:</strong> <em>Milestones and Expectations</em> – Lay out the roadmap for project execution in Semester 2. <strong>Technical focus:</strong> project management for AI research. <em>Content:</em> Instructor presents timeline: when intermediate results are due, final report format, etc. Suggest splitting work into implementing core functionality by Week 20, conducting experiments by Week 25, etc. <strong>Best practice:</strong> Iterative development – advise building a minimal viable agent first, then adding features, to always have something that works to fall back on.</li>
+        
+        <li><strong>Block 5:</strong> <em>Ethics & Safety Check</em> – Each project gets a quick review of ethical implications. <em>Content:</em> For each proposal, the instructor or a designated student panel comments on any ethical/safety issues (e.g. “Your healthcare chatbot must have a disclaimer and doctor oversight”). This ensures alignment with course values. <strong>Design pattern:</strong> tying back to responsible AI – require every project to have a section on how they handle errors or misuse.</li>
+        
+        <li><strong>Block 6:</strong> <em>Wrap-up and Motivation</em> – End the semester motivating the work ahead. <em>Content:</em> The instructor shares an inspiring vision of how these projects, though small, tie into the larger quest for beneficial AI. Perhaps a quick look at how academic research projects sometimes turn into real products or influential papers. Encourage students to be ambitious but also conscientious. Remind them of support resources (TAs, computing credits, etc.) available.</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>Deliverable:</strong> Project Proposal Document. By this week, each team submits a proposal (5–8 pages) covering their problem statement, literature review, method, and plan. This is graded and feedback is given in detail, so they can proceed in Semester 2 with a clear direction.
+    </div>
+
+    <div class="info-box">
+        <strong>Note:</strong> (Week 15: no formal class – end of semester break or study week)
+    </div>
+</div>
+<div class="semester-header">
+                <h2>Semester 2: Advanced Topics, Applications, and Project Implementation (Weeks 16–30)
+</h2>
+            </div>
+<div class="week-block">
+    <h3>Week 16: Autonomous Research Agents (“AI Scientists”)</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>AI for Scientific Discovery</em> – Re-introduce the concept of AI agents that perform research. <strong>Technical focus:</strong> automated experimentation loops. <em>Content:</em> Summarize how an “AI Scientist” can generate hypotheses, design experiments, gather results, and iterate<a href="https://www.emergentmind.com/topics/ai-scientists#:~:text=,ended%20discovery%20and%20innovation"><em></em></a><a href="https://www.emergentmind.com/topics/ai-scientists#:~:text=emerged%20as%20central%20actors%20in,the%20structure%20of%20scientific%20collaboration"><em></em></a>. Use a concrete example: an agent that suggests new chemical compounds and directs lab robots to synthesize and test them (e.g. the real-world Robot Scientist “Eve” for drug screening). <strong>Design pattern:</strong> Scientific method loop – encode hypothesis → experiment → analysis → conclusion cycle into an agent’s planning.</li>
+        
+        <li><strong>Block 2:</strong> <em>Architectures of AI Scientists</em> – Discuss frameworks combining multiple sub-agents. <strong>Technical focus:</strong> specialized agent roles in research. <em>Content:</em> Based on recent papers, present the architecture of an AI research team: e.g. one agent for literature review (using an LLM with retrieval to ingest papers)<a href="https://www.emergentmind.com/topics/ai-scientists#:~:text=,24%20Jun%202025"><em></em></a>, another for hypothesis generation (maybe using chain-of-thought to propose ideas)<a href="https://www.emergentmind.com/topics/ai-scientists#:~:text=,28%20Mar%202025"><em></em></a>, another for running simulations or analyzing data (could involve coding agents for data analysis). Mention Team of AI-Made Scientists (TAIS) and how it assigns roles like data cleaner, statistician, writer<a href="https://www.emergentmind.com/topics/ai-scientists#:~:text=et%20al,20"><em></em></a>. <strong>Design pattern:</strong> Modular team-of-agents – building a pipeline where each agent’s output feeds the next (this is a form of structured multi-agent collaboration).</li>
+        
+        <li><strong>Block 3:</strong> <em>Tools for Autonomous Research</em> – What tools and environments enable AI scientists. <strong>Technical focus:</strong> integration with scientific software and labs. <em>Content:</em> Describe an example: an AI that can use a chemistry simulation engine (like Gaussian or a custom API) – requiring tool use skills. Or an AI that writes and executes code for data analysis (like using Python’s pandas or MATLAB). Many research agents use a code-writing agent to handle analysis (as noted in AI Data Scientist pipelines<a href="https://www.emergentmind.com/topics/ai-scientists#:~:text=,24%20Jun%202025"><em></em></a>). <strong>Best practice:</strong> Verification step – for any result the AI produces (like “Compound X will bind protein Y”), have a verification either via simulation, a separate model, or ultimately a human expert. Emphasize that these agents are decision support, not final decision makers in science (yet).</li>
+        
+        <li><strong>Block 4:</strong> <em>Challenges: Accuracy and Trustworthiness</em> – Why fully autonomous science is hard. <strong>Technical focus:</strong> error propagation and validation. <em>Content:</em> Discuss that if an AI misinterprets one paper, it might build a flawed hypothesis – garbage in, garbage out. Outline approaches to mitigate: e.g. the agent must cross-check key facts via multiple sources (ensemble of LLM opinions or a database). Tie in the idea of automated peer review – some projects have an AI agent generate a “review report” of the main agent’s findings<a href="https://www.emergentmind.com/topics/ai-scientists#:~:text=%28e,both%20human%20and%20machine%20critique"><em></em></a>, acting as a sanity check. <strong>Best practice:</strong> insist on human oversight for now – e.g. a human scientist reviews AI-generated hypotheses before resources are spent on experiments. This is another application of human-in-loop approval, specialized to research.</li>
+        
+        <li><strong>Block 5:</strong> <em>Case Study: Autonomous Lab</em> – Look at a cutting-edge implementation. <strong>Technical focus:</strong> real-world deployment. <em>Content:</em> For instance, mention an academic project where a robotic lab was controlled by an AI agent that iteratively experimented (one example: an agent in a cloud lab tried thousands of combinations to grow carbon nanotubes efficiently). Outline how the agent decided on next experiments (maybe using Bayesian optimization or just heuristic from results). <strong>Design pattern:</strong> Closed-loop optimization – an agent optimizes some objective (yield, accuracy) by sequentially picking experiments. This draws from both AI planning and traditional optimization. Connect this to how such patterns could be abstracted for other domains (e.g. hyperparameter tuning in ML is similar, which is often automated).</li>
+        
+        <li><strong>Block 6:</strong> <em>Lab Discussion: Implications of AI Scientists</em> – Activity: Debate or reflect on how autonomous research agents might change science. Will they accelerate discovery? Could they overlook serendipitous findings that a human might catch? What about accountability if an AI designs an experiment that goes wrong? <em>Content:</em> This is a higher-level discussion tying technical realities to societal impact (good practice for students to think about as they build such systems). Instructor ensures to loop in course concepts: e.g., “Would having a memory and reflection help the AI scientist catch its mistakes? What safety scaffold would you install if an AI runs chemical experiments (maybe a virtual kill-switch that stops all experiments if unsafe output is detected)?”</li>
+    </ul>
+    <div class="info-box">
+        <strong>Lab:</strong> Experiment with an “AI researcher” on a small scale. Using an LLM (like GPT-4 via API if available, or a smaller model), have it analyze a simple dataset. For example, give it a CSV of an experiment’s results and ask it to hypothesize and propose next steps. Students observe what it does well vs poorly. <strong>Deliverable:</strong> A brief log of the interaction and commentary on whether the AI’s proposed “research plan” was sensible, and how they might constrain or improve it.
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 17: AI Coding Assistants and Software 2.0</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Evolution of Coding Assistants</em> – Recap how we got from code autocompletion to full AI pair programmers. <strong>Technical focus:</strong> language models specialized for code. <em>Content:</em> Cover Github Copilot (powered by Codex) as a milestone – it can complete code based on context. Then developments like StarCoder (open-source code LLM) and Code Llama (2023) expanding capabilities. Emphasize that coding assistants have large context to see your whole file/project and generate code that fits. <strong>Design pattern:</strong> Fill-in-the-middle generation – coding models often need to generate code inside an existing file, not just append, requiring special training for that skill.</li>
+        
+        <li><strong>Block 2:</strong> <em>Advanced Code Generation – ChatDev Framework</em> – Present the idea of an entire software project generated by AI via multiple agents (ChatDev)<a href="https://www.ibm.com/think/topics/chatdev#1091481868#:~:text=What%20is%20ChatDev%3F"><em></em></a><a href="https://www.ibm.com/think/topics/chatdev#1091481868#:~:text=intelligent%20agents%20holding%20different%20roles,collaboratively%20to%20complete%20each%20phase"><em></em></a>. <strong>Technical focus:</strong> multi-agent software development lifecycle. <em>Content:</em> Explain ChatDev: it simulates a software company with agents in roles – e.g. PM agent writes specs, Developer agent writes code, Tester agent tests, etc., following a waterfall model<a href="https://www.ibm.com/think/topics/chatdev#1091481868#:~:text=development%20lifecycle%20to%20autonomously%20generate,and%20produce%20a%20software%20application"><em></em></a>. Walk through a simplified example of ChatDev creating a simple app, highlighting how they communicate and coordinate phases. <strong>Best practice:</strong> Structured team communication – show how dividing a big task (software project) among specialized sub-agents with a predefined protocol can organize the otherwise chaotic process of AI generating a whole codebase.</li>
+        
+        <li><strong>Block 3:</strong> <em>Tools and Plugins for Coding Assistants</em> – How coding agents integrate with developer tools. <strong>Technical focus:</strong> IDE integration, executing code. <em>Content:</em> Mention that modern coding assistants can call compilers/interpreters to run code, then use the output or errors to refine their suggestions. For instance, GPT-4’s Code Interpreter (in ChatGPT) actually runs code in a sandbox – a huge step for autonomy. Discuss how an agent can use version control: e.g. one academic project had an AI that could use Git commands (perhaps refer to Microsoft’s Autonomous DevOps Agent if any). <strong>Design pattern:</strong> Read-Evaluate-Print Loop (REPL) for code agents – an agent writes code, runs it, observes results (or test failures), and iterates. Encourage students to see similarity with the ReAct pattern: here the environment is the runtime and tests, and observation is program output.</li>
+        
+        <li><strong>Block 4:</strong> <em>Quality Assurance and Error Handling</em> – Ensuring AI-written code is correct and secure. <strong>Technical focus:</strong> testing and verification. <em>Content:</em> Stress that code agents might generate syntactically correct but logically buggy code. Therefore, coupling them with automated tests is key. Possibly cite how some agents now write their own tests or use formal verification tools on critical code. Example: an AI writes a function and also a unit test; if the test fails, it debugs (this was demonstrated in works like “Self-Refine” or Facebook’s CICERO for coding). <strong>Best practice:</strong> Continuous integration for AI coders – require AI contributions to pass the same CI pipeline as human code (linting, tests, code review). Perhaps even have a human or separate AI code reviewer agent (some projects do this) to maintain code quality.</li>
+        
+        <li><strong>Block 5:</strong> <em>Security and Governance in AI-Generated Code</em> – Address concerns of vulnerabilities. <strong>Technical focus:</strong> static analysis and permissioning. <em>Content:</em> Discuss how blindly accepting AI code can introduce security issues (buffer overflows, injection flaws) or licensing issues (if the AI regurgitated training code). Mention efforts like OpenAI’s secure coding modes and research that shows models can insert subtle bugs. Introduce the idea of a policy model that checks AI code suggestions against secure coding guidelines (like an AI lintern). <strong>Best practice:</strong> For any deployment of AI-generated code in production, implement a code review process – ideally with human experts focusing on security. In critical systems, limit AI to non-critical code or require multiple levels of approval.</li>
+        
+        <li><strong>Block 6:</strong> <em>Lab: AI in the Software Development Cycle</em> – Activity: Break the class into “human dev teams” and “AI dev teams”. Give a simple spec (e.g. “Create a program that fetches weather data and displays a summary”). Human teams outline a plan. AI teams use an AI (like ChatGPT or Codex) to generate some or all of the code. Compare outcomes after 20 minutes. Likely, the AI teams produce something runnable faster, but maybe with quirks. Discuss the experience. Reflection: How did it feel to supervise an AI coding? Did the AI make design decisions the humans didn’t expect? This exercise grounds the promise and current limitations of coding assistants.</li>
+    </ul>
+    <div class="info-box">
+        <strong>Lab:</strong> Use GitHub Copilot (or an open alternative like Codeium or HuggingFace Code Assistant) on a programming task. Students pick one or two coding problems (e.g. LeetCode style or a small web app component) and solve it with the AI’s help. They should intentionally introduce a bug or suboptimal requirement and see if the AI notices or if it needs prodding. <strong>Deliverable:</strong> A brief diary of their interaction with the coding AI – including any prompts or comments they had to give to steer it, and an assessment of the AI’s contribution (e.g. “Copilot wrote 80% of the code correctly, I had to fix the API endpoint URL and add error handling.”).
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 18: Emergent Behaviors and Interpretability in AI Systems</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Emergent Capabilities with Scale</em> – Define and give examples of emergent behaviors that arise in large models. <strong>Technical focus:</strong> scaling and phase transitions. <em>Content:</em> Explain how certain abilities (e.g. multi-step arithmetic, commonsense reasoning) seemingly appear once models exceed a parameter or training data threshold, even though not explicitly trained for those tasks. Show a chart or two from literature: e.g. performance jump around a certain model size. Discussion: Why might this happen? (Hypotheses: network representations become richer, etc.) <strong>Design implication:</strong> It’s hard to predict capabilities of very large models – hence careful safety evaluations are needed as we scale.</li>
+        
+        <li><strong>Block 2:</strong> <em>Interpreting Neural Networks – Techniques</em> – Survey methods for peering inside the “black box.” <strong>Technical focus:</strong> interpretability tools. <em>Content:</em> Cover methods like feature visualization (seeing what input patterns maximally activate certain neurons), attention pattern analysis in transformers, and activation patching (test what parts of the model contribute to certain outputs). Mention work by OpenAI, Anthropic on interpreting GPT-2/GPT-3 neurons (e.g. the “circuit” that tracks whether a number is prime). Possibly reference that Anthropic has flagged interpretability as a prerequisite for safely developing very advanced models (ASL-4)<a href="https://medium.com/enkrypt-ai/frontier-safety-frameworks-a-comprehensive-picture-e070efb4d0a7#:~:text=instance%2C%20highlights%20interpretability%20as%20an,4%20development"><em></em></a>. <strong>Design pattern:</strong> Modularizing for interpretability – e.g., some research suggests building models with more transparent components (like a symbolic module) to make them easier to understand.</li>
+        
+        <li><strong>Block 3:</strong> <em>Case Study: Model Neurons and Circuits</em> – Give a concrete example of interpretability research. <strong>Technical focus:</strong> single-neuron analysis. <em>Content:</em> Describe a finding such as: In GPT-2, a specific neuron was found to track whether the text is in quote marks or not (a quote tracking neuron), which helps it decide to close quotes properly. Or a circuit that does indirect object reference resolution<a href="https://lilianweng.github.io/posts/2023-06-23-agent/#:~:text=ReAct%20%28Yao%20et%20al,reasoning%20traces%20in%20natural%20language"><em></em></a>. Explain how researchers discovered this via probing techniques. <strong>Best practice:</strong> Instrument your models – encourage that when students build or fine-tune models, they can add logging of intermediate values or use probing classifiers to see what information is carried in the activations. It’s like debugging a program.</li>
+        
+        <li><strong>Block 4:</strong> <em>Safety via Interpretability</em> – Link interpretability to alignment and safety. <strong>Technical focus:</strong> identifying goals or motivations inside the model. <em>Content:</em> Discuss the hope that by interpreting models, we might catch if a model has learned an undesirable heuristic or objective (e.g. a deceitful strategy). If we could read the model’s “thoughts,” alignment would be easier. Mention current research where interpretability tools found hidden model functions (like a model calculating chain-of-thought internally even if not asked). <strong>Design pattern:</strong> Transparency by design – e.g., some propose training models to explain their reasoning as they go (which is related to chain-of-thought prompting) so that we have a record to inspect. This is a design choice that can aid later analysis.</li>
+        
+        <li><strong>Block 5:</strong> <em>Limits of Interpretability and Reliability</em> – A sober look at where we are. <strong>Technical focus:</strong> complexity of deep networks. <em>Content:</em> Acknowledge that despite tools, large models are still largely opaque. We can visualize a few neurons, but there are billions. And emergent behavior means models might behave in unpredictable ways once they hit certain complexity. Raise the concern: could a sufficiently advanced AI behave normally during training and testing, but harbor a latent capability or goal that isn’t clear? This underpins the importance of comprehensive evaluation and perhaps new research (some mention here of mechanistic interpretability as a growing field). <strong>Best practice:</strong> Cautious deployment – due to interpretability limits, adhere to staged deployment and monitoring. Encourage development of kill-switches and anomaly detectors as backup for when interpretability fails to catch something in advance.</li>
+        
+        <li><strong>Block 6:</strong> <em>Interactive Exercise: Interpret a Small Model</em> – Activity: Provide students with a very small neural network (e.g. a 2-layer network trained on a simple task). Have a visualization tool or just output weights. Students (in groups) try to interpret what each neuron might be doing (if it’s small enough, or use an existing interpretability demo from Distill.pub etc.). They then compare with an “answer key” if available. <em>Content:</em> They will see how non-trivial even a small network can be, but also learn the techniques (looking at weights, seeing how outputs change if you ablate a neuron). This gives hands-on appreciation for the interpretability challenge.</li>
+    </ul>
+    <div class="info-box">
+        <strong>Lab:</strong> Dive into the weights of a pre-trained medium-size model (perhaps a smaller GPT-2). Students can use tools like the OpenAI Transformer Visualization (if available) or the Neuroscope neuron catalog. Each student picks one neuron or attention head to investigate (or the instructor assigns some known interesting ones). They document what they tried (prompting the model and seeing when that neuron fires strongly, etc.) <strong>Deliverable:</strong> A short slide or paragraph on “Neuron X seems to respond to Y” – e.g. “Neuron 123 in layer 5 appears to activate on programming language keywords.” This lab reinforces that even without fully understanding the model, these partial insights are possible and useful.
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 19: Evaluation and Benchmarking of Advanced AI Systems</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>The Importance of Evaluation</em> – Motivate why rigorous evaluation is as important as model building. <strong>Technical focus:</strong> metrics and benchmarks. <em>Content:</em> Tell how early on, passing MNIST or ImageNet was a big deal; now for AI agents and large models, we need new benchmarks (BIG-bench, HELM) that test complex skills. Explain different evaluation types: performance (accuracy, F1, etc.), safety (rate of toxic outputs), efficiency (latency, memory), and robustness (how performance degrades with noise or adversarial input). <strong>Best practice:</strong> Benchmark-driven development – encourage designing with the end metrics in mind (without overfitting), and constantly testing during development, not just after.</li>
+        
+        <li><strong>Block 2:</strong> <em>Holistic Evaluation – HELM</em> – Present the ideas from Stanford’s HELM (Holistic Evaluation of Language Models). <strong>Technical focus:</strong> multi-metric, scenario-based eval. <em>Content:</em> Describe how HELM evaluates models on a broad set of scenarios (from wiki QA to creative writing to code) and reports not just accuracy but also things like calibration, robustness, bias, etc. Emphasize that modern evaluation looks at a suite of metrics to get a full picture of a model’s qualities. <strong>Design pattern:</strong> Evaluation harness – treat the evaluation suite as part of the development pipeline, possibly even as an automated agent that probes your model (as we discussed in safety scaffolds).</li>
+        
+        <li><strong>Block 3:</strong> <em>Continuous and Automated Evaluation</em> – How to evaluate agents that learn or that are updated frequently. <strong>Technical focus:</strong> testing pipelines. <em>Content:</em> For agents that operate in environments (e.g. a game-playing agent or a web navigator), discuss the need for continuous evaluation: run the agent through a battery of tasks (some static, some dynamic) on every new version. Also mention crowd-sourced or user feedback as an evaluation source (as done with ChatGPT – thumbs up/down data). Possibly mention OpenAI Evals – a framework they open-sourced for evaluating models on custom scenarios. <strong>Best practice:</strong> Regression tests – keep a set of key test cases (like “the model should never output disallowed content for prompt X” or “the agent should solve task Y in under 50 steps”) and always verify new versions against them to catch regressions.</li>
+        
+        <li><strong>Block 4:</strong> <em>Human Evaluation and User Studies</em> – When metrics fall short, involve humans. <strong>Technical focus:</strong> pairwise comparison tests, user satisfaction surveys. <em>Content:</em> Note that for things like creative writing or chatbot quality, automated metrics (BLEU, etc.) correlate poorly with what humans prefer. So labs rely on human ratings – e.g. pairwise preference: “Which response is better?” or scale ratings on helpfulness. Discuss how Anthropic and OpenAI have large teams for this. Also mention the role of domain experts for specialized eval (like doctors reviewing medical AI answers). <strong>Design consideration:</strong> Evaluation bias – be aware that who your human raters are will bias results (cultural, etc.); hence companies try to get diverse raters. Also, there’s work on using one model to evaluate another (like GPT-4 grading outputs), which is promising but not perfect yet.</li>
+        
+        <li><strong>Block 5:</strong> <em>Benchmarks for Multi-Agent and Autonomous Systems</em> – New challenges in evaluation. <strong>Technical focus:</strong> measuring success for agents that can take long-term actions. <em>Content:</em> Traditional single-task metrics may not capture if an agent is truly useful in an open-ended context. Introduce some efforts: e.g. a benchmark where an agent has to achieve goals in a simulated town (evaluating social interactions, memory), or the recent GAIA evaluation for generative agents. If available, mention metrics like “time to complete task” or “number of errors” for autonomous agent eval. <strong>Design pattern:</strong> Reward design – drawing from RL, sometimes we design an explicit reward function to evaluate an agent (like points in a game or success/failure flags in tasks). If your project involves a long-running agent, consider embedding a reward signal or at least a clear success criterion for evaluation.</li>
+        
+        <li><strong>Block 6:</strong> <em>Project-Specific Evaluation Planning</em> – Turn the focus to the students’ projects. <strong>Activity:</strong> Have each team quickly state: what metrics will you use to evaluate your project’s success? Who or what will judge the output? Are there edge cases you will specifically test? The instructor and peers give quick feedback. <em>Content:</em> Ensure each project has a solid evaluation plan. E.g., if someone is building an AI coding assistant, their eval might be “code passes test cases” and “developer prefers AI-written code X% of time in user study.” If someone’s building a simulated robot, metrics could be task success rate and number of safety violations. <strong>Best practice:</strong> Evaluation alignment – make sure they are measuring the right thing (the metric truly reflects the desired outcome). This wrap-up primes them to implement these evaluations as they start getting results in coming weeks.</li>
+    </ul>
+    <div class="info-box">
+        <strong>Lab:</strong> Design a simple eval harness for a prior assignment’s agent. For example, take the Week 4 ReAct agent or Week 5 memory bot – define 2-3 test queries and the expected correct behavior. Write a script to run the agent on those queries and check outputs (e.g., did it use the calculator tool correctly? Did it avoid a forbidden phrase?). <strong>Deliverable:</strong> The evaluation script and a short description of results when run on their agent – basically creating their own mini-benchmark. This gives practical experience in automating evaluation.
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 20: Knowledge Integration and Neuro-Symbolic Methods</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Bridging Neural and Symbolic AI</em> – Introduce the motivation for neuro-symbolic approaches. <strong>Technical focus:</strong> limitations of pure neural nets (e.g. lack of explicit logical reasoning, need for huge data) and strengths of symbolic systems (exact logic, but brittle). <em>Content:</em> Provide an example problem that neural nets struggle with (like precise logical deduction or complex planning), and how combining a symbolic solver (like a SAT solver or a knowledge base query) with a neural front-end could help. <strong>Design principle:</strong> Hybrid systems – consider pipeline where an LLM interprets natural language into a structured form and a symbolic engine provides a definitive answer, which the LLM then verbalizes.</li>
+        
+        <li><strong>Block 2:</strong> <em>LLM + External Reasoners</em> – Examples of using classical algorithms with LLMs. <strong>Technical focus:</strong> planner and solver integration. <em>Content:</em> Describe an approach like LLM+P where the LLM produces a formal Planning Domain Definition Language (PDDL) problem and a classical planner solves it<a href="https://lilianweng.github.io/posts/2023-06-23-agent/#:~:text=Another%20quite%20distinct%20approach%2C%20LLM%2BP,is%20common%20in%20certain%20robotic"><em></em></a>. Or mention systems where an LLM calls a math engine (like Sympy) for exact calculus solutions. Show how these improve accuracy on tasks that require exactness. <strong>Best practice:</strong> Decompose complex tasks – a design heuristic: let the LLM handle the parts it’s good at (language, broad knowledge) and delegate precise computation or search to specialist modules. This is essentially the “tools” idea, extended to logical tools.</li>
+        
+        <li><strong>Block 3:</strong> <em>Knowledge Graphs and Databases</em> – Infusing structured knowledge into AI reasoning. <strong>Technical focus:</strong> knowledge graph querying. <em>Content:</em> Many enterprises have massive knowledge graphs (e.g. medicine, finance). Discuss how an agent might convert a user query into a database or knowledge graph query (SPARQL or SQL) and use the results. Example: an AI assistant that, instead of “winging” an answer about company policies, actually queries the company’s policy database for the exact rule. <strong>Design pattern:</strong> Retriever-Reader architecture (a form of neuro-symbolic) – the retriever uses symbolic search (exact match, graph traversal) to fetch knowledge, then the reader (neural) integrates that with context to answer.</li>
+        
+        <li><strong>Block 4:</strong> <em>Program Synthesis and Execution</em> – Using code as a form of symbolic reasoning. <strong>Technical focus:</strong> generating code to solve problems. <em>Content:</em> Note that when an LLM writes Python code to do something (like in OpenAI’s Code Interpreter), it’s effectively using the symbolic power of code execution. E.g. writing a loop to do arithmetic it might struggle with if done in pure “brain”. Mention research like GPT-analogizer or others where the model writes a short program to reason. <strong>Best practice:</strong> Check intermediate results – if the AI writes code to compute something, ensure to capture and verify that output. This reduces the black-box aspect: you can see intermediate files, variables, etc. (An advantage of this approach for interpretability and error catching.)</li>
+        
+        <li><strong>Block 5:</strong> <em>Neural Reasoners guided by Logic</em> – Approaches that embed logic directly into model training. <strong>Technical focus:</strong> constrained decoding and logic regularization. <em>Content:</em> Touch on things like DeepMind’s Logic-Augmented Networks or work on ensuring outputs satisfy logical constraints (e.g. constraining an LLM decoder to produce valid JSON or equations). Also, mention differentiable programming where neural nets and symbolic algorithms are combined end-to-end (like a neural network controlling a classical algorithm with gradients). <strong>Design pattern:</strong> Constraint satisfaction – whatever architecture, encourage designing outputs that can be validated against constraints (e.g. if the agent outputs a plan, have a validator ensure the plan is executable and meets goal criteria). This pattern often reveals issues early.</li>
+        
+        <li><strong>Block 6:</strong> <em>Lab Discussion: Integrating Symbolic Components in Projects</em> – Have students identify if their project could benefit from some symbolic method. <strong>Activity:</strong> Each project team says if they rely purely on ML or if there’s a role for a knowledge base, a set of rules, or external solver. For instance, a team building an AI tutor might incorporate a rule-based student model to complement the generative part. Instructor and peers brainstorm simple additions: e.g., “You could add a consistency checker module to your agent that uses symbolic logic to ensure its answers don’t contradict earlier ones.” This pushes them to think beyond end-to-end neural approaches.</li>
+    </ul>
+    <div class="info-box">
+        <strong>Lab:</strong> Implement a tiny neuro-symbolic pipeline: for a given puzzle or task, have the LLM produce a structured representation that a simple program can solve. For example: task – “Find the shortest path from A to D in this graph: …”. Have the LLM output a list of edges or a graph adjacency, then write a short BFS algorithm (provided or student-written) to compute the shortest path, then let the LLM wrap it in an answer sentence. <strong>Deliverable:</strong> The working pipeline and one example where the pure LLM would have answered incorrectly or verbosely, but the neuro-symbolic solution gives a correct, concise answer. (Reflection on why the hybrid approach was beneficial.)
+    </div>
+    <div class="week-block">
+    <h3>Week 21: Scaling, Efficiency, and Future Model Trends</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Trends in Scaling Laws</em> – Revisit scaling: more data, parameters, compute. <strong>Technical focus:</strong> scaling law predictions and limits. <em>Content:</em> Summarize known scaling law research – e.g. performance improves as a power-law with model size, data size, and compute, but with diminishing returns. Discuss where we are: models in hundreds of billions of params, trained on trillions of tokens. Ask: Can this continue indefinitely? Note physical and economic limits (at some point, we can’t double GPUs or data every few months). <strong>Design insight:</strong> Efficiency becomes crucial as raw scaling hits limits; thus, the importance of the next topics (distillation, MoE, etc.).</li>
+
+        <li><strong>Block 2:</strong> <em>Model Compression and Distillation</em> – Techniques to make models smaller and faster without (much) loss. <strong>Technical focus:</strong> knowledge distillation, quantization. <em>Content:</em> Explain distillation: train a smaller “student” model on the outputs of the large “teacher” model to approximate it. Mention that companies distilled GPT-3 into smaller models for deployment. Also cover quantization – reducing precision (float16 -> int8 etc.) to cut memory and compute. Perhaps give numbers: 8-bit quantization can drastically speed up inference with minimal accuracy drop in some cases. <strong>Best practice:</strong> Optimize for deployment – encourage students to think: it’s not just about achieving results, but doing so efficiently. For project, if something is slow, consider distilling or caching responses.</li>
+
+        <li><strong>Block 3:</strong> <em>Sparse Models and Mixture-of-Experts (MoE)</em> – Using sparsity to scale efficiently. <strong>Technical focus:</strong> model architectures where not all parameters are used for every input. <em>Content:</em> Describe the MoE idea (like Mixtral from Mistral AI<a href="https://mistral.ai/news/mixtral-of-experts#:~:text=Mixtral%20is%20a%20sparse%20mixture,and%20combine%20their%20output%20additively"><em></em></a>): the model has many “experts” but only a few are active per token. This way, total parameters can be huge (hundreds of billions or more) but computation per token stays low. Google’s Switch Transformer or GLaM are examples. Discuss trade-offs: routing complexity, need for massive parallelism. <strong>Design pattern:</strong> Conditional computation – a trend in models where they dynamically decide which parts of the network to use (could be experts, or skipping layers, etc.), making computation input-dependent. Agents might similarly choose algorithms based on scenario (analogy: an agent might run a heavy reasoning routine only if needed).</li>
+
+        <li><strong>Block 4:</strong> <em>Hardware and Infrastructure</em> – How advances in hardware influence model development. <strong>Technical focus:</strong> GPUs, TPUs, neuromorphic chips. <em>Content:</em> Quick tour: GPUs are still mainstay, TPUs (Google’s) also widely used; neuromorphic chips (brain-inspired) and optical computing are experimental but could disrupt things by offering efficiency at scale. Also mention memory bandwidth and IO as bottlenecks – loading a huge model from disk can be a pain; this led to innovations like model parallelism and offloading. Possibly mention cloud-based infrastructures (distributed inference across many machines, using techniques like ZeRO from Microsoft for parallelism). <strong>Best practice:</strong> Design with hardware in mind – e.g., if deploying on mobile, use a smaller model; if you have GPU cluster, design to utilize it (like batch requests). Engineers must co-design software with hardware capabilities.</li>
+
+        <li><strong>Block 5:</strong> <em>Frontier Models on the Horizon</em> – Speculate/outline what’s coming (based on 2025 info). <strong>Technical focus:</strong> any rumored or planned models. <em>Content:</em> For example, mention OpenAI GPT-5 if it’s expected (and indeed Observer suggests it was unveiled in Aug 2025 with “PhD-level” performance<a href="https://observer.com/2025/08/google-agi-interactive-world-model/#:~:text=Across%20Silicon%20Valley%2C%20companies%20are,areas%20like%20writing%20and%20coding"><em></em></a>). Also DeepMind’s next moves (perhaps a multimodal Gemini 3 or beyond), Anthropic’s Claude-Next. The trend toward multimodal and agentic abilities in models – e.g. models that can not only chat, but also see, hear, act. Mention the concept of ASI (superintelligence) carefully – not here yet, but labs are starting to discuss governance of models more powerful than current AGI-level (point to the policies from Week 11). <strong>Design takeaway:</strong> Keep architecture flexible – future might require integrating vision, long text, perhaps continuous learning. Students should architect their projects to be as modular as possible so components can be swapped for better future models easily.</li>
+
+        <li><strong>Block 6:</strong> <em>Reflection and Course Synthesis</em> – Summarize what scaling and efficiency means for designers of AI. <em>Content:</em> Emphasize that not every problem needs the biggest model; often a well-fine-tuned smaller model or a combination of specialized models (ensemble) can work better and cheaper. Recap a bit: We started with giant models and fancy abilities, but end by noting practicality – the real world calls for right-sizing solutions. Encourage students to be mindful of compute costs, environmental impact* of training huge models, etc. Final thought: The frontier of AI is not just about making models larger, but making them better – more reliable, interpretable, and energy-efficient. This aligns all the themes: we want advanced AI and safe, manageable AI.</li>
+    </ul>
+    <div class="info-box">
+        <strong>Lab:</strong> Efficiency challenge – each team revisits their project implementation and identifies one efficiency improvement (could be model size reduction, caching results, moving some logic out of the LLM into a simpler heuristic, etc.). They don’t have to fully implement it now, but outline how they would scale down or speed up their solution for real-world use. They can try a quick experiment like quantizing their model or using a smaller model to see quality vs speed trade-off. <strong>Deliverable:</strong> A short note added to their project documentation about an efficiency modification and (if measured) its impact (e.g. “quantized model X ran 2x faster with only minor drop in accuracy”).
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 22: Ethics, Policy, and Societal Impact Panel</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Guest Panel Introduction</em> – The class welcomes 2–3 guest experts (could be faculty or industry practitioners in AI ethics, policy, or safety engineering). Each briefly introduces their background and a key perspective on AI in society. <em>Content:</em> For instance, one might be an AI policy advisor talking about upcoming regulations (like the EU AI Act), another a startup founder discussing responsible AI practices, another a researcher from an AI safety group.</li>
+        
+        <li><strong>Block 2:</strong> <em>Discussion: Current AI Governance</em> – Moderator (instructor) asks panel: “What are the most important steps being taken to ensure AI develops safely and beneficially?” <strong>Technical/policy focus:</strong> content could include discussion of AI model audits, government regulations, industry self-governance pledges (like not releasing certain capabilities without safeguards). Panelists might mention the need for standards (as introduced in frontier safety frameworks<a href="https://medium.com/enkrypt-ai/frontier-safety-frameworks-a-comprehensive-picture-e070efb4d0a7#:~:text=By%20contrast%2C%20collectively%20defined%20frameworks,responsibly%2C%20and%20be%20held%20accountable"><em></em></a><a href="https://medium.com/enkrypt-ai/frontier-safety-frameworks-a-comprehensive-picture-e070efb4d0a7#:~:text=The%20frontier%20safety%20frameworks%20developed,This%20section"><em></em></a>). Students see the real-world extension of topics from Week 11 and 12.</li>
+        
+        <li><strong>Block 3:</strong> <em>Student Q&A to Panel</em> – Students ask the panelists questions. Likely areas: “How will regulations affect AI research?”, “What career paths exist in AI policy or safety?”, “How do we balance innovation with caution?” Panelists give candid answers. This helps students contextualize their technical work with larger societal issues.</li>
+        
+        <li><strong>Block 4:</strong> <em>Debate: Long-term AI Risks</em> – The panel and students engage in a friendly debate on AGI and ASI. Some may argue superintelligence is far off or not a concern, others that we need to prepare now. <em>Content:</em> Refer to concepts like the control problem, international coordination (e.g. avoiding an AI arms race). Possibly a panelist brings up the idea of AI pause or global monitoring of large training runs. Students can chime in with thoughts from course (they have learned how quickly things progressed with GPT-5 claims<a href="https://observer.com/2025/08/google-agi-interactive-world-model/#:~:text=Across%20Silicon%20Valley%2C%20companies%20are,areas%20like%20writing%20and%20coding"><em></em></a>, so they might have opinions).</li>
+        
+        <li><strong>Block 5:</strong> <em>Ethical Case Studies</em> – Panel or instructor presents a couple of brief real scenarios: e.g., “An AI mental health chatbot gives a user harmful advice – who is responsible and how to prevent this?” or “Deepfake technology used in a political campaign.” Students and panel brainstorm solutions: better training? user education? legal restrictions? <strong>Design tie-in:</strong> highlight how technical design (adding guardrails, verification, etc.) intersects with policy (laws, guidelines) and end-user responsibility.</li>
+        
+        <li><strong>Block 6:</strong> <em>Wrap-up: The Role of AI Engineers in Society</em> – Each panelist gives a final one-minute advice to the students. <em>Content:</em> Common thread likely: as future AI leaders, they should uphold ethical standards, be transparent, and engage with the policy domain, not just coding. Instructor closes by reinforcing that building state-of-the-art AI (everything we learned technically) goes hand in hand with ensuring those AI are used for good – a theme of the course.</li>
+    </ul>
+    <div class="info-box">
+        <strong>Lab/Assignment:</strong> Write a reflection (1–2 pages) on the panel discussion. <strong>Deliverable:</strong> Each student shares their takeaways: How will considerations of ethics and policy influence their approach to AI projects? Do they feel more inclined to contribute to governance efforts? They should mention any insight from the panel that struck them, and how they might apply it (e.g. “I will make sure to include a model card and ethical risk section for any model I build”). This solidifies the integration of societal awareness into their technical skillset.
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 23: In-Class Hackathon – Building an Autonomous Agent</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Hackathon Kick-off</em> – The class is challenged to build (or improve) a small autonomous agent in a single session (or single day, if this extends beyond class hours). Instructor defines the goal: for example, “Construct an agent that can research a given topic and produce a well-organized summary with sources.” Teams (or individuals) will compete or just all attempt this. <strong>Technical focus:</strong> integration of multiple skills – web tool use, summarization, citing. The goal is to apply many course concepts quickly.</li>
+        
+        <li><strong>Block 2:</strong> <em>Planning Phase (30 min)</em> – Teams plan their agent architecture. <em>Content:</em> They decide, for example, to have a search tool (maybe using an API or a stub that returns pre-fetched info), an LLM for summarization, a memory to store found facts, and a cite-checker. They write down the modules and how they communicate. <strong>Design emphasis:</strong> think of design patterns: likely a ReAct loop (Thought: question -> Action: search -> Observation: result -> Thought: formulate answer -> Action: none -> finish). The instructor circulates, nudging teams to remember relevant material (“Have you considered what happens if the search returns a misleading result? Any guardrail or cross-check?”).</li>
+        
+        <li><strong>Block 3:</strong> <em>Coding/Building Phase</em> – Teams implement as much as possible. <em>Content:</em> They might use a provided scaffold code (the instructor might have given a basic agent loop code from earlier labs that they can modify). If internet access is allowed: possibly use a real API like Wikipedia search; if not, the instructor can provide a mini knowledge base to query. Teams integrate their LLM of choice (maybe a local model or an API). <strong>Focus:</strong> Hands-on synthesis of techniques – prompt engineering for the agent, maybe fine-tuning a bit, definitely testing and iterating.</li>
+        
+        <li><strong>Block 4:</strong> <em>Testing Phase</em> – Each team tests their agent on a sample task (e.g., “Summarize the key findings on climate change impact on agriculture”). They observe performance and fix bugs. <em>Content:</em> They likely encounter issues: agent might hallucinate a source, or not terminate properly. They apply debug strategies learned (looking at chain-of-thought logs, etc.). Possibly implement a quick fix like a regex to ensure URLs are present in output if citing, etc. <strong>Best practice:</strong> Ad-hoc but emphasizes rapid prototyping and iterative improvement – a realistic scenario in hackathons or startup work.</li>
+        
+        <li><strong>Block 5:</strong> <em>Showcase</em> – Each team (or selected teams if many) demos their agent briefly. <em>Content:</em> They describe their design (which modules, any innovative twist like using memory or a particular prompt trick) and show it handle a query. The class and instructor observe outputs, noting strengths and weaknesses. It’s a friendly competition feel.</li>
+        
+        <li><strong>Block 6:</strong> <em>Debrief</em> – Instructor leads a discussion: what was easy, what was hard? <em>Content:</em> Probably teams will say integration was tricky, or the agent did something unexpected. The instructor links these back to course topics: “Team A’s agent got stuck in a loop – that reminds us of the need for loop detection (Week 12 safety). Team B’s summary missed a key point – evaluation is needed (Week 19).” It’s a fun way to reinforce lessons. <strong>Conclusion:</strong> Highlight how far they’ve come – in a short time, they could build a non-trivial AI agent by drawing on multiple course concepts. This sets the stage for final project crunch with confidence.</li>
+    </ul>
+    <div class="info-box">
+        <strong>Assignment:</strong> Write a brief report on your hackathon agent design. <strong>Deliverable:</strong> What approach did the team take? What worked and what didn’t? If you had another day, what would you improve? This is more for their learning than grading – documenting the experience consolidates their integrated understanding.
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 24: Advanced Topics Roundtable and Open Q&A</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Open Roundtable – Student Interests</em> – This week is kept flexible to explore any cutting-edge topics that emerged recently or were not deeply covered. At the start, gather topics students are curious about (e.g. “Can we talk about AlphaDev (AI for algorithm discovery)?” or “What about quantum computing and AI?”). Instructor has a list prepared as well (like neuromorphic AI, consciousness debates, AI in education etc.) and picks a few that fit time.</li>
+        
+        <li><strong>Block 2:</strong> <em>Topic 1 Discussion</em> – Suppose Topic 1 is AI and Consciousness (just an example of a philosophical frontier). <strong>Technical/philosophical focus:</strong> differentiate intelligence from consciousness, mention views from experts (some say current LLMs just predict text, not truly sentient; others like Blake Lemoine famously argued a Google model was sentient). <em>Content:</em> Debate style discussion or instructor-led explaining why most scientists think we’re not there, but acknowledging we don’t even have a consensus definition of consciousness. <strong>Design angle:</strong> It might not directly inform engineering, but students can consider if an agent should simulate human-like traits or not.</li>
+        
+        <li><strong>Block 3:</strong> <em>Topic 2 Lightning Lecture</em> – Maybe Quantum Machine Learning – instructor gives a 10-minute primer: how quantum computing might accelerate certain ML tasks, but also the hype vs reality. Or another possible topic: AI for Climate Modeling – an application domain not covered yet. <em>Content:</em> Whichever chosen, ensure we tie it to course themes – either showing a novel design pattern or a domain with unique constraints requiring tailored AI solutions.</li>
+        
+        <li><strong>Block 4:</strong> <em>Student Q&A – Any Unanswered Questions</em> – Give floor to students to ask anything from throughout the course that they want clarification or deeper insight on. This could range from “Can you explain again how the A2A protocol secures agent communication?” to “What careers are there in AGI research vs. narrow AI?” The instructor addresses these. It’s essentially a review and ensure no one leaves with big doubts.</li>
+        
+        <li><strong>Block 5:</strong> <em>Course Synthesis Exercise</em> – Each student (or small group) is asked to come up with three principles they learned for designing modern AI systems, based on the entire course. They write these down or discuss briefly. Then the instructor randomly calls on a few to share. <em>Content:</em> We might hear principles like “Always integrate safety checks when giving an agent autonomy” or “Use the simplest model that gets the job done (don’t over-engineer with a 100B model if 1B + knowledge base works)” or “Iterative prompt refinement and human feedback are key in deployment.” The instructor writes these on board, forming a nice collection of hard-earned wisdom.</li>
+        
+        <li><strong>Block 6:</strong> <em>Looking Ahead and Final Advice</em> – Instructor concludes the instructional part of the course. <em>Content:</em> Summarize how the field is rapidly evolving – what they learned this year might change by next year, so the meta-skill is learning how to learn and adapt in AI (staying updated via arXiv, etc.). Encourage them to be the next innovators but to recall the ethical grounding. Possibly suggest some resources for beyond the course (advanced research groups, communities, etc.). <strong>Best practice emphasis:</strong> Lifelong learning – the course taught them not just facts but how to approach new AI problems critically and safely.</li>
+    </ul>
+    <div class="info-box">
+        <strong>Lab/Assignment:</strong> None formally – this week is more of a wrap-up academically (project work is likely ongoing heavily). If anything, they could be encouraged to update their project plans with any new insights from these advanced discussions (not a graded deliverable, just iterative improvement).
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 25: Project Midpoint Progress Presentations</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Status Update Presentations</em> – Each project team gives a brief presentation on their progress: what they’ve implemented, initial results, challenges faced. <strong>Technical focus:</strong> Students should mention which components of their system are working (e.g. “We have the agent able to use the two tools we planned, but integrating the memory module is still in progress”). They should also share any preliminary experiment outcomes or unexpected findings.</li>
+        
+        <li><strong>Block 2:</strong> <em>Feedback and Troubleshooting</em> – After each update, class and instructor provide feedback or suggestions. <em>Content:</em> This turns into a problem-solving session: If Team X is struggling with the agent going off-track, others might suggest “Have you tried adding an inner monologue step or a self-evaluation as we learned in Reflexion?” If another team’s model is too slow, suggestions like “distill the model or use a smaller one with retrieval” (from Week 21). This way, knowledge from lectures directly helps solve project issues.</li>
+        
+        <li><strong>Block 3:</strong> <em>Common Challenges Discussion</em> – Instructor notes recurring themes across projects. Perhaps many face prompt reliability issues or evaluation difficulties. <em>Content:</em> They might do a mini-recap, like “Recall in Week 4 we discussed prompt templates; maybe standardizing a template and few-shot examples will help those seeing inconsistent outputs.” Or “From Week 19, ensure you’re testing your systems systematically – a few teams found bugs only when they tried multiple scenarios.” This aligns course theory with practice.</li>
+        
+        <li><strong>Block 4:</strong> <em>Milestone Check: Are Goals Realistic?</em> – Ensure each project is scoped right for the remaining time (~5 weeks left). <em>Content:</em> Instructor might advise simplifications if someone aimed too high. E.g., “Your plan to build a full multi-agent simulation might be too much; consider focusing on one aspect to demonstrate.” Or encourage ambition if someone is far ahead and can add a stretch goal. It’s like a agile sprint review where adjustments are made.</li>
+        
+        <li><strong>Block 5:</strong> <em>Peer Collaboration</em> – Announce if any cross-team collaborations or resource sharing make sense. <em>Content:</em> Perhaps Team A has a great evaluation script that Team B could adapt; or two teams could jointly collect some data. Encourage a bit of collaboration, as is common in research (sharing tips, maybe one team acts as beta testers for another’s system).</li>
+        
+        <li><strong>Block 6:</strong> <em>Next Steps and Timeline</em> – Instructor re-iterates the schedule: when final reports are due, the final presentation structure, etc. Ensure everyone is aligned on what deliverables need to be prepared (code, documentation, model cards, etc.). Motivation boost: highlight how much has been achieved and how these projects could even be publishable or showcaseable beyond class if polished.</li>
+    </ul>
+    <div class="info-box">
+        <strong>Deliverable:</strong> Each team submits a short progress report document (if not already as slides) summarizing current status and updated plan. This isn’t heavily graded except for completeness; it’s to commit to next steps in writing. The instructor provides written feedback on each, focusing on any remaining concerns (technical or scope).
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 26: Independent Project Development (no formal class)</h3>
+    <ul>
+        <li>(No structured blocks; this week is kept free for teams to focus on project work. Instructor and TAs hold office hours for consultation.)</li>
+        <li>Note: This is effectively a buffer week; if the course schedule doesn’t allow an off-week, it could be used for an optional tutorial or simply absorbed into project work. No new content is introduced. Students use this time to implement feedback from Week 25 and push toward completion.</li>
+    </ul>
+</div>
+
+<div class="week-block">
+    <h3>Week 27: Independent Project Development (no formal class)</h3>
+    <ul>
+        <li>(Similar to Week 26, reserved for project work and finalizing experiments. Instructor available for guidance. Teams start preparing presentation materials.)</li>
+    </ul>
+</div>
+
+<div class="week-block">
+    <h3>Week 28: Final Project Presentations – Part 1</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Introduction to Final Presentations</em> – Instructor welcomes everyone to the “conference-style” presentation sessions. Remind of time limits and evaluation criteria (technical depth, creativity, results, etc.). Possibly external guests (other faculty or industry mentors) are invited to evaluate and give feedback, to simulate a real presentation scenario.</li>
+        <li><strong>Block 2:</strong> <em>Project Presentation 1</em> – Team 1 presents their project in ~15 minutes, including demo if applicable. <em>Content:</em> They cover motivation, method (drawing on course concepts extensively), results with data, a live or video demo, and a discussion of limitations and future work. They must also address safety considerations (as required in proposal) – e.g., “We built an autonomous coding agent; we included a tool governance layer and tested it against the Top 10 OWASP security risks.”</li>
+        <li><strong>Block 3:</strong> <em>Q&A 1</em> – The class and panel ask questions. The team responds. Questions often hit on “Why did you choose X model?”, “Did you consider doing Y?”, “How does it perform on edge case Z?” Team shows they can think critically (maybe referencing relevant literature or lecture topics in answers).</li>
+        <li><strong>Block 4:</strong> <em>Project Presentation 2</em> – Next team goes, similarly.</li>
+        <li><strong>Block 5:</strong> <em>Q&A 2</em> – As before, interactive. Possibly some discussion among audience comparing with Project 1 if related (e.g., “Team 2, you did a similar multi-agent approach as Team 1 but in healthcare – did you encounter the same challenge they had with coordination?”).</li>
+        <li><strong>Block 6:</strong> <em>Project Presentation 3 (if time permits in this session)</em> – Continue as above if needed. Depending on number of teams, project presentations will span two weeks (Part 1 and Part 2).</li>
+    </ul>
+    <div class="info-box">
+        <strong>Note:</strong> Each presentation is effectively demonstrating mastery of course material applied in a new context, so evaluation is partly on how well they leveraged what they learned (design patterns, safety features, etc.). Peers also learn from each other’s work.
+    </div>
+</div>
+
+<div class="week-block">
+    <h3>Week 29: Final Project Presentations – Part 2</h3>
+    <ul>
+        <li><strong>Block 1–5:</strong> Project Presentations 4, 5, 6… – Continue with remaining teams. Each follows the format: presentation, demo, Q&A.</li>
+        <li><strong>Block 6:</strong> <em>Closing Discussion and Awards</em> – After all presentations, instructor leads applause and a reflection. Possibly have fun awards (not necessarily graded): e.g. “Most innovative design”, “Best use of safety measures”, “Best live demo” etc., to celebrate different aspects. These can be light-hearted, voted by class or decided by judges, to end on a high note.
+        Instructor gives final remarks: praising how each project in some way pushed the envelope (truly “Emerging Topics in Modern AI” in action).</li>
+        <li><strong>Final Deliverables Due:</strong> Final project technical report, code, and any supplementary materials are collected. Students likely submit a conference-style paper write-up (around Week 30 or earlier if required).</li>
+    </ul>
+</div>
+
+<div class="week-block">
+    <h3>Week 30: Course Wrap-up and Future Outlook</h3>
+    <ul>
+        <li><strong>Block 1:</strong> <em>Course Summary and Key Takeaways</em> – Instructor presents a high-level summary of everything covered, tying it into a narrative. For instance: “We began by understanding the raw power of modern AI models (Week 1–2), learned to harness that power through agentic frameworks (Weeks 3–10), and stressed aligning and controlling that power responsibly (Weeks 11–18). We’ve seen domain applications and even built our own systems (projects).” This closure reinforces the integrated knowledge the students now have.</li>
+        <li><strong>Block 2:</strong> <em>Student Reflections</em> – Open floor for students to share what they found most valuable or surprising. This can be informal; perhaps one student says they initially worried about AI safety being abstract but now appreciate concrete techniques, another might note how multi-agent systems were an eye-opener, etc.</li>
+        <li><strong>Block 3:</strong> <em>Future of AI – Open Discussion</em> – Given everything, where do students think AI is heading in the next 5–10 years? <em>Content:</em> This is speculative but grounded in their new expertise. Some may say “I think grounded agents with real-time learning will be next big thing,” others may focus on “We need better interpretability before scaling further.” Instructor moderates to ensure thoughtful contributions.</li>
+        <li><strong>Block 4:</strong> <em>Course Feedback (Meta)</em> – Instructor may solicit feedback on the course itself (to improve future iterations). Not exactly content, but important academically. Possibly a quick anonymous poll or just verbal: which activities or topics were most/least useful. This is also instructive for students in reflecting on their own learning process.</li>
+        <li><strong>Block 5:</strong> <em>Closing Inspiration</em> – Share a visionary quote or a short video from an AI luminary to inspire students as they leave. E.g., Demis Hassabis or Fei-Fei Li talking about the positive impact AI can have if guided well. <em>Content:</em> Emphasize that they, as new experts, have a role in shaping AI for the better. Encourage them to publish their project, continue research, or apply these skills in industry solving important problems (health, environment, etc.).</li>
+        <li><strong>Block 6:</strong> <em>Goodbyes and Networking</em> – End on a community note. Ensure students connect (maybe a course mailing list or chat remains open for them to share news). If in person, maybe a group photo or a casual small celebration. The idea is to conclude not just as a class but as a cohort of future AI leaders who will keep an eye out for each other’s work.</li>
+        <li>No further deliverables. Final grades will be based largely on projects and participation. The knowledge and experience gained are the true takeaway as they move on to thesis research or industry roles at the cutting edge of AI.</li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+    <title>AI Research Reference Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .intro p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .category {
+            margin-bottom: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+
+        .category-header {
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+
+        .category-header h2 {
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-header .icon {
+            margin-right: 15px;
+            font-size: 1.3em;
+        }
+
+        .category-header .arrow {
+            font-size: 1.5em;
+            color: rgb(43, 67, 226);
+            transition: transform 0.3s ease;
+        }
+
+        .category-header .arrow.open {
+            transform: rotate(180deg);
+        }
+
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #f9f9f9;
+        }
+
+        .category-content.open {
+            max-height: 3000px;
+        }
+
+        .link-item {
+            padding: 20px 25px;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background 0.3s ease;
+        }
+
+        .link-item:last-child {
+            border-bottom: none;
+        }
+
+        .link-item:hover {
+            background: white;
+        }
+
+        .link-item h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .link-item a {
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+            transition: color 0.3s ease;
+        }
+
+        .link-item a:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+
+        .link-item p {
+            color: #666;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-left: 10px;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .category-header h2 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Research Reference Library</h1>
+            <p>Comprehensive collection of cutting-edge AI research and developments</p>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <p><strong>Welcome to the AI Research Reference Library!</strong> This curated collection brings together the latest developments in artificial intelligence, organized by topic for easy navigation. Click on any category below to explore related resources, research papers, and industry insights.</p>
+            </div>
+
+            <!-- AI Progress & Industry Trends -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <h2><span class="icon">📊</span>AI Progress & Industry Trends</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="link-item">
+                        <h3>AI Progress in 2025: What's Happened and What's Next</h3>
+                        <a href="https://www.digitalbricks.ai/blog-posts/ai-progress-in-2025-whats-happened-and-whats-next" target="_blank">https://www.digitalbricks.ai/blog-posts/ai-progress-in-2025-whats-happened-and-whats-next</a>
+                        <p>Comprehensive overview of major AI milestones achieved in 2025 and predictions for future developments. Covers breakthrough models, industry adoption patterns, and emerging trends in machine learning and generative AI.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- World Models & Simulation -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <h2><span class="icon">🌍</span>World Models & Simulation</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="link-item">
+                        <h3>Genie 3: A New Frontier for World Models</h3>
+                        <a href="https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/" target="_blank">https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/</a>
+                        <p>Google DeepMind's announcement of Genie 3, an advanced world model capable of generating interactive, controllable 3D environments from text or image prompts. Represents significant progress toward AGI through environmental simulation and understanding.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>Google Says It's Inching Towards AGI With an Interactive 'World Model'</h3>
+                        <a href="https://observer.com/2025/08/google-agi-interactive-world-model/" target="_blank">https://observer.com/2025/08/google-agi-interactive-world-model/</a>
+                        <p>Analysis of Google's claims about approaching artificial general intelligence through world modeling technology. Discusses the implications and expert reactions to these developments.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Large Language Models & Architecture -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <h2><span class="icon">🧠</span>Large Language Models & Architecture</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="link-item">
+                        <h3>Mixtral of Experts<span class="badge">MoE Architecture</span></h3>
+                        <a href="https://mistral.ai/news/mixtral-of-experts" target="_blank">https://mistral.ai/news/mixtral-of-experts</a>
+                        <p>Mistral AI's introduction of Mixtral, a sparse mixture of experts (MoE) model that achieves competitive performance with significantly reduced computational costs. Explains the architecture and benefits of expert-routing approaches.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Agents & Autonomous Systems -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <h2><span class="icon">🤖</span>AI Agents & Autonomous Systems</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="link-item">
+                        <h3>LLM Powered Autonomous Agents<span class="badge">Foundational</span></h3>
+                        <a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">https://lilianweng.github.io/posts/2023-06-23-agent/</a>
+                        <p>Comprehensive technical blog post by Lilian Weng covering the architecture, capabilities, and challenges of LLM-powered autonomous agents. Includes discussions of planning, memory, and tool use in agent systems.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>What is a ReAct Agent?</h3>
+                        <a href="https://www.ibm.com/think/topics/react-agent" target="_blank">https://www.ibm.com/think/topics/react-agent</a>
+                        <p>IBM's explanation of the ReAct (Reasoning and Acting) framework that combines reasoning traces with action execution in LLM agents. Covers how this approach improves agent reliability and interpretability.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>Persistent Memory in LLM Agents</h3>
+                        <a href="https://www.emergentmind.com/topics/persistent-memory-for-llm-agents" target="_blank">https://www.emergentmind.com/topics/persistent-memory-for-llm-agents</a>
+                        <p>Exploration of techniques for enabling long-term memory in AI agents, including vector databases, memory consolidation strategies, and retrieval mechanisms that allow agents to learn from past interactions.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>AI Scientists: Autonomous Research Agents</h3>
+                        <a href="https://www.emergentmind.com/topics/ai-scientists" target="_blank">https://www.emergentmind.com/topics/ai-scientists</a>
+                        <p>Discussion of AI systems capable of conducting autonomous research, including hypothesis generation, experiment design, and result analysis. Examines the potential and limitations of automated scientific discovery.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>What is ChatDev?</h3>
+                        <a href="https://www.ibm.com/think/topics/chatdev" target="_blank">https://www.ibm.com/think/topics/chatdev</a>
+                        <p>Overview of ChatDev, a multi-agent framework where different AI agents take on roles like CEO, programmer, and tester to collaboratively develop software applications through natural language communication.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Robotics & Embodied AI -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <h2><span class="icon">🦾</span>Robotics & Embodied AI</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="link-item">
+                        <h3>Robotics and AI: An AI Atlas Report</h3>
+                        <a href="https://www.emerge.haus/blog/robotics-ai" target="_blank">https://www.emerge.haus/blog/robotics-ai</a>
+                        <p>Comprehensive report on the intersection of robotics and artificial intelligence. Covers recent advances in robot learning, manipulation, navigation, and the integration of foundation models into robotic systems.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data & Training Techniques -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <h2><span class="icon">📚</span>Data & Training Techniques</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="link-item">
+                        <h3>Synthetic Data: Benefits and Techniques for LLM Fine-Tuning in 2025</h3>
+                        <a href="https://labelyourdata.com/articles/llm-fine-tuning/synthetic-data" target="_blank">https://labelyourdata.com/articles/llm-fine-tuning/synthetic-data</a>
+                        <p>Detailed guide on using synthetic data for fine-tuning large language models. Covers generation techniques, quality control, benefits, and best practices for creating effective synthetic training datasets.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>Aligning Large Language Models via Fully Self-Synthetic Data<span class="badge">Research Paper</span></h3>
+                        <a href="https://arxiv.org/html/2510.06652v1" target="_blank">https://arxiv.org/html/2510.06652v1</a>
+                        <p>Academic paper exploring methods for aligning LLMs using entirely synthetic training data generated by the models themselves. Discusses implications for reducing human annotation requirements.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>Retrieval-Augmented Generation Elevates Local LLM Quality</h3>
+                        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12223273/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC12223273/</a>
+                        <p>Research article demonstrating how retrieval-augmented generation (RAG) techniques improve the performance and factual accuracy of locally-deployed language models by incorporating external knowledge sources.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Safety & Governance -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <h2><span class="icon">🛡️</span>AI Safety & Governance</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="link-item">
+                        <h3>Frontier Safety Frameworks — A Comprehensive Picture<span class="badge">Essential</span></h3>
+                        <a href="https://medium.com/enkrypt-ai/frontier-safety-frameworks-a-comprehensive-picture-e070efb4d0a7" target="_blank">https://medium.com/enkrypt-ai/frontier-safety-frameworks-a-comprehensive-picture-e070efb4d0a7</a>
+                        <p>In-depth analysis of safety frameworks developed by leading AI labs for frontier models. Covers risk assessment, capability evaluations, deployment safeguards, and governance structures.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>Claude's Constitution</h3>
+                        <a href="https://www.anthropic.com/news/claudes-constitution" target="_blank">https://www.anthropic.com/news/claudes-constitution</a>
+                        <p>Anthropic's explanation of the constitutional principles governing Claude's behavior. Details the values and guidelines used to train Claude to be helpful, harmless, and honest.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>Constitutional AI</h3>
+                        <a href="https://constitutional.ai/" target="_blank">https://constitutional.ai/</a>
+                        <p>Resource hub tracking Anthropic's Constitutional AI methodology, which uses AI feedback based on a set of principles to train safer, more aligned language models without extensive human oversight.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>ASL-3 Deployment Safeguards<span class="badge">Policy Document</span></h3>
+                        <a href="https://www.anthropic.com/asl3-deployment-safeguards" target="_blank">https://www.anthropic.com/asl3-deployment-safeguards</a>
+                        <p>Anthropic's official documentation of AI Safety Level 3 (ASL-3) deployment safeguards. Outlines the security measures, monitoring systems, and operational protocols for deploying advanced AI systems.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>How Safe Is Anthropic's "Safest" Model? We Red Teamed Claude</h3>
+                        <a href="https://splx.ai/blog/red-teaming-claude-sonnet-4-5" target="_blank">https://splx.ai/blog/red-teaming-claude-sonnet-4-5</a>
+                        <p>Independent security assessment through red teaming exercises on Claude Sonnet 4.5. Reports on discovered vulnerabilities, safety performance, and comparison with safety claims.</p>
+                    </div>
+                    <div class="link-item">
+                        <h3>Common Elements of Frontier AI Safety Policies<span class="badge">PDF Report</span></h3>
+                        <a href="https://metr.org/common-elements.pdf" target="_blank">https://metr.org/common-elements.pdf</a>
+                        <p>METR's comparative analysis of safety policies across major AI development organizations. Identifies common best practices and gaps in current frontier AI safety approaches.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generative AI Applications -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <h2><span class="icon">🎨</span>Generative AI Applications</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="link-item">
+                        <h3>Dream Bigger: Get Started with Generative Fill, Powered by Adobe Firefly</h3>
+                        <a href="https://blog.adobe.com/en/publish/2023/05/23/future-of-photoshop-powered-by-adobe-firefly" target="_blank">https://blog.adobe.com/en/publish/2023/05/23/future-of-photoshop-powered-by-adobe-firefly</a>
+                        <p>Adobe's introduction of Generative Fill in Photoshop, powered by their Firefly AI model. Demonstrates practical applications of generative AI in professional creative workflows and image editing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleCategory(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.arrow');
+            
+            content.classList.toggle('open');
+            arrow.classList.toggle('open');
+        }
+
+        // Optional: Open first category by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstCategory = document.querySelector('.category-header');
+            if (firstCategory) {
+                toggleCategory(firstCategory);
+            }
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Domain-Specific Applied AI - Two-Semester Graduate Syllabus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f7 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 Q300,50 600,50 T1200,0 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .semester-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-size: 1.1em;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease 0.3s both;
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin: 50px 0 30px 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e8f0f7;
+            position: relative;
+            animation: slideInLeft 0.6s ease;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        h2:hover::after {
+            width: 200px;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.6em;
+            margin: 35px 0 20px 0;
+            padding: 15px 20px;
+            background: linear-gradient(90deg, #f0f4ff 0%, #faf5ff 100%);
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        h3:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.15);
+        }
+
+        ul {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin: 15px 0;
+            padding-left: 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateX(5px);
+        }
+
+        strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        em {
+            color: #764ba2;
+            font-style: italic;
+        }
+
+        p {
+            margin: 20px 0;
+            text-align: justify;
+        }
+
+        .reading-section {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3d9 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 5px solid #f59e0b;
+            transition: all 0.3s ease;
+        }
+
+        .reading-section:hover {
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .reading-section strong:first-child {
+            color: #f59e0b;
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .lab-section {
+            background: linear-gradient(135deg, #e6f7ff 0%, #d9f0ff 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 5px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+
+        .lab-section:hover {
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .lab-section strong:first-child {
+            color: #3b82f6;
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #764ba2;
+            border-bottom-color: #764ba2;
+        }
+
+        .citation {
+            display: inline-block;
+            background: #f0f4ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin: 0 3px;
+            transition: all 0.3s ease;
+        }
+
+        .citation:hover {
+            background: #e0e7ff;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .semester-divider {
+            margin: 60px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            animation: fadeIn 0.8s ease;
+        }
+
+        .semester-divider h2 {
+            color: white;
+            border: none;
+            margin: 0;
+            animation: none;
+        }
+
+        .semester-divider h2::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+        }
+        .references-section {
+  max-width: 850px;
+  margin: 40px auto 50px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 3px 24px #e2eefa42;
+  border: 1px solid #e5eaf4;
+  padding: 38px 28px;
+}
+.ref-dropdown {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background: #f3f7fc;
+  border: 1px solid #e1e7f2;
+  overflow: hidden;
+  transition: background .27s;
+}
+.ref-title {
+  padding: 14px 24px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #276ee3;
+  background: #f6faff;
+  border: none;
+  outline: none;
+  font-size: 1.1em;
+  letter-spacing: 0.015em;
+  user-select: none;
+  position: relative;
+}
+.ref-title::after {
+  content: '▼';
+  font-size: 0.82em;
+  float: right;
+  color: #aaa;
+  transition: transform 0.25s;
+}
+.ref-dropdown.open .ref-title::after {
+  transform: rotate(-180deg);
+  color: #649cf7;
+}
+.ref-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 24px;
+  background: #fafdff;
+  color: #465074;
+  border-top: 1px solid #e4eaf7;
+  font-size: 1em;
+  transition: max-height .38s cubic-bezier(.44,1,.69,1.19), padding .24s;
+}
+.ref-dropdown.open .ref-content {
+  max-height: 450px;
+  padding: 16px 24px 16px 24px;
+}
+.ref-links a {
+  color: #2171e6;
+  text-decoration: none;
+  border-bottom: 1px dotted #2171e6;
+  margin-right: 1em;
+  word-break: break-all;
+}
+.ref-links a:hover { color: #195ba3; border-bottom: 1px solid #2171e6;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Advanced Domain-Specific Applied AI</h1>
+            <div class="semester-badge">Two-Semester Graduate Syllabus</div>
+        </header>
+
+        <div class="content">
+            <h2>Semester 1: Foundations of Domain-Specific AI Techniques</h2>
+
+            <h3>Lecture 1: Course Introduction & Real-World Domain Challenges</h3>
+            <ul>
+                <li><strong>00:00–00:30 – Course Goals and Scope:</strong> Introduce the course objectives and the need for domain-specific AI. Discuss how AI solutions must be tailored for fields like healthcare, finance, law, etc., highlighting examples where generic AI models failed or needed adaptation (e.g. a generic image classifier misreading a medical X-ray). Set expectations for course workload and project.</li>
+                <li><strong>00:30–01:00 – Domain-Specific vs General AI:</strong> Define <em>domain-specific AI</em> and contrast it with general-purpose models. Emphasize that while models like GPT-4 are general, specialized domains often require incorporation of niche knowledge, terminology, and strict reliability. For instance, finance and medical fields are developing bespoke LLMs (e.g. BloombergGPT for finance) to achieve better in-domain accuracy without sacrificing general capabilities.</li>
+                <li><strong>01:00–01:30 – Key Challenges in Regulated Domains:</strong> Outline challenges such as data privacy (HIPAA in healthcare, GDPR in finance), lack of labeled data in rare conditions, the need for explainability and strict accuracy (e.g. legal AI must cite relevant laws exactly). Mention how hallucinations or errors can have serious consequences in these fields.</li>
+                <li><strong>01:30–02:00 – Case Study: AI in Healthcare and Law:</strong> Present two mini case studies: one in healthcare (e.g. diagnostic AI on X-rays) and one in law (contract analysis AI). Identify domain obstacles faced – e.g. the healthcare model struggled with rare disease data and needed synthetic augmentation, the legal model had to handle complex jargon and required retrieval of statutes.</li>
+                <li><strong>02:00–02:30 – Domain AI Success Stories:</strong> Showcase successful domain-specific AI applications, such as medical question-answering systems achieving near-expert performance<span class="citation">[1]</span><span class="citation">[2]</span>, or financial models like BloombergGPT outperforming general models on finance tasks. Emphasize what made them successful (curated domain data, hybrid techniques, etc.).</li>
+                <li><strong>02:30–03:00 – Objectives and Roadmap:</strong> Summarize the lecture's key points and present the roadmap of upcoming topics (domain adaptation, multi-task learning, distillation, etc.). Ensure students understand how each upcoming module ties back to solving the challenges introduced. Q&A to clarify course structure.</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Domain-Specific AI Overview:</em> <strong>WatersTechnology (2024)</strong> – <em>"Domain-specific AI: the hot topic of 2024?"</em> – (Discusses the rise of finance-focused AI models and debate vs general models).<br>
+                - <em>Case Study:</em> <strong>Singhal et al., 2023</strong> – <em>"Towards Expert-Level Medical Question Answering with LLMs"</em> – (Describes Med-PaLM 2 achieving physician-level performance on medical QA via domain fine-tuning and prompting)<span class="citation">[1]</span><span class="citation">[2]</span>.<br>
+                - <em>Blog:</em> <strong>Sinha (2025)</strong> – <em>"PEFT, LoRA & QLoRA – Fine-Tuning Domain LLMs"</em> – (Introduction to why specialization of LLMs is needed for enterprise domains, with examples).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> Begin forming teams and choose a domain for a term project. Each team drafts a one-page outline of domain challenges and potential AI solutions, to be presented next week for feedback.
+            </div>
+
+            <h3>Lecture 2: Foundations of Domain Adaptation & Multi-Task Learning</h3>
+            <ul>
+                <li><strong>00:00–00:30 – Motivation for Domain Adaptation:</strong> Explain how models trained on one domain often underperform on another due to distribution shift. Introduce <em>domain adaptation</em> as the set of techniques to transfer knowledge from a source domain (e.g. general internet text) to a target domain (e.g. legal documents). Illustrate with an example of adapting a sentiment model trained on movie reviews to work on financial news.</li>
+                <li><strong>00:30–01:00 – Types of Domain Adaptation:</strong> Cover <em>supervised</em> vs <em>unsupervised domain adaptation</em>. Describe classic approaches like feature alignment and fine-tuning on target data. Highlight recent advances such as <strong>continued pre-training</strong> on domain corpus (CPT) and <em>source-free domain adaptation</em> where only a pretrained model and target unlabeled data are used.</li>
+                <li><strong>01:00–01:30 – Algorithms for Domain Adaptation:</strong> Introduce techniques like domain-adversarial training (DANN) where a domain discriminator is used to learn domain-invariant features. Discuss representation learning techniques that minimize distance (e.g. MMD, CORAL) between source and target feature distributions. If appropriate, include a simple diagram of two data distributions being aligned in feature space.</li>
+                <li><strong>01:30–02:00 – Multi-Task Learning (MTL) Concepts:</strong> Define multi-task learning and how it can improve generalization by training one model on multiple related tasks. Provide examples: an NLP model jointly doing translation and summarization, or a vision model detecting objects and segmenting images simultaneously. Emphasize how MTL can serve as a form of inductive transfer, improving low-resource task performance via shared representations.</li>
+                <li><strong>02:00–02:30 – Architectures for MTL:</strong> Describe common architectures: hard parameter sharing (shared encoder, multiple task-specific heads) vs soft sharing (separate networks with regularization). Mention large-scale MTL successes like unified text-to-text models (e.g. Google T5) and how prompt-based multi-task training enables a single model to handle diverse NLP tasks by conditioning on task instructions.</li>
+                <li><strong>02:30–03:00 – Domain Adaptation + MTL in Practice:</strong> Discuss how domain adaptation and multi-task learning can be combined. For instance, <strong>LawLLM (2024)</strong> is a multi-task legal model tackling case retrieval, recommendation, and judgment prediction, made possible by tailored preprocessing for each task and in-context learning strategies. Summarize best practices: start with broad pretraining, then adapt to the domain, possibly with multi-task fine-tuning on various in-domain tasks for robustness. Conclude with a brief mention of next lecture (we'll dive deep into specific adaptation techniques).</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Survey:</em> <strong>Lu et al. (2025)</strong> – "Fine-tuning LLMs for Domain Adaptation" – (Studies continued pre-training vs supervised fine-tuning for domain-specific needs, finds model merging can yield emergent capabilities).<br>
+                - <em>Method:</em> <strong>Ganin et al. (2016)</strong> – "Domain-Adversarial Training of Neural Networks" – (Seminal paper introducing DANN for domain adaptation; still relevant for understanding adversarial feature alignment).<br>
+                - <em>Application:</em> <strong>Shu et al. (2024)</strong> – "LawLLM: Law Large Language Model for the US Legal System" – (Illustrates multi-task learning applied to legal tasks and how separating task types improves performance).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> Fine-tune a small text classification model on a target domain with limited data. Students are given a sentiment classifier pre-trained on MovieReviews. They must adapt it to a new domain (e.g. tweets or financial news) using two approaches: 1) direct fine-tuning on new data, 2) domain-adversarial training with a provided script. Evaluate which approach better maintains performance on the target domain without degrading on the original domain.
+            </div>
+
+            <h3>Lecture 3: Knowledge Distillation – Compressing and Transferring Knowledge</h3>
+            <ul>
+                <li><strong>00:00–00:30 – Introduction to Model Compression:</strong> Define <em>knowledge distillation</em> as the process of transferring knowledge from a large "teacher" model to a smaller "student" model. Discuss why this is vital for domain-specific AI: often a powerful general model (like GPT-3) is too large or slow for deployment, so we distill its knowledge into a smaller model tailored to a domain (for example, a legal-documents QA model that can run on-premise).</li>
+                <li><strong>00:30–01:00 – Classic Teacher-Student Paradigm:</strong> Explain the original KD approach (Hinton et al. 2015): the teacher's outputs (soft probabilities or logits) on training data are used to train the student. Emphasize how the student learns not just hard labels but the teacher's "dark knowledge" – finer distinctions the teacher knows. Provide a simple illustration of a teacher network and a student network with an arrow of knowledge from one to the other.</li>
+                <li><strong>01:00–01:30 – Benefits and Challenges of KD:</strong> Outline benefits: model compression, sometimes improved student generalization by learning from teacher's softened outputs. Then challenges: if teacher is too large or domain-mismatched, student may not fully capture knowledge; careful calibration is needed (choosing an appropriate temperature hyperparameter, etc.).</li>
+                <li><strong>01:30–02:00 – Multi-Teacher and Iterative Distillation:</strong> Describe extensions like using an <em>ensemble of teachers</em> (student learns from multiple models' outputs to encompass diverse knowledge) and <em>iterative distillation</em>, where distillation is done in stages to progressively smaller models. Connect to domains: e.g., distilling a medical imaging ensemble into one model to deploy in a clinic for efficiency.</li>
+                <li><strong>02:00–02:30 – Professor-Teacher-Student (Multi-Level Distillation):</strong> Introduce advanced paradigms such as the <em>Professor-Teacher-Student</em> framework<span class="citation">[3]</span>. Explain Quill (Srinivasan et al., 2022) which used a powerful "Professor" LLM with retrieval-augmentation to assist a Teacher-Student distillation<span class="citation">[3]</span>. Also present the recent <strong>Matryoshka Teaching Assistant (MatTA)</strong> approach: here a large teacher distills knowledge into an intermediate <em>Teaching Assistant</em> model and a nested student model simultaneously, yielding a more "relatable" teacher for the student. Cite how MatTA's student outperformed a direct teacher-student baseline by learning from the intermediate TA.</li>
+                <li><strong>02:30–03:00 – Domain Case Study – Distilling a Clinical Model:</strong> Walk through a scenario of distilling a medical QA model. For instance, use GPT-4 (teacher) answers on a medical Q&A dataset to train a smaller Med-BERT (student). Highlight results from literature: distilling large clinical language models yields students that preserve accuracy on medical questions while being orders of magnitude smaller. Conclude with key tips: always evaluate the student on critical domain metrics (e.g. factuality in law or diagnosis accuracy in medicine) to ensure the distillation didn't introduce gaps.</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Original KD:</em> <strong>Hinton et al. (2015)</strong> – "Distilling the Knowledge in a Neural Network" – (Foundational paper introducing teacher-student distillation).<br>
+                - <em>Advanced KD:</em> <strong>Srinivasan et al. (2022)</strong> – "QUILL: Query Intent with LLMs (Professor-Teacher-Student setup)" – (Multi-stage distillation with an LLM "Professor" guiding the process)<span class="citation">[3]</span>.<br>
+                - <em>Industry Application:</em> <strong>Agrawal et al. (2025)</strong> – "Matryoshka Model Learning (MatTA)" – (Uses a nested Teaching Assistant model for elastic distillation, improving student performance in production models).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> Experiment with knowledge distillation on a domain-specific task. Students use a large pretrained teacher (provided via API) to label a small domain dataset (e.g. finance news sentiment or medical QA). They then train a smaller student model on these soft labels. Evaluate the student vs. a baseline model trained on true labels only, measuring accuracy and domain-specific metrics (does the distilled model preserve critical domain knowledge?).
+            </div>
+
+            <h3>Lecture 4: Parameter-Efficient Fine-Tuning (PEFT) – LoRA, Adapters, and More</h3>
+            <ul>
+                <li><strong>00:00–00:30 – Limits of Full Fine-Tuning:</strong> Recap that fine-tuning all weights of an LLM for each domain is often impractical (requires huge memory and risks overfitting or catastrophic forgetting). Introduce Parameter-Efficient Fine-Tuning (PEFT) as the solution: update only a small subset of parameters while keeping the majority of the model fixed.</li>
+                <li><strong>00:30–01:00 – Adapter Layers:</strong> Explain the concept of <em>adapter modules</em> – small bottleneck layers inserted in each transformer block (Houlsby et al., 2019). During fine-tuning, only the adapters are trained, leaving the original model weights unchanged. Emphasize how adapters enable quick switching between domains by loading different small adapter weight sets.</li>
+                <li><strong>01:00–01:30 – Low-Rank Adaptation (LoRA):</strong> Dive into <strong>LoRA</strong> (Hu et al., 2021): instead of full matrices, LoRA learns low-rank update matrices for weight layers. Illustrate that if a weight matrix is W (N×M), LoRA learns W = W₀ + ΔW, where ΔW = A · B with A, B of rank r (r much smaller than N or M). Only A and B (the low-rank factors) are learned, drastically reducing trainable parameters. Mention how LoRA has been used to fine-tune models for specific domains (e.g. a LoRA adapter for legal contracts, another for medical text).</li>
+                <li><strong>01:30–02:00 – QLoRA (Quantized LoRA):</strong> Present <strong>QLoRA</strong> as a 2023 innovation that stacked efficiency gains. Summarize QLoRA's key idea: start by <em>4-bit quantizing</em> the pretrained model to reduce memory, then apply LoRA on top of the quantized model. Highlight results from Dettmers et al.: QLoRA enabled fine-tuning a 65B model on a single GPU with minimal performance loss, and their fine-tuned 33B "Guanaco" model reached 99% of ChatGPT's performance on a benchmark, despite using far less computing.</li>
+                <li><strong>02:00–02:30 – Other PEFT Methods:</strong> Briefly note other approaches: <em>prompt tuning</em> (learning soft prompt vectors), <em>prefix tuning</em> (prepending learned tokens at each layer), and <em>adapter fusion</em> (combining multiple adapters). Discuss when each is useful – e.g. prompt tuning for extremely low-data settings, adapter fusion for merging knowledge from multiple domains.</li>
+                <li><strong>02:30–03:00 – Best Practices for Domain PEFT:</strong> Discuss practical tips: how to choose the rank in LoRA (trade-off between capacity and size), the importance of having a domain development set to ensure the PEFT doesn't overfit. Mention a success story: a financial services firm fine-tuned a language model on legal texts using LoRA – multiple LoRA adapters (one per law sub-domain) were learned and could be <em>fused</em> to handle multi-domain queries. This allowed domain customization with minimal compute. Wrap up by connecting to the next topic – generating synthetic data to further aid domain tuning.</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Tutorial:</em> <strong>Sinha (2025)</strong> – <em>"PEFT, LoRA & QLoRA: Smarter Fine-Tuning for Domain LLMs"</em> – (Explains why full fine-tuning is often unnecessary and how LoRA/QLoRA work, with domain examples).<br>
+                - <em>Research:</em> <strong>Dettmers et al. (2023)</strong> – "QLoRA: Efficient Finetuning of Quantized LLMs" – (Introduces 4-bit quantization + LoRA, enabling a 65B model to be fine-tuned on a single 48GB GPU).<br>
+                - <em>Application Note:</em> <strong>Hu et al. (2021)</strong> – "LoRA: Low-Rank Adaptation of LLMs" – (Original LoRA paper; includes examples of domain adaptation via low-rank updates).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> Hands-on with LoRA fine-tuning. Students fine-tune a 6B-parameter language model on a domain dataset (choices: medical FAQs, legal case summaries, etc.) using LoRA vs. full fine-tuning. They monitor memory usage and training time, and evaluate both models on a validation set. The exercise highlights how LoRA achieves similar accuracy with a fraction of the computational cost.
+            </div>
+
+            <h3>Lecture 5: Synthetic Data Generation – Techniques for Text and Tabular Data</h3>
+            <ul>
+                <li><strong>00:00–00:30 – The Need for Synthetic Data:</strong> Open with the problem: many domains have limited or imbalanced data (e.g. few examples of rare diseases in healthcare, or lack of labeled legal cases for a niche issue). Synthetic data can augment real datasets, mitigating bias and improving model generalization.</li>
+                <li><strong>00:30–01:00 – Text Data Synthesis with LLMs:</strong> Explain how large language models (LLMs) can generate synthetic text data. For instance, an LLM can be prompted to produce realistic patient records or financial reports. Discuss <em>prompt engineering</em> strategies to guide generation (e.g. using GPT-4 to create question-answer pairs on a medical topic that's underrepresented) and mention the importance of quality control – using filtering to remove nonsensical or erroneous outputs.</li>
+                <li><strong>01:00–01:30 – Simulation Environments:</strong> Beyond direct LLM generation, describe using simulation for synthetic data. Examples: simulated customer transactions for a retail model (ensuring patterns like seasonal effects), or running physics simulations to generate climate data for training. Emphasize that simulators (when available) produce synthetic data grounded in domain rules – e.g. a power grid simulator can generate plausible outage scenarios for training an AI system for smart grids.</li>
+                <li><strong>01:30–02:00 – Synthetic Tabular and Structured Data:</strong> Cover methods for generating structured data such as time-series or database records. Mention generative models like GANs or variational autoencoders for tabular data. As a case, describe an approach to generate synthetic electronic health records that maintain statistical properties of real patients while ensuring privacy.</li>
+                <li><strong>02:00–02:30 – Ensuring Realism and Diversity:</strong> Outline techniques to assess and improve synthetic data quality: use domain experts to verify samples, use metrics like distribution similarity (e.g. KL divergence) between synthetic and real data, and ensure diversity (covering edge cases). Highlight a result from Stanford's work: the <strong>RoentGen</strong> model was able to produce diverse chest X-ray images, yielding a 5% AUROC improvement in disease detection when augmenting training with these synthetic images<span class="citation">[4]</span>. Also mention bias mitigation: RoentGen v2 added demographic conditioning to generate data for underrepresented groups, helping reduce model bias.</li>
+                <li><strong>02:30–03:00 – Ethical and Safe Use of Synthetic Data:</strong> Caution that synthetic data must be used responsibly. Discuss how it can potentially introduce artifacts or unrealistic correlations if not careful. However, also stress its benefits for privacy (no real patient data exposed when training on synthetic). Summarize by reiterating that synthetic data, when combined with real data, can fill gaps – and segue into next lecture on image-focused synthetic data (diffusion models, etc.).</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Perspective:</em> <strong>Stanford Medicine News (2025)</strong> – "Using generative AI to create synthetic data" – (Describes RoentGen model generating synthetic X-rays and how it helps cover rare conditions while protecting privacy).<br>
+                - <em>Method:</em> <strong>Kotelnikov et al. (2023)</strong> – "Synthetic Data Generation for Financial Transactions via GANs" – (Techniques to generate synthetic tabular data with GANs, addressing challenges like preserving correlations and outlier behaviors).<br>
+                - <em>Case Study:</em> <strong>Lee et al. (2024)</strong> – "Generating Synthetic Legal Contracts with LLMs" – (Experiments with GPT-based generation of legal clauses to augment contract datasets, including human lawyer evaluation of realism).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> Synthetic data generation challenge. Each student group picks a domain and generates a small synthetic dataset to address a data gap. Options: use an LLM to generate fake customer support dialogues (retail domain), or use a provided simulator to generate IoT sensor readings under various conditions (climate/energy domain). They then train a model on <em>real+synthetic</em> versus real-only data to measure any improvement in performance or reduction in overfitting.
+            </div>
+
+            <h3>Lecture 6: Synthetic Data for Images and Beyond – Diffusion Models, RoentGen, and GANs</h3>
+            <ul>
+                <li><strong>00:00–00:30 – Generating Visual Data:</strong> Transition from text to images. Introduce how <em>diffusion models</em> and GANs can create realistic images for domains like healthcare and retail. For instance, medical imaging often lacks examples of certain diseases – synthetic images can augment training sets.</li>
+                <li><strong>00:30–01:00 – Diffusion Model Primer:</strong> Briefly explain how diffusion models work (iteratively noising and denoising images). Use a simple conceptual diagram: image → noise → model → image. Emphasize why diffusion models are suitable for high-fidelity generation. Mention Stable Diffusion as a general model, and how domain adaptation of diffusion models is done (by fine-tuning on domain images or using domain-specific text encoders).</li>
+                <li><strong>01:00–01:30 – RoentGen Case Study (Medical Imaging):</strong> Dive into <strong>RoentGen</strong> specifically. Describe how RoentGen is a latent diffusion model adapted to generate chest X-rays from text prompts (radiology reports). It uses a fixed pre-trained VAE and a fine-tuned U-Net conditioned on radiology text, enabling controllable generation of pathologies. Note its innovations: demographic conditioning (RoentGen v2 can condition on age/sex to reduce bias) and how it improved performance of diagnostic models when using its synthetic images for training<span class="citation">[4]</span>.</li>
+                <li><strong>01:30–02:00 – Synthetic Data in Other Domains:</strong> Discuss GANs used in retail or manufacturing – e.g. generating synthetic product images or defect images for quality inspection. Mention how <strong>diffusion models</strong> have also been used beyond images: e.g. to generate synthetic time-series data by diffusion in latent space, or to create training data for speech recognition by generating audio waveforms. Also note using LLMs to generate code or configurations as synthetic data for testing software (in other specialized domains like IT).</li>
+                <li><strong>02:00–02:30 – Evaluating Synthetic Image Quality:</strong> Outline how to evaluate synthetic images: visual Turing tests (can experts tell real vs fake?), quantitative metrics like Fréchet Inception Distance (FID) for image fidelity. In RoentGen's evaluation, a CXR-specific FID and radiologist review were used<span class="citation">[5]</span><span class="citation">[6]</span> – synthetic images were largely convincing to radiologists, though limitations were noted in reproducing certain subtle artifacts<span class="citation">[6]</span>.</li>
+                <li><strong>02:30–03:00 – Limitations and Future of Synthetic Data:</strong> Acknowledge limitations: synthetic data might miss "unknown unknowns" (if the generator hasn't seen a pattern, it can't create it), and there's a risk of models learning to exploit artifacts in synthetic data if not careful. Encourage combining generative models with domain knowledge (like physics-informed generative models for climate) to produce more realistic and useful synthetic datasets. Conclude that synthetic data, used judiciously, is becoming a standard tool to overcome data scarcity in domain-specific AI.</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Model:</em> <strong>Chaudhari et al. (2023)</strong> – "RoentGen: Synthetic Chest X-ray Diffusion Model" – (Technical report on RoentGen; details architecture and shows synthetic X-ray quality improvements with bias reduction).<br>
+                - <em>Survey:</em> <strong>Peng et al. (2024)</strong> – "Synthetic Data Generation for Medical Imaging" – (Overview of GAN and diffusion approaches in radiology, with evaluation techniques and challenges).<br>
+                - <em>Application:</em> <strong>Wang et al. (2024)</strong> – "Diffusion Models for Retail Product Image Generation" – (Using diffusion to create product images for training recommender systems and augmenting catalogs).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> <em>Image synthesis lab.</em> Students are given a pre-trained diffusion model and a small set of domain images (choose: chest X-rays, fashion product images, or satellite images). They fine-tune the model on this domain and attempt to generate new images from text prompts or noise. They will then use a pre-trained classifier to see if adding these generated images to its training set improves accuracy on a test set (e.g. detecting a condition on X-rays, or classifying product types).
+            </div>
+
+            <h3>Lecture 7: Retrieval-Augmented Generation (RAG) – Enhancing Domain Knowledge</h3>
+            <ul>
+                <li><strong>00:00–00:30 – From Parametric to Hybrid Memory:</strong> Highlight that large models have <em>parametric knowledge</em> stored in weights, but domain-specific applications often require up-to-date or niche information (e.g. latest medical research or specific legal statutes) that the model might not have seen. RAG addresses this by combining LLMs with external knowledge bases.</li>
+                <li><strong>00:30–01:00 – RAG Architecture Fundamentals:</strong> Explain the typical RAG pipeline: a <strong>retriever</strong> component (e.g. vector search over a document index) finds relevant documents given a query, and a <strong>generator</strong> (LLM) produces the answer conditioned on those retrieved docs. Draw a simple flow: <em>Query → Retriever → Retrieved text + Query → Generator → Answer</em>. Emphasize how this ensures outputs are grounded in real reference text.</li>
+                <li><strong>01:00–01:30 – Building Domain Knowledge Bases:</strong> Discuss how to construct a domain knowledge base: e.g. for healthcare, use a database of medical literature; for law, a corpus of statutes and case law. Cover indexing techniques (vector embeddings with models like SciBERT for medical texts or LegalBERT for legal texts). Talk about fine-tuning retriever embeddings for domain-specific vocabulary (e.g. in finance, "bear" and "bull" have specific meanings).</li>
+                <li><strong>01:30–02:00 – Fine-Tuning RAG for Domains:</strong> Describe strategies for domain adaptation in RAG systems. One approach: fine-tune the retriever on domain-specific Q&A pairs (learning to retrieve the right documents). Another: fine-tune the generator to better use retrieved evidence (perhaps by additional training on domain QA with context). Mention that Siriwardhana et al. (2023) found updating <strong>both</strong> the passage encoder and query encoder (full end-to-end RAG fine-tuning) gave big gains on specialized domains like COVID-19 FAQs.</li>
+                <li><strong>02:00–02:30 – Reducing Hallucinations with RAG:</strong> Emphasize a key benefit: grounding reduces hallucination. Cite the HotelConvQA domain study which found that applying domain adaptation in RAG not only improved accuracy but significantly cut down factual hallucinations in answers. Explain that when the model can pull exact facts (e.g. a specific legal clause) from a document, it is less likely to fabricate. This is crucial in domains where accuracy is paramount.</li>
+                <li><strong>02:30–03:00 – Domain Example – Legal RAG:</strong> Walk through an example: a legal assistant LLM answering a question about a case. Without RAG it might guess, but with RAG it retrieves the relevant case text and then answers with precise citations. Mention tools like <em>LangChain</em> or <em>Haystack</em> that make building RAG pipelines easier. End with best practices: ensure the knowledge base is comprehensive and updated (e.g. incorporate new medical research regularly), and always have the generator cite sources so domain experts can verify the output.</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Concept:</em> <strong>Lewis et al. (2020)</strong> – "Retrieval-Augmented Generation (RAG)" – (Original paper introducing RAG for open-domain QA; foundational for understanding retrieval+generation).<br>
+                - <em>Evaluation:</em> <strong>Rakin et al. (2024)</strong> – "Domain Adaptation of RAG for QA and Reducing Hallucination" – (Shows domain-tuned RAG improves accuracy on hotel customer QA and lowers hallucination rates).<br>
+                - <em>Tutorial:</em> <strong>Johnson (2023)</strong> – "Building a Legal RAG System" – (Blog/whitepaper on constructing a retrieval-augmented legal QA bot, with practical tips on indexing legal documents and ensuring citation of sources).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> Implement a simple RAG system for a chosen domain. For example, build a medical FAQ assistant: students are given a small corpus of medical articles. They must create a pipeline where a user question is vectorized, relevant passages are retrieved, and an LLM is prompted with those passages to generate an answer. They should test queries with and without retrieval to observe differences in factual accuracy. <em>Bonus:</em> measure hallucinations by checking if answers contain information not supported by the retrieved text.
+            </div>
+
+            <h3>Lecture 8: Advanced RAG – Tuning Retrievers, Domain QA, and Guarding Against Errors</h3>
+            <ul>
+                <li><strong>00:00–00:30 – Retriever Fine-Tuning Techniques:</strong> Delve deeper into how to fine-tune retrievers for domain content. Introduce methods like contrastive learning (e.g. DPR) where the model learns to bring relevant doc embeddings closer to the query embedding. Show how to generate training pairs from domain data: take a query and its ground-truth document as positive, sample negatives from the corpus.</li>
+                <li><strong>00:30–01:00 – Domain-Specific Indexing:</strong> Discuss indexing optimizations: in some domains, metadata is crucial (e.g. legal documents have dates, jurisdictions). Mention hybrid search (combine keyword + vector search) which might be needed when exact terms matter (like chemical names or legal statute numbers). Also cover ensuring sensitive info isn't retrieved inappropriately (privacy considerations for healthcare indexes).</li>
+                <li><strong>01:00–01:30 – Context Length and Chunking:</strong> Many domain documents are long (medical guidelines, financial reports). Describe strategies to chunk documents and retrieve multiple pieces. Discuss how to handle long context: use LLMs with extended context windows or a hierarchical retrieval (retrieve relevant document, then a specific snippet from it).</li>
+                <li><strong>01:30–02:00 – Handling Errors and Uncertainty in RAG:</strong> What if the knowledge base doesn't have the answer? Teach the model/system to respond with uncertainty or "I cannot find the information" rather than hallucinating. Present approaches: set a confidence threshold on retrieval scores – if no passage is above threshold, the system should abstain or indicate it needs human help. Tie to uncertainty calibration (as discussed in Lecture 10).</li>
+                <li><strong>02:00–02:30 – Case Study: Domain RAG in Finance:</strong> Outline how a RAG system was built for a bank's customer QA. It needed to retrieve from policy documents and past inquiries. By fine-tuning on historical Q&A, they achieved high accuracy. However, initial versions struggled when asked about nonexistent policies – after adding a fallback "I'm not certain" response triggered by low retrieval confidence, it became more reliable. Connect this to research: domain adaptation plus careful system design yields practical reliability.</li>
+                <li><strong>02:30–03:00 – Integration with Guardrails:</strong> Preview that combining RAG with other guardrails (like checking retrieved sources for certain keywords or disallowing the LLM from answering certain sensitive questions even if retrieved) can be necessary in regulated domains. This foreshadows the upcoming lectures on safety and guardrails. End by summarizing that RAG is a powerful technique to inject factual domain knowledge, but it must be fine-tuned and monitored to truly solve the hallucination problem.</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Research:</em> <strong>Siriwardhana et al. (2023)</strong> – "RAG-end2end: Domain QA with End-to-End Retrieval Fine-tuning" – (Demonstrates updating retriever and reader together for better performance on COVID-19 and news QA tasks).<br>
+                - <em>Guide:</em> <strong>Mohan (2024)</strong> – "Best Practices for Domain Document Retrieval" – (Covers chunking long documents, metadata filtering, and tuning similarity metrics in specialized corpora).<br>
+                - <em>Case Study:</em> <strong>Truong (2024)</strong> – "GPT-4 + RAG in Banking: A Case Study" – (Engineering blog on how a financial firm built a RAG system on proprietary data and lessons learned about answer validation and compliance).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> Iterative improvement of the RAG from last class. Students fine-tune the retriever: using a small labeled set of question-document pairs in their domain, perform contrastive training (provided via a Colab notebook). They also implement a thresholding mechanism: if the top retrieval similarity score is below a cutoff, the system should refuse or defer the answer. Evaluate the impact on correctness and incidence of hallucination (unsupported statements).
+            </div>
+
+            <h3>Lecture 9: Safety & Ethical AI in Domain Applications – Bias, Fairness, and Regulations</h3>
+            <ul>
+                <li><strong>00:00–00:30 – Why Safety is Critical in Domains:</strong> Set the stage with examples: a medical AI giving unsafe advice, or a financial model that unfairly denies loans. In specialized domains, mistakes can harm health or livelihoods, so safety is paramount. List facets of safety: avoiding harmful content, ensuring fairness, protecting privacy, and maintaining regulatory compliance.</li>
+                <li><strong>00:30–01:00 – Bias and Fairness Considerations:</strong> Explain how domain-specific models can inherit or even amplify biases. E.g., a healthcare model might work less accurately for underrepresented populations; a finance model might inadvertently discriminate in lending. Discuss techniques to detect bias (parity metrics across subgroups) and mitigate it (re-sampling data, adversarial debiasing, or adding fairness constraints during training).</li>
+                <li><strong>01:00–01:30 – Case: Bias in Medical Imaging AI:</strong> Mention a recent finding that some radiology AI models could identify patient race from images and potentially propagate disparities. Tie to RoentGen's approach: by allowing conditioning on demographics, they aimed to generate synthetic data to balance the model across groups, thereby potentially reducing bias in downstream models.</li>
+                <li><strong>01:30–02:00 – Domain Regulations and Guidelines:</strong> Review key regulations: HIPAA for patient data privacy (meaning any AI handling medical data must ensure anonymity and security), FDA guidelines for AI as medical devices, GDPR/consumer protection laws for data used in AI (especially in finance/retail). In law, mention ethical guidelines for AI use (e.g. not outsourcing legal judgment entirely to an AI). Emphasize that students building domain AI must be aware of these rules and design accordingly (e.g. logging decisions for audit).</li>
+                <li><strong>02:00–02:30 – Ethical AI Frameworks:</strong> Introduce high-level frameworks: e.g. <strong>EU AI Act</strong> risk categories or <strong>IBM's AI Ethics principles</strong>. Focus on how to apply them in domains: risk assessment for an AI medical diagnostic tool (classify it as high-risk, requiring transparency and human oversight), or audit trails for a financial model's decisions to satisfy regulatory scrutiny. Encourage discussion: <em>"If your term project AI makes an error, what's the potential harm? How can you mitigate that?"</em></li>
+                <li><strong>02:30–03:00 – Interactive Discussion and Role-Play:</strong> Conduct a role-play scenario: one group of students are a hospital ethics board, another group are developers of an AI diagnostic tool. Debate whether to deploy the tool given certain performance metrics and potential biases. This interactive element helps cement understanding of balancing innovation with safety. Conclude with the note that next lecture will delve into technical reliability measures like uncertainty and robustness.</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Policy:</em> <strong>FDA (2021)</strong> – "AI/ML-Based Software as Medical Device (SaMD) Action Plan" – (Outlines regulatory expectations and pre-market guidance for AI in healthcare).<br>
+                - <em>Bias Study:</em> <strong>Chen et al. (2024)</strong> – "Fairness of Clinical AI Systems" – (Analyzes biases in clinical models and approaches to ensure equitable performance across patient groups).<br>
+                - <em>Guidelines:</em> <strong>ABA Journal (2024)</strong> – "AI and the Legal Profession" – (Commentary from the American Bar Association on lawyers' ethical responsibilities when using AI, relevant to understanding domain professional standards).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> <em>Ethical analysis exercise.</em> Students pick one domain-specific AI scenario (e.g. an AI tutor for schools, or a bank's loan approval model) and perform a mini "ethical audit." They identify potential biases or harms, check compliance with relevant regulations, and propose at least two mitigation strategies (technical or procedural). They will submit a brief report rather than code for this lab.
+            </div>
+
+            <h3>Lecture 10: Reliability and Uncertainty – Calibrating AI for High-Stakes Decisions</h3>
+            <ul>
+                <li><strong>00:00–00:30 – Defining Reliability:</strong> In domains like medicine or law, <em>reliability</em> means the AI's outputs can be trusted under varying conditions. Outline aspects: robustness to out-of-distribution inputs, calibrated confidence, and consistency. Give an example: an AI legal advisor should indicate low confidence when faced with an unusual query outside its training; a medical AI should not output a definitive diagnosis if it's uncertain.</li>
+                <li><strong>00:30–01:00 – Uncertainty Quantification:</strong> Explain the difference between <em>aleatoric</em> (data uncertainty) and <em>epistemic</em> (model uncertainty). Present methods to estimate uncertainty in model predictions: probability scores from classification models, Monte Carlo dropout, or deep ensembles. Highlight that LLMs often don't have built-in calibrated probabilities for their outputs, so auxiliary methods are used (e.g. asking an LLM to "think step by step" can sometimes reveal uncertainty).</li>
+                <li><strong>01:00–01:30 – Calibration of AI Models:</strong> Discuss what it means for a model to be calibrated – e.g. if it says "90% confidence," it should be correct ~90% of the time. Note research showing LLMs are often over-confident when they verbalize certainty. Cover basic calibration techniques: Platt scaling and temperature scaling for probabilistic models, and newer methods for LLMs like <strong>PROBE</strong> calibration (an approach to adjust an LLM's verbalized confidence).</li>
+                <li><strong>01:30–02:00 – Case: Medical Diagnosis Uncertainty:</strong> Reference the study by Savage et al. (2025) on LLMs in medical diagnosis. Summarize findings: <em>sample consistency</em> (asking the model the same question in different ways) is an effective uncertainty proxy – if answers vary, uncertainty is high. They found that relying on the model's own stated confidence was not reliable (models consistently overestimated their confidence). Emphasize the importance of calibrated uncertainty before using AI advice in patient care (the AI might say "I'm sure" when it's wrong – extremely dangerous).</li>
+                <li><strong>02:00–02:30 – Robustness Testing:</strong> Introduce adversarial and stress testing of domain models. For example, test a financial model on data from a market crash (to see if it extrapolates sensibly), or test a legal QA on ambiguous questions. Mention tools or benchmarks for robustness (like CheckList for NLP) and encourage building test sets with edge cases. Share that some domains use <em>challenge sets</em> – e.g. healthcare might test an AI on deliberately tricky cases to probe its limits.</li>
+                <li><strong>02:30–03:00 – Techniques for Reliability:</strong> Outline ways to improve reliability: (1) <strong>Ensembles/Majority Vote</strong> – have multiple models or agents and compare outputs (if they disagree, that indicates uncertainty). (2) <strong>Human-in-the-loop failsafes</strong> – design the system so a human expert reviews outputs when confidence is low or when the consequences are severe. (3) <strong>Selective prediction</strong> – allow the model to abstain when it's not confident (and route to human). Mention that better uncertainty estimation leads to better calibration. Conclude that achieving high reliability is both a technical and ethical imperative, especially as we deploy models in real-world high-stakes environments.</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Research:</em> <strong>Savage et al. (2025)</strong> – "LLM uncertainty proxies: discrimination and calibration for medical diagnosis" – (Finds sample consistency outperforms self-reported confidence, and highlights LLM overconfidence issues).<br>
+                - <em>Survey:</em> <strong>Zhao et al. (2024)</strong> – "A Survey of Uncertainty Estimation Methods for LLMs" – (Overview of techniques to measure and calibrate uncertainty in large language models, including human-centered approaches).<br>
+                - <em>Case:</em> <strong>SEI (2024)</strong> – "Accuracy, Calibration, and Robustness in LLMs for Cybersecurity" – (Not domain-specific to earlier fields, but illustrates evaluating an LLM on accuracy vs confidence and how calibration can flag over-confident errors).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> <em>Reliability evaluation lab.</em> Students take a trained domain model (perhaps one they fine-tuned earlier) and perform a calibration test. For classification tasks, they can plot predicted probability vs actual accuracy (calibration curve). For generative QA tasks, they use proxies: e.g. ask the model to answer and also to rate its confidence, then see how often "high confidence" answers are correct. They also perturb some inputs (introduce typos, slightly out-of-scope questions) to observe how the model handles them. Each team documents any concerning failure modes and suggests how to address them (e.g. adding a rejection option or additional training data in those areas).
+            </div>
+
+            <h3>Lecture 11: Practical Guardrails – Moderation, Policy Enforcement, and Human Oversight</h3>
+            <ul>
+                <li><strong>00:00–00:30 – What Are Guardrails?:</strong> Define <em>guardrails</em> as mechanisms or rules to prevent AI from producing undesirable outputs or actions. In domain-specific systems, guardrails enforce compliance (e.g. no medical advice that violates clinical guidelines) and ensure safe interactions. List types: content filters, structured output enforcement, and human approval checkpoints.</li>
+                <li><strong>00:30–01:00 – Content Moderation in Domains:</strong> Discuss using content filters to block or modify outputs that are toxic, private, or disallowed. For example, a healthcare chatbot should detect and avoid giving disallowed medical advice (like recommending prescription drugs without a doctor). Many LLM providers have moderation APIs; domain developers can also fine-tune models to refuse certain content. Emphasize domain specifics: a legal AI should refuse to provide certain legal recommendations (e.g. "How do I break the law…") – a content policy must cover those.</li>
+                <li><strong>01:00–01:30 – Policy Prompts and Chain-of-Thought Monitoring:</strong> Introduce <em>policy prompting</em> – providing the model with explicit instructions about what it must not do (for instance, "If user asks for personal medical advice, provide general information and urge consulting a physician"). Also mention monitoring the model's reasoning if available: some multi-step systems let us inspect intermediate steps – we can have a rule-based filter to catch policy violations in the reasoning before the final answer.</li>
+                <li><strong>01:30–02:00 – Tools and Frameworks for Guardrails:</strong> Present existing libraries such as <strong>Hugging Face Transformers</strong> moderation, <strong>Microsoft's Guidance</strong> or <strong>Guardrails.ai</strong> that allow developers to specify structural and content constraints on LLM outputs. For instance, one can require that an AI tutor's answer always contains at least one encouraging remark, or that a legal AI's output always includes citations. Show a mini-example: using Guardrails to ensure a financial chatbot's response includes a disclaimer when discussing investments.</li>
+                <li><strong>02:00–02:30 – Human Oversight and Review:</strong> Emphasize that technical guardrails complement, not replace, human oversight. In high-stakes settings, often a human should review AI outputs: e.g. AI drafts a legal brief, but an attorney must sign off; an AI triage system flags urgency, but a nurse/doctor double-checks before action. Discuss designing workflows that integrate human review efficiently – perhaps the AI only passes along cases to humans when uncertain or when policy dictates (like any output with legal liability gets human review).</li>
+                <li><strong>02:30–03:00 – Case Study: Guardrails in a Clinical Decision Support AI:</strong> Describe a hypothetical hospital deployment. The AI suggests treatment plans but has guardrails: if a plan deviates from standard protocol, it flags a human doctor; it refuses to provide advice if certain key patient data is missing (to avoid ill-informed suggestions); it always explains its rationale with reference to guidelines (to allow human verification). End by summarizing that guardrails are about <em>operationalizing</em> all the safety and reliability considerations from prior lectures into real systems.</li>
+            </ul>
+
+            <div class="reading-section">
+                <strong>Recommended Reading:</strong><br>
+                - <em>Framework:</em> <strong>Shah et al. (2022)</strong> – "LLM Guardrails" – (Intro to an open-source framework for defining guardrails, with examples of rules and their enforcement in dialogs).<br>
+                - <em>Article:</em> <strong>Brundage et al. (2022)</strong> – "Toward Trustworthy AI Development: Mechanisms for Supporting Verifiable Claims" – (Not specific to one domain, but discusses tools like audits, red-teaming, and oversight which apply to ensuring AI stays within guardrails).<br>
+                - <em>Use Case:</em> <strong>Wu et al. (2024)</strong> – "AutoGen v0.4 and Enterprise Guardrails" – (Blog on how the AutoGen multi-agent framework added robust error-handling and moderation capabilities for enterprise use, relevant to orchestrating multi-agent guardrails).
+            </div>
+
+            <div class="lab-section">
+                <strong>Lab Assignment:</strong> Implement simple guardrails on an AI prompt. Building on the RAG QA system or any generative model students have, they will write a set of rules (for example: <em>"If the user asks for a diagnosis, the AI must include: 'I am not a doctor' in the response"</em>) and either hard-code these or use a guardrails library to enforce them. They test the system with scenarios including edge cases to see if the guardrails trigger correctly. Each team presents one example of a prevented failure (e.g. <em>User:</em> "My 5-year-old has a headache, should I give aspirin?" → <em>AI:</em> <em>"I'm not a doctor, but I can provide some general info... You should consult a pediatrician."</em> where the guardrail ensured the appropriate disclaimer).
+            </div>
+            <div class="section">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Lecture 12: Evaluation in Domain Settings – Metrics, Benchmarks, and Human Evaluation</h3>
+        <span class="dropdown-icon">▼</span>
+    </div>
+    <div class="week-content">
+        <div class="topic">
+            <ul>
+                <li><strong>00:00-00;30</strong> – Why Domain Evaluation is Tricky: Note that standard AI benchmarks (like GLUE, ImageNet) may not reflect success in specialized domains. For instance, a high BLEU score on general translation doesn’t ensure good translation of legal contracts. Domain tasks often require custom metrics or expert judgment.</li>
+                <li><strong>00:30–01:00</strong> – Domain-Specific Metrics: Provide examples of specialized metrics: in healthcare, metrics like sensitivity and specificity are used in addition to accuracy (especially with class imbalance for rare diseases); in law, one might measure the percentage of correct citations in an answer; in finance, Value at Risk (VaR) prediction error might be a metric for risk models. Emphasize aligning metrics with real-world impact: e.g. in education, the metric might be students’ post-test improvement after using the AI tutor, which is more meaningful than the tutor’s BLEU score when explaining concepts.</li>
+                <li><strong>01:00–01:30</strong> – Benchmark Datasets: List known domain benchmarks: e.g. MedQA and PubMedQA for medical Q&A, MIMIC-III for clinical notes tasks, FinQA for financial question answering, LexGLUE for legal NLP tasks, ClimateHack for climate model downscaling, etc. Discuss how these benchmarks help track progress and encourage apples-to-apples comparison of models. If applicable, mention recent ones: e.g. a benchmark for multi-lingual legal judgment prediction or an education benchmark like EdNet for knowledge tracing.</li>
+                <li><strong>01:30–02:00</strong> – Holistic Evaluation – Beyond Accuracy: Introduce evaluation dimensions such as explainability (does the model provide a rationale?), compliance (does it adhere to regulations and guidelines?), and user satisfaction. For regulated fields, evaluation might include expert audits: e.g. clinicians rating AI-generated reports for safety and usefulness. Reference the Med-PaLM 2 evaluation where physicians compared AI answers to other doctors’ answers across multiple axes of clinical utility <a href="https://arxiv.org/abs/2305.09617#:~:text=clinical%20topics%20datasets.%20,the%20efficacy%20of%20these%20models" target="_blank">[7]</a><a href="https://arxiv.org/abs/2305.09617#:~:text=axes%20relevant%20to%20clinical%20applications,performance%20in%20medical%20question%20answering" target="_blank">[8]</a>. Point out how such multi-axis evaluations revealed that on some criteria AI outperformed (e.g. consistency of answers), while on others it needed improvement, guiding further training.</li>
+                <li><strong>02:00–02:30 </strong>– Human-in-the-Loop Evaluation: Stress the importance of involving domain experts in evaluating domain AI. For final deployment, often a validation study is needed: e.g. test the AI in a simulated deployment (like run a diagnostic AI on historical cases to see if it would have made the right call, with doctors reviewing any discrepancies). Encourage students to think about how they would prove their project’s effectiveness to a skeptical expert or regulator. For instance, a legal AI might be evaluated by having lawyers use it for research and measuring time saved and quality of results.</li>
+                <li><strong>02:30–03:00 </strong>– Continuous Evaluation & Monitoring: After deployment, monitoring performance is key. Talk about setting up feedback loops (e.g. a chatbot that allows users to flag incorrect answers which are then reviewed and used to improve the model). Also, mention model drift – if the domain data evolves (new laws, new medical practices), performance can degrade, so periodic re-evaluation and re-training are necessary. Conclude by summarizing that rigorous evaluation is not a one-time task but an ongoing process, and it’s as important as model building in high-stakes domains.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Benchmark: Chalkidis et al. (2021) – “LexGLUE: A Benchmark Dataset for Legal Language Understanding” – (Suite of legal NLP tasks and metrics for evaluating models on legal text, exemplifies tailoring evaluation to domain tasks).<br>
+            - Study: Natarajan et al. (2023) – “Evaluating AI Medical Answers vs Physicians” – (Detailed human evaluation of medical LLM answers on long-form questions, comparing them to physician answers across axes like correctness, reasoning, and potential harm) <a href="https://arxiv.org/abs/2305.09617#:~:text=clinical%20topics%20datasets.%20,the%20efficacy%20of%20these%20models" target="_blank">[7]</a><a href="https://arxiv.org/abs/2305.09617#:~:text=axes%20relevant%20to%20clinical%20applications,performance%20in%20medical%20question%20answering" target="_blank">[8]</a>.<br>
+            - Framework: Liang et al. (2022) – “Holistic Evaluation of Language Models (HELM)” – (Not domain-specific, but introduces evaluation along dimensions like robustness, fairness, calibration, which can be adopted for domain-specific evaluation plans).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab Assignment:</strong> Design an evaluation plan for your project. Each team drafts a brief document outlining: (1) metrics they will use to evaluate their domain-specific AI, (2) what test dataset or procedure they will use (e.g. collect expert judgments, use a domain benchmark dataset, simulate a deployment scenario), and (3) any specific error analyses (like checking for bias or particular failure modes). In the next class, each team will get feedback on this plan to refine their approach.
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Lecture 13: Multi-Agent Systems – When Multiple AIs Collaborate</h3>
+        <span class="dropdown-icon">▼</span>
+    </div>
+    <div class="week-content">
+        <div class="topic">
+            <ul>
+                <li><strong>00:00-00:30</strong>– Beyond Single-Agent AI: Introduce the concept that complex workflows might involve multiple AI agents working together, possibly with specialized roles. For example, in an e-commerce setting, one agent could analyze customer queries, another manages inventory data, and together they fulfill a task. Multi-agent orchestration can harness domain-specific experts (one agent per domain or per subtask).</li>
+                <li><strong>00:30-1:00</strong> – Architectures for Multi-Agent Collaboration: Describe frameworks enabling agent communication. For instance, AutoGen (Microsoft, 2023) allows LLM-based agents to converse and coordinate on tasks. Outline a simple architecture: agents send messages (in natural language or a protocol) to each other, possibly coordinated by an orchestrator agent or environment.</li>
+                <li><strong>1:00-1:30</strong> – Domain-Specialized Agents: Provide examples: a hospital might have an “AI triage nurse” agent that gathers patient info and an “AI doctor” agent that uses that info to recommend treatment, with a coordinating agent merging their insights. In finance, one agent could monitor market news, another crunches portfolio numbers, and a third agent (or the first) writes a summary for a human analyst. Each agent can be fine-tuned to its niche (domain adaptation at the agent level).</li>
+                <li><strong>1:30-2:00</strong>– Communication and Orchestration Challenges: Explain that when agents communicate in natural language, errors or misunderstandings can happen (one agent might misinterpret another’s request). To mitigate this, systems like AutoGen let developers define schemas or role instructions for each agent. Discuss the risk of emergent behaviors – agents might get stuck in loops or produce unwanted plans – and how adding a supervisor agent or time-outs can help.</li>
+                <li><strong>2:00-2:30</strong>– Tool Use and Environments: Many agents may be connected to tools: e.g. an “AI data analyst” agent can run SQL queries, an “AI lawyer” agent can call a legal database API. Highlight the importance of defining which agent can invoke which tool (for security and clarity). Mention the concept of self-play in multi-agent setups: agents can simulate scenarios (e.g. a negotiation between a buyer agent and seller agent to train negotiation skills – relevant in retail or procurement domains).</li>
+                <li><strong>2:30-3:00</strong>– Case Study: Multi-Agent for Climate Disaster Response: Paint a scenario where multiple agents handle a climate emergency: one agent (ClimateAnalyzer) forecasts weather using a climate model, another agent (LogisticsPlanner) coordinates resource distribution using supply chain data, another (CommAgent) crafts public advisories. Show how a multi-agent system can break a complex task into domain-specialized parts. Emphasize the need for an overseer (could be a human or an orchestrator agent) to ensure coherence. Conclude that orchestrating multi-agent systems is complex but can leverage specialized strengths of different models, and foreshadow that the next lecture will cover frameworks and workflows to implement such systems.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Framework: Wu et al. (2023) – “AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation” – (Technical report on AutoGen, with examples of agents collaborating on tasks from math to decision-making).<br>
+            - Research: Park et al. (2023) – “Generative Agents: Interactive Simulacra in a Sandbox” – (While about simulating characters, it demonstrates emergent multi-agent behaviors and long-term memory, concepts applicable to collaborative agents).<br>
+            - Blog: TribeAI (2024) – “Orchestrating Multi-Agent LLM Systems” – (Practical guide comparing frameworks like AutoGen, LangChain Agents, etc., with strengths and weaknesses in real-world use cases).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab Assignment:</strong> Multi-agent mini-project. Students are given a simple multi-agent scenario to implement using a high-level framework. For example, two agents: one has medical knowledge, another has pharmaceutical data; together they answer a complex question like “For a patient with X disease and Y allergies, what medication is recommended?” The agents must communicate (one retrieves relevant medical guidelines, the other cross-checks drug allergy info). Students write prompts and logic for the agents to share information and arrive at an answer. They observe any communication failures and refine the coordination protocol. This lab is open-ended and exploratory, prepping them to consider multi-agent designs in their projects.
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Lecture 14: Orchestration Frameworks and Workflows – Building End-to-End Domain AI Solutions</h3>
+        <span class="dropdown-icon">▼</span>
+    </div>
+    <div class="week-content">
+        <div class="topic">
+            <ul>
+                <li><strong>00:00–00:30</strong> – Introduction to Workflow Orchestration: Define what an AI workflow is in a practical application: it may involve data ingestion, multiple model components (as seen with multi-agent or pipelines of sequential models), user interaction, and output delivery. Stress that deploying domain AI in the real world means connecting many pieces: not just the ML model, but also databases, user interfaces, and feedback loops.</li>
+                <li><strong>00:30–01:00</strong> – Pipeline vs Agentic Orchestration: Contrast two paradigms: (1) Static Pipelines – a fixed sequence of steps (e.g. extract data -> run model -> post-process -> output). Common in stable processes like medical image analysis (preprocess image -> model -> report -> doctor reviews). (2) Agentic/Dynamic Workflows – more flexible, where an orchestrator (possibly an LLM) decides which tool or model to invoke next based on intermediate results (e.g. in a customer support system, the workflow might branch depending on whether the query is about billing vs technical issue, calling different subsystems).</li>
+                <li><strong>01:00–01:30</strong> – Tools and Services Integration: Discuss how domain AI systems often integrate with external tools and services: e.g. an education platform AI might query a student database to personalize feedback, or a legal AI might interface with an e-discovery system to pull documents. Emphasize robust error handling in these integrations – e.g. what if the database is down or returns no result? The AI should handle that gracefully (perhaps by informing the user of a delay or fallback to a coarse answer).</li>
+                <li><strong>01:30–02:00</strong> – Monitoring and Logging: In a production workflow, monitoring each step is crucial for debugging and accountability. Teach students to include logging for model decisions, agent communications, and user inputs/outputs. For regulated domains, logs might be legally required for audits (e.g. financial trading bots must log why they made a trade, medical AI must log how it arrived at a recommendation if it’s assisting diagnosis). Logging also helps in continuous learning – by reviewing errors, one can improve the model or workflow.</li>
+                <li><strong>02:00–02:30</strong> – Scalability and Deployment: Touch on deploying these workflows – containerization (Dockerizing the pipeline), cloud services (like using AWS Step Functions or Azure Machine Learning pipelines), and ensuring the system can handle real-time demands. For example, a retail recommendation system might need to handle thousands of requests per second, so caching and load balancing become part of the design (beyond just the model accuracy). Also talk about fallback plans: if the AI component is unavailable, do we have a rule-based system or a human step in? (E.g., if the AI customer service fails to understand, escalate to a human agent.)</li>
+                <li><strong>02:30–03:00</strong> – Example Walkthrough: Walk through an end-to-end example: “Intelligent Loan Application Processing.” Show how an application flows: (1) OCR extracts text from uploaded documents (ID, pay stubs) – an AI vision component, (2) an ML model evaluates credit risk from numerical data, (3) an LLM-based agent reads any personal statements or special requests and summarizes them, (4) a rule-based system or another model merges these inputs into a final recommendation (approve/deny) with reasons, (5) a human loan officer sees the AI’s compiled report and makes the final decision. Highlight how multiple domain models (vision, tabular ML, NLP) and rules are orchestrated. Discuss how errors propagate (if OCR fails on a document, the workflow flags it for human review). This example ties together many course themes (multi-modal, uncertainty prompting human check, etc.). End by reinforcing that building such systems requires both engineering and domain insight, and it’s where all the pieces (adaptation, safety, evaluation) come together.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Architecture: Karam et al. (2025) – “MLOps and Workflow Orchestration in Healthcare AI” – (Chapter or paper on designing end-to-end AI pipelines in a hospital setting, covering orchestration, data pipelines, and monitoring).<br>
+            - Case Study: Wang et al. (2025) – “Deploying a Multi-Agent Customer Service AI at Scale” – (Describes how a retailer combined multiple AI components – chatbots, product search, recommendation – and orchestrated them for robust customer support, including system diagrams and lessons learned).<br>
+            - Blog: Microsoft Research (2024) – “AutoGen in Action: Multi-Agent Workflows for Enterprise” – (Illustrates how the AutoGen framework was used in a business scenario, focusing on modular design and maintaining control over agent behaviors).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab Assignment:</strong> Finalize project design. Each team should now map out their entire AI system architecture for their chosen domain problem. They create a workflow diagram showing data sources, model or agent components, any external tools or databases, and how the pieces connect (including any human-in-loop steps or guardrails). This serves as a blueprint for implementation in Semester 2. Teams submit the diagram and a brief explanation, and do a quick in-class presentation to get feedback from instructors and peers. (This ensures they are ready to build the full system next semester.)
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Semester 2: Domain-Specific Applications and Integration</h3>
+        <span class="dropdown-icon">▼</span>
+    </div>
+    <div class="week-content">
+        <div class="topic">
+            <h4>Lecture 1 (Sem 2): AI in Healthcare – Domain Overview and Challenges</h4>
+            <ul>
+                <li><strong>00:00–00:30</strong> – Healthcare AI Landscape: Provide an overview of AI applications in healthcare: diagnostic imaging (radiology AI reading X-rays/MRIs), patient triage chatbots (symptom checkers), personalized medicine (predicting treatment responses), hospital operations optimization (scheduling, supply management), etc. Emphasize unique challenges: data privacy (patient records are highly sensitive), need for extremely high accuracy (lives are at stake), and interpretability (doctors need to understand AI reasoning to trust it).</li>
+                <li><strong>00:30–01:00</strong> – Medical Data and Tasks: Describe types of data: structured EHR (Electronic Health Records) data, unstructured text (doctor’s notes, discharge summaries), medical images (scans, pathology slides), genomics data, wearable sensor data. Outline key tasks: disease diagnosis (classification or detection, e.g. identify a tumor in an image), prognosis prediction (e.g. likelihood of 5-year survival), treatment recommendation, and medical Q&A for providers and patients. Highlight how these differ from general tasks – e.g. medical text uses specialized terminology and abbreviations that require domain knowledge to parse.</li>
+                <li><strong>01:00–01:30</strong> – Specialized Models and Resources: Mention prominent domain resources: MIMIC-III (a large ICU patient records database), ImageNet Rad (radiology image dataset), and models like BioBERT (pretrained on biomedical text) and Med-PaLM 2 (Google’s medical LLM). Explain how these models incorporate domain knowledge – e.g. BioBERT’s vocabulary and embeddings are tuned to biomedical terminology, which improves performance on biomedical NLP tasks <a href="https://arxiv.org/abs/2305.09617#:~:text=,a%20novel%20ensemble%20refinement%20approach" target="_blank">[9]</a><a href="https://arxiv.org/abs/2305.09617#:~:text=leveraging%20a%20combination%20of%20base,pairwise%20comparative%20ranking%20of%201066" target="_blank">[1]</a>. Also note that many medical institutions develop their own models to maintain control over data (due to privacy).</li>
+                <li><strong>01:30–02:00</strong> – Regulatory Environment: Summarize regulations: HIPAA governs patient data privacy – AI developers must ensure no personal identifiers leak and that data usage is consented. The FDA treats certain AI systems as medical devices, requiring clinical trials or validation studies for approval (e.g. an AI that diagnoses diabetic retinopathy was FDA-approved after studies). Emphasize that compliance adds development overhead: documentation, model interpretability, and monitoring are often required by regulators.</li>
+                <li><strong>02:00–02:30</strong> – Ethical Considerations: Cover ethical issues: potential biases (if training data is mostly from one demographic or hospital, model may not generalize – possibly giving worse care recommendations to minorities), transparency (patients have a right to an explanation if AI influences care), and the importance of maintaining the doctor-patient relationship (AI should assist, not undermine human care). Mention efforts like medical AI ethical guidelines by organizations (e.g. AMA), which stress that responsibility lies with human practitioners.</li>
+                <li><strong>02:30–03:00</strong> – Case Studies: Discuss one success and one challenge. Success: e.g. an AI system that reads retinal images for diabetic retinopathy, which achieved expert-level accuracy and is deployed to screen thousands in under-served areas (augmenting doctors) <a href="https://arxiv.org/abs/2305.09617#:~:text=leveraging%20a%20combination%20of%20base,pairwise%20comparative%20ranking%20of%201066" target="_blank">[1]</a><a href="https://arxiv.org/abs/2305.09617#:~:text=clinical%20topics%20datasets.%20,the%20efficacy%20of%20these%20models" target="_blank">[7]</a>. Challenge: IBM Watson for Oncology (well-known case) – despite hype, it struggled to provide useful treatment recommendations in practice due to limited high-quality training data and complexity of cancer care. Analyze what was learned: need for curated data and deep integration with clinical workflows. Set the stage that the next lecture will explore how the advanced techniques from semester 1 (adaptation, RAG, etc.) are applied in healthcare to address these challenges.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Overview: Eric Topol – Deep Medicine (2019) – (Book excerpt or summary; discusses the promise of AI in healthcare and the importance of keeping the “human touch” – contextualizes why domain knowledge and empathy matter alongside AI).<br>
+            - Domain Model: Singhal et al. (2023) – “Towards Expert-Level Medical QA with LLMs (Med-PaLM 2)” – (Covers how medical domain fine-tuning and prompting yielded a model scoring 86.5% on USMLE medical exam questions, and how doctors rated its answers) <a href="https://arxiv.org/abs/2305.09617#:~:text=leveraging%20a%20combination%20of%20base,pairwise%20comparative%20ranking%20of%201066" target="_blank">[1]</a><a href="https://arxiv.org/abs/2305.09617#:~:text=clinical%20topics%20datasets.%20,the%20efficacy%20of%20these%20models" target="_blank">[7]</a>.<br>
+            - Regulation: JAMA Editorial (2020) – “FDA Regulation of AI in Health Care” – (Explains how the FDA is approaching AI tools, e.g. the difference between ‘locked’ and ‘adaptive’ algorithms, and importance of continuous monitoring).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Teams focusing on healthcare finalize their datasets and ensure compliance steps (e.g. using de-identified data or synthetic data if needed). All students: given a de-identified sample patient record (provided), each team brainstorms what AI assistance could be built (e.g. summarization of the record for quick review, or a prediction of readmission risk) and what would be the main safety concern. Share ideas briefly to practice thinking like a domain-AI developer.
+        </div>
+        <div class="topic">
+            <h4>Lecture 2 (Sem 2): AI in Healthcare – Advanced Techniques and Case Studies</h4>
+            <ul>
+                <li><strong>00:00–00:30</strong> – Applying Domain Adaptation in Healthcare: Discuss how to adapt general models to medical domain tasks. For instance, continued pre-training of a language model on a large corpus of medical text (research papers, medical forums) can greatly improve its understanding of medical questions <a href="https://arxiv.org/abs/2305.09617#:~:text=,a%20novel%20ensemble%20refinement%20approach" target="_blank">[9]</a><a href="https://arxiv.org/abs/2305.09617#:~:text=leveraging%20a%20combination%20of%20base,pairwise%20comparative%20ranking%20of%201066" target="_blank">[1]</a>. Mention that Med-PaLM 2 leveraged improvements from its base model (PaLM 2) and then domain tuning to jump from ~67% to ~86% on a medical QA benchmark <a href="https://arxiv.org/abs/2305.09617#:~:text=,a%20novel%20ensemble%20refinement%20approach" target="_blank">[9]</a><a href="https://arxiv.org/abs/2305.09617#:~:text=leveraging%20a%20combination%20of%20base,pairwise%20comparative%20ranking%20of%201066" target="_blank">[1]</a>. Emphasize that models often need to be taught the “medical way” of reasoning or expression via fine-tuning (including safeties to not give dangerous advice).</li>
+                <li><strong>00:30–01:00</strong> – Multimodal Healthcare AI: Many healthcare tasks require combining text and images or other data. Highlight recent multimodal models: e.g. a system that takes a chest X-ray and the clinical notes to decide on a diagnosis (combining visual CNN features with text features). Discuss how an architecture might handle that (two encoders feeding into a fusion network). Another example: pathology, where AI might combine microscope images with patient genomic data for a comprehensive analysis. Domain-specific tip: ensure the model respects physical units and ranges (could build in constraints so that, say, blood test result predictions remain in physiologically plausible ranges).</li>
+                <li><strong>01:00–01:30</strong> – Knowledge Retrieval for Healthcare: Hospitals and clinicians rely on a vast and ever-changing medical knowledge base (journals, clinical guidelines, drug databases). Explain how RAG can be used in a clinical assistant: the LLM retrieves the latest guidelines or relevant research for a given case. For example, a doctor asks about treating a rare condition – the AI fetches paragraphs from the latest journal articles and uses them to craft a suggested plan. This ensures up-to-date info and reduces hallucination of outdated treatments. Mention the importance of validation: these retrievals often have to be vetted by medical experts (perhaps integrated as a step where the AI highlights the source to the doctor).</li>
+                <li><strong>01:30–02:00</strong> – Safety Mechanisms in Clinical AI: Reiterate safety, now concrete: e.g. an AI symptom checker should recognize emergency signs (e.g. chest pain + short breath) and immediately advise seeking emergency care – a guardrail pattern specifically implemented in some triage apps. Another example: a medical chatbot should never provide a definitive diagnosis or prescription; it should always suggest seeing a professional for serious concerns. These rules are often implemented via fine-tuning (to make the model more cautious) and system prompts. Also mention uncertainty calibration in healthcare: an AI radiology tool might highlight an area on a scan with a color intensity reflecting confidence – if it’s unsure, it uses a different color to prompt human double-check.</li>
+                <li><strong>02:00–02:30</strong> – Case Study: AI Radiology Assistant: Walk through a current example: an AI that screens chest X-rays for tuberculosis (TB) in a global health setting. It uses a deep CNN trained on thousands of labeled X-rays. To handle data scarcity of TB-positive images, the team used data augmentation and synthetic X-rays via RoentGen to expose the model to variations <a href="https://www.emergentmind.com/topics/roentgen#:~:text=structural%20variability%20across%20synthesized%20samples,in%20reproducing%20certain%20device%20artifacts" target="_blank">[4]</a>. The model is deployed on a laptop in rural clinics to flag X-rays that likely show TB, which a clinician then confirms. Outcome: significantly more TB cases caught early. Mention challenges: ensuring the model’s performance is consistent across different X-ray machines (domain shift) – they addressed this via fine-tuning on a small sample from each machine (akin to domain adaptation per hospital). This illustrates adaptation, synthetic data, and human-AI teaming in one scenario.</li>
+                <li><strong>02:30–03:00</strong> – Interactive Q&A and Discussion: Engage students: “If you were building an AI to [their chosen healthcare problem], which techniques from semester 1 would you use and how?” For example, a student with a project on medication recommendation might say: use RAG to pull drug interaction info, and LoRA fine-tune an LLM on clinical notes. Discuss these ideas as a group to reinforce the mapping from concepts to domain use. Close by highlighting that healthcare AI, when well-designed, can save lives and reduce clinician burden, but it requires rigorous validation at every step.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Multimodal: Huang et al. (2023) – “Clinically Accurate Chest X-ray Report Generation” – (Combines image analysis and language generation; shows how an AI can generate text reports from images, an example of vision+NLP in healthcare).<br>
+            - Safety: Norgeot et al. (2020) – “Safely Implementing AI in Clinical Practice: A Framework” – (Discusses the steps from development to deployment including validation with clinicians, monitoring, and continuous improvement).<br>
+            - Case Study: Stanford Medicine Blog (2024) – “AI for Tuberculosis Detection” – (Describes a real-world deployment of an AI TB screening tool, including results and how it was evaluated in the field).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Teams with healthcare projects run an evaluation of a baseline or component of their system (if available) on validation data and identify specific shortcomings (e.g. high false-positive rate for a certain subgroup of patients, or the chatbot failing on specific medical jargon). Others: use an online medical QA system (if accessible, like Bing’s medical answers or a demo of Med-PaLM if available) on a set of questions, and compare its answers to official sources or what a clinician says. Each student writes a short reflection on a gap they observed (e.g. the AI missed a crucial follow-up question a doctor would ask) and how one might improve or guardrail that.
+        </div>
+        <div class="topic">
+            <h4>Lecture 3 (Sem 2): AI in Finance – Domain Overview and Challenges</h4>
+            <ul>
+                <li><strong>00:00–00:30</strong> – Finance AI Introduction: Outline AI uses in finance: algorithmic trading (models predicting short-term price moves, automated trade execution), portfolio management (asset allocation optimization, risk profiling), fraud detection in banking (identifying suspicious transactions), credit scoring and underwriting (AI models assessing loan applications), customer service (chatbots for banking queries), and financial document processing (extracting data from SEC filings, etc.).</li>
+                <li><strong>00:30–01:00</strong> – Key Challenges in Finance AI: Finance demands precision, interpretability, and compliance. Even small prediction errors can lead to large monetary losses or regulatory penalties. Data can be extremely noisy (market data) or unbalanced (fraud is rare). Models must often be explainable (especially in lending decisions, due to regulations like the Equal Credit Opportunity Act – borrowers have the right to an explanation). Also, adversaries exist (fraudsters adapt to models, making this a moving target). Mention concept drift: consumer behavior or market conditions can change rapidly (as seen in 2020 pandemic shock) requiring models to adapt or be retrained frequently.</li>
+                <li><strong>01:00–01:30</strong> – Domain Data and Models: Discuss financial data: Time-series (stock prices, interest rates), tabular (customer profiles, balance sheets), textual (news articles, earnings call transcripts). Introduce models: time-series forecasting models (ARIMA, LSTMs, Transformers like Informer), and financial NLP models like FinBERT or BloombergGPT trained on financial text. BloombergGPT, a 50B model trained on a wide range of financial data plus general data, outperformed general models on financial tasks while maintaining broad capabilities – a testament to mixing domain-specific and general training.</li>
+                <li><strong>01:30–02:00 </strong>– Regulatory Compliance: Summarize relevant regulations: for trading, the SEC requires that automated trading does not violate market rules (flash crash incidents have prompted stricter oversight). For lending and insurance, fairness laws (like Fair Lending) mean AI can’t discriminate – models may need to be tested for bias and provide reason codes for decisions. Also data privacy (Gramm-Leach-Bliley Act, etc.) limits sharing of personal financial info – similar to healthcare, some financial firms prefer on-premise models (no cloud) for sensitive data. This affects tooling: e.g. they might use open-source models or invest in private infrastructure rather than public APIs.</li>
+                <li><strong>02:00–02:30</strong> – Ethical and Societal Impact: Bring up concerns: models might reinforce historical biases (e.g. denying mortgages disproportionately in certain neighborhoods if trained on biased historical data). Model-driven flash crashes: If many trading AIs react similarly, they can cause market volatility – so diversity and throttle mechanisms are put in place. Job impacts: AI can automate routine financial analysis (like reading annual reports), changing roles of financial analysts – highlight need for upskilling and oversight rather than fully autonomous operation in most cases. Also mention cybersecurity: financial AIs become targets for hacking or manipulation, so security is paramount (this crosses into robust ML – making sure models can’t be easily fooled by adversaries, like a fraudster who knows the fraud detection model’s features).</li>
+                <li><strong>02:30–03:00</strong> – Case Studies: Example 1: Credit Scoring – Traditionally logistic regression models with a dozen features are used for credit scores for transparency. Now some institutions experiment with ML (e.g. gradient boosting on hundreds of features, including alternative data like utility payments). They found a slight lift in predicting defaults, but explaining the decisions to regulators was challenging. They ended up using techniques like SHAP values to interpret feature importance and providing a constrained list of reason codes for each decision (to stay compliant). Example 2: Fraud Detection – A major credit card network’s AI uses anomaly detection on transaction streams. It’s a continuously adapting model (online learning) because fraud patterns evolve. The model operates in a high-throughput, low-latency environment (it must approve or flag a transaction in &lt;100ms). They use an ensemble of models (some rules-based, some ML) to balance precision and recall so as not to block legitimate purchases (customer experience consideration). These examples show how domain requirements (explanation, speed, adaptiveness) shape technical choices. Conclude that finance AI is a mature but careful field: many techniques from S1 (like PEFT for quick adaptation or knowledge distillation to deploy models on edge devices at trading venues) are used, but always under a lens of risk management.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Domain Model: Wu et al. (2023) – “BloombergGPT: A Large Language Model for Finance” – (Details training a 50B finance-focused model on a 363B token dataset of financial data mixed with general data, achieving strong results on financial NLP tasks).<br>
+            - Fairness: FAT-ML (2016) – “Credit Scoring in the Era of Big Data” – (Early but relevant discussion on ensuring fairness and transparency in credit models using AI, outlines constraints and methods).<br>
+            - Industry Report: McKinsey (2024) – “AI in Banking: A Customer and Risk Perspective” – (Discusses how AI is deployed in front-office and back-office banking, including case studies of cost savings and improved fraud detection, with attention to governance).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Finance project teams ensure their data pipeline (e.g. how they’ll get historical data, and how they’ll validate performance out-of-sample). Others: perform a mini experiment with stock data – take historical prices and use a simple ML model (e.g. linear regression on technical indicators) vs a baseline (previous day’s price as prediction) to predict next day’s price. Most will see ML is only marginally better at best – discuss why (market noise, maybe needing more complex features or the fact that markets are hard to predict). Alternatively, analyze a small public credit dataset with a bias-check tool to see if a naive model would treat groups differently. Summarize insights and how domain-specific considerations (like regulatory constraints) might force different modeling choices.
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Lecture 4 (Sem 2): AI in Finance – Techniques, Risk Management, and Case Studies</h3>
+        <span class="dropdown-icon">▼</span>
+    </div>
+    <div class="week-content">
+        <div class="topic">
+            <ul>
+                <li><strong>00:00–00:30</strong>– Time-Series Modeling and Adaptation: Discuss how domain adaptation applies to time-series in finance. For example, a model trained on one stock or market may not directly transfer to another due to different volatility or patterns. Techniques: transfer learning by fine-tuning an LSTM on a new stock using weights from a model trained on many stocks (captures general market dynamics, then adapts to a particular stock’s characteristics). Also mention regime-switching models – models that adapt their parameters when market conditions change (bull vs bear markets), sometimes using an unsupervised clustering of time periods and adapting accordingly.</li>
+                <li><strong>00:30–01:00</strong> – NLP in Finance Applications: Financial text (news, earnings calls) often drives markets. Show how specialized NLP is used: sentiment analysis on news affecting stock prices, topic extraction from company reports. Highlight that BloombergGPT was trained on a huge corpus of financial news, filings, etc., enabling it to perform tasks like interpreting financial jargon or even writing basic financial reports. Knowledge distillation is used to deploy such models: e.g. a bank distilled a large financial LLM into a smaller one that can run internally on secure servers without dependence on an external API, preserving data confidentiality.</li>
+                <li><strong>01:00–01:30</strong> – Multi-Task and Ensemble Strategies: Many finance problems benefit from multi-task learning or ensembling. E.g., multi-task: a model predicts both probability of default and loss given default for loans jointly, since they share factors (macroeconomic conditions). Ensembles: almost every trading or risk system uses ensemble of models or scenarios to be robust (like “stress test” ensemble where multiple models simulate worst-case scenarios). This ties to uncertainty – ensembles naturally give a distribution of outcomes, which is valuable in risk management (e.g. Value-at-Risk calculation uses many simulations).</li>
+                <li><strong>01:30–02:00</strong> – Risk Management Integration: Explain how AI models are integrated with traditional risk management. For instance, a bank might use an AI model to identify patterns in transactions that indicate liquidity issues and alert risk managers, who then apply domain knowledge. AI outputs often feed into existing risk frameworks rather than making autonomous decisions. Also, mention how guardrails appear here: trading AIs often have kill-switches – if a model’s output deviates too much from normal or triggers certain loss limits, it stops trading (a rule-based override to prevent unchecked AI behavior, learned from past incidents).</li>
+                <li><strong>02:00–02:30</strong> – Case Study: Loan Underwriting Automation: Walk through how a modern loan underwriting system might work. Step 1: Data aggregation – gather FICO score, credit history, income, employment verification (some via OCR and NLP from uploaded documents). Step 2: ML credit risk model – perhaps a gradient boosting model that outputs a risk score. Step 3: Explanation module – using SHAP or a simpler surrogate model to generate reason codes (“Limited credit history”, “High credit utilization”, etc.). Step 4: Decision – based on the score and policy rules (e.g. no loans if credit score below X regardless of model, to satisfy regulators with a simple cutoff). Step 5: Human loan officer review for borderline cases or random samples for quality control. Outcome: faster processing of applications, more consistent decisions, but continuous monitoring in place (e.g. monthly bias reports to ensure the model’s approvals don’t show disparate impact). Connect techniques: the ML model might have been pre-trained on industry-wide data and fine-tuned on the bank’s data (domain adapt), and knowledge distillation could be used if they need a small model for on-device decisions at local branches, etc.</li>
+                <li><strong>02:30–03:00</strong> – High-Frequency Trading (HFT) AI: As a contrasting case, briefly discuss how in HFT, AI models (often simple but very fast ones, like linear models or tree ensembles) predict tiny price movements. They are deployed on specialized hardware (FPGAs) for microsecond latency. Domain-specific twist: these models require feature engineering that’s very domain-specific (order book features, etc.) and they are retrained perhaps daily. It’s a space where the state-of-the-art is often proprietary, but the key point is the extreme emphasis on speed and reliability – any bug can cause huge losses quickly. Mention how one famous AI-driven fund (e.g. Renaissance Technologies) combines hundreds of models/strategies to dilute risk – a real-world ensemble. Conclude that finance sees a spectrum from long-term, interpretable AI (loans, fraud) to ultra-short-term black-box models (trading), and thus uses the full arsenal of techniques from this course accordingly.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Techniques: Zhang et al. (2024) – “Adaptive Neural Quant Trading” – (Academic paper or preprint on applying deep reinforcement learning to trading under regime shifts; demonstrates adaptation and risk constraints).<br>
+            - Risk/Regulation: U.S. Federal Reserve (2021) – “Model Risk Management for AI” – (Guidance from regulators on using AI/ML in banking, describing requirements for validation, explainability, and governance).<br>
+            - Case Study: Kaggle (2018) – “Home Credit Default Risk Solution Summary” – (Write-up by winners of a credit risk competition; shows how ensemble of models + feature engineering + careful bias checking won, illustrating real-world approach to a loan underwriting model).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Finance teams refine their evaluation plan given regulatory aspects – e.g. ensure their test includes checking fairness or worst-case scenarios. Others: attempt a simple simulation – e.g. take historical stock data and simulate a trivial trading strategy (like moving average crossover) vs a learned strategy (maybe reinforcement learning on a simplified environment) to see differences. Or use an open dataset of financial transactions for fraud detection: hold out some frauds as “new patterns” to simulate how an adaptive model might be needed. Discuss findings, especially focusing on concept drift and the need for continuous model updates in finance.
+        </div>
+        <div class="topic">
+            <h4>Lecture 5 (Sem 2): AI in Law – Domain Overview and Challenges</h4>
+            <ul>
+                <li><strong>00:00-00:30</strong> – Legal Domain Introduction: Explain how AI is applied in the legal field. Key applications: e-discovery (using AI to find relevant documents in litigation from huge corpuses of emails/docs), contract analysis (identifying clauses, obligations, or risky language in contracts), legal research (finding relevant case law or statutes given a query), predictive justice (attempts to predict case outcomes or judge decisions, though controversial), and document drafting assistance (suggesting edits or even drafting initial versions of legal documents like wills or NDAs). Note that language is the primary data in law, and it tends to be long, complex, and formally structured.</li>
+                <li><strong>00:30–01:00</strong> – Challenges in Legal NLP: Legal language is often archaic or highly formal (“Whereas, heretofore…”), and small nuances have large implications. AI must have high precision – a “mostly right” answer can be unacceptable if a single critical error is present (e.g. citing the wrong statute can invalidate an argument). Data can be proprietary (law firms’ internal memos) or scattered (cases across jurisdictions). Also, the context window challenge: legal documents (statutes, contracts) can be very long, often exceeding typical model context lengths, requiring chunking or summarization strategies. Another challenge: reference resolution – pronouns or references (“the Act”, “herein”) require linking to the correct entity defined elsewhere in text, which demands strong context handling.</li>
+                <li><strong>01:00–01:30</strong> – Key Resources and Models: Mention Case Law datasets (like Harvard CaseLaw access, or CourtListener), statutory codes (US Code, CFR, etc. available as text), and contract datasets (like the CUAD dataset for clause detection). Discuss models: LegalBERT (pretrained on legal texts like court opinions), LawLLM (2024) which was multi-task trained specifically for US legal tasks (case retrieval, precedent recommendation, etc.) achieving state-of-the-art on those tasks. There are also commercial models (like Casetext’s CoCounsel based on GPT-4) fine-tuned for legal use. These models incorporate large legal corpora and often add retrieval components to keep up with new cases.</li>
+                <li><strong>01:30–02:00</strong> – Professional and Ethical Considerations: Lawyers have strict ethical duties (confidentiality, competence, etc.). If they use AI, they must ensure its output is accurate and they must not breach client confidentiality by, say, uploading client documents to a public AI service. This has driven interest in on-premise or private-cloud LLMs for law firms. Also mention the famous “ChatGPT fake case citation” incident: lawyers unwittingly submitted a brief with AI-fabricated case citations, leading to sanctions. This underscores that legal AI must have verification steps (like RAG to actual case databases) and that lawyers must treat AI suggestions carefully.</li>
+                <li><strong>02:00–02:30</strong> – Explainability and Accountability: In law, an AI’s suggestion is only useful if accompanied by an explanation or source. For example, if an AI suggests “The case of Smith v. Jones supports your argument,” it should provide the excerpt or at least a citation so the attorney can verify. Unlike some domains, a lawyer will rarely trust an AI output without seeing the source text – thus retrieval and highlighting are central. Also, discuss accountability: ultimately a human lawyer or judge is accountable, so AI is there to augment. Many jurisdictions are considering rules requiring disclosure if AI was used in drafting a legal document (to ensure responsibility isn’t abdicated).</li>
+                <li><strong>02:30–03:00</strong> – Case Studies: Example 1: Contract Review AI – e.g. an AI system that scans NDAs to flag key clauses (non-compete, jurisdiction, etc.) and any anomalies (like an unusually broad confidentiality definition). These systems often use NLP classification for clause detection (fine-tuned on a labeled contract dataset) and can greatly speed up a lawyer’s review of standard contracts. Law firms report saving 20-30% time on due diligence using such tools. Example 2: AI Legal Q&A for Public – services like DoNotPay attempted AI-based legal advice for consumer issues (parking tickets, small claims). While showing some success in form-filling and letter drafting, they ran into legal barriers (unauthorized practice of law concerns) and the AI sometimes gave incorrect advice. This highlights the boundary: straightforward, template-based issues might be handled by AI, but nuanced or high-stakes advice is not yet reliable without a lawyer. Conclude that legal AI can handle rote, repetitive text tasks well (and is being widely adopted for that), but careful human oversight and solid grounding (via retrieval and knowledge of legal rules) are mandatory to avoid critical errors.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Domain Model: Shu et al. (2024) – “LawLLM: A Large Language Model for the US Legal System” – (Details a multi-task legal model excelling at case retrieval and judgment prediction by customizing data preprocessing and in-context strategies).<br>
+            - Ethics: Vincent (2023), The Verge – “Lawyer cites fake cases from ChatGPT” – (Article detailing the incident of fabricated citations, reinforcing why verification is needed).<br>
+            - Survey: Steel et al. (2022) – “Artificial Intelligence in Law: Current Applications and Future Outlook” – (Overview of how AI is used in legal practice, covering e-discovery, contract analysis, prediction, and associated challenges).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Legal-domain teams finalize their corpus preparation (e.g. scraping relevant case texts or assembling contracts) and ensure any annotation needs (like for clause types). Others: try using a public legal search engine or GPT-based legal QA on a simple question (“Find a case about X”) and note how the process works with AI vs manually. Alternatively, examine a sample contract with an AI clause detector (if available) and compare to a human’s highlights. Reflect on the AI’s precision and recall and what risk would exist if a mistake happened (e.g. missing an indemnity clause could be costly). This primes them for implementing & evaluating their own legal AI components.
+        </div>
+        <div class="topic">
+            <h4>Lecture 6 (Sem 2): AI in Law – Techniques, Retrieval, and Automation</h4>
+            <ul>
+                <li><strong>00:00–00:30</strong> – Legal Document Retrieval and RAG: Reiterate that legal QA or research assistance must cite sources. Show how a RAG system for law might work: User query -> retrieve relevant case paragraphs -> LLM reads those and formulates answer with citations. Emphasize that retrieval is often domain-specific: e.g. it might need to prioritize higher court rulings over lower courts (a relevance heuristic peculiar to law). LawLLM, for example, excelled at Similar Case Retrieval (SCR) and Precedent Case Recommendation (PCR) tasks by clearly distinguishing the context – essentially a specialized retrieval ranking problem. Techniques like training the retriever on pairs of cases labeled as similar vs not can help.</li>
+                <li><strong>00:30–01:00</strong> – Prompt Templates and Formality: Legal output often requires a formal style. Discuss how to engineer prompts for an LLM to output like a legal memo or a brief. For instance, providing a template: “Facts, Issue, Analysis, Conclusion” structure for an answer. Also mention that sometimes a chain-of-thought approach can improve consistency: e.g. prompt the LLM to first list relevant statutes and cases (retrieved) and then form an answer. By externalizing the knowledge used, it’s easier to verify. This relates to Audit Trail – in some legal AI deployments, the AI provides a log of what sources it consulted, for transparency.</li>
+                <li><strong>01:00–01:30</strong> – Knowledge Graphs and Symbolic Reasoning: Some legal reasoning can be aided by symbolic logic or knowledge graphs (e.g. connecting a case to the statutes it interprets, or building a graph of how cases cite each other). Mention research where combining an LLM with a legal knowledge graph of precedent relationships improved consistency (the LLM could be nudged not to contradict higher court rulings). Another example: encoding legal rules (like sentencing guidelines) in a symbolic system and using AI to fill in facts – a hybrid approach ensuring compliance with rule-based outcomes. This is not mainstream yet, but could be future direction especially for statutory applications.</li>
+                <li><strong>01:30–02:00</strong> – Document Summarization and Review AI: Many legal tasks involve summarizing or reviewing large documents (case opinions, contracts). Outline approaches: fine-tuning models on legal summaries (e.g. using case headnotes as training data to summarize opinions). Also extractive summarization is popular in law for safety: highlight the most relevant passages (so the user can read actual text). Tools in e-discovery do this: identify the “hot documents” and the snippets within them likely relevant to the case, using classifiers or sequence tagging. Also mention recent experiments with GPT-4 writing first drafts of simple contracts (e.g. lease agreements) which lawyers then edit – early results show promise in saving time, but quality varies.</li>
+                <li><strong>02:00–02:30</strong> – Automation vs Augmentation: Emphasize that in law, augmentation is the focus. AI is a junior assistant, not an attorney. For example, an AI might populate a first draft of a standard contract by pulling in appropriate clauses from a clause library given specifications – the lawyer then reviews and tweaks it. This is already happening with contract lifecycle management software using AI. But for automation, like fully AI-driven filing or court arguments, the risk and responsibility issues are barriers. Discuss one attempt: an AI “robot lawyer” earbud that would feed a defendant lines in traffic court (by DoNotPay) which was halted due to legal prohibitions. It illustrates both how far the tech has come (it was considered feasible) and the current ethical/regulatory wall.</li>
+                <li><strong>02:30–03:00</strong> – Case Study: E-Discovery Multi-Session Workflow: E-discovery might involve multiple AI steps over sessions: (1) initial pass identifies a subset of possibly relevant documents via classification (training data might be a small set labeled by humans), (2) lawyers review a sample of AI-selected docs, give feedback, (3) AI model is refined (active learning) to better catch relevance, (4) final set of docs is produced. All along, precision is important to not miss key evidence, and recall is important to not drown lawyers in too many non-relevant docs. Mention how modern e-discovery tools achieved court acceptance: through statistical validation – e.g. showing with 95% confidence that less than X% of relevant documents were missed, using random sampling to audit the “discarded” pile. This methodology had to be explained to judges to get buy-in for AI use in legal discovery. End with reinforcement that law is about trust through verification – any AI contributions must be reviewable, explainable, and under human control.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Retrieval: Bhagavatula et al. (2022) – “LegalIR: Information Retrieval in the Legal Domain” – (Study on legal case retrieval methods, including the role of citation networks and semantics).<br>
+            - Summarization: Sharma et al. (2023) – “BIGLAW Summaries: A Benchmark for Case Summarization” – (Introduces a dataset of long case opinions with summaries and evaluates LLMs on it, highlighting challenges in capturing key facts and holdings accurately).<br>
+            - E-Discovery: Grossman & Cormack (2011) – “Technology-Assisted Review in E-Discovery” – (Seminal text on the protocols and effectiveness of TAR, provides context on how AI is practically applied and validated in legal discovery).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Legal project teams test a component of their system with a small example – e.g. run their retrieval module on a sample query and inspect if retrieved cases are relevant, or run a clause classifier on a couple contracts and compare with manual identification. They note errors and adjust their approach (maybe need to add a custom legal stop-word list, or incorporate metadata like document titles in retrieval ranking). Others: design a quick experiment – take a public legal question answering system (or even ChatGPT) and force it via prompt to output sources for its answer, then check one of those sources to see if it actually supports the answer. Often, hallucination or stretching happens – discuss how our techniques like RAG are meant to solve that. Write a short comment on the importance of verifyable output in legal AI.
+        </div>
+        <div class="topic">
+            <h4>Lecture 7 (Sem 2): AI in Retail & E-Commerce – Personalization, Demand Forecasting, and Operations</h4>
+            <ul>
+                <li><strong>00:00–00:30</strong> – Retail AI Overview: Introduce how AI drives modern retail: recommender systems (suggesting products to customers online), customer segmentation & marketing (targeted promotions via ML clustering/prediction), demand forecasting (predicting sales to manage inventory and supply chain), pricing optimization (dynamic pricing algorithms based on demand elasticity), supply chain logistics (AI for route optimization, warehouse automation), and conversational commerce (chatbots for customer inquiries or shopping assistance).</li>
+                <li><strong>00:30–01:00</strong> – Retail Data: Describe the data landscape: transactional sales data (often very granular, SKU-level, timestamped), customer data (demographics, browsing history, loyalty program info), product data (descriptions, categories, images), and external data that influences retail (holidays, weather, social media trends). Emphasize seasonality and trend components – models must capture recurring patterns (e.g. spikes every holiday season). Retail also often has huge data volume (millions of transactions), so scalability of models is important.</li>
+                <li><strong>01:00–01:30</strong> – Recommendation Systems: Focus on personalization. Classic methods: collaborative filtering (matrix factorization) and its modern DL counterparts (neural collaborative filtering, item2vec, etc.). Domain-specific tweaks: cold start problem (new products with no history – solved via content-based models using product attributes or even image embeddings of product photos), and contextual recommendations (like using session data – what the user clicked in this session – via sequence models). Mention that companies often use hybrid systems: e.g. a content-based filter re-ranking collaborative results to inject diversity or new items. Domain adaptation example: a model trained on one category (e.g. books) might need adaptation to another (e.g. clothing) because user behavior differs; multi-task learning can be used (train one model on multiple categories with category embeddings to learn shared patterns and category-specific ones).</li>
+                <li><strong>01:30–02:00</strong> – Vision and Language in Retail: Explain that understanding products requires vision (product images) and language (descriptions, reviews). Discuss multimodal models: e.g. using CNNs or vision transformers to get image features, and combining with textual features in a joint embedding for tasks like “find similar products” or “complete the look” outfit recommendations. Also, NLP for analyzing customer reviews (sentiment, key feedback points) to inform merchandising. And emerging practice: using generative models to create product descriptions (with guardrails to ensure accuracy) and even to generate synthetic product images for advertising or virtual try-ons.</li>
+                <li><strong>02:00–02:30</strong>  – Operations: Forecasting and Optimization: Retail operations use ML for demand forecasting at various granularities (store-SKU level daily forecasts, etc.). Often hierarchical models (e.g. predict at store level and reconcile with regional predictions). Here, time-series domain adaptation might involve transferring knowledge of seasonality patterns from established products to new product forecasts (cold start in forecasting). Also, inventory optimization: RL or optimization algorithms that use forecast outputs to decide restocking schedules, balancing holding costs vs stockout risk. For supply chain, discuss that AI can help route trucks (like a Traveling Salesman with learning for time estimates) or manage warehouse picking via RL-trained robotic systems – highlighting multi-agent aspect if robots coordinate.</li>
+                <li><strong>02:30–03:00</strong> – Case Studies: Example 1: Grocery Demand Forecasting – a retailer implemented an LSTM-based forecast that included weather data; it learned to boost ice cream forecasts on hot days and soup on cold days automatically. They adapted it per store (transfer learning, fine-tuning the global model to each store’s local patterns) and achieved a few percent improvement in accuracy, which translated to millions saved in spoilage reduction. Example 2: E-commerce Recommendation Engine – an online retailer’s recommendation system uses an ensemble: matrix factorization for baseline, plus a graph neural network that captures “also bought together” relationships as a graph, plus an NLP model that maps users and products into the same semantic space using query and description text. The ensemble improved click-through-rate by say 10%. They also use multi-armed bandits to explore showing new products occasionally to avoid filter bubble and gather data (this touches on exploration vs exploitation). Both examples show domain-specific considerations: including exogenous features (weather) for demand, and combining multiple data modalities for recommendations. Conclude that retail leverages a wide array of AI methods – essentially every technique from S1 (from distillation for efficient models on websites, to multi-task learning for multi-category recommendations, to RAG maybe for customer support bots querying policy knowledge bases) finds use.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Recsys: Zhang et al. (2019) – “Deep Learning based Recommender System: A Survey and New Perspectives” – (Sections on session-based and multi-modal recommendations, relevant to retail personalization).<br>
+            - Forecasting: Rangapuram et al. (2018) – “Deep State Space Models for Time Series Forecasting” – (Amazon’s work on forecasting, applied to retail demand in AWS; shows how deep models can incorporate seasonality and covariates like promotions).<br>
+            - Industry: Agrawal (2025) – “AI in Retail – 2025 Trends” – (Industry whitepaper or article summarizing recent advances like checkout-free stores, AI-driven supply chain, and hyper-personalization in marketing).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Retail teams ensure they have historical data and any exogenous factors needed for their models (maybe simulate if not available). Others: do a mini recommendation experiment – use a public dataset (like MovieLens as a proxy for retail) to compare collaborative filtering vs a content-based approach (e.g. using movie genres or descriptions). Or attempt to create a simple sales forecast model using historical sales + holiday flags and see if it beats a naive baseline. Document what domain insights (e.g. weekdays vs weekends sales patterns) had to be built into the model features or architecture. This ties the importance of combining domain knowledge with modeling.
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Lecture 8 (Sem 2): AI in Education – Intelligent Tutoring and Personalized Learning</h3>
+        <span class="dropdown-icon">▼</span>
+    </div>
+    <div class="week-content">
+        <div class="topic">
+            <ul>
+                <li><strong>00:00–00:30</strong> – Education AI Overview: Discuss AI’s role in education: intelligent tutoring systems (ITS) that provide one-on-one instruction in subjects like math, adaptive learning platforms that adjust difficulty based on student performance (e.g. Duolingo’s exercises adapt to what you got wrong), automated grading of assignments (from multiple-choice to essays and even open-ended responses using NLP), student engagement analysis (e.g. vision models detecting if a student is distracted on e-learning), and content creation (AI-generated practice questions or explanatory videos).</li>
+                <li><strong>00:30–01:00</strong> – Student Modeling (Knowledge Tracing): Introduce the concept of modeling a student's knowledge state. Early approach: Bayesian Knowledge Tracing (model each skill with a probability of mastery updated as student answers questions). Modern approach: Deep Knowledge Tracing using RNNs on the sequence of student answers to predict future performance【Piech et al. 2015】. Discuss how multi-task or transfer learning might be used to generalize across students or subjects. And how multi-modal data can come in (e.g. combining clickstream data with video engagement or even eye-tracking to gauge attention).</li>
+                <li><strong>01:00–01:30</strong> – Domain Adaptation in Education: Consider adapting an AI tutor to different curricula or student populations. For instance, a math tutor trained on one country’s curriculum needs adaptation for another country’s standards (different sequence of topics, nomenclature). Could fine-tune or adjust the content mappings. Also, reading level adaptation: an AI that generates hints should phrase them appropriately for, say, a 5th grader vs a college student – possibly handled by fine-tuning on age-specific data or prompting the model with a target grade level.</li>
+                <li><strong>01:30–02:00</strong> – Feedback and Natural Language in Tutoring: A lot of educational content is textual (explanations, hints, feedback on open answers). LLMs offer new capabilities here: e.g. an LLM can evaluate a free-form student answer and give personalized feedback (“Your reasoning is good up to step 3, but check the formula you used in step 4.”). Explain how such systems might combine rules (to ensure correctness and no inappropriate content) with generation (to customize feedback). Also, dialogue-based tutors (like a Socratic tutor that asks guiding questions) are a hot area – essentially a specialized chatbot. Emphasize safety: the tutor should not stray off-topic or give harmful advice; thus content filtering and guardrails (no profanity, culturally sensitive examples, etc.) are needed.</li>
+                <li><strong>02:00–02:30</strong> – Measuring Learning Outcomes: Education domain has a unique ultimate metric: learning gain. Talk about how AI systems are evaluated via A/B tests or studies comparing classes with or without the AI tutor, measuring test score improvements or retention. Mention that sometimes a simpler system can be as effective as a complex AI, depending on context – human factors (like teacher adoption) are crucial. AI should complement teachers, not replace them: e.g. providing analytics to teachers about which students are struggling, so teachers can intervene.</li>
+                <li><strong>02:30–03:00</strong> – Case Studies: Example 1: Math ITS (Cognitive Tutor) – based on cognitive psychology, this tutor breaks problems into skills and uses a model of student skill mastery to select next problems. It provided real-time hints and had a Bayesian model updating each skill’s mastery probability. Studies showed significant improvement in student performance using it in classrooms over a year. Example 2: Online MOOC platforms – platforms like Coursera or Khan Academy using ML to predict dropout risk (if a student hasn’t logged in or performed poorly, trigger an intervention email), and to recommend review material if the student’s quiz scores indicate weak areas. These predictions are often logistic regression or simple trees on features like time spent, quiz scores, etc. They have domain-tuned thresholds for alerts. Also mention newer systems like GitHub Copilot for Education – a programming tutor that can help students with coding tasks but has to be constrained to not just give away the answer (perhaps using an AI to give progressive hints instead of full solutions). Conclude that education AI is not just about content accuracy, but pedagogical effectiveness – an interdisciplinary area requiring input from learning science, which is an additional layer of “domain” knowledge beyond just the academic content.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Knowledge Tracing: Piech et al. (2015) – “Deep Knowledge Tracing” – (Introduced RNNs for modeling student learning over time, found to outperform Bayesian models on assistment data).<br>
+            - Personalization: Lan et al. (2017) – “Contextual Multi-Armed Bandits for Personalized Lesson Sequence Recommendation” – (Applies bandit algorithms to choose the next exercise for a student, showing a way to adapt in real-time).<br>
+            - Outcomes: Koedinger et al. (2015) – “In Vivo Experimentation for AI in Education” – (Discusses how to properly evaluate educational interventions via experiments in real classes, highlighting common pitfalls and best practices).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Education teams outline how they will evaluate their tool (if applicable, design a small user study or simulation). Others: experience a mini tutoring session with an AI (could use open resources like Khan Academy’s automated hints or simply ChatGPT prompted as a tutor for a topic you know, e.g. basic calculus). Note the behavior: Does it ask questions? Does it adapt to your responses? Also, intentionally make a mistake as a student to see if it corrects you gently. Report on whether it was effective or where it failed. Reflect on what that implies for designing our own tutor AIs (e.g. need for better error diagnosis or more patience). This highlights the human-AI interaction aspect in learning.
+        </div>
+        <div class="topic">
+            <h4>Lecture 9 (Sem 2): AI for Climate and Environment – Modeling and Decision Support</h4>
+            <ul>
+                <li><strong>00:00–00:30</strong> – Climate/Environment AI Overview: Describe AI applications in climate science and environmental management: weather forecasting (using neural networks to speed up or augment numerical weather prediction), climate projection downscaling (increasing the resolution of climate model outputs with AI), renewable energy optimization (predicting solar/wind power output, adjusting grid loads), environmental monitoring (deforestation tracking via satellite image classification, wildlife population estimation via camera traps and AI), and disaster response (AI models for flood prediction, wildfire spread simulation, guiding evacuations).</li>
+                <li><strong>00:30–01:00</strong> – Climate Data and Challenges: Discuss the data: large-scale spatio-temporal data (e.g. global climate model outputs, satellite multi-spectral images, IoT sensor networks). Challenges include high dimensionality, need for physical consistency (predictions shouldn’t violate basic laws like energy conservation grossly), and scarcity of labeled data for some problems (e.g. relatively few historical extreme events to train on). Domain adaptation example: using simulations (plentiful but imperfect) to train models that then adapt to real observed data (scarcer).</li>
+                <li><strong>01:00–01:30</strong> – AI-Assisted Climate Modeling: Introduce efforts like ClimaX (2024) – a foundation model for weather/climate that can be fine-tuned for different tasks. It’s trained on heterogeneous data (pressure, temperature fields, etc.) to serve as a general predictor. Also mention ClimateGPT initiatives aiming to provide accessible climate information by synthesizing research. These often involve heavy domain pre-training and then fine-tuning for specific tasks (e.g. precipitation nowcasting). Knowledge distillation in climate: sometimes a complex ensemble of physics models can be distilled into a simpler neural model for speed, while trying to retain accuracy (akin to Matryoshka idea, but for differential equation simulators).</li>
+                <li><strong>01:30–02:00</strong> – Decision Support and Multi-Agent Systems: Climate action often involves multiple agents (government, communities, etc.) – an AI system might simulate outcomes of different policy decisions. Multi-agent simulation (e.g. agent-based models of how households adopt solar panels, with an AI optimizing incentives) can help policy design. Also, multi-objective optimization appears: e.g. maximize renewable usage while minimizing cost – AI-driven solvers or RL (like smart grid controllers using RL to balance supply/demand). These require domain constraints to be hard-coded often (physical grid limits), so it's a fusion of AI and operations research.</li>
+                <li><strong>02:00–02:30</strong> – Uncertainty and Communication: For climate and environment, uncertainty is huge and communication of it is key. AI models should provide confidence intervals or probabilistic outputs (e.g. “70% chance of rain > 1 inch”). Calibration here is critical (ties to our uncertainty lecture). Also, these models often feed into high-stakes decisions (evacuations, infrastructure planning), so they are often used in an augmented way: human experts (meteorologists, climate scientists) interpret AI outputs, rather than automatic action. Mention how some early pure-AI weather forecasts faced skepticism until they demonstrated skill comparable to physics models. Now hybrid approaches (using AI to post-process physical model outputs) are more trusted.</li>
+                <li><strong>02:30–03:00</strong> – Case Studies: Example 1: Solar/Wind Power Forecasting for Grid – a system that uses weather data and machine learning to predict solar panel and wind turbine output hours ahead. Fine-tuned per location (domain adapt to local climate patterns) and feeding into a grid management system which then optimizes power plant dispatch. Results: reduced reliance on backup fossil fuel generators by better anticipating renewables variability. Example 2: Deforestation detection – an AI model analyzing satellite images periodically to flag likely illegal logging. It was trained on known deforestation patterns (brown spots in forest, road networks) and adapted to different forest types via transfer learning. Deployed by an environmental agency, it cut the detection time of illegal logging from months (via manual photo analysis) to days, enabling quicker enforcement. These show AI aiding both mitigation (energy) and conservation (environment), with domain tuning (local weather, different forests) important for accuracy. Conclude that climate/environment AI is rapidly evolving: it must integrate with physics-based knowledge and often prioritize reliability over raw predictive power (since consequences are enormous). It’s a field where AI for good is very tangible, and students might be inspired to contribute their skills here.</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Model: Nguyen et al. (2023) – “ClimaX: A foundation model for weather and climate” – (Presents a unified model for various climate variables and tasks, a good example of multi-task learning on environmental data).<br>
+            - Application: Wang et al. (2020) – “Deep Learning for Solar Power Forecasting” – (Illustrates using CNN/LSTM on satellite cloud images and weather data to predict solar panel output, demonstrating domain adaptation across geography).<br>
+            - Case: Hsu et al. (2023), Nature – “Using AI to Predict Floods and Inform Evacuations” – (Article or study on an AI model integrated with flood simulations to provide advance warnings in Bangladesh, including how the warnings were communicated and resulted in better outcomes).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Climate teams ensure their models respect any known physical constraints (e.g. temperature can’t go below absolute zero, etc.) – discuss how to implement such constraints or check for violations in output. Others: try a simple climate-related prediction – e.g. use historical weather data of your city to train a tiny model to predict tomorrow’s temp or rainfall (or use an available AI weather API) and compare to today’s actual weather or official forecast. See how close it gets and note sources of error (maybe the AI missed an upcoming storm because it has limited data). Or use a public satellite image and a pre-trained image segmentation model (if available) to identify water vs land and see if it matches official maps (simulating an environment monitoring task). Reflect on the gap between a neat AI demo and what would be needed to trust it for decision-making (e.g. lots of validation, domain expert buy-in).
+        </div>
+        <div class="topic">
+            <h4>Lecture 10 (Sem 2): Integration, Future Trends, and Course Conclusion</h4>
+            <ul>
+                <li><strong>00:00–00:30</strong> – Cross-Domain Synergy: Discuss scenarios where multiple domain-specific AIs might intersect to solve a grand challenge. For example, public health and climate: using healthcare AI (to monitor disease outbreaks) together with climate AI (predicting climate-driven disease spread) to inform policy on resource allocation. Or finance and climate: climate models feeding into financial risk models (for insurance pricing in coastal areas). Emphasize that many real-world problems (like pandemic response, as seen with COVID-19) require input from multiple domain models – the future may see AI “ecosystems” where specialized models interface (likely via APIs or agent frameworks) to provide a holistic solution.</li>
+                <li><strong>00:30–01:00</strong> – Generalist vs Specialist Models – Revisited: Revisit the debate in light of all domains studied. Will a single Artificial General Intelligence or giant foundation model replace the need for domain-specific tuning? Current trend suggests we will have large general models plus domain-specific adaptation on top (e.g. GPT-4 with plugins or fine-tuning for medicine, law, etc.). Domain experts might prefer models that incorporate domain constraints (for reliability). For instance, BloombergGPT achieved better financial task performance than general GPT models by including domain data, showing value in specialization. Likely, a hierarchy: general foundation models, specialized domain models, and even sub-domain fine-tunings co-existing. Students can share their thoughts: e.g. do they trust a single AI to do both surgery planning and stock trading? Probably not – context matters.</li>
+                <li><strong>01:00–01:30</strong> – Emerging Technologies: Highlight a few emerging research areas that could shape domain-specific AI: Federated Learning (as mentioned in healthcare/finance – train on distributed sensitive data, increasingly important), Neuro-symbolic AI (combining neural nets with knowledge bases or rule engines – potentially very useful in law and other rule-governed systems), AutoML and Low-Code AI (making it easier for domain experts to develop custom models without deep ML expertise, which could democratize domain AI creation), and Continual Learning (keeping models updated as domain data evolves, reducing catastrophic forgetting – crucial for domains like finance where data shifts). Also mention quantum computing hype in some domains (optimization problems in finance or climate might eventually leverage quantum algorithms alongside classical AI).</li>
+                <li><strong>01:30–02:00</strong> – Student Project Presentations (Continued): Continue with any remaining project presentations (if not all were done in an earlier session). Each team demonstrates their solution, focusing on how it uses techniques from the course and the results they achieved. This is an opportunity for peer learning as well – students see how each domain had its unique twists.</li>
+                <li><strong>02:00–02:30</strong> – Discussion of Projects and Learnings: Facilitate a discussion: What common themes emerged? (Perhaps data quality issues were a challenge across domains, or the need for better model explainability.) What was surprisingly easy or hard when implementing in a domain? Encourage teams to share a key lesson. Also discuss how they would continue or deploy their projects – e.g. working with domain experts, dealing with real users, obtaining regulatory approvals if relevant. This ties the academic learning to practical application steps.</li>
+                <li><strong>02:30–03:00</strong> – Course Wrap-Up and Future Directions: Summarize the journey through two semesters: from advanced AI techniques to applying them in depth in various fields. Reiterate key takeaways: No one-size-fits-all in applied AI – understanding domain context is just as important as ML prowess. Highlight examples of success they learned about, hopefully inspiring confidence that they can build such systems. Provide guidance for further learning: suggest academic resources or communities for each domain (e.g. conferences like NeurIPS for new techniques, or domain-specific ones like AI for healthcare workshops). Conclude on an encouraging note: domain-specific AI is at the frontier of making AI beneficial – “AI won’t replace experts, but experts who harness AI will outperform those who don’t.” Urge them to be those experts, ensuring AI is used responsibly and creatively to advance their fields. Thank everyone, and potentially have a round of applause for the collective effort. (Optionally, if any guest domain experts were involved in project feedback, acknowledge them here.)</li>
+            </ul>
+        </div>
+        <div class="topic reading-section">
+            <strong>Recommended Reading:</strong><br>
+            - Future Vision: Bommasani et al. (2023) – “On the Opportunities and Risks of Foundation Models in Domain Applications” – (A forward-looking analysis from the Stanford CRFM on how large models might be adapted to domains, discussing interdisciplinary collaboration needed and policy considerations).<br>
+            - Federated Learning: Kairouz et al. (2021) – “Advances and Open Problems in Federated Learning” – (Comprehensive survey including applications in healthcare and finance, relevant to privacy-preserving cross-institutional training).<br>
+            - Interdisciplinary Case: Xu et al. (2023) – “Pandemic Response: An AI and Multi-Domain Challenge” – (Paper or article describing how epidemiology models, mobility data, and economic models were combined with AI during COVID-19, illustrating cross-domain AI integration).<br>
+        </div>
+        <div class="topic lab-section">
+            <strong>Lab/Project Work:</strong> Final Project Report & Demo. Teams submit their final report documenting their solution, results, and what they learned. If feasible, a live demo or recorded demo is provided. Optionally, a retrospective: each student writes a short reflection on how their view of applied AI changed over the course – e.g. an insight about the importance of data vs algorithms, or an appreciation for interdisciplinary work. These reflections can be discussed (time permitting) or just collected as part of course feedback. The class ends with a note that their expertise is now at an “elite” level – they should feel empowered to implement advanced AI in any domain they delve into, responsibly and effectively.
+        </div>
+    </div>
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical AI Reference Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .reference-group {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #e1e8ed;
+        }
+
+        .dropdown-header {
+            padding: 20px 25px;
+            background: #ffffff;
+            color: #2c3e50;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.15em;
+            font-weight: 600;
+            user-select: none;
+            border-bottom: 2px solid #e1e8ed;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-header:hover {
+            background: #f8f9fa;
+        }
+
+        .dropdown-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            color: #7f8c8d;
+        }
+
+        .dropdown-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #fafbfc;
+        }
+
+        .dropdown-content.open {
+            max-height: 2000px;
+        }
+
+        .reference-item {
+            padding: 20px 25px;
+            border-bottom: 1px solid #e1e8ed;
+            transition: background-color 0.2s ease;
+        }
+
+        .reference-item:last-child {
+            border-bottom: none;
+        }
+
+        .reference-item:hover {
+            background-color: #f0f3f7;
+        }
+
+        .reference-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .reference-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #2c3e50;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .reference-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            line-height: 1.4;
+        }
+
+        .reference-link {
+            color: #34495e;
+            text-decoration: none;
+            font-size: 0.92em;
+            word-break: break-all;
+            display: block;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #e1e8ed;
+            transition: all 0.2s ease;
+        }
+
+        .reference-link:hover {
+            border-color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .count-badge {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        .topic-icon {
+            margin-right: 10px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .dropdown-header {
+                padding: 15px 20px;
+                font-size: 1em;
+            }
+
+            .reference-item {
+                padding: 15px 20px;
+            }
+
+            .reference-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Medical AI Reference Library</h1>
+
+        <div class="reference-group">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="topic-icon">🩺</span>Medical Question Answering with LLMs <span class="count-badge">1 ref</span></span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="reference-item">
+                    <div class="reference-title">[2305.09617] Towards Expert-Level Medical Question Answering with Large Language Models</div>
+                    <a href="https://arxiv.org/abs/2305.09617" target="_blank" class="reference-link">
+                        https://arxiv.org/abs/2305.09617
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="reference-group">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="topic-icon">🧠</span>Model Learning & Optimization <span class="count-badge">1 ref</span></span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="reference-item">
+                    <div class="reference-title">Matryoshka Model Learning for Improved Elastic Student Models</div>
+                    <a href="https://arxiv.org/html/2505.23337v1" target="_blank" class="reference-link">
+                        https://arxiv.org/html/2505.23337v1
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="reference-group">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="topic-icon">🔬</span>Medical Imaging & Synthetic Data <span class="count-badge">1 ref</span></span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="reference-item">
+                    <div class="reference-title">RoentGen: Synthetic Chest X-ray Diffusion Model</div>
+                    <a href="https://www.emergentmind.com/topics/roentgen" target="_blank" class="reference-link">
+                        https://www.emergentmind.com/topics/roentgen
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.dropdown-icon');
+            
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+    </script>
+    
+</body>
+</html>

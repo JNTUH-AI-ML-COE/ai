@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Modern Software Development | Course</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: #f6f8fa;
+      color: #2b2f44;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #32427b 0%, #64b3f4 100%);
+      padding: 2rem 1rem 1rem 1rem;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(65, 89, 178, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-weight: bold;
+      font-size: 2.3rem;
+      margin: 0 0 1rem 0;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 4px;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn {
+      flex: 1;
+      padding: 12px 24px;
+      background: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-btn:hover::before {
+      left: 100%;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-btn.active {
+      background: white;
+      color: #32427b;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-btn.active::before {
+      display: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 800px;
+      margin: 30px auto 60px auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Content Sections */
+    .content-section {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Intro Box */
+    .intro {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(48,77,204,0.05);
+      border: 1.5px solid #dde2ec;
+    }
+
+    .intro p {
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    /* Dropdown Styles */
+    .dropdown {
+      background: #fff;
+      border-radius: 12px;
+      margin: 1.2rem 0;
+      box-shadow: 0 2px 8px rgba(48,77,204,0.05);
+      transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1);
+      border: 1.5px solid #dde2ec;
+      overflow: hidden;
+    }
+
+    details {
+      padding: 0;
+      transition: background 0.3s;
+    }
+
+    details[open] {
+      background: #f0f5fc;
+      border-left: 3px solid #578edb;
+      transition: background 0.5s;
+      box-shadow: 0 4px 26px rgba(55,103,215,0.07);
+    }
+
+    summary {
+      cursor: pointer;
+      font-size: 1.23rem;
+      font-weight: 600;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      outline: none;
+      user-select: none;
+      border: none;
+      transition: color 0.4s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::before {
+      content: '▼';
+      display: inline-block;
+      font-size: 1rem;
+      color: #6d83b5;
+      margin-right: 12px;
+      transition: transform 0.3s;
+    }
+
+    details[open] summary::before {
+      transform: rotate(-180deg);
+    }
+
+    .week-content {
+      padding: 0 2.2rem 1.5rem 2.7rem;
+      animation: fadeIn 0.4s cubic-bezier(.4,0,.2,1);
+    }
+
+    .week-content p {
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+
+    .week-content strong {
+      color: #2251a4;
+      font-weight: 600;
+      background: rgba(87, 142, 219, 0.08);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .week-content p strong:first-child {
+      display: inline-block;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      background: none;
+      padding: 0;
+    }
+
+    .week-content ul {
+      margin: 10px 0 20px 20px;
+      padding: 0;
+    }
+
+    .week-content li {
+      margin: 8px 0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .week-content em {
+      font-style: italic;
+    }
+
+    .week-content a {
+      color: #578edb;
+      text-decoration: none;
+      font-size: 0.85rem;
+      vertical-align: super;
+    }
+
+    .week-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Schedule Specific Styles */
+    .week-section {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .week-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .week-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 25px 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .week-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .week-header:hover::before {
+      left: 100%;
+    }
+
+    .week-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    .toggle-icon {
+      font-size: 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+
+    .week-section.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .schedule-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s ease;
+    }
+
+    .week-section.active .schedule-content {
+      max-height: 10000px;
+      padding: 30px;
+    }
+
+    .day-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid #667eea;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .day-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #667eea, #764ba2);
+      transition: width 0.3s ease;
+    }
+
+    .day-card:hover::before {
+      width: 8px;
+    }
+
+    .day-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+    }
+
+    .day-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #667eea;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .day-title::before {
+      content: '📅';
+      font-size: 1.5rem;
+    }
+
+    .session-goal {
+      background: rgba(102, 126, 234, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 3px solid #667eea;
+    }
+
+    .module {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .module:hover {
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .module-title {
+      font-weight: 700;
+      color: #764ba2;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .module-title::before {
+      content: '▶';
+      color: #667eea;
+      font-size: 0.8rem;
+    }
+
+    .module ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    .module li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .module li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    .readings {
+      background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+      border-left: 4px solid #f56565;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .readings h4 {
+      color: #c53030;
+      margin-bottom: 15px;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .readings h4::before {
+      content: '📚';
+    }
+
+    .readings ul {
+      list-style: none;
+    }
+
+    .readings li {
+      padding: 8px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .readings li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #f56565;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .readings a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .readings a:hover {
+      color: #764ba2;
+      text-decoration: underline;
+    }
+
+    .lab-section {
+      background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+      border-left: 4px solid #48bb78;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    .lab-section h4 {
+      color: #2f855a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lab-section h4::before {
+      content: '🔬';
+    }
+
+    .deliverables {
+      background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);
+      border-left: 4px solid #9f7aea;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .deliverables h3 {
+      color: #6b46c1;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .deliverables h3::before {
+      content: '✅';
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+      font-size: 0.9rem;
+      background: white;
+      margin-top: 40px;
+      border-top: 2px solid #dde2ec;
+    }
+
+    footer p {
+      margin-bottom: 15px;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      font-size: 1.5rem;
+      border: none;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .nav-btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+      }
+
+      .container {
+        padding: 0 0.4rem;
+      }
+
+      .week-content {
+        padding: 0 1.1rem 1rem 1.3rem;
+      }
+
+      .week-header h2 {
+        font-size: 1.2rem;
+      }
+
+      .day-title {
+        font-size: 1.1rem;
+      }
+
+      .day-card {
+        padding: 15px;
+      }
+    }
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2d3748;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: #718096;
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .topic-section {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .topic-header {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #f8f9fa, #ffffff);
+            border-bottom: 2px solid #e9ecef;
+            user-select: none;
+        }
+
+        .topic-header:hover {
+            background: linear-gradient(to right, #e9ecef, #f8f9fa);
+        }
+
+        .topic-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .topic-icon {
+            font-size: 1.5rem;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .topic-section.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .links-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .topic-section.active .links-container {
+            max-height: 2000px;
+        }
+
+        .links-content {
+            padding: 24px;
+        }
+
+        .link-item {
+            margin-bottom: 16px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.2s ease;
+        }
+
+        .link-item:hover {
+            background: #e9ecef;
+            transform: translateX(4px);
+            border-left-color: #764ba2;
+        }
+
+        .link-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .link-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .link-url {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            word-break: break-all;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+
+        .link-url:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .reference-count {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .topic-title {
+                font-size: 1.1rem;
+            }
+
+            .topic-header {
+                padding: 16px 20px;
+            }
+
+            .links-content {
+                padding: 16px;
+            }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><strong>AI-Powered Modern Software Development</strong></h1>
+    <div class="nav-bar">
+      <button class="nav-btn active" onclick="showSection('detailed')">Detailed Syllabus</button>
+      <button class="nav-btn" onclick="window.location.href='course_schedule_for_modern_dev.html'">Course Schedule</button>
+
+    </div>
+  </header>
+  
+  <div id="detailed-section" class="container">
+    <div class="intro">
+      <p>This curriculum provides a <strong>deep-dive into how AI and large language models (LLMs) are transforming software engineering</strong>. Each module (week) below outlines the topics, learning objectives, and key references drawing from the <strong>latest industry developments and research</strong>, ensuring up-to-date coverage in this rapidly evolving field.</p>
+    </div>
+
+    <!-- Week 1 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 1: Introduction to Coding LLMs and AI Development</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Understand what large language models (LLMs) are and <em>how they generate code</em>, and learn effective prompt engineering techniques for software tasks. Students will grasp why LLMs have sparked a new paradigm ("<strong>vibe coding</strong>") in development and how to harness these models responsibly.</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>Foundations of LLMs:</strong> What is an LLM <em>actually</em>? – Overview of transformer-based LLMs and their training on code. Emphasize how LLMs serve as a new high-level programming abstraction, <strong>projected to deliver trillions in productivity gains</strong> in software development.</li>
+            <li><em>Code-Specific LLMs:</em> Discussion of models specialized for coding (e.g. GPT-4.1, Claude 4, Code Llama-2) and their capabilities as of 2025. Highlight that coding has emerged as one of the most powerful LLM use cases, with AI now able to generate entire functions or files from natural language specs.</li>
+            <li><strong>Prompt Engineering Basics:</strong> How to prompt effectively – techniques to communicate requirements to LLMs. Emphasize clarity and context in prompts: <strong>most failures come from ambiguity rather than model limits</strong>. Show examples of good prompts vs. poor prompts for coding tasks (e.g. specifying languages, giving function signatures, using step-by-step instructions).</li>
+            <li><em>Evolving Best Practices:</em> By 2025, prompt engineering spans formatting, reasoning scaffolds, and role prompting. Different models may prefer different prompt styles, so there's <em>no one-size-fits-all</em> — students learn to iterate and adjust prompts per model for optimal results.</li>
+            <li><em>Prompting for Reliability:</em> Introduce idea of "secure prompting" – e.g., explicitly asking for input validation or secure defaults, given LLMs <strong>won't include security or tests unless asked</strong>. Encourage students to specify constraints ("follow coding standards X", "avoid deprecated APIs") in their prompts.</li>
+            <li><strong>Impact on Development Workflow:</strong> Discuss how AI coding assistants (GitHub Copilot, etc.) have changed daily coding. Share recent findings that improved context understanding in AI assistants has <em>doubled acceptance rates of suggestions</em>, significantly boosting productivity. Also address limitations: LLMs sometimes produce syntactically correct but subtly wrong code – hence the continued need for human validation and traditional programming knowledge.</li>
+            <li><em>"Vibe Coding" Concept:</em> Introduce <em>vibe coding</em> (coined 2025) – using natural language to outline what you want and letting the AI produce the code. Discuss how this democratizes development (non-experts can create software by describing it) while also raising challenges (like <em>omitted security checks</em> in AI-generated code). Real example: an indie developer launched a game from a single prompt (e.g. "Make a 3D flying game in the browser") in hours. This illustrates the promise and the need for caution (fast prototyping but potential hidden bugs).</li>
+          </ul>
+
+          <p><strong>Key References:</strong> Recent guides on prompt engineering, a16z podcast insights on AI's role in coding, and case studies of AI-generated projects will underpin this week. Hands-on practice will use an "LLM Prompting Playground" assignment to solidify these concepts.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Week 2 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 2: The Anatomy of Coding Agents</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Decompose an "AI coding agent" into its fundamental components. Students will learn <strong>how to build an LLM-based coding agent from scratch</strong>, understanding its architecture (planner, tools, memory, etc.), and study the emerging <strong>Model Context Protocol (MCP)</strong> as a standard for connecting AI to development tools.</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>Agent Architecture & Components:</strong> What goes into a coding agent beyond the LLM itself. We cover the standard <em>agentic stack</em>: a <strong>planner</strong> to break tasks into steps, a <strong>controller/orchestrator</strong> to manage those steps, <strong>tools/API integrations</strong> to execute actions (like running code or queries), and a <strong>memory/context store</strong> for long-term knowledge. An agent's loop of perceive → reason → act is far more than just prompting an LLM.</li>
+            <li><em>Planning and Autonomy:</em> Coding agents plan multi-step workflows (e.g. analyze requirement → write code → run tests → fix bugs). We discuss how early autonomous agents (e.g. AutoGPT) revealed planning challenges (tendency to loop without converging). Modern agents use improved planning algorithms to dynamically adjust to errors and avoid infinite loops.</li>
+            <li><strong>Tool Use and Function Calling:</strong> How agents invoke external tools/functions. We examine the mechanism of LLM <em>function calls</em> (letting the model trigger predefined actions like filesystem operations or API calls). By 2025 this concept is standardized and widely supported – e.g. OpenAI's function-calling API (2023) and newer frameworks allow LLMs to call tools like compilers, linters, web search, etc., as part of their reasoning loop. This enables agents to compile code, run tests, or query documentation autonomously.</li>
+            <li><strong>Model Context Protocol (MCP):</strong> Introduce MCP as an <strong>open standard for connecting AI agents to external systems</strong> (tools, data, development environments). Developed by Anthropic & others in late 2024, MCP defines a uniform way for AI clients (like an IDE or agent) to discover and invoke tools with proper context. We cover the core ideas of MCP:
+              <ul>
+                <li><em>Unified Tool Interface:</em> MCP replaces ad-hoc integrations with a single protocol, so an AI agent can plug into many services (code repos, issue trackers, databases) via MCP servers. This means instead of custom code for each API, an agent speaks one language to access all (leading to more scalable, maintainable agent design).</li>
+                <li><em>MCP Components:</em> <strong>MCP servers</strong> expose tools/data; <strong>MCP clients</strong> (our coding agents) consume them. Highlight recent developments: <em>authentication & security in MCP</em> were enhanced in 2025 by collaboration between Microsoft, Anthropic, and identity providers. Now MCP supports delegating auth to OAuth/SSO, allowing enterprise-grade secure agent connections.</li>
+                <li><em>Capabilities:</em> Beyond simple tool calls, full MCP spec includes <em>Prompts</em> (pre-defined multi-step workflows servers can provide), <em>Resources</em> (rich outputs like images or logs that agent can manipulate), and <em>Sampling</em> (letting the MCP server itself call language models). Together these transform MCP from just a tool API to a comprehensive framework for building coding agents with shared workflows and data.</li>
+                <li><em>Industry Adoption:</em> Discuss how MCP is being adopted in dev tools. <strong>VS Code (as of mid-2025) offers complete MCP support</strong>, meaning agents in VS Code can use <em>any</em> MCP-compliant tool out-of-the-box. Early adopters (GitHub's coding assistant, Claude Desktop, etc.) show the potential of a rich ecosystem where AI agents readily connect to version control, CI pipelines, or cloud services. Students will review an example of building a simple MCP server and client to solidify understanding (as per the "MCP Server Implementations" readings).</li>
+              </ul>
+            </li>
+            <li><strong>Building a Coding Agent (Practicum):</strong> The module culminates in a guided exercise: creating a minimal coding agent that uses an LLM to write a function, execute it in a sandbox, and verify output. This ties together planning, tool use, and context. We stress reliability measures, e.g. bounding the agent's autonomy (max iterations, user approvals) and logging its decisions for debugging.</li>
+          </ul>
+
+          <p><strong>Key References:</strong> IBM's <em>"Anatomy of an AI Agent"</em> design patterns and Microsoft's guidance on AI agent design provide frameworks for agent architecture. The <strong>Anthropic MCP announcement</strong> and VS Code's June 2025 update on full MCP support are referenced to illustrate state-of-the-art agent integration. These sources, along with hands-on labs, prepare students to build and understand coding agents.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Week 3 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 3: The AI IDE (Intelligent Development Environment)</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Learn how modern IDEs integrate AI to create a <strong>context-aware, smart coding environment</strong>. Students will explore techniques for managing context in large codebases, using AI-powered code understanding, and utilizing AI assistants within IDEs for tasks like code completion, navigation, and design documentation.</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>Context Management in IDEs:</strong> How to feed the right code context to an LLM assistant. IDEs now maintain rich <em>workspace context</em> for the AI – rather than naive whole-file prompts, they use embeddings and project indexes to retrieve relevant functions, classes, or docs on the fly. For example, GitHub's new <strong>embedding model (Oct 2025)</strong> dramatically improved how Copilot retrieves relevant code: it achieved a 37% boost in relevant snippet retrieval and doubled suggestion acceptance for Java/C# by better understanding project structure. We cover how such embedding models work (e.g. <em>Matryoshka Representations</em> that allow multi-granularity code vectors) and how they integrate with IDE search to supply the LLM only the most pertinent pieces of code.</li>
+            <li><em>Handling Large Codebases:</em> Discuss strategies like on-demand file reading (the agent opens files as needed), summarizing files into notes, and <strong>100K+ token context windows</strong> now available in models (Claude 100k, GPT-4 32k) that let an IDE assistant consider whole modules at once. Trade-offs between long-context vs. retrieval approaches are analyzed.</li>
+            <li><strong>AI-Based Code Understanding:</strong> The IDE as an "AI pair programmer" means it can <strong>interpret and explain code</strong> to the developer. Students will see demonstrations of asking the IDE, "What does this function do?" or "Find potential bugs in this file," and getting answers powered by LLM analysis. We reference that <em>multi-agent approaches</em> can enhance code understanding – e.g., one agent generates hypotheses about a bug, another checks them (a technique being researched to improve debugging). Although multi-agent setups are advanced, they hint at how IDEs might run background AI processes to continuously ensure code quality.</li>
+            <li><em>PRDs for Agents – AI-aided Design:</em> <strong>Product Requirement Documents (PRDs) for agents</strong> – this subtopic covers writing high-level specs or design docs that guide AI coding agents. The idea is that rather than diving straight into coding, developers can compose a structured description of features (requirements, acceptance criteria) which the AI will use as a blueprint. We provide a template for a "Design Doc for AI" (as mentioned in the course schedule) and show how feeding this document into the context yields better results (the agent can plan code generation according to the spec). This teaches students an important workflow: <strong>using design documentation to steer AI</strong> and mitigate the unpredictability of natural language requests.</li>
+            <li><strong>IDE Integrations and Extensions:</strong> Survey of how major development environments incorporate AI:
+              <ul>
+                <li><em>VS Code & Extensions:</em> GitHub Copilot's integration in VS Code now includes <strong>multiple modes (chat, inline, <em>agent mode</em>)</strong>. We highlight <em>Copilot Agent Mode</em> (released early 2025) as a case study: from within the IDE, the agent can perform multi-step tasks like refactorings across files, running tests, etc., all under user supervision. Key features (context-awareness, tool usage via MCP in VSCode, and UI for user approval of actions) show the maturity of AI IDE assistants.</li>
+                <li><em>JetBrains and Others:</em> JetBrains IDEs have introduced AI assistants that can explain errors, suggest fixes, and generate code comments. Many come with <em>"bring your own LLM"</em> flexibility by 2025, allowing connection to open-source models. We'll discuss one example extension that lets developers swap in a local LLM for code completion (underscoring issues of data privacy and cost).</li>
+                <li><em>Open-Source AI Dev Tools:</em> Mention projects like <strong>Cursor</strong> (an open-source AI code editor gaining popularity in 2025), which combine code editing with LLM chat seamlessly. Compare features of open tools vs. commercial (e.g. Cursor vs. Copilot vs. Codeium) to give students perspective on the tooling landscape.</li>
+              </ul>
+            </li>
+            <li><strong>Practical UI/UX for AI in IDE:</strong> Best practices for using AI effectively in development: e.g., how to structure an "AI query" in IDE (asking a specific question vs. a vague prompt), when to trust the AI vs. when to manually verify (always run and test the AI-generated code!). We'll reinforce that <strong>formal programming languages and fundamentals remain essential</strong> – natural language interfaces are powerful, but understanding what the AI is doing (and being able to code manually when needed) is still critical.</li>
+          </ul>
+
+          <p><strong>Key References:</strong> GitHub's InfoQ announcement on embedding-enhanced Copilot illustrates context management improvements. Microsoft's <em>"Copilot Agent Mode"</em> blog provides real-world details of an AI performing IDE tasks autonomously. We also cite research on multi-agent code analysis and a16z commentary on prompt-based vs. traditional programming to frame discussion. By the end of Week 3, students will have set up an AI-augmented IDE and practiced optimizing its use (supported by readings like "Coding Agents 101" and labs on IDE setup).</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Week 4 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 4: Coding Agent Patterns – Autonomy and Collaboration</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Examine <strong>design patterns for AI coding agents</strong>, focusing on levels of autonomy and effective human-agent collaboration. Students will learn when to trust an agent to work independently, how to keep a "human in the loop" for critical decisions, and patterns for multi-agent collaboration. The goal is to maximize productivity while maintaining oversight and reliability.</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>Managing Agent Autonomy:</strong> Not all AI agents operate with full independence – we explore a spectrum from <strong>fully autonomous</strong> coding agents to <strong>tightly supervised</strong> assistants. Key concept: choose the right autonomy level per task <strong>based on risk and uncertainty</strong>.
+              <ul>
+                <li><em>Autonomy Spectrum:</em> Define levels such as: <strong>Manual mode</strong> (AI only suggests, human decides), <strong>Assist mode</strong> (AI handles micro-tasks automatically, e.g. fixing a lint error, but anything major is confirmed by human), <strong>Agent mode</strong> (AI can attempt whole tasks end-to-end with oversight), up to <strong>Fully autonomous</strong> (AI writes, tests, and deploys code with minimal human input). Discuss real examples like Copilot's default vs. agent mode: by Feb 2025, Copilot could autonomously loop on tasks (write code, run tests, fix errors), but user approval was required for executing potentially dangerous actions (like running a build command). This shows a pattern: <em>agents can be given freedom to iterate, but must surface their actions transparently for user review</em>.</li>
+              </ul>
+            </li>
+            <li><strong>Human-in-the-Loop (HITL) Best Practices:</strong> Outline scenarios where human oversight is essential – e.g. <strong>high-risk changes</strong> (security-critical code, payments logic) should always involve code review by a person. Regulations like EU AI Act Article 14 are enforcing human oversight for high-stakes AI decisions, which translates to our domain as well. We teach patterns like <em>approval checkpoints</em> (the agent stops and asks for human validation at predefined milestones) and <em>fallback triggers</em> (if the agent is uncertain or errors repeatedly, it hands control back to the dev).</li>
+            <li><strong>Collaboration Patterns:</strong> How do humans and AI agents work together effectively? We introduce design patterns documented by industry leaders: <strong>handoff pattern</strong>, <strong>tool orchestration</strong>, <strong>co-reviewer</strong> pattern, etc.
+              <ul>
+                <li><em>Handoff Pattern:</em> The agent does what it can, then hands results to a human for final steps. Example: an AI generates a pull request with code changes, but a human developer reviews and merges it. This pattern leverages AI speed while keeping ultimate responsibility with humans (Graphite's AI code review tool explicitly follows this – <strong>"AI will never replace human code review"</strong>, it just prepares suggestions).</li>
+                <li><em>Pair Programming Pattern:</em> Human and AI work interactively – the developer writes some code, the AI suggests improvements; or the AI writes code and the developer corrects or asks follow-up questions. This is essentially how Copilot Chat and similar "AI pair programmers" function in real time. Emphasize communication: the human should clearly instruct the AI (like one would mentor a junior dev), and the AI should explain its reasoning when asked.</li>
+                <li><em>Tool-Orchestrator Pattern:</em> One agent (or component) acts as an orchestrator that can spin up specialized sub-agents or call tools. This pattern appears in frameworks like Microsoft's AutoGen (multi-agent system). For coding, it might mean an agent delegates front-end tasks to a UI specialist model and back-end tasks to another, then integrates the results. We discuss how such <em>multi-agent collaboration</em> can solve complex tasks but adds overhead in coordination. (Cutting-edge research on multi-agent coding systems and their context-sharing methods is referenced for interested students.)</li>
+              </ul>
+            </li>
+            <li><strong>Examples of Agent Patterns in Practice:</strong>
+              <ul>
+                <li><em>Example 1:</em> <strong>Code Review Agent + Developer:</strong> An AI code review agent (like Graphite's "Diamond" reviewer) checks incoming code for bugs and security issues. It leaves comments or suggestions. The human developer then decides which suggestions to accept. This <em>co-reviewer pattern</em> improves code quality and speed: the agent catches obvious issues (Graphite claims its AI finds many bugs before production) while the human focuses on nuanced design decisions.</li>
+                <li><em>Example 2:</em> <strong>Autonomous Refactoring with Human Approval:</strong> Show a scenario with Copilot agent mode performing an across-files refactor (rename a function, update all usages, run tests). The agent completes it, and then the dev reviews the changes via a summary the agent provides. The agent here operates fairly autonomously but within a sandbox (local workspace, tests) and the <em>pattern of oversight</em> is that the dev checks the final diff and test results.</li>
+                <li><em>Example 3:</em> <strong>Error Triage Loop:</strong> If an agent encounters an error it can't resolve, it asks the human a clarifying question (instead of blindly retrying). This pattern ensures the human is pulled in when the agent is stuck, rather than wasting cycles. It's analogous to a junior dev asking a senior for help when encountering an unfamiliar error – an efficient collaboration tactic.</li>
+              </ul>
+            </li>
+            <li><strong>Trustworthiness & Guardrails:</strong> A recurring theme is <strong>trust</strong> – we train students not to blindly trust AI output. Patterns for building trust include: keeping an <em>audit trail</em> of agent actions (logs), using <em>sandboxed execution</em> (so mistakes are contained, see Week 5), and <em>gradual autonomy increase</em> (start the agent on low-risk tasks and only later let it handle critical ones as it proves reliable). We also note that <em>evaluation benchmarks</em> (like AgentBench for multi-step tasks) show AI agents are improving but still not infallible. Thus, adopting a hybrid human+AI workflow is recommended for now.</li>
+          </ul>
+
+          <p><strong>Key References:</strong> Skywork's <em>"Agent vs Human-in-the-Loop in 2025"</em> guide provides a definitive comparison of autonomy levels and design patterns with industry examples. We cite Microsoft's official AI agent design patterns for terminology and the IBM community post on agent anatomy for multi-agent orchestration concepts. Real-world stances from tool makers (Graphite's CEO on AI vs human review) help underscore the consensus that <strong>hybrid approaches outperform purely autonomous or purely manual ones</strong> at present. By the end of Week 4, students will be able to identify and implement the right collaboration pattern for a given project and understand the governance needed for safe agent deployment.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Week 5 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 5: The Modern Terminal – AI at the Command Line</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Discover how AI can augment command-line and DevOps workflows. Students will learn about <strong>AI-enhanced terminals</strong> that execute natural language instructions, how to safely run code in sandboxed environments, and ways to automate scripting and environment setup using AI. The focus is on boosting productivity in the developer's "terminal" stage of work while maintaining security.</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>AI-Enhanced Command Line Interfaces:</strong> The terminal goes intelligent – we examine tools like <strong>Warp AI</strong> (a modern terminal) that let you type # and describe what you want, and the AI suggests the exact shell commands. This natural-language interface means even complex CLI tasks (setting up Docker, performing grep searches, etc.) can be done by simply describing the goal. We demonstrate an AI CLI assistant parsing a request like "find all TODOs in this project and count them" into the appropriate combination of find/grep commands. Students practice with such tools to get familiar, and we emphasize how this lowers the barrier for using powerful CLI tools (no need to memorize flags).</li>
+            <li><em>Agent Mode in Terminal:</em> Discuss <strong>Warp's "Agent Mode"</strong> and similar features where the terminal itself hosts an AI agent that can run multi-step workflows without the developer leaving the CLI. For instance, you can ask it to "provision a new AWS EC2 instance and deploy my app," and it will sequentially execute the AWS CLI calls, handle errors, and confirm with you before irreversible actions. This is analogous to Copilot's agent but in the shell context.</li>
+            <li><em>Real-time Guidance:</em> Another pattern – AI can explain command outputs or errors on the fly. E.g., after running a command that errors out, you can ask "Why did that fail?" and get an explanation (the AI reads the error message and uses its knowledge base). This kind of integrated support turns the terminal into a conversational assistant for troubleshooting.</li>
+            <li><strong>Sandboxed Execution Environments:</strong> Running AI-generated commands or code can be risky. We cover best practices for <em>safe execution</em>: <strong>sandboxing</strong> and isolation. Encourage use of container environments, VM snapshots, or restricted permission sets when letting an AI run commands. For example, an <em>"autonomous execution environment"</em> might use a Docker container where the agent has all needed tools but can't harm the host system (this was a topic on Mon 10/20) – so if the AI runs rm -rf /, it only nukes the container, not your machine.</li>
+            <li><em>Securing the Toolchain:</em> We introduce tools like <strong>gating/approval for destructive commands</strong> – e.g., require a human to approve if the AI tries to run a command affecting many files or pushing to production. Indeed, VS Code's AI agent mode required user approval for terminal commands; similarly, Warp's agent will "ask permission to run commands" it plans. This is a critical safety pattern students must adopt when building AI automation for ops.</li>
+            <li><strong>Terminal Automation & Scripting with AI:</strong> Explore how AI can write and run scripts to automate developer tasks:
+              <ul>
+                <li><em>Natural Language to Script:</em> Students practice describing a desired script (e.g. "clean up all logs older than 30 days in these directories") and having an AI generate a Bash or Python script for it. They then test it in a safe environment. This shows AI taking over rote scripting tasks. We cite that as of 2025, LLMs can produce correct small scripts quite reliably (and even self-correct if run iteratively).</li>
+                <li><em>Agent Loops for DevOps:</em> For multi-step devops chores, an AI agent can chain commands. Example: deploying an app → The agent might lint code, containerize it, upload to a registry, and update Kubernetes – all guided by one high-level request. We discuss how this differs from traditional shell scripting: the AI can adapt if something fails (e.g., if a deployment fails, it can read the logs and try a fix), essentially acting as a junior DevOps engineer.</li>
+                <li><em>Intelligent Terminal UIs:</em> Some new terminals integrate GUI-like prompts driven by AI. For instance, if you type a vague command, the AI might <em>ask follow-up questions</em> in the terminal ("Which AWS region to use?") to refine the action. This dynamic interaction is new and can make CLI tools more user-friendly.</li>
+              </ul>
+            </li>
+            <li><strong>Guest Insight – Warp's Vision:</strong> We'll reflect on insights from guest speaker Zach Lloyd (Warp's CEO) on how AI will change the developer's command-line experience. Expect discussion on balancing <strong>speed and safety</strong>: making the terminal ultra-productive with AI (no more Googling command syntax), while <strong>ensuring trust</strong> (e.g. Warp's built-in policies to prevent dangerous outputs). Warp's approach to <em>tracking session state and multi-step flows</em> will be a talking point, highlighting how even terminals now maintain context (like what tasks you've completed) to help the AI agent understand what to do next.</li>
+          </ul>
+
+          <p><strong>Key References:</strong> Warp's official blog on AI Command Suggestions and Agent Mode exemplifies the state-of-the-art AI terminal. Visual Studio Code's documentation of requiring confirmation for terminal commands in AI agent mode is used to stress safety. Real anecdotes (e.g., an AI script mistakenly altering a filesystem) drive home why sandboxing is crucial. By working through labs (like an "AI Shell Challenge"), students will gain practical experience in leveraging AI at the terminal while deploying safeguards.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Week 6 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 6: AI Testing and Security</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Understand how AI can both <strong>improve software testing and introduce new security concerns</strong>. Students will learn to use AI for generating test cases and detecting vulnerabilities, while also studying the security risks of AI-generated code (<em>"secure vibe coding"</em>). The module aims to instill a security mindset when working with AI assistants in coding.</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>AI-Generated Test Suites:</strong> Leveraging LLMs to create comprehensive tests. We demonstrate how an AI can generate unit tests from function descriptions or even from code (acting like a diligent QA engineer). Research shows LLM-generated tests can catch many edge cases; for instance, an AI might produce input combinations a human tester didn't consider. We reference advances like <em>AI-generated fuzz tests</em> and how tools (e.g., Amazon CodeWhisperer's test generation, or open-source libraries) saw significant improvements by 2025.
+              <ul>
+                <li><em>Example:</em> Given a simple function, the AI generates multiple unit tests, including boundary conditions. We'll point out that LLMs, having been trained on vast code, often recall common pitfalls (e.g., off-by-one errors) and write tests for those. However, caution that sometimes AI-written tests can be trivial or mirror the code logic (not truly independent) – hence human oversight is needed to ensure test quality.</li>
+                <li><em>Continuous Testing Agents:</em> Introduce the concept of an AI agent that runs in CI pipelines to suggest additional tests or to automatically write regression tests when a bug is fixed (closing the loop on future-proofing). This forward-looking idea is being explored in industry to increase test coverage with minimal developer effort.</li>
+              </ul>
+            </li>
+            <li><strong>Secure <em>Vibe Coding</em> – New Security Challenges:</strong> <em>"Vibe coding"</em> (natural-language-driven development) is revolutionary but comes with <strong>"silent killer" vulnerabilities</strong>. We unpack this by examining why AI-generated code often misses security measures:
+              <ul>
+                <li>LLMs aim to satisfy the prompt and may omit checks that aren't explicitly requested (they'll happily create a login form but not include rate limiting or strong encryption unless asked). This leads to <em>security by omission</em> – functional code that passes basic tests but is insecure.</li>
+                <li>Present <strong>real examples</strong> (from 2025 analysis): e.g., AI-generated code that accidentally hard-coded secrets (API keys) because it followed a training example, or an AI-generated password reset function that was vulnerable to timing attacks (the AI used a non-constant-time token comparison). These were subtle issues that neither the AI nor the initial tests caught.</li>
+                <li><em>Shocking Stats:</em> Highlight findings like "<strong>40% higher secret exposure in AI-assisted repos</strong>" from GitGuardian research and others. Also that many AI-produced snippets include outdated or insecure libraries if not guided otherwise. This impresses on students that <strong>AI assistance can accelerate development <em>and</em> mistakes</strong> – security must be a conscious part of the process.</li>
+              </ul>
+            </li>
+            <li><strong>Secure Coding Practices with AI:</strong> How can we mitigate the above risks? We teach a <em>"holistic secure vibe coding"</em> approach:
+              <ul>
+                <li><strong>Secure Prompting:</strong> Always instruct the AI about security requirements. For example, instead of "Create a user signup form," prompt "Create a secure user signup (with input validation, hash passwords, etc.)." Essentially, make security explicit in requirements to counter the AI's tendency to ignore what isn't asked.</li>
+                <li><strong>AI Code Review Tools:</strong> Use specialized AI tools (or features in code assistants) that scan AI-written code for vulnerabilities. For instance, the <em>Semgrep for Secure Vibe Coding</em> ruleset can analyze AI-generated code to flag common issues. Students will try running a static analysis (Semgrep or similar) on code they generated with an AI to see what it catches.</li>
+                <li><strong>Comparative Evaluation of Models:</strong> Note that not all LLMs perform equally on security – some (like OpenAI's or Anthropic's) have been tuned with more safety guardrails, whereas smaller models might be more prone to insecure suggestions. A 2025 comparison of GPT-4, Claude, etc., showed differences in tendency to include secure defaults. When possible, choose an AI model known for reliability for coding tasks (or at least be more vigilant if using an uncured model).</li>
+                <li><strong>Human Verification Remains Key:</strong> Reinforce that AI does <em>not</em> remove the need for traditional security review. Perform code reviews, use linters, run dynamic security tests (DAST, SAST) on AI-written code. As one industry expert put it: <em>AI can write code, but it won't secure it unless you ask – and even then you must verify; speed without security is just fast failure</em>. Students should internalize that motto.</li>
+              </ul>
+            </li>
+            <li><strong>AI in Vulnerability Detection:</strong> On the flip side, AI is a powerful ally for finding bugs and vulns in code:
+              <ul>
+                <li><em>Static Analysis and Beyond:</em> Companies like <strong>Semgrep (rX)</strong> are integrating AI to improve rule-based scanning. AI can help generalize patterns or prioritize findings. E.g., an AI-enhanced scanner might read code and describe in plain English potential issues, making it easier for developers to understand and fix (we refer to insight from Semgrep's CEO, who spoke on how AI is used to rank the severity of findings).</li>
+                <li><em>Penetration Testing Agents:</em> Mention emerging tools where an AI acts as an automated penetration tester – it analyzes an app (code and running instance) trying various attacks. While nascent, this could dramatically scale security testing. For example, an AI fuzz tester might generate hundreds of inputs including ones with SQL injection attempts or XSS, based on learning from known vulnerabilities.</li>
+                <li><em>History of Vulnerability Detection:</em> A quick retrospective connecting to "history" topic – from early static analysis (Lint) to advanced tools, now to AI. Show how detection evolved: patterns and rules → ML models (like GitHub's CodeQL uses some learning) → today's LLM-based reasoning that can sometimes <em>explain</em> "this code could be exploited if X". This progression helps students appreciate why AI is the next logical step in code security tooling.</li>
+              </ul>
+            </li>
+            <li><strong>Secure Development Workflow:</strong> Synthesize everything into a recommended workflow for students when they use AI for coding:
+              <ol>
+                <li><strong>Include security in specs/prompts</strong> from the start.</li>
+                <li><strong>Use AI to generate not just code, but also tests and threat models</strong> (e.g., ask "what could go wrong with this code?" to let AI enumerate possible issues).</li>
+                <li><strong>Review AI output with tools and manually.</strong> Leverage AI code review (like <strong>Graphite's AI Reviews</strong> for catching bugs) and then do a human review, especially for critical sections.</li>
+                <li><strong>Continuously learn & update prompts</strong> – if an AI repeatedly suggests an insecure practice, adjust your instructions next time (the human is the senior partner in this pair programming).</li>
+                <li><strong>Stay updated</strong> – mention that new guidelines (like NIST's Generative AI Profile 2024) are emerging for AI use; developers should keep an eye on evolving best practices.</li>
+              </ol>
+            </li>
+          </ul>
+
+          <p><strong>Key References:</strong> <em>The Hacker News</em> article <em>"Secure Vibe Coding: The Complete New Guide"</em> is heavily used to illustrate the unique vulnerabilities in AI-generated code and how to address them. Practical insights from Replit and Semgrep blogs complement this by providing checklists and tips. We also include research references such as a Stanford study on security issues with Copilot (if any, possibly referenced via the above article) to give weight to claims. After Week 6, students will have practiced generating code with an AI and securing it, plus using AI to audit existing code – leaving them aware of both offense and defense in AI-era software.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Week 7 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 7: Modern Software Support – AI for Debugging, Diagnostics, and Docs</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Explore how AI assists in the <strong>maintenance and support phase</strong> of software: code debugging, production diagnostics, and documentation. Students will learn to apply AI tools for identifying bugs, performing intelligent code review, generating documentation, and understand trust and reliability considerations (i.e., deciding <em>"What AI code systems can we trust?"</em>).</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>Trusting AI in the Dev Cycle:</strong> Open discussion on <em>which AI-generated outputs can be trusted and to what extent</em>. For instance, simple utility functions generated by AI might be fine with minimal review, but complex algorithm implementations require thorough testing. We cover the concept of <strong>calibrating trust</strong>: start with low trust and gradually increase as the AI proves itself in certain domains. Also mention how certain systems formally verify AI code (e.g., using type checkers, static analyzers to ensure AI hasn't introduced type errors or obvious issues).
+              <ul>
+                <li><em>Evaluating AI Suggestions:</em> Provide criteria for evaluating AI-proposed code changes or fixes: Is the change safe? Does it degrade performance? Is it idiomatic? Students learn to critically analyze AI contributions rather than accept them blindly.</li>
+                <li><em>Transparency & Explainability:</em> Encourage using AI tools that explain their reasoning. Some new AI debuggers can output a rationale for a fix ("I changed this because..."). If an AI can justify its solution, a developer can gauge trust better. We link this to the concept of <em>intelligible AI</em>, a growing industry focus.</li>
+              </ul>
+            </li>
+            <li><strong>AI for Debugging & Diagnostics:</strong> AI can significantly speed up finding and fixing bugs:
+              <ul>
+                <li><strong>Intelligent Debugging Assistants:</strong> Tools that take in an error (stack trace, logs, etc.) and suggest the likely cause or even the exact bug in code. For example, given a Python exception and code snippet, an AI might instantly point to an off-by-one error in a loop or a null check missing – tasks that could take a human hours. We demonstrate such an assistant on a sample bug.</li>
+                <li><em>Log Analysis:</em> In production, massive logs can be overwhelming. AI systems (like those in APM suites) now ingest logs and metrics to <em>summarize anomalies</em> or <em>correlate events</em>. E.g., an AI might read through an hour of logs and conclude "The service crashed due to null pointer at 14:32 after deployment of version X." This kind of summary and pinpointing can save engineers time.</li>
+                <li><em>Case Study:</em> GitHub's Augmented Code Review or <strong>Graphite's AI Reviews</strong> – these not only look at code changes but also can run the code in their mind (to some extent) to foresee runtime issues. Graphite's AI code review agent finds critical bugs by simulating usage or leveraging learned bug patterns. Students will get to see a before-and-after: a code review without AI vs. with AI assistance, noting how AI can catch subtle issues (like a missing thread synchronization) that might slip past tired human eyes.</li>
+                <li><strong>AI for Program Repair:</strong> Connect to research where given a failing test, an AI can suggest a code patch to fix it. This overlaps with Week 9 content (automated incident response) but here we focus on the dev perspective (fixing a bug during development). Mention any recent competitions/benchmarks (like the 2025 Code Repair Challenge) where AI systems showed high success rates in auto-fixing bugs – but also discuss their common failure modes (sometimes fixes are one-off and don't address root cause).</li>
+              </ul>
+            </li>
+            <li><strong>Intelligent Documentation Generation:</strong> Maintaining documentation is a classic pain point; AI is now alleviating it:
+              <ul>
+                <li><strong>Code Commenting and Docstrings:</strong> IDE-integrated AI can generate docstrings for functions or comments for complex logic. Show how, with one click, a whole file can be annotated with summaries of each function's purpose, parameters, and examples. Emphasize quality: AI-generated comments should be reviewed for accuracy (sometimes they can describe what the code <em>looks</em> like it does, which might be wrong if code has bugs).</li>
+                <li><strong>User-Facing Documentation:</strong> AI can also draft higher-level documentation: e.g., an end-user README or API docs by analyzing code usage. Students will attempt to have an AI generate a portion of a README and then critique it. Results are surprisingly good for routine descriptions (saving time writing boilerplate docs). We mention tools like <em>Mintlify</em> and <em>AskCodi</em> (2025's top AI doc tools) that integrate with codebases to continuously update documentation as code changes.</li>
+                <li><strong>Contextual Q&A Documentation:</strong> Perhaps the most powerful: <em>documentation chatbots</em>. Sourcegraph's <strong>Cody</strong> or similar can answer questions about the codebase ("Where is the login logic implemented?" or "What does function X do under the hood?") by combining code search and LLM reasoning. This effectively <strong>turns the codebase into a conversational knowledge base</strong>, reducing the need to write extensive docs. We explain how these systems use embeddings of the code and retrieval (as seen in Week 3) to generate answers grounded in actual code.</li>
+                <li><em>Maintaining Trust in Docs:</em> One must ensure documentation stays in sync with code. We discuss how AI can also help here – e.g., an agent that flags if a function's behavior changed but the old docstring remains, by rechecking docs against code. Always round back to the theme of <em>trust but verify</em> – documentation generated or updated by AI should be validated (preferably via tests or manual use) to prevent propagating misunderstandings.</li>
+              </ul>
+            </li>
+            <li><strong>AI in Modern Code Reviews:</strong> Given Monday's class on AI code review, we formalize how to integrate AI into the review workflow:
+              <ul>
+                <li><strong>AI Reviewer Role:</strong> Position the AI as a junior reviewer: it adds comments and suggestions, but a human reviewer (owner or senior dev) makes final decisions. This aligns with Graphite's stance that AI aids but does not replace human judgment.</li>
+                <li><em>Benchmarking AI Reviews:</em> Share results like the <em>"AI Code Review Benchmarks 2025"</em> which compared multiple AI review tools across real bugs. These showed AI can catch a significant portion of issues (sometimes >50% of typical review comments), especially low-hanging fruit (style, simple bugs). However, AI might miss design-level feedback or could suggest overly pedantic fixes. The takeaway: AI reviews improve baseline code quality and save reviewer time, but cannot assess every nuance or the broader context of why code is written a certain way.</li>
+                <li><strong>Developer Trust in AI Feedback:</strong> Discuss how developers perceive AI feedback – initial studies show developers accept AI code suggestions more when they come with explanations or confidence scores. As such, some tools now indicate likelihood of correctness for each suggestion. We encourage students, as future team leads, to establish guidelines: e.g., don't auto-merge AI-suggested fixes without running tests, treat AI comments as advisory, etc.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <p><strong>Key References:</strong> We draw on Graphite's platform (AI code reviews) and possibly a talk by Graphite's CPO (Tomas Reimers) to illustrate real-world adoption of AI in code review. For debugging and production diagnostics, we reference AI SRE use-cases bridging into Week 9 (like AIOps tools that do root-cause analysis – see NeurBird's AI SRE description). The Index.dev list of documentation tools and any recent case study (e.g., a team using an AI chatbot for internal docs) will be cited. By the end of Week 7, students will have an understanding of how AI can support the "long tail" of development (maintenance and support), and will have experimented with at least one AI code review and one doc generation tool on their project.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Week 8 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 8: Automated UI and App Building</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Investigate how AI accelerates <strong>UI/UX design and full-stack application development</strong>. Students will experience tools that convert natural language or design mockups into interfaces, enabling "design for everyone." They will learn rapid prototyping techniques using AI and consider the implications for frontend developers and designers.</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>Design and Frontend for Everyone:</strong> AI is lowering the bar to create user interfaces. We showcase systems where a user can simply describe an app or draw a rough sketch, and AI generates a working UI.
+              <ul>
+                <li><strong>Text-to-UI Generation:</strong> Demonstrate a tool (e.g., Galileo AI or a Figma plugin with GPT-4 Vision) that takes a prompt like "A mobile signup screen with email and password, and a submit button" and outputs a ready-to-use UI layout or code. Even non-developers can now get a basic UI in minutes. In fact, <strong>GPT-4's vision model</strong> can translate hand-drawn wireframes into functional website code, illustrating how design prototyping is sped up.</li>
+                <li><strong>AI-assisted Design in Figma/Adobe:</strong> Discuss how design software integrates AI – e.g., suggesting design variations, auto-generating icons or color themes from a description. Designers can iterate more rapidly: "Make this screen more playful" could prompt an AI to adjust styles or layouts creatively. This democratizes design work; however, emphasize that design principles (UX fundamentals) are still needed so that an AI-generated UI is user-friendly (AI might produce a layout, but a human ensures it makes sense for users).</li>
+                <li><strong>Accessibility by Design:</strong> A noteworthy advantage – AI can be instructed to produce accessible UIs (proper contrast, alt text, semantic HTML). By including accessibility in prompts, even those unfamiliar with accessibility standards can get compliant designs, thus <em>"frontend for everyone"</em> includes differently-abled users and developers lacking UX expertise.</li>
+              </ul>
+            </li>
+            <li><strong>Rapid UI/UX Prototyping and Iteration:</strong> How AI enables extremely fast prototyping:
+              <ul>
+                <li><em>One-Prompt Apps:</em> Explore the concept referenced by a16z <em>"One Prompt, Zero Engineers"</em> – internal tools or MVPs built by feeding requirements to an AI agent. Imagine a PM typing "Create a simple inventory management web app with a product list, detail view, and restock form" – the agent could generate a working prototype: UI code, database schema, etc. This is becoming plausible with advanced agents orchestrating multiple steps (as we saw in agent patterns). We evaluate a case where this was attempted (Pieter Levels' AI-built app from Week 6's vibe coding example is one such case study – a game prototype in hours).</li>
+                <li><em>Multi-Modal Prototyping:</em> Combine image and text: e.g., designer draws a storyboard on paper, snaps a photo, AI generates React code for it. Then you can refine via text: "Change the header to blue and add a logout button" and AI updates the code accordingly. This iterative loop drastically cuts down prototype time from days to hours.</li>
+                <li><strong>UI/UX Iteration with AI:</strong> In traditional design, multiple iterations with user feedback are needed. AI can accelerate this by quickly producing variations. For instance, after deploying a prototype, suppose users find the layout confusing – a developer can ask the AI to "redesign this page for better clarity" and get alternate versions (maybe moving a sidebar, enlarging fonts, etc.) in moments. While AI might not magically produce the perfect design without guidance, it serves as a supercharged assistant for trying ideas. We also introduce how A/B testing can be integrated: AI can generate variant A and B of a UI which can then be tested with users to pick the best, significantly streamlining the UX improvement cycle.</li>
+              </ul>
+            </li>
+            <li><strong>End-to-End App Generation:</strong> Pushing boundaries, we discuss systems that attempt to generate an entire application (frontend + backend) from a high-level spec:
+              <ul>
+                <li><em>Full Stack Agents:</em> An agent that, given a prompt, can scaffold a project (set up a repo, generate frontend code, backend API, database config). By 2025, early versions of these exist – e.g., <strong>StackBlitz "Codeflow AI"</strong> (hypothetical example by Eric Simons' team) or experimental open-source projects that built small apps entirely with AI. We examine what they can and cannot do: They excel at boilerplate and standard CRUD apps, but struggle with complex business logic or novel algorithms (which require human insight).</li>
+                <li><em>"Single-Prompt Apps" Guest Insights:</em> Eric Simons (guest speaker) shared how their platform allowed building a full app with a single prompt. We relay his key points: focusing AI on repetitive scaffolding frees developers to concentrate on unique features; however, he likely cautioned that maintaining these AI-generated apps still needs engineering effort (particularly to clean up or optimize the initial code). We also address maintainability: AI might produce code that works, but is it clean and idiomatic? Possibly not, so part of the engineer's new job is refactoring AI-generated code for long-term health (this ties back to trusting AI code).</li>
+              </ul>
+            </li>
+            <li><strong>Frontier: Multimodal and Continuous Apps:</strong> Mention any notable research like Meta's 2025 framework that takes user stories and continuously updates an app as requirements change (if such exists). This would show students the trajectory – that eventually, describing what you want in natural language could result in a living app that evolves, with the AI doing the heavy lifting and the human providing high-level guidance and corrections. This is essentially <em>"software development 10x faster"</em>, but also changes the role of developers to more of architects and curators of AI output.</li>
+            <li><strong>Implications and Ethics:</strong> With "app in a prompt" possibilities, what does this mean for software roles? We pose questions: If anyone can build a basic app via AI, do we devalue frontend developer skills or do those roles shift to focusing on custom, complex interactions that AI can't easily handle? Likely the latter – AI takes care of routine UI assembly, while developers focus on innovative UX, performance tuning, and integrating with complex systems. We also discuss IP/licensing concerns: AI might inadvertently clone known designs or code from training data; developers need to be mindful of what they deploy (e.g., using an open-source model that might output snippets of GPL code could pose legal issues). This highlights that human oversight isn't just technical but also legal/ethical.</li>
+          </ul>
+
+          <p><strong>Key References:</strong> Andreessen Horowitz's article <em>"One Prompt, Zero Engineers"</em> encapsulates the vision of AI-built internal tools and will be cited to spark discussion. DataCamp's notes on GPT-4 Vision building a website from an image provide concrete evidence of AI's design-to-code ability. We'll reference any known product announcements (e.g., a demo by Google's Gemini or Microsoft's Designer tool in 2025 that generates frontends) to ensure freshness. After Week 8, students will have tried creating a mini app UI with AI and will have a grounded sense of how far they can push these tools, and where human creativity and diligence remain irreplaceable.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Week 9 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 9: Agents Post-Deployment – Monitoring, Observability, and Ops Automation</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Focus on the <strong>deployment and operations phase</strong> of AI-assisted development. Students will learn how to monitor AI systems in production, use AI for observability (analyzing logs/metrics), and implement automated incident response with AI agents. They will also cover how AI assists in triaging issues and debugging live systems.</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>Monitoring and Observability for AI Systems:</strong> After deploying an AI-driven application or agent, keeping tabs on its behavior is crucial. We cover what new things need monitoring: not just traditional metrics (CPU, latency) but also <strong>AI-specific metrics</strong> like model response time, accuracy of outputs (if measurable), and unusual patterns (like an agent making too many attempts on a task).
+              <ul>
+                <li><em>AI System Telemetry:</em> Introduce tools that log each decision an AI agent makes (for example, logging each tool invocation and result for an AI coding agent in production). These logs allow developers to later audit what the AI did if something goes wrong. We discuss storing prompts and responses (with care for sensitive data) as part of observability – this is analogous to capturing stack traces for later debugging of AI behavior.</li>
+                <li><strong>Automated Monitoring with AI:</strong> Interesting loop: using AI to monitor AI. Explain how anomaly detection can be enhanced by AI – e.g., an AI can watch metrics dashboards and <em>describe anomalies in plain English</em>. Some SRE tools have alerting systems where instead of a static threshold, an AI considers seasonality and multiple metrics to decide "this situation is abnormal".</li>
+                <li><em>Example:</em> An e-commerce app with an AI recommendation engine – how to monitor that the AI isn't giving weird recommendations? Possibly track metrics of engagement and have an AI flag if they drop sharply. Similarly, monitoring drift in model inputs/outputs: if an AI agent's output length or sentiment distribution changes, it might indicate a problem (maybe it's getting unexpected input).</li>
+              </ul>
+            </li>
+            <li><strong>Automated Incident Response:</strong> A highlight of this week – how AI can <em>automatically handle certain incidents</em>. Building on the AI SRE concept:
+              <ul>
+                <li><strong>AI SRE Agents:</strong> As introduced by NeuBird's <em>"AI SRE"</em> concept, these are <strong>domain-specific agents for operations</strong> that can investigate issues and even trigger fixes. We cover the architecture of such an agent: it receives alerts, gathers data (logs, metrics, traces) from various sources, identifies the likely root cause, and suggests or applies a remedy.</li>
+                <li><em>Reducing MTTR:</em> Emphasize how these agents aim to drastically cut Mean Time To Resolution. NeuBird's Hawkeye, for example, claims to reduce MTTR by up to 90% by quickly correlating signals and recommending actions. We might simulate an incident: e.g., a web service is down – an AI agent looks at error logs, sees a database connection failure, recognizes from past knowledge that it might be due to max connections reached, and suggests "restart connection pool or increase limit" within minutes. In contrast, a human might take an hour gathering that info from different dashboards.</li>
+                <li><strong>Actionable Remediation & Guardrails:</strong> It's crucial that if AI is allowed to act (auto-remediation), it does so carefully. We outline that initial deployments of AI ops agents often run in <em>recommendation mode</em> (they propose actions to on-call engineers) until trust is built and maybe eventually some low-risk actions are automated (like auto-scaling a service when traffic spikes). We also mention <em>no-regret actions</em> – an AI might be allowed to do things that are easy to roll back (restart a service) but not, say, alter code. Even with advanced AI, <strong>human override/kill-switch</strong> is maintained as a best practice.</li>
+                <li><em>Integration with DevOps Tools:</em> Show how AI incident response integrates with existing tools – e.g., the agent might post an analysis in Slack or PagerDuty incident notes, and even take input from engineers ("okay, try rolling back deployment"). A cohesive integration is key so that AI augments the on-call team instead of being a black-box.</li>
+              </ul>
+            </li>
+            <li><strong>Triaging and Debugging in Production:</strong> AI helps not just in fixing but in <strong>organizing and prioritizing incidents</strong>:
+              <ul>
+                <li><strong>Intelligent Triage:</strong> When multiple alerts fire, an AI can group them if they're related (e.g., dozens of errors across microservices might all stem from one core database outage – the AI labels them as one incident). Or it can prioritize alerts based on impact (learning from historical incident data what usually is urgent vs. noise). We reference <em>Incident.io's</em> 2025 guide where AI clusters incidents and even drafts an initial incident report for you.</li>
+                <li><strong>Root Cause Analysis:</strong> A step beyond triage – AI can perform post-incident analysis, reading through all logs and metrics after the fact to pinpoint the trigger. For example, an AI might find "All failures started after deployment #202, likely a bad config pushed at 10:30 AM" by correlating deployment logs with error logs – tasks humans do manually but AI can automate. (Neubird's list of must-haves included real-time root cause analysis and context-aware learning from past incidents – which we'll cite to emphasize expectations from AI Ops agents.)</li>
+                <li><strong>Knowledge Retention:</strong> As AI agents observe incidents over time, they can build a knowledge base ("When X goes wrong, it's usually due to Y"). This addresses the common issue of tribal knowledge in ops – the AI becomes a constant team member that <em>remembers</em> past incidents and solutions, even if people leave the team. We encourage students to see this as a positive: fewer repeated mistakes, faster resolutions as the AI gets "smarter" with each incident.</li>
+              </ul>
+            </li>
+            <li><strong>DevOps Case Study – Resolve.AI (guest):</strong> Mayank Agarwal's Resolve (if that's the company) likely builds AI-driven incident response systems. We integrate insights presumably shared: perhaps how <strong>AI agents are used in DevOps at scale</strong>, maybe an example where their AI handled an issue without human intervention at a major client, or how they ensure reliability and safety in letting AI handle ops. A key point might be <em>trust through incremental adoption</em>: companies start with AI giving suggestions, then automate routine fixes after validation, and so on.</li>
+            <li><strong>Challenges in AI Ops:</strong> It's not all solved – we talk about limitations:
+              <ul>
+                <li><em>Hallucinations:</em> If an AI "concludes" something incorrectly (e.g., misreads logs and suggests a wrong fix), it could mislead engineers or, worse, perform a wrong action. That's why <strong>"no hallucinations" is a requirement in incident response</strong> – outputs must be based on real telemetry, not guesswork. We mention how vendors are addressing this (e.g., constraining models to only use provided data, and maybe using smaller, more predictable models for analysis rather than giant LLMs that might hallucinate).</li>
+                <li><em>False Positives/Negatives:</em> The AI might group things that aren't actually same issue, or miss linking related issues. It might also not detect a subtle problem until it becomes big (like slowly memory leak). These are areas where human intuition and experience still complement AI. We highlight that the future likely involves <em>human-AI collaboration in SRE</em> much like in development: an AI watches 24/7 and handles straightforward stuff; humans tackle the complex, unprecedented incidents and improve the AI with those lessons.</li>
+                <li><em>Trust and Cultural Shift:</em> SREs/DevOps engineers need to trust the AI agent – which involves transparency (the agent showing its reasoning steps, which tools/logs it looked at) and the team validating its decisions over time. There can be resistance ("will the AI take my job or wake me up unnecessarily?"), so part of implementing these systems is proving their value (e.g., show how many hours of toil they saved).</li>
+              </ul>
+            </li>
+          </ul>
+
+          <p><strong>Key References:</strong> NeuBird's <em>"Future of DevOps with AI SRE"</em> blog is cited to concretely list what AI agents in ops deliver (root cause in minutes, etc.) and the qualities expected (security, accuracy). Another reference, <em>Top 12 AI Tools for DevOps in 2025</em> or <em>Parity – AI for incident response</em>, might be used to name-drop current solutions and their capabilities. By examining real tools (like Parity, Rootly, etc.), students get a feel for how theory meets practice. At the end of Week 9, after possibly a lab exercise simulating an incident with an AI assistant, students should appreciate how AI can make on-call less painful and systems more robust, while also understanding the guardrails and oversight needed.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Week 10 -->
+    <div class="dropdown">
+      <details>
+        <summary>Week 10: What's Next for AI Software Engineering</summary>
+        <div class="week-content">
+          <p><strong>Learning Objectives:</strong> Step back and <strong>survey the future</strong> – upcoming trends, paradigm shifts, and how roles might evolve in the next 5-10 years. Students will contemplate the long-term trajectory of AI in software engineering, including emerging paradigms (e.g., self-healing code, AI-driven requirements gathering) and what skills developers should cultivate to stay relevant.</p>
+
+          <p><strong>Topics & Subtopics:</strong></p>
+          <ul>
+            <li><strong>Future of Software Development Roles:</strong> Discuss how roles may change when AI is deeply integrated into the development process.
+              <ul>
+                <li><em>The Evolving Developer:</em> Reinforce that while AI automates many tasks, it <strong>augments rather than replaces</strong> developers. In fact, AI might elevate the developer role to more of a <em>product thinker or systems integrator</em>. Routine coding could be largely automated, but understanding what to build, architecting the system, and ensuring correctness and security remain human responsibilities. We draw on a16z partners' discussion: formal programming knowledge (algorithms, languages) will remain essential even if AI writes a lot of code, akin to how knowing math is still needed with calculators.</li>
+                <li><em>New Roles:</em> Identify emerging roles such as <strong>AI Toolsmith/Integrator</strong> – developers who specialize in integrating AI into the dev pipeline (for example, customizing an AI model for a company's codebase). Or <strong>Prompt Engineer</strong> – though arguably by 2025 prompt engineering is becoming a common skill for all developers, not a distinct job. Possibly <strong>AI Auditor</strong> – people who review AI system outputs and ensure compliance (especially for high-stakes industries). Students should prepare to wear these hats.</li>
+                <li><em>Team Dynamics:</em> How a future dev team might include "AI agents" as team members (e.g., an agent assigned to each human developer as a personal pair, plus agents for testing, ops). This could mean smaller human teams accomplishing what larger teams did before (as hinted by trends of smaller startups building more with AI, etc.). We mention any data, e.g., anecdotal: a startup in 2025 went from needing 5 front-end engineers to 2 because their AI tools handled a lot – freeing those engineers to also focus on product improvements.</li>
+              </ul>
+            </li>
+            <li><strong>Emerging AI Coding Paradigms:</strong>
+              <ul>
+                <li><strong>Prompt-Based Programming</strong> as a formal paradigm – might we see languages or frameworks specifically for instructing AI (beyond natural language)? For instance, some predict domain-specific prompt languages or higher-level abstractions that combine natural language with formal constraints (like a <em>"software-spec DSL"</em> that an AI can interpret deterministically). We reference any research or early products on this.</li>
+                <li><strong>Continual Learning and Adaptation:</strong> Future codebases may include AI that <em>learns from user behavior in production</em> and updates the software (within set bounds) automatically. E.g., if users frequently trigger a certain error, an AI could suggest a code change to handle that case. This blurs lines between development and maintenance – software might become more self-evolving. We discuss the need for new paradigms to manage this (like policy controls for self-modifying code, and strong tests to avoid regressions).</li>
+                <li><strong>Multi-Modal and Beyond Code:</strong> As AI gets multimodal, devs might increasingly work with UI design, code, and data in an integrated way. Imagine describing a feature with text, drawing a sketch, and the AI producing both the code and design assets. The paradigm of <em>software engineering</em> expands beyond code to orchestrating various AI content generation (images, text for documentation, etc.).</li>
+                <li><strong>Agentic Systems & AI Services:</strong> Perhaps every piece of software can expose an AI agent interface. For example, instead of navigating menus, a user might just ask the software (backed by an LLM) to do something. Developers might then spend time defining the "persona" and knowledge of that agent within their app. This trend could turn UI/UX into more conversational experiences across industries – devs will need to design those interactions, which is a new paradigm blending programming with dialogue design.</li>
+              </ul>
+            </li>
+            <li><strong>Industry Trends and Predictions:</strong> Summarize key trends and forecasts:
+              <ul>
+                <li><em>Productivity Boom vs. Complexity:</em> There's consensus that developer productivity could <strong>10x</strong> with AI assistance in the coming years, potentially leading to a "trillion-dollar" impact on the industry (as per a16z). However, we caution about <strong>complexity</strong>: software might grow more complex because AI lets us attempt more ambitious projects or inadvertently sprawl code (since generating code is cheap, controlling its quality is the challenge). The future developer must be a <em>"software curator"</em> in this sense, managing complexity that AI can churn out at high speed.</li>
+                <li><em>Education and Training:</em> Traditional CS education might evolve – more focus on problem formulation, architecture, ethics, and verification; less on writing boilerplate. But core skills (data structures, computational thinking) remain important as the foundation to effectively use AI (we cite the a16z discussion where they conclude foundational abstractions are still vital).</li>
+                <li><em>AI Ethics and Regulation:</em> Predict increased regulation around AI in software (already EU AI Act for some areas). Future devs might need to comply with requirements like documentation of AI-involved processes, bias audits for AI components, etc. This might spawn new tools to automatically produce such documentation (e.g., log what data an AI was trained on, or ensure an AI code generator doesn't introduce biased outcomes in, say, hiring software).</li>
+                <li><em>Convergence of Roles:</em> We might see lines blur between developer, tester, DevOps, and even product manager – as AI takes over execution of tasks, people in all those roles increasingly do similar high-level work: deciding what to build/test/deploy, and letting AI handle the grunt work. Thus, a future "software engineer" might naturally do requirements, code, testing, deployment with AI support in each, rather than those being siloed roles.</li>
+              </ul>
+            </li>
+            <li><strong>Augmented Teams and Smaller Startups:</strong> Because AI can do the work of many in seconds (like generating code or tests), teams might remain small but highly productive. It's predicted that startups or even individual "solopreneurs" can build complex products by leveraging AI for what used to require whole teams. The industry could see more one-person companies or very lean orgs succeeding – which is exciting but also means the job market might shift (fewer huge developer teams, more need for those who can operate with AI efficiently).</li>
+            <li><strong>Grand Challenges and Open Problems:</strong> Finally, identify open research questions that today's students might tackle:
+              <ul>
+                <li><em>100% Correctness – Myth or Possible?:</em> Will there be a time when AI can guarantee code correctness (via formal verification combined with generation)? This is the dream of eliminating bugs. While not solved, progress in combining LLMs with formal methods might be on the horizon (point to any 2025 paper or development in that direction, if exists).</li>
+                <li><em>General AI in Coding:</em> Could a future AI agent handle an entire software project given just an end goal? What limitations of current LLMs need overcoming (common sense, truly understanding user intent, deeper reasoning over long contexts)? How might breakthroughs in AI (like truly reasoning or improved memory) impact software dev? Possibly discuss the idea of <em>GPT-5 or Claude Next</em> if any rumors, and how increasing model capabilities might finally solve some current pain points (or raise new concerns like AI-generated code all starting to look homogenized).</li>
+                <li><em>Human-AI Collaboration Paradigm:</em> The ultimate question: how do we make the collaboration <em>fluid</em> and <em>trustworthy</em>? Perhaps future IDEs will be so advanced that coding feels like talking to a knowledgeable colleague at all times. Productivity could soar, but maintaining human control and understanding is paramount (no one wants to run code they don't understand). Solving that balance – giving AI more autonomy while keeping humans in the loop meaningfully – is an ongoing challenge (refer back to patterns from Week 4 and note it's an active area of research and tooling).</li>
+              </ul>
+            </li>
+          </ul>
+
+          <p><strong>Key References:</strong> For forward-looking content we lean on thought leadership pieces: a16z's <em>"Emerging Developer Patterns for the AI Era"</em>, Martin Casado's insights (likely shared in class) on how infrastructure is adding AI as a new layer of the stack (from a16z podcast: AI as a new foundational layer). We also highlight snippets from the <em>"AI Future Is Already Here…"</em> to show optimism about new startups and automation. Finally, we use the course's concluding slides (Mon 12/1 "Software development in 10 years") to summarize. Students are encouraged to imagine and prepare for a future where <em>"everyone is an AI-assisted developer"</em> and continuous learning is key.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AI & Software Development Resources</h1>
+        <p class="subtitle">A curated collection of articles, guides, and tools for AI-powered development</p>
+
+        <!-- AI Coding Assistants & Agents -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">🤖</span>
+                    AI Coding Assistants & Agent Mode
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">GitHub Copilot Agent Mode (Preview) <span class="reference-count">9 refs</span></div>
+                        <a href="https://code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode" target="_blank" class="link-url">code.visualstudio.com/blogs/2025/02/24/introducing-copilot-agent-mode</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">GitHub Copilot vs Cursor in 2025 <span class="reference-count">1 ref</span></div>
+                        <a href="https://www.reddit.com/r/GithubCopilot/comments/1jnboan/github_copilot_vs_cursor_in_2025_why_im_paying/" target="_blank" class="link-url">reddit.com/r/GithubCopilot/comments/1jnboan/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Warp AI: Natural-Language Coding Agents <span class="reference-count">1 ref</span></div>
+                        <a href="https://www.warp.dev/warp-ai" target="_blank" class="link-url">warp.dev/warp-ai</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Warp Agent Mode: Multi-Step Workflows <span class="reference-count">4 refs</span></div>
+                        <a href="https://www.warp.dev/blog/agent-mode" target="_blank" class="link-url">warp.dev/blog/agent-mode</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Warp Goes Agentic: Developer Walk-Through <span class="reference-count">1 ref</span></div>
+                        <a href="https://thenewstack.io/warp-goes-agentic-a-developer-walk-through-of-warp-2-0/" target="_blank" class="link-url">thenewstack.io/warp-goes-agentic-a-developer-walk-through-of-warp-2-0/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Agent vs Human-in-the-Loop: 2025 Comparison <span class="reference-count">10 refs</span></div>
+                        <a href="https://skywork.ai/blog/agent-vs-human-in-the-loop-2025-comparison/" target="_blank" class="link-url">skywork.ai/blog/agent-vs-human-in-the-loop-2025-comparison/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Anatomy of an AI Agent (Watsonx Orchestrate) <span class="reference-count">6 refs</span></div>
+                        <a href="https://community.ibm.com/community/user/blogs/patrick-meyer/2025/07/21/anatomy-of-an-ai-agent-watsonx-orchestrate" target="_blank" class="link-url">community.ibm.com/community/user/blogs/patrick-meyer/2025/07/21/</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Model Context Protocol (MCP) -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">🔌</span>
+                    Model Context Protocol (MCP)
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">Introducing the Model Context Protocol <span class="reference-count">6 refs</span></div>
+                        <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" class="link-url">anthropic.com/news/model-context-protocol</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Full MCP Specification Support in VS Code <span class="reference-count">6 refs</span></div>
+                        <a href="https://code.visualstudio.com/blogs/2025/06/12/full-mcp-spec-support" target="_blank" class="link-url">code.visualstudio.com/blogs/2025/06/12/full-mcp-spec-support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secure Vibe Coding -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">🔒</span>
+                    Secure Vibe Coding
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">Secure Vibe Coding: The Complete New Guide <span class="reference-count">13 refs</span></div>
+                        <a href="https://thehackernews.com/2025/06/secure-vibe-coding-complete-new-guide.html" target="_blank" class="link-url">thehackernews.com/2025/06/secure-vibe-coding-complete-new-guide.html</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Learn About Vibe Coding Security Risks <span class="reference-count">1 ref</span></div>
+                        <a href="https://checkmarx.com/blog/security-in-vibe-coding/" target="_blank" class="link-url">checkmarx.com/blog/security-in-vibe-coding/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Secure Vibe Coding - Semgrep <span class="reference-count">1 ref</span></div>
+                        <a href="https://semgrep.dev/solutions/secure-vibe-coding" target="_blank" class="link-url">semgrep.dev/solutions/secure-vibe-coding</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Replit: Key Fundamentals & Best Practices <span class="reference-count">1 ref</span></div>
+                        <a href="https://blog.replit.com/16-ways-to-vibe-code-securely" target="_blank" class="link-url">blog.replit.com/16-ways-to-vibe-code-securely</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Code Review -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">👁️</span>
+                    AI Code Review
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">Graphite Diamond AI Code Reviewer <span class="reference-count">1 ref</span></div>
+                        <a href="https://devclass.com/2025/03/19/graphite-debuts-diamond-ai-code-reviewer-insists-ai-will-never-replace-human-code-review/" target="_blank" class="link-url">devclass.com/2025/03/19/graphite-debuts-diamond-ai-code-reviewer/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Graphite AI Reviews <span class="reference-count">1 ref</span></div>
+                        <a href="https://graphite.dev/features/ai-reviews" target="_blank" class="link-url">graphite.dev/features/ai-reviews</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">AI Code Review Benchmarks 2025 <span class="reference-count">1 ref</span></div>
+                        <a href="https://www.greptile.com/benchmarks" target="_blank" class="link-url">greptile.com/benchmarks</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code Search & Embeddings -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">🔍</span>
+                    Code Search & Embeddings
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">GitHub Embedding Model for Code Search <span class="reference-count">5 refs</span></div>
+                        <a href="https://www.infoq.com/news/2025/10/github-embedding-model/" target="_blank" class="link-url">infoq.com/news/2025/10/github-embedding-model/</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI for DevOps & SRE -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">⚙️</span>
+                    AI for DevOps & SRE
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">Future of DevOps with AI SRE (Neubird) <span class="reference-count">7 refs</span></div>
+                        <a href="https://neubird.ai/blog/ai-sre-devops-ai-incident-management/" target="_blank" class="link-url">neubird.ai/blog/ai-sre-devops-ai-incident-management/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">5 AI-Powered SRE Tools (Incident.io) <span class="reference-count">1 ref</span></div>
+                        <a href="https://incident.io/blog/sre-ai-tools-transform-devops-2025" target="_blank" class="link-url">incident.io/blog/sre-ai-tools-transform-devops-2025</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Top 12 AI Tools for DevOps (Spacelift) <span class="reference-count">1 ref</span></div>
+                        <a href="https://spacelift.io/blog/ai-devops-tools" target="_blank" class="link-url">spacelift.io/blog/ai-devops-tools</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">12 AI Tools for DevOps and SREs (Parity) <span class="reference-count">1 ref</span></div>
+                        <a href="https://www.tryparity.com/blog/12-ai-tools-for-devops-and-sres-in-2025" target="_blank" class="link-url">tryparity.com/blog/12-ai-tools-for-devops-and-sres-in-2025</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Papers -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">📚</span>
+                    Research Papers
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">Survey on Code Generation with LLM-based Agents <span class="reference-count">5 refs</span></div>
+                        <a href="https://arxiv.org/html/2508.00083v1" target="_blank" class="link-url">arxiv.org/html/2508.00083v1</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Multi-Agent Evaluation for LLM Code Generation <span class="reference-count">1 ref</span></div>
+                        <a href="https://arxiv.org/abs/2505.02133" target="_blank" class="link-url">arxiv.org/abs/2505.02133</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">CodeCoR: Self-Reflective Multi-Agent Framework <span class="reference-count">1 ref</span></div>
+                        <a href="https://arxiv.org/abs/2501.07811" target="_blank" class="link-url">arxiv.org/abs/2501.07811</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prompt Engineering -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">✍️</span>
+                    Prompt Engineering
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">Ultimate Guide to Prompt Engineering 2025 <span class="reference-count">2 refs</span></div>
+                        <a href="https://www.lakera.ai/blog/prompt-engineering-guide" target="_blank" class="link-url">lakera.ai/blog/prompt-engineering-guide</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">GPT-4 Vision: Comprehensive Guide <span class="reference-count">1 ref</span></div>
+                        <a href="https://www.datacamp.com/tutorial/gpt-4-vision-comprehensive-guide" target="_blank" class="link-url">datacamp.com/tutorial/gpt-4-vision-comprehensive-guide</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documentation & Tools -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">📖</span>
+                    Documentation & Tools
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">6 Best AI Tools for Coding Documentation <span class="reference-count">1 ref</span></div>
+                        <a href="https://www.index.dev/blog/best-ai-tools-for-coding-documentation" target="_blank" class="link-url">index.dev/blog/best-ai-tools-for-coding-documentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Industry Perspectives (a16z) -->
+        <div class="topic-section">
+            <div class="topic-header" onclick="toggleSection(this)">
+                <div class="topic-title">
+                    <span class="topic-icon">💡</span>
+                    Industry Perspectives & Future Trends
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="links-container">
+                <div class="links-content">
+                    <div class="link-item">
+                        <div class="link-title">Who's Coding Now? AI and Software Development <span class="reference-count">3 refs</span></div>
+                        <a href="https://a16z.com/podcast/whos-coding-now-ai-and-the-future-of-software-development/" target="_blank" class="link-url">a16z.com/podcast/whos-coding-now-ai-and-the-future-of-software-development/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">One Prompt, Zero Engineers <span class="reference-count">1 ref</span></div>
+                        <a href="https://a16z.com/one-prompt-zero-engineers-your-new-internal-dev/" target="_blank" class="link-url">a16z.com/one-prompt-zero-engineers-your-new-internal-dev/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Emerging Developer Patterns for AI Era <span class="reference-count">1 ref</span></div>
+                        <a href="https://a16z.com/nine-emerging-developer-patterns-for-the-ai-era/" target="_blank" class="link-url">a16z.com/nine-emerging-developer-patterns-for-the-ai-era/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">Future of Software Development: Vibe Coding (Podcast) <span class="reference-count">1 ref</span></div>
+                        <a href="https://podcasts.apple.com/us/podcast/the-future-of-software-development-vibe-coding/id842818711?i=1000718292055" target="_blank" class="link-url">podcasts.apple.com/us/podcast/the-future-of-software-development-vibe-coding/</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-title">AI Future: Already Here, Not Productized Yet <span class="reference-count">1 ref</span></div>
+                        <a href="https://a16z.com/ai-workflow-productivity/" target="_blank" class="link-url">a16z.com/ai-workflow-productivity/</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            const section = header.parentElement;
+            section.classList.toggle('active');
+        }
+
+        // Open first section by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstSection = document.querySelector('.topic-section');
+            if (firstSection) {
+                firstSection.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
