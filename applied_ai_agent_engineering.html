@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Applied AI Agent Engineering</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f7 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 C300,120 900,0 1200,80 L1200,0 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin: 40px 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e8f0f7;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        h2:hover::after {
+            width: 150px;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+            padding-left: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        h3:hover {
+            padding-left: 25px;
+            border-left-color: #764ba2;
+        }
+
+        p {
+            margin: 15px 0;
+            text-align: justify;
+            color: #34495e;
+        }
+
+        ul {
+            margin: 20px 0 20px 30px;
+        }
+
+        li {
+            margin: 15px 0;
+            padding-left: 10px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateX(5px);
+        }
+
+        li::before {
+            content: '▸';
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+        }
+
+        strong {
+            color: #764ba2;
+            font-weight: 600;
+        }
+
+        em {
+            color: #5a6c7d;
+            font-style: italic;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: #764ba2;
+            border-bottom-color: #764ba2;
+        }
+
+        .section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+        }
+
+        .week-block {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .week-block:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f0f7 0%, #f5f7fa 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 1px solid #d1dce5;
+        }
+
+        .references {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+         header {
+      background: linear-gradient(90deg, #32427b 0%, #64b3f4 100%);
+      padding: 2rem 1rem 1rem 1rem;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(65, 89, 178, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-weight: bold;
+      font-size: 2.3rem;
+      margin: 0 0 1rem 0;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 4px;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn {
+      flex: 1;
+      padding: 12px 24px;
+      background: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-btn:hover::before {
+      left: 100%;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-btn.active {
+      background: white;
+      color: #32427b;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-btn.active::before {
+      display: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Elite Applied AI Agent Engineering</h1>
+            <p class="subtitle">Graduate Course</p>
+            <div class="nav-bar">
+            <button class="nav-btn active" onclick="showSection('detailed')">Course Description</button>
+            <button class="nav-btn" onclick="window.location.href='course_overview.html'">Course overview</button>
+            <button class="nav-btn" onclick="window.location.href='course_timeline-for_agent_eng.html'">Course schedule</button>
+    </div>
+        </header>
+
+        <div class="content">
+            <section class="fade-in">
+                <h2>Course Description</h2>
+                <p>This advanced course explores <strong>agentic AI</strong> – autonomous intelligent agents capable of perceiving their environment, making decisions, and acting to accomplish goals. Students will learn cutting-edge techniques that transform large language models (LLMs) from static chatbots into <strong>dynamic, self-directed agents</strong> that can plan, use tools, and collaborate in complex tasks<a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=Recent%20years%20saw%20a%20huge,are%20able%20to%20autonomously%20conceive">[1]</a>. We will cover <strong>fundamental concepts</strong> (LLM foundations, reasoning and planning algorithms, agent architectures and frameworks) alongside <strong>emerging protocols and infrastructure</strong> for agent interoperability<a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=Agentic%20AI%20is%20the%20new,into%20directions%20for%20further%20improvement">[2]</a><a href="https://cs329a.stanford.edu/#:~:text=This%20course%20covers%20the%20latest,in%20building%20robust%20evaluation%20frameworks">[3]</a>. The curriculum includes <strong>representative applications</strong> across domains – from coding assistants and web automation to robotics and scientific discovery<a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=Agentic%20AI%2C%20including%20the%20foundation,into%20directions%20for%20further%20improvement">[4]</a> – while addressing current <strong>limitations, evaluation challenges, and safety considerations</strong> for deploying agent-based systems<a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=applications%2C%20including%20code%20generation%2C%20robotics%2C,into%20directions%20for%20further%20improvement">[5]</a><a href="https://cs329a.stanford.edu/#:~:text=orchestrating%20AI%20capabilities%20with%20multimodal,in%20building%20robust%20evaluation%20frameworks">[6]</a>. By course end, students will have hands-on experience building and evaluating a <strong>fully functional AI agent</strong> integrated with real-world tools and data sources<a href="https://www.scribd.com/document/864913175/AI-Agent-Engineering-Syllabus#:~:text=The%20course%20on%20AI%20Agent,where%20they%20build%20a%20fully">[7]</a>.</p>
+            </section>
+
+            <section class="section fade-in">
+                <h2>Learning Outcomes</h2>
+                <p>By the end of this course, students will be able to:</p>
+                <ul>
+                    <li><strong>Architect and Implement AI Agents:</strong> Understand the full <strong>architecture of modern AI agents</strong>, including key components (memory, tool use, reasoning logic, etc.), and design agents using various paradigms – from classic symbolic or BDI models to the latest LLM-driven frameworks<a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=">[8]</a>.</li>
+                    <li><strong>Leverage Agentic Frameworks:</strong> Apply state-of-the-art agent frameworks and techniques such as <strong>Chain-of-Thought prompting and ReAct</strong> (Reason+Act) to enable better problem solving and tool use within agents<a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=">[9]</a>.</li>
+                    <li><strong>Integrate Tools and Learning:</strong> Build agents that <strong>perceive, reason, plan, act, and learn</strong>, by integrating LLM reasoning with external tool APIs, knowledge bases, and feedback loops (e.g. self-reflection or reinforcement learning)<a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=Design%20agents%20using%20symbolic%2C%20BDI%2C,LLM%20architectures%20for%20specific%20tasks">[10]</a>.</li>
+                    <li><strong>Evaluate and Debug Agent Behavior:</strong> <strong>Evaluate agent performance</strong> across complex tasks, using benchmarks and metrics for planning ability, tool use, collaboration, etc., including multi-agent and human-in-the-loop scenarios<a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=Build%20agents%20that%20perceive%2C%20reason%2C,learn%20with%20Python%20and%20AI">[11]</a>. Identify failure modes and debug agents to improve reliability and robustness.</li>
+                    <li><strong>Ensure Safety and Ethics:</strong> Address ethical and <strong>security challenges</strong> in autonomous agents (e.g. preventing prompt injection attacks and unsafe behaviors), and implement responsible AI principles for alignment<a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=Evaluate%20agent%20behavior%20in%20complex,agent%20environments">[12]</a>.</li>
+                    <li><strong>Deploy Applied Agent Solutions:</strong> Develop a systems-design mindset to <strong>deploy agent-based solutions</strong> to real-world problems – selecting the right model, tools, and protocols (e.g. MCP) for a given task – and carry out a capstone project creating an agent that solves a practical task end-to-end<a href="https://www.scribd.com/document/864913175/AI-Agent-Engineering-Syllabus#:~:text=The%20course%20on%20AI%20Agent,where%20they%20build%20a%20fully">[7]</a>.</li>
+                </ul>
+            </section>
+
+            <div class="highlight-box fade-in">
+                <h2>Prerequisites</h2>
+                <p>This is a graduate-level course. Students are expected to have a solid background in <strong>machine learning and AI</strong> (e.g. prior coursework in AI or deep learning equivalent to CS188/189) and strong programming skills in Python<a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=Prerequisites%3A%20Students%20are%20strongly%20encouraged,as%20CS182%2C%20CS188%2C%20and%20CS189">[13]</a>. Familiarity with basic natural language processing or reinforcement learning will be helpful. Enthusiasm for reading research papers and building complex systems is essential.</p>
+            </div>
+
+            <section class="fade-in">
+                <h2>Format and Assessments</h2>
+                <p><strong>Course format:</strong> Weekly seminars combining lectures and discussions of recent research. Students will read and present findings from <strong>latest papers</strong> in agentic AI, and we will host guest talks from leading researchers on real-world agent applications<a href="https://cs329a.stanford.edu/#:~:text=Our%20goal%20is%20that%20the,and%20autonomous%20systems%20in%20robotics">[14]</a>. Lectures include live demos or coding labs to practice building agent components.</p>
+                <p><strong>Assignments:</strong> Bi-weekly programming assignments or mini-projects will give hands-on experience (e.g. implementing a planning algorithm, using an agent framework, securing an agent against injections). There will be a midterm quiz on core concepts and paper discussions.</p>
+                <p><strong>Project:</strong> The major deliverable is a semester-long <strong>capstone project</strong> (done in teams) to <strong>design, build, and evaluate a full AI agent</strong> for a domain of choice. This includes a proposal, interim progress report, final demonstration, and a report. Projects are expected to integrate course concepts (tool use, memory, etc.) and will be evaluated on creativity, technical depth, and empirical evaluation.</p>
+                <p><strong>Grading:</strong> 50% final project, 30% assignments, 10% paper presentation/discussion, 10% participation.</p>
+            </section>
+
+            <section class="fade-in">
+                <h2>Course Schedule and Syllabus</h2>
+
+                <div class="week-block">
+                    <h3>Week 1: Introduction to AI Agents</h3>
+                    <p><strong>Topics:</strong> What is an AI "agent" and how do agents differ from traditional AI models or chatbots? We cover the definition of autonomous agents capable of <strong>multi-step decisions</strong> and <strong>persistent state</strong> versus single-turn LLMs<a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=Recent%20years%20saw%20a%20huge,are%20able%20to%20autonomously%20conceive">[1]</a>. Key capabilities of agents – perceiving environment input, reasoning and maintaining memory, using tools, and taking actions to achieve goals – are introduced. We discuss examples of agent systems (personal assistants, game agents, etc.) and the historical evolution from simple chatbots to today's <strong>LLM-based autonomous agents</strong> that can <strong>conceive and execute complex plans in real-world environments</strong><a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=hereinafter%20also%20referred%20to%20as,a%20wide%20spectrum%20of%20domains">[15]</a>. <em>Reading: "Introduction to AI Agents (2025)"</em><a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=Recent%20years%20saw%20a%20huge,are%20able%20to%20autonomously%20conceive">[1]</a>. <em>(Mini-project: Run a simple open-source agent (e.g. AutoGPT or AgentGPT) and analyze its behavior on a task.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 2: LLMs as Reasoning Engines & Prompting Techniques</h3>
+                    <p><strong>Topics:</strong> Foundation on using <strong>Large Language Models</strong> as the brain of an agent. We review how LLMs can be prompted to perform reasoning via methods like <em>Chain-of-Thought (CoT)</em> prompting, which enables step-by-step problem solving. We study the <strong>ReAct framework</strong> (Reason + Act) that interleaves thought (analysis in natural language) and tool actions<a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=">[9]</a>, and how this approach helped LLM agents achieve better performance. Discussion includes prompt engineering for tool use (e.g. function calling APIs) and using model self-feedback to improve reliability. <em>Readings: ReAct: Synergizing Reasoning and Acting in LLMs (Yao et al. 2022)</em><a href="https://cs329a.stanford.edu/#:~:text=,AI%3A%20Harmlessness%20from%20AI%20Feedback">[16]</a>; <em>"Understanding LLM Agent Architectures" (DataStax, 2025)</em>. <em>(Hands-on exercise: Write prompts that guide an LLM to use a calculator tool to solve math problems, first without CoT and then with CoT prompting to see the difference.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 3: Agent Architecture and Frameworks</h3>
+                    <p><strong>Topics:</strong> <strong>Architecture of AI agents</strong> – we break down the common components of an agent system: the planning module, memory store, tool interface, and the orchestration logic that ties it together. We compare agent architecture paradigms: classical <strong>symbolic agents and BDI architectures</strong> vs. modern data-driven agents. Key design patterns such as event loops, task decomposition, and parallel vs. sequential agent flows are covered. We also survey popular <strong>agent development frameworks</strong> (e.g. LangChain, OpenAI Function calling, Hugging Face Transformers Agents) and emerging systems like <strong>Crew</strong> or <strong>AutoGen</strong>, evaluating their design trade-offs<a href="https://www.scribd.com/document/864913175/AI-Agent-Engineering-Syllabus#:~:text=%EF%82%B7%20Overview%20of%20agent%20frameworks,CrewAI%2C%20LangGraph%2C%20AutoGen%2C%20Cerebrum">[17]</a>. Students learn how to choose or combine frameworks when designing an agent. <em>Reading: "Which AI Agent Framework Should I Use? – A Comparison" (Kerem, 2024)</em>. <em>(Mini-project: Take an open-source agent framework, e.g. LangChain's agent or MiniGPT-4, and diagram its architecture in terms of our component breakdown.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 4: Tool Use and Agent Interoperability Protocols</h3>
+                    <p><strong>Topics:</strong> Agents often need to query external data or invoke tools (APIs, databases, web services) to complete tasks. We cover how agents integrate with tools via <strong>plugins and function calling</strong>, and introduce the new open standards that enable this integration. The <strong>Model Context Protocol (MCP)</strong> – introduced by Anthropic in late 2024 – allows an agent to securely access external data/services via a universal JSON-RPC interface<a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=In%20November%202024%2C%20Anthropic%20introduced,manual%20indexing%20or%20custom%20connectors">[18]</a>. We also examine <strong>Agent-to-Agent (A2A) communication</strong>, an open protocol by which agents advertise capabilities and directly collaborate through messages<a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=A2A%20%28Agent,TLS%2C%20OAuth%2FOIDC%2C%20and%20traceability%20logs">[19]</a>, enabling multi-agent task delegation. Finally, the <strong>Agent-User Interface (AG-UI)</strong> protocol is discussed, standardizing how agent applications communicate their state and tool usage to front-end UIs<a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=AG%E2%80%91UI%20standardizes%20the%20front%E2%80%91end%20communication,offs%2C%20and%20shared%20state%20management">[20]</a>. Together, MCP (data/tools), A2A (inter-agent coordination), and AG-UI (user interaction) form a <strong>layered ecosystem for modular, secure agents</strong><a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=,flows%20across%20agents%20and%20tools">[21]</a>. <em>Readings: MCP Introduction (Anthropic, 2024)</em><a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=In%20November%202024%2C%20Anthropic%20introduced,manual%20indexing%20or%20custom%20connectors">[18]</a>; <em>"The Rise of Agent Ecosystems: MCP, A2A, AG-UI" (Medium, 2025)</em><a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=,flows%20across%20agents%20and%20tools">[21]</a>. <em>(Lab: Implement a simple MCP client that allows your agent to fetch information from a knowledge base via a provided MCP server.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 5: Multi-Agent Systems and Collaboration</h3>
+                    <p><strong>Topics:</strong> Moving beyond single-agent scenarios, we explore <strong>multi-agent systems (MAS)</strong> where multiple AI agents interact. Key concepts include communication languages for agents, cooperation vs. competition dynamics, and distributed task allocation. We study how agents can negotiate or coordinate in teams (for example, AI agents playing different roles in a business process). The new A2A protocol from Week 4 is revisited in context of multi-agent coordination. We also delve into research on optimizing multi-agent behaviors: for instance, the <strong>MASS framework (Multi-Agent System Search)</strong> which automates the design of effective multi-agent prompt strategies and interaction topologies<a href="https://openreview.net/forum?id=uCKvHweh1g#:~:text=entire%20design%20process%2C%20we%20first,optimized">[22]</a>. This highlights how prompt design and agent role assignment dramatically affect team performance, and how <strong>search algorithms can discover better agent collaboration patterns</strong><a href="https://openreview.net/forum?id=uCKvHweh1g#:~:text=prompts%20together%20with%20topologies%20play,of%20existing%20alternatives%20by%20a">[23]</a>. <em>Readings: "Multi-Agent System Search: Optimizing Agents with Better Prompts" (Zhou et al., ICML 2025)</em><a href="https://openreview.net/forum?id=uCKvHweh1g#:~:text=prompts%20together%20with%20topologies%20play,of%20existing%20alternatives%20by%20a">[23]</a>; <em>Selected chapters on multi-agent reinforcement learning</em>. <em>(Assignment: Define a scenario (e.g. two agents solving a puzzle) and script an interaction using A2A messaging. Analyze how different communication strategies affect the outcome.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 6: Memory and Knowledge Management in Agents</h3>
+                    <p><strong>Topics:</strong> Effective agents maintain <strong>long-term memory</strong> of past interactions and facts. This week covers techniques for giving agents a memory beyond the context window of an LLM. We discuss vector databases and embedding-based recall for agents to retrieve relevant past information. Students learn about architectures like <strong>MemGPT</strong>, which treats an LLM as an operating system managing external memory storage<a href="https://cs329a.stanford.edu/#:~:text=,Serving%20for%20RAG%20with%20Cached">[24]</a>, and other approaches for persistent agent state (knowledge graphs, episodic memory modules). We also cover how agents can incorporate <strong>retrieval-augmented generation</strong>, pulling in up-to-date information (e.g. via MCP connectors) as needed. Challenges such as memory consistency, forgetting outdated info, and scaling to very long contexts are addressed. <em>Readings: "MemGPT: Towards LLMs as Operating Systems" (Packer et al. 2023)</em><a href="https://cs329a.stanford.edu/#:~:text=,Serving%20for%20RAG%20with%20Cached">[24]</a>; <em>"LTM: Long-Term Memory Benchmarks for Agents" (2024)</em>. <em>(Lab: Augment an agent with a simple memory: store conversation snippets or tool results, and modify the agent's prompt to include relevant memory entries for improved context.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 7: Planning and Decision-Making Strategies</h3>
+                    <p><strong>Topics:</strong> Agents often need to <strong>plan multi-step strategies</strong> to achieve goals. We explore planning algorithms from classical AI (state-space search, planning under uncertainty) and how these concepts translate to LLM-based agents. The integration of <strong>planning with LLM reasoning</strong> is studied: for example, using decision trees or search algorithms over model-generated options. We examine approaches like <strong>Tree of Thoughts</strong> and <em>Language Model Planner</em> that extend ReAct by explicitly modeling lookahead search. A recent method, <em>Language Model Monte Carlo Tree Search</em><a href="https://cs329a.stanford.edu/#:~:text=,2024">[25]</a>, shows how an agent can simulate future steps before committing to an action. We also discuss goal decomposition (breaking a high-level goal into sub-tasks that an agent or agent team can tackle). <em>Readings: "Language Agent Tree Search: Unifying Reasoning, Acting and Planning" (Zhou et al. 2023)</em><a href="https://cs329a.stanford.edu/#:~:text=,2024">[25]</a>; <em>Oxford lecture notes on AI Planning (LTLf, games for planning)</em><a href="https://www.cs.ox.ac.uk/teaching/courses/2024-2025/foundagent/#:~:text=the%20ability%20to%20self,player%20games%20and%20finding">[26]</a><a href="https://www.cs.ox.ac.uk/teaching/courses/2024-2025/foundagent/#:~:text=strategies%2C%20i,reinforcement%20learning%20will%20be%20considered">[27]</a>. <em>(Assignment: Given a complex task, have your agent formulate a step-by-step plan (either via an LLM prompt or algorithmically), then execute it. Evaluate where planning succeeded or failed.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 8: Learning, Adaptation, and Self-Improvement</h3>
+                    <p><strong>Topics:</strong> Unlike static software, an AI agent can <strong>learn and improve</strong> from experience. We cover methods for agents to refine their behavior over time. This includes <strong>Reinforcement Learning (RL)</strong> techniques to train policies for action selection, and how RL can be applied on top of language model agents (e.g. fine-tuning an agent via rewards for successful task completion). We also discuss leveraging feedback signals: <strong>self-reflection and self-correction</strong> frameworks where an agent evaluates its own outputs, and <strong>Constitutional AI</strong> (asking an LLM to critique and revise its responses based on AI-generated principles)<a href="https://cs329a.stanford.edu/#:~:text=This%20course%20covers%20the%20latest,in%20building%20robust%20evaluation%20frameworks">[3]</a>. Students will see examples like agents that improve at code generation by iterative self-debugging. Finally, we highlight research in <strong>open-ended agent evolution</strong>, such as systems that generate and test their own goals (the <em>AI Scientist</em> for automating discoveries). <em>Readings: "Autonomous Agents that Continually Improve" (Stanford CS329A Overview)</em><a href="https://cs329a.stanford.edu/#:~:text=This%20course%20covers%20the%20latest,in%20building%20robust%20evaluation%20frameworks">[3]</a>; <em>"Towards Fully Automated Scientific Discovery" (Lu et al. 2024)</em>. <em>(Lab: Implement a simple feedback loop: have your agent critique one of its decisions or outputs and attempt a revised solution. Analyze how effective this self-critique is.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 9: Evaluation and Benchmarking of Agents</h3>
+                    <p><strong>Topics:</strong> Evaluating AI agents poses unique challenges compared to evaluating static models. We examine <strong>metrics and benchmarks</strong> for agent performance. This includes <strong>fundamental capability evaluations</strong> (can the agent plan, use tools, remember, self-correct?) and <strong>application-specific benchmarks</strong> for tasks like web browsing, coding, or dialogue<a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=interacting%20with%20dynamic%20environments,We%20also%20identify">[28]</a>. We review recent benchmarks such as OpenAI's <em>BrowseBench</em> for web agents and <em>SWE-Bench</em> for coding agents<a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=Sep%2029%20Post,Lessons%20from%20Training%20Agentic%20Models">[29]</a>, as well as <strong>AgentBench/HELM</strong> efforts to holistically evaluate agent abilities. Key trends are discussed: a shift toward more <strong>realistic, open-ended task evaluations</strong> and the inclusion of criteria like efficiency, robustness, and safety in assessments<a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=agents,grained%2C%20and%20scalable">[30]</a>. We also cover evaluation frameworks (e.g. OpenAI Evals) that allow automated testing of agents on a battery of scenarios. <em>Readings: "Survey on Evaluation of LLM-based Agents" (Yehudai et al., 2025)</em> – covers evaluation dimensions and open problems<a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=interacting%20with%20dynamic%20environments,must%20address%E2%80%94particularly%20in%20assessing%20cost">[31]</a>. <em>(Assignment: Using an evaluation framework, design a small benchmark to compare two agent variants on a set of tasks – for example, measure success rate and tool usage efficiency on a web research task.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 10: Agent Safety and Security</h3>
+                    <p><strong>Topics:</strong> As we deploy autonomous agents, ensuring their <strong>safety, security, and alignment</strong> is paramount. This week addresses the risks and defenses in agent systems. We study <strong>prompt injection attacks</strong>, where an adversary's input can hijack an agent's behavior – a critical threat especially when agents have tool access or handle sensitive data<a href="https://arxiv.org/abs/2506.08837#:~:text=increasingly%20versatile%20and%20capable%20of,a%20series%20of%20case%20studies">[32]</a>. Students learn about recently proposed <strong>security design patterns</strong> for provably robust agents (e.g. input sanitization, role separation, secure prompt templates)<a href="https://arxiv.org/abs/2506.08837#:~:text=threats%20are%20prompt%20injection%20attacks%2C,a%20series%20of%20case%20studies">[33]</a>. Other topics include preventing misuse of agents, sandboxing tool execution (to avoid harmful actions), and implementing alignment techniques (like constraints or human oversight) to keep agent behavior ethical. We also touch on compliance with AI regulations and the societal impacts of autonomous agents. <em>Readings: "Design Patterns for Securing LLM Agents against Prompt Injection" (Beurer-Kellner et al., 2025)</em><a href="https://arxiv.org/abs/2506.08837#:~:text=increasingly%20versatile%20and%20capable%20of,a%20series%20of%20case%20studies">[32]</a>; <em>OWASP Top 10 for LLM Applications (2025)</em>. <em>(Lab: Given an example agent prompt, attempt a benign prompt-injection attack; then apply a mitigation (e.g. content filtering or instruction locking) and evaluate if the agent is now secure.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 11: Agents in Software Engineering and DevOps</h3>
+                    <p><strong>Topics:</strong> In-depth case study of <strong>AI agents for coding, software development, and DevOps</strong>. We explore how agents serve as copilots for programmers (e.g. GitHub Copilot X, GPT-Engineer) and even take on autonomous coding tasks. The concept of a "<strong>self-programming AI</strong>" is discussed – agents that can read documentation, generate code, test it, and iteratively improve software. We examine Microsoft's <strong>SWE-Agent</strong>, an AI that interacts with a computer environment (file system, editor, compiler) to build software autonomously<a href="https://cs329a.stanford.edu/#:~:text=%2A%20%20SWE,2024">[34]</a>. Students will learn how such agents manage code context, tools like debuggers or version control, and the challenges of controlling an agent in a development environment (avoiding infinite loops, ensuring code quality, etc.). We also touch on agents for software maintenance (bug-fixing bots) and infrastructure management (agents that monitor and patch systems). <em>Reading: "SWE-Agent: Agent-Computer Interfaces for Automated Software Engineering" (Yang et al. 2024)</em><a href="https://cs329a.stanford.edu/#:~:text=%2A%20%20SWE,2024">[34]</a>. <em>(Project checkpoint: Teams share how their projects handle any coding or tooling aspects, and receive feedback on architecture.)</em></p>
+                </div>
+
+                <div class="week-block">
+                    <h3>Week 12: Agents in the Physical World and Scientific Discovery</h3>
+                    <p><strong>Topics:</strong> The final module looks at <strong>agents applied in robotics and science</strong>. We discuss how language-model agents can be embodied in the physical world – for instance, controlling robots or IoT devices. Topics include grounding natural language to robotic actions, safety in physical agents (avoiding dangerous moves), and integrations like <strong>SayCan</strong> or robotic planning using LLMs. We also survey the use of multi-agent simulations to model social or economic behavior (e.g. agent-based modeling with LLM agents in virtual environments). Another case is <strong>agents for automated scientific research</strong>, where an agent formulates hypotheses, runs virtual experiments, and analyzes results (as seen in the "AI Scientist" project). Throughout, we address what new challenges arise when agents leave the purely digital realm. The course concludes with a discussion of open research problems and future directions for agentic AI. <em>Readings: "Agentic AI in Robotics" (guest lecture slides)</em>; <em>"Agentic AI for Scientific Discovery" (Stanford AI Lab report, 2025)</em>. <em>We also revisit ethical considerations and the limitations of current agents, summarizing how ongoing research (e.g. improving reliability, incorporating domain knowledge, etc.) is pushing the frontier</em><a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=applications%2C%20including%20code%20generation%2C%20robotics%2C,into%20directions%20for%20further%20improvement">[5]</a>.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Final Project Presentations:</strong> In the last week's session, teams will present their agent projects, demonstrating the agent's capabilities and discussing design choices. This serves as a capstone showcasing students' mastery of <strong>applied AI agent engineering</strong>, from concept to deployment. Each project will be evaluated with Q&A, and students will reflect on how the course concepts manifested in their implementations, and what they learned about building advanced AI agents.</p>
+                </div>
+            </section>
+
+            <div class="references">
+                <h2>References</h2>
+                <p><a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=Recent%20years%20saw%20a%20huge,are%20able%20to%20autonomously%20conceive">[1]</a><a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=hereinafter%20also%20referred%20to%20as,a%20wide%20spectrum%20of%20domains"> [15]</a><a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=interacting%20with%20dynamic%20environments,We%20also%20identify"> [28]</a><a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=agents,grained%2C%20and%20scalable"> [30]</a><a href="https://ar5iv.labs.arxiv.org/html/2503.16416#:~:text=interacting%20with%20dynamic%20environments,must%20address%E2%80%94particularly%20in%20assessing%20cost"> [31]</a> [2503.16416] Survey on Evaluation of LLM-based Agents</p>
+                <p><a href="https://ar5iv.labs.arxiv.org/html/2503.16416">https://ar5iv.labs.arxiv.org/html/2503.16416</a></p>
+
+                <p><a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=Agentic%20AI%20is%20the%20new,into%20directions%20for%20further%20improvement">[2]</a><a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=Agentic%20AI%2C%20including%20the%20foundation,into%20directions%20for%20further%20improvement"> [4]</a><a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=applications%2C%20including%20code%20generation%2C%20robotics%2C,into%20directions%20for%20further%20improvement"> [5]</a><a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=Prerequisites%3A%20Students%20are%20strongly%20encouraged,as%20CS182%2C%20CS188%2C%20and%20CS189"> [13]</a><a href="https://rdi.berkeley.edu/agentic-ai/f25#:~:text=Sep%2029%20Post,Lessons%20from%20Training%20Agentic%20Models"> [29]</a> CS294/194-196 Agentic AI</p>
+                <p><a href="https://rdi.berkeley.edu/agentic-ai/f25">https://rdi.berkeley.edu/agentic-ai/f25</a></p>
+
+                <p><a href="https://cs329a.stanford.edu/#:~:text=This%20course%20covers%20the%20latest,in%20building%20robust%20evaluation%20frameworks">[3]</a><a href="https://cs329a.stanford.edu/#:~:text=orchestrating%20AI%20capabilities%20with%20multimodal,in%20building%20robust%20evaluation%20frameworks"> [6]</a><a href="https://cs329a.stanford.edu/#:~:text=Our%20goal%20is%20that%20the,and%20autonomous%20systems%20in%20robotics"> [14]</a><a href="https://cs329a.stanford.edu/#:~:text=,AI%3A%20Harmlessness%20from%20AI%20Feedback"> [16]</a><a href="https://cs329a.stanford.edu/#:~:text=,Serving%20for%20RAG%20with%20Cached"> [24]</a><a href="https://cs329a.stanford.edu/#:~:text=,2024"> [25]</a><a href="https://cs329a.stanford.edu/#:~:text=%2A%20%20SWE,2024"> [34]</a> Stanford CS329A | Self-Improving AI Agents</p>
+                <p><a href="https://cs329a.stanford.edu/">https://cs329a.stanford.edu/</a></p>
+
+                <p><a href="https://www.scribd.com/document/864913175/AI-Agent-Engineering-Syllabus#:~:text=The%20course%20on%20AI%20Agent,where%20they%20build%20a%20fully">[7]</a><a href="https://www.scribd.com/document/864913175/AI-Agent-Engineering-Syllabus#:~:text=%EF%82%B7%20Overview%20of%20agent%20frameworks,CrewAI%2C%20LangGraph%2C%20AutoGen%2C%20Cerebrum"> [17]</a> AI Agent Engineering Syllabus | PDF | Computing | Software Engineering</p>
+                <p><a href="https://www.scribd.com/document/864913175/AI-Agent-Engineering-Syllabus">https://www.scribd.com/document/864913175/AI-Agent-Engineering-Syllabus</a></p>
+
+                <p><a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=">[8] [9]</a><a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=Design%20agents%20using%20symbolic%2C%20BDI%2C,LLM%20architectures%20for%20specific%20tasks"> [10]</a><a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=Build%20agents%20that%20perceive%2C%20reason%2C,learn%20with%20Python%20and%20AI"> [11]</a><a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai#:~:text=Evaluate%20agent%20behavior%20in%20complex,agent%20environments"> [12]</a> Agentic AI Certificate Program from Johns Hopkins University</p>
+                <p><a href="https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai">https://online.lifelonglearning.jhu.edu/jhu-certificate-program-agentic-ai</a></p>
+
+                <p><a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=In%20November%202024%2C%20Anthropic%20introduced,manual%20indexing%20or%20custom%20connectors">[18]</a><a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=A2A%20%28Agent,TLS%2C%20OAuth%2FOIDC%2C%20and%20traceability%20logs"> [19]</a><a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=AG%E2%80%91UI%20standardizes%20the%20front%E2%80%91end%20communication,offs%2C%20and%20shared%20state%20management"> [20]</a><a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b#:~:text=,flows%20across%20agents%20and%20tools"> [21]</a> The Rise of Agent Ecosystems: MCP, A2A, and AG‑UI | by Marta Fernández García | Medium</p>
+                <p><a href="https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b">https://medium.com/@martia_es/the-rise-of-agent-ecosystems-mcp-a2a-and-ag-ui-05c9614a151b</a></p>
+
+                <p><a href="https://openreview.net/forum?id=uCKvHweh1g#:~:text=entire%20design%20process%2C%20we%20first,optimized">[22]</a><a href="https://openreview.net/forum?id=uCKvHweh1g#:~:text=prompts%20together%20with%20topologies%20play,of%20existing%20alternatives%20by%20a"> [23]</a> Multi-Agent Design: Optimizing Agents with Better Prompts and Topologies | OpenReview</p>
+                <p><a href="https://openreview.net/forum?id=uCKvHweh1g">https://openreview.net/forum?id=uCKvHweh1g</a></p>
+
+                <p><a href="https://www.cs.ox.ac.uk/teaching/courses/2024-2025/foundagent/#:~:text=the%20ability%20to%20self,player%20games%20and%20finding">[26]</a><a href="https://www.cs.ox.ac.uk/teaching/courses/2024-2025/foundagent/#:~:text=strategies%2C%20i,reinforcement%20learning%20will%20be%20considered"> [27]</a> Foundations of Self-Programming Agents</p>
+                <p><a href="https://www.cs.ox.ac.uk/teaching/courses/2024-2025/foundagent/">https://www.cs.ox.ac.uk/teaching/courses/2024-2025/foundagent/</a></p>
+
+                <p><a href="https://arxiv.org/abs/2506.08837#:~:text=increasingly%20versatile%20and%20capable%20of,a%20series%20of%20case%20studies">[32]</a><a href="https://arxiv.org/abs/2506.08837#:~:text=threats%20are%20prompt%20injection%20attacks%2C,a%20series%20of%20case%20studies"> [33]</a> [2506.08837] Design Patterns for Securing LLM Agents against Prompt Injections</p>
+                <p><a href="https://arxiv.org/abs/2506.08837">https://arxiv.org/abs/2506.08837</a></p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Elite Applied AI Agent Engineering | Graduate Course</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Empowering the next generation of AI agent engineers</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.week-block, .section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

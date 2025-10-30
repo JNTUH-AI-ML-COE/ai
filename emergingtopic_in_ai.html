@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerging Topics in Modern AI (2025)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        * Header */
+    header {
+      background: linear-gradient(90deg, #32427b 0%, #64b3f4 100%);
+      padding: 2rem 1rem 1rem 1rem;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(65, 89, 178, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-weight: bold;
+      font-size: 2.3rem;
+      margin: 0 0 1rem 0;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 4px;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn {
+      flex: 1;
+      padding: 12px 24px;
+      background: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-btn:hover::before {
+      left: 100%;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-btn.active {
+      background: white;
+      color: #32427b;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-btn.active::before {
+      display: none;
+    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            color: #2c3e50;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(180deg);
+            }
+        }
+
+        h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin: 40px 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        h2:hover {
+            color: #764ba2;
+            border-bottom-color: #764ba2;
+            transform: translateX(5px);
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        h2:hover::before {
+            width: 100%;
+        }
+
+        .section {
+            background: #f8f9fc;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .overview-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .overview-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(245, 87, 108, 0.3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #e8ecf1;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1);
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        ol {
+            counter-reset: week-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        ol li {
+            counter-increment: week-counter;
+            padding: 25px;
+            margin: 20px 0;
+            background: white;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        ol li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+            border-left-color: #764ba2;
+        }
+
+        ol li::before {
+            content: "Week " counter(week-counter);
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        em {
+            color: #764ba2;
+            font-style: italic;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #764ba2;
+            border-bottom-color: #764ba2;
+        }
+
+        .semester-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0 30px 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .semester-header:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(79, 172, 254, 0.3);
+        }
+
+        .semester-header h2 {
+            color: white;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .focus-text {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #ffc107;
+            transition: all 0.3s ease;
+        }
+
+        .focus-text:hover {
+            background: #ffe69c;
+            transform: translateX(5px);
+        }
+
+        .sources {
+            background: #e8f4f8;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 2px solid #4facfe;
+        }
+
+        p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            ol li {
+                padding: 20px 15px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 30%;
+            background-position: 0 85%;
+            transition: background-size 0.3s ease;
+        }
+
+        .highlight:hover {
+            background-size: 100% 100%;
+            color: white;
+        }
+
+        .reading-tag {
+            display: inline-block;
+            background: #e8f4f8;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 10px 5px 5px 0;
+            border: 1px solid #4facfe;
+            transition: all 0.3s ease;
+        }
+
+        .reading-tag:hover {
+            background: #4facfe;
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Emerging Topics in Modern AI</h1>
+            <div class="subtitle">2025 Graduate Syllabus</div>
+             <div class="nav-bar">
+            <button class="nav-btn active" onclick="showSection('detailed')">Detailed Syllabus</button>
+            <button class="nav-btn" onclick="window.location.href='course_timeline_for_modern_ai.html'">Course Schedule</button>
+
+    </div>
+        </header>
+
+        <div class="content">
+            <h2>Course Overview</h2>
+            
+            <div class="section">
+                <p>This two-semester graduate-level sequence explores cutting-edge research and emerging architectures in modern AI as of 2025. Students will gain a broad, <strong>horizontal</strong> perspective on advances across <em>multiple subfields</em> (natural language processing, computer vision, multimodal learning, robotics, etc.), while engaging deeply with research papers and open-ended projects. The course emphasizes <strong>latest developments</strong> – from large-scale <strong>foundation models</strong> and generative AI systems to autonomous <strong>agentic AI</strong> and early steps toward AGI. We will balance theoretical concepts with hands-on experimentation, critical discussions of research readings, and a focus on <strong>ASL-3/ASL-4</strong> level AI safety considerations (the frontier <strong>AI Safety Levels</strong> defined for advanced AI deployments). By the end, students should understand the state of the art in <strong>multimodal generative models</strong> (e.g. text, image, audio, video generation), advanced model self-improvement techniques, <em>"AI Scientist 2.0"</em>-style autonomous research agents, and emerging paradigms for <strong>self-adapting</strong> and <strong>self-directed</strong> AI systems on the path toward AGI.</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📅 Format</h3>
+                    <p>The course meets twice weekly. Semester 1 builds core knowledge of modern AI advances, while Semester 2 delves into frontier research and open problems. Each week includes research paper readings (drawn from recent conferences and university courses) and discussion. Evaluation is through reading responses, a midterm exam (Semester 1), and a term project (Semester 2) where students explore an emerging AI topic in depth.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>📚 Prerequisites</h3>
+                    <p>Strong background in machine learning and deep learning. Prior exposure to NLP or computer vision is recommended. Experience with neural network frameworks and some familiarity with reinforcement learning will be helpful.</p>
+                </div>
+            </div>
+
+            <div class="semester-header">
+                <h2>Semester 1: Foundations of Modern AI and Generative Models</h2>
+            </div>
+
+            <div class="focus-text">
+                <strong>Focus:</strong> Key breakthroughs that defined the current state-of-the-art – large language models, multimodal foundation models, and generative architectures across different data modalities. We examine how these models are built and the new capabilities (and challenges) they bring.
+            </div>
+
+            <ol>
+                <li>
+                    <strong>Foundation Models and the New AI Paradigm:</strong> Overview of foundation models (e.g. GPT-3/4, BERT, etc.) and how large-scale pretraining has led to a paradigm shift in AI. We discuss the defining traits of foundation models – trained on broad data, adaptable to many tasks – and review the Stanford <strong>"Opportunities & Risks of Foundation Models"</strong> report (Bommasani et al., 2021) for context. Topics include the homogenization of methodologies across fields and emergence of new capabilities through scale. Real-world examples (ChatGPT, Copilot) illustrate the transformational impact of large language models (LLMs). 
+                    <div><span class="reading-tag"><em>Reading:</em> Bommasani et al. (2021); OpenAI GPT-3 paper.</span></div>
+                </li>
+
+                <li>
+                    <strong>Transformer Architecture & Scaling Laws:</strong> Deep dive into the Transformer neural network architecture that underpins most modern AI models. We cover the self-attention mechanism and why Transformers enable efficient training on massive datasets (Vaswani et al., 2017). Discussion of scaling laws: as model parameters and data increase, performance often improves predictably – until <em>emergent behaviors</em> appear. Students examine evidence of <em>emergent abilities</em> in large models (e.g. GPT-3's zero-shot learning) and debate recent studies questioning if such emergent traits are real or artifacts. 
+                    <div><span class="reading-tag"><em>Reading:</em> "Attention Is All You Need" and Kaplan et al. on scaling laws.</span></div>
+                </li>
+
+                <li>
+                    <strong>Pre-training, Fine-Tuning, and Alignment (RLHF):</strong> How foundation models are trained and adapted. We discuss self-supervised pre-training on web-scale data and techniques to fine-tune models for specific tasks. Instruction tuning and Reinforcement Learning from Human Feedback (<strong>RLHF</strong>) are introduced as key alignment methods to make AI outputs more helpful and safe. For example, OpenAI's <em>InstructGPT</em> used RLHF to align an LLM with user intent across many tasks. We also cover <strong>Constitutional AI</strong> and other strategies for aligning models without direct human labels. 
+                    <div><span class="reading-tag"><em>Reading:</em> Ouyang et al. (2022) on InstructGPT; Anthropic's <strong>"Constitutional AI"</strong> paper.</span></div>
+                </li>
+
+                <li>
+                    <strong>Vision and Multimodal Foundation Models:</strong> Extending foundation models beyond text. We study models that learn unified representations for images and text, such as <strong>CLIP</strong> (Radford et al., 2021), which learns visual concepts by matching images with captions. We also survey multimodal transformers that handle vision+language inputs (e.g. Flamingo, OFA). Key concepts: contrastive image-text pre-training, visual question answering, and the transition from modality-specific models to <strong>general-purpose assistants</strong> that handle text, images, etc. (e.g. Microsoft's Kosmos-1). <strong>Multimodal foundation models</strong> mark a step from specialist models to unified AI assistants. 
+                    <div><span class="reading-tag"><em>Reading:</em> Li et al. (2023) "Multimodal Foundation Models: From Specialists to General-Purpose Assistants".</span></div>
+                </li>
+
+                <li>
+                    <strong>Generative Models for Images (VAEs, GANs, Diffusion):</strong> Overview of generative AI for visual data. We start with VAEs and GANs, then focus on diffusion models which powered the 2022–2023 text-to-image boom (e.g. <strong>DALL·E 2</strong>, <strong>Stable Diffusion</strong>). We explain how diffusion models iteratively refine random noise into coherent images, and why their diversity and quality surpassed prior methods. <em>Case studies:</em> <strong>Stable Diffusion</strong> (Rombach et al., 2022) as an open-source image generator. We also discuss ethical implications like deepfakes and generative art. <em>Lab:</em> Students prompt an image model to create visuals and analyze results. 
+                    <div><span class="reading-tag"><em>Reading:</em> Ho et al. (2020) on Denoising Diffusion; Rombach et al. (2022) on Latent Diffusion.</span></div>
+                </li>
+
+                <li>
+                    <strong>Generative Models for Audio and Music:</strong> Generative AI in the audio domain. We cover text-to-speech models (Tacotron, VALL-E) and recent breakthroughs in music generation. Example: <strong>MusicLM</strong> (Google, 2023), a model that generates high-fidelity music from text descriptions<a href="#ref1">[1]</a>. Students listen to samples from MusicLM – e.g. "jazzy piano solo" – to appreciate capabilities and current limitations (like controllability and coherence in long compositions). We also touch on voice cloning and speech synthesis advances. 
+                    <div><span class="reading-tag"><em>Reading:</em> Dhariwal et al. (2020) "Jukebox: Music Generation"; Google Blog on MusicLM<a href="#ref1">[1]</a>.</span></div>
+                </li>
+
+                <li>
+                    <strong>Generative Models for Video and 3D Worlds:</strong> The frontier of generative AI – creating dynamic video and simulated environments. We survey text-to-video models (e.g. Meta's <em>Make-A-Video</em> and Runway <em>Gen-2</em>) and discuss challenges in temporal consistency. A highlight is <strong>DeepMind's Genie</strong> world models, culminating in <strong>Genie 3</strong> (2025) which generates interactive 3D environments from text in real-time. Genie 3 can produce a persistent, physics-consistent world at 24 fps, representing a step toward unlimited virtual training grounds for agents. We consider how world models are key for training embodied agents and are seen as <em>"stepping stones on the path to AGI"</em>. 
+                    <div><span class="reading-tag"><em>Reading:</em> DeepMind Technical Blog on <strong>Genie 3</strong>; Ho et al. (2022) on Video Diffusion (VDM).</span></div>
+                </li>
+
+                <li>
+                    <strong>AI for Programming and Code Generation:</strong> How generative models impact software development. We study <strong>code-generating LLMs</strong> like OpenAI's <em>Codex</em> (2021) which powers GitHub Copilot, and newer open models (StarCoder, Code Llama). These models translate natural language to code and vice versa. We explore their architecture (often GPT-based with code fine-tuning) and evaluate capabilities: e.g. Codex can solve programming tasks or generate functions from docstrings. Topics include prompt techniques for code (test-driven prompts) and limitations (bugs, security issues). 
+                    <div><span class="reading-tag"><em>Reading:</em> Chen et al. (2021) "Evaluating Large Language Models Trained on Code".</span></div>
+                </li>
+
+                <li>
+                    <strong>AI in Science and Medicine (Case Studies):</strong> Examination of emerging AI applications in scientific research, showing the horizontal impact of modern AI. We discuss <strong>AlphaFold2</strong> (DeepMind, 2021) as a breakthrough in biology – using deep learning to predict 3D protein structures with atomic accuracy, effectively solving the 50-year protein folding problem<a href="#ref2">[2]</a>. We also highlight how foundation models are being adapted in medicine (e.g. biomedicine-specific LLMs like PubMedGPT, and generative models for drug discovery). For example, generative models can propose novel molecular structures (Medicinal chemistry via diffusion models). Students are encouraged to consider how techniques from earlier weeks (like diffusion or large LMs) can accelerate scientific discovery. 
+                    <div><span class="reading-tag"><em>Reading:</em> Jumper et al. (2021) on AlphaFold; Zhavoronkov et al. (2022) on AI-designed drugs.</span></div>
+                </li>
+
+                <li>
+                    <strong>Efficient Adaptation of Large Models:</strong> As models reach billions of parameters, researchers have developed techniques to fine-tune and deploy them more efficiently. We cover <strong>parameter-efficient fine-tuning</strong> (PEFT) methods such as <strong>LoRA (Low-Rank Adaptation)</strong>, which updates only small low-rank weight matrices, and adapter modules. These approaches allow adapting giant models to new tasks with few trainable parameters. We also discuss model compression (distillation, quantization) and how <strong>8-bit/4-bit quantization</strong> can drastically reduce serving costs. This week includes a hands-on exercise applying a LoRA fine-tune to a pre-trained model. 
+                    <div><span class="reading-tag"><em>Reading:</em> Hu et al. (2021) on LoRA; Ganesh et al. (2023) on quantization.</span></div>
+                </li>
+
+                <li>
+                    <strong>Challenges: Hallucinations, Bias, and Evaluation:</strong> Despite their prowess, modern AI models have well-known issues. We examine the <em>hallucination</em> problem in LLMs – models sometimes fabricate plausible-sounding but incorrect facts. Students analyze examples of GPT-4 hallucinations and discuss why this occurs (next-token prediction limitations, lack of grounding). We also address biases that models learn from data (gender, racial biases, etc.) and discuss techniques for auditing and mitigating bias. The need for better <strong>evaluation metrics</strong> is highlighted: traditional accuracy metrics often fail to capture these failure modes, spurring new benchmarks (e.g. truthfulness, toxicity, and the <strong>BIG-bench</strong> for general tasks). 
+                    <div><span class="reading-tag"><em>Reading:</em> Ji et al. (2023) "Survey on Hallucination in NLG"; NIST report on AI Bias.</span></div>
+                </li>
+
+                <li>
+                    <strong>Retrieval-Augmented Generation (RAG):</strong> One solution to hallucination and knowledge limitations is augmenting models with external data. We cover <strong>RAG architectures</strong> where an LLM is coupled with a vector database or search API to retrieve relevant information. For instance, open-domain QA systems (like Bing's GPT-4-based chat) use web search results to ground responses. We discuss implementations such as <strong>Retro</strong>, <strong>REALM</strong>, and <strong>Toolformer</strong>, which allow models to call external tools or APIs. Students will build a simple RAG pipeline: using embeddings to fetch documents that help a smaller LM answer questions correctly. 
+                    <div><span class="reading-tag"><em>Reading:</em> Lewis et al. (2020) "Retrieval-Augmented Generation"; Schick et al. (2023) <strong>Toolformer</strong> (LLM that decides when to use tools).</span></div>
+                </li>
+
+                <li>
+                    <strong>Integration and Project Proposal Discussions:</strong> In this capstone week for Semester 1, we reflect on how the pieces fit together. How might one integrate language, vision, and other modalities into a single AI agent? We revisit the goal of <strong>general-purpose AI assistants</strong> and identify open issues from Semester 1's topics (e.g. model trustworthiness, data efficiency). Students present proposals for their Semester 2 research projects, framing them in context of course topics. <em>No new readings.</em> (Midterm exam to be scheduled around this week covering Weeks 1–12 content.)
+                </li>
+            </ol>
+
+            <div class="semester-header">
+                <h2>Semester 2: Advanced Topics and Frontier Research (AGI and Beyond)</h2>
+            </div>
+
+            <div class="focus-text">
+                <strong>Focus:</strong> Cutting-edge and exploratory topics that push toward higher levels of AI autonomy, reasoning, and <em>"AGI-oriented"</em> capabilities. We explore how to make AI systems more <strong>agentic</strong>, <strong>adaptive</strong>, and <strong>self-directed</strong>, along with the safety and ethical challenges of such progress. This part is research-heavy – we'll dissect recent papers and even unfinished ideas in the quest for more general AI.
+            </div>
+
+            <ol>
+                <li>
+                    <strong>Beyond Pattern Matching – LLM Reasoning and Planning:</strong> Modern LLMs excel at pattern recognition but <em>lack true reasoning</em> and long-horizon planning. This week examines methods to impart <strong>deliberate reasoning</strong> to language models. We discuss prompting techniques like <strong>Chain-of-Thought (CoT)</strong> prompting, which has models explicitly reason through problems step-by-step, and the <strong>ReAct</strong> framework (combining reasoning and acting). We also explore enabling <em>planning</em>: e.g. using LLMs to generate high-level plans or break tasks into sub-tasks. A key question: <em>Can</em> an LLM move from reactive Q&A to <strong>"conscious," validated reasoning</strong> needed for AGI? 
+                    <div><span class="reading-tag"><em>Reading:</em> Wei et al. (2022) on Chain-of-Thought; Zhou et al. (2022) on ReAct.</span></div>
+                </li>
+
+                <li>
+                    <strong>Tool Use and External Interfaces:</strong> We study how AI agents can extend their capabilities by interacting with external tools and environments. Content includes OpenAI's <strong>Plug-and-Play API</strong> (where the model can decide to call a calculator, web browser, etc.), and frameworks like <strong>HuggingGPT</strong> and ToolLLM that enable an LLM to orchestrate a suite of APIs. By delegating subtasks (e.g. image analysis, database queries) to specialized tools, an AI system can overcome some limitations of a single model. Students experiment with an LLM that uses a wiki browser to answer questions – illustrating the power of tool augmentation. We also cover <strong>memory augmentation</strong> (e.g. using vector stores as the model's long-term memory). 
+                    <div><span class="reading-tag"><em>Reading:</em> Schick et al. (2023) Toolformer; Shuster et al. (2023) BlenderBot 3.</span></div>
+                </li>
+
+                <li>
+                    <strong>Autonomous Agents and Open-Ended Task Execution:</strong> The rise of <strong>"auto"</strong> agents – systems that can operate with minimal human intervention to achieve goals. We look at projects like <strong>AutoGPT</strong> and <strong>BabyAGI</strong> that sparked interest in looping an LLM with itself to recursively plan and act. While rudimentary, they illustrate an important concept: AI agents that set sub-goals, adjust plans, and attempt tasks continuously. We analyze an example where an AutoGPT-style agent is given a high-level goal (e.g. research a topic) and it generates a task list, executes web searches, and tries to aggregate findings. Discussion: challenges such as getting stuck in loops, error propagation, and the need for reliable <em>self-monitoring</em>. 
+                    <div><span class="reading-tag"><em>Reading:</em> Xie et al. (2023) on <strong>Task-Driven Autonomous Agents</strong>.</span></div>
+                </li>
+
+                <li>
+                    <strong>Multi-Agent Collaboration and Communication:</strong> Can multiple AI agents work together (or with humans) to solve problems? This week explores multi-agent systems composed of learning-based agents. We consider both <em>homogeneous</em> setups (multiple LLMs dialoguing or role-playing different experts) and <em>heterogeneous</em> ones (an LLM plus other AI modules). Students examine <strong>self-play</strong> environments where agents negotiate or collaborate. We also introduce the concept of <strong>Multi-LLM Collaborative Intelligence (MACI)</strong> – networks of LLMs that could potentially complement each other's knowledge or cross-verify reasoning. A core question is how agents might communicate effectively in natural language to coordinate plans. 
+                    <div><span class="reading-tag"><em>Reading:</em> Stanford CS372 lecture notes on multi-LLM collaboration; "Society of Minds" concept (Minsky).</span></div>
+                </li>
+
+                <li>
+                    <strong>Generative Agents and Simulated Societies:</strong> We study the recent <em>Stanford Generative Agents</em> paper by Park et al. (2023), where believable <strong>simulated humans</strong> inhabit a sandbox town. These agents (driven by an LLM) wake up, make breakfast, go to work, form memories, and initiate interactions – all without direct scripting. In class, we walk through the architecture: a memory stream for each agent, retrieval of relevant memories, reflection, and planning loops. This yields surprisingly coherent social behaviors (the famous Valentine's Day party simulation). We discuss how generative agents open new research in virtual characters, social simulations, and testing AI alignment in multi-agent settings. 
+                    <div><span class="reading-tag"><em>Reading:</em> Park et al. (2023) <strong>"Generative Agents: Interactive Simulacra of Human Behavior"</strong>.</span></div>
+                </li>
+
+                <li>
+                    <strong>Lifelong Learning and Self-Adapting Systems:</strong> Most AI models are static after training, but emerging work lets models <strong>learn on the fly</strong> from new data or experiences. We cover concepts of <strong>continual learning</strong> (updating models without forgetting past knowledge) and highlight a milestone: MIT's <strong>SEAL: Self-Adapting LLMs</strong> framework. SEAL allows an LLM to <em>generate its own training data and fine-tuning instructions</em> to improve itself autonomously. We examine results from the SEAL paper (presented at NeurIPS 2025): the model generated "self-edits" in natural language describing how to update its weights, and using a dual-loop (inner fine-tune, outer reinforcement learning) it significantly improved performance on tasks. This suggests a path to AI systems that <strong>self-evolve their capabilities</strong> during deployment. 
+                    <div><span class="reading-tag"><em>Reading:</em> Zweiger et al. (2025) "Self-Adapting LLMs (SEAL)".</span></div>
+                </li>
+
+                <li>
+                    <strong>AI-Driven Science and Autonomous Research:</strong> Can AI not only learn by itself, but also <em>discover</em> new knowledge? We explore systems like <strong>Robot Scientists</strong> (e.g. Lab automation with AI) and the concept of <strong>AI Scientist 2.0</strong>. Sakana AI's <em>AI Scientist</em> is an example of an agent that can autonomously generate hypotheses, design experiments, and even write research papers<a href="#ref3">[3]</a>. The <em>AI Scientist 2.0</em> reportedly wrote a peer-reviewed paper and improved its own research algorithms<a href="#ref4">[4]</a>. We discuss how such systems work and what advances (in reasoning, planning, and maybe robotics) enable them. This segues into the notion of a <em>self-improving AI</em> leading to an "intelligence explosion"<a href="#ref3">[3]</a>. Ethical and practical questions (will AI replace human scientists? how to verify AI discoveries) are debated. 
+                    <div><span class="reading-tag"><em>Reading:</em> Rich Washburn (2024) on <strong>AI Scientist 2.0</strong><a href="#ref4">[4]</a><a href="#ref3">[3]</a>.</span></div>
+                </li>
+
+                <li>
+                    <strong>Towards Artificial General Intelligence (AGI):</strong> Stepping back, we assess where current research stands on the path to AGI. We outline definitions of AGI (a system with broad, human-level cognitive abilities) and examine proposals for achieving it. Topics include <strong>cognitive architectures</strong> that combine learning with symbolic reasoning or modules (e.g. OpenAI's <em>Coleman</em> proposal, IBM's <em>Safari</em> architecture), the idea of unified <strong>world models</strong> (as seen in Genie) that could enable general learning, and discussions of emergent <strong>meta-learning</strong> (AI improving its own learning algorithms). We also consider <strong>capability evaluation frameworks</strong> – e.g. the <em>Levels of AGI</em> proposed by some researchers to categorize progress. Students read and discuss a recent position paper on what's required to move from narrow AI (ASI-Level 2) to higher autonomy (ASI-Level 3/4). 
+                    <div><span class="reading-tag"><em>Reading:</em> Morris et al. (2024) "Levels of AGI" (ICML).</span></div>
+                </li>
+
+                <li>
+                    <strong>Safety and Alignment at the Frontier:</strong> As we push toward more powerful, autonomous AI, ensuring safety becomes critical. This week delves into <strong>AI Safety Level 3 and 4</strong> topics – the precautions and governance for advanced AI systems. We use Anthropic's <strong>Responsible Scaling Policy</strong> as a case study: Anthropic pre-emptively applied <strong>AI Safety Level 3 (ASL-3)</strong> protections when deploying Claude 4, involving stricter security (preventing model weight theft) and usage guardrails for high-risk knowledge (e.g. CBRN weapons). We discuss technical alignment strategies for very advanced models: red-teaming, adversarial training, interpretability tools to peer inside neural nets, and constitutional AI at scale. Students are also introduced to the concept of <em>reward hacking</em> and why superintelligent AI poses novel safety challenges. 
+                    <div><span class="reading-tag"><em>Reading:</em> Anthropic (2025) <strong>"Activating AI Safety Level 3 Protections"</strong>; Gabriel (2023) on the alignment problem.</span></div>
+                </li>
+
+                <li>
+                    <strong>Ethical and Societal Implications:</strong> A broader discussion on how emerging AI impacts society. We examine issues like job displacement from generative AI, misinformation via deepfakes and AI-generated content, and concentration of power (whoever controls AGI). Policy responses worldwide are covered: e.g. the EU <strong>AI Act</strong>, the US <strong>Executive Order on AI Safety</strong>, and the ACM guidelines. We debate calls for AI labs to slow down vs. the race dynamics. Special attention is given to ethical questions raised by autonomous agents – for instance, if an AI agent misbehaves or causes harm, how do we assign responsibility? Students will consider the long-term ethical implications of AI scientist agents or AI in government. 
+                    <div><span class="reading-tag"><em>Reading:</em> Future of Life Institute open letter (2023); Bryson (2019) "Robots should be slaves" (provocative take on AI rights).</span></div>
+                </li>
+
+                <li>
+                    <strong>Student Project Presentations:</strong> Teams present the findings of their semester-long research projects on an emerging AI topic of their choice (approved earlier in the semester). Projects typically involve reproducing and extending a recent paper or conducting an experiment on course-related themes (e.g. fine-tuning an LLM for a new tool, or simulating multi-agent interactions in a game). Peers and instructors offer feedback. <em>No new reading.</em>
+                </li>
+
+                <li>
+                    <strong>Concluding Discussion – The Road Ahead:</strong> In our final class, we synthesize lessons from both semesters and paint a picture of AI's possible future. We revisit the course's key question: <em>What will it take to achieve robust, safe, General AI?</em> We also address recent developments (since the start of the course – as this field changes monthly) and forecast emerging trends for 2026 and beyond. Potential topics include: integration of <strong>neuroscience</strong> insights into AI, progress in <strong>quantum AI</strong>, or the emergence of <strong>superalignment</strong> research to align AI more complex than humans. The course ends with an open discussion, encouraging students to be the next contributors to these cutting-edge topics.
+                </li>
+            </ol>
+
+            <div class="sources">
+                <h3 style="color: #4facfe; margin-bottom: 15px;">📚 Sources</h3>
+                <p><strong>The syllabus content is informed by recent course materials and research from elite institutions</strong> (e.g. Stanford's CS372 on AGI-oriented AI<a href="#ref5">[5]</a>, CMU's Multi-Modality course, MIT/Harvard AI research), and key papers and articles up to 2025. (Citations have been provided inline for factual claims and specific examples, denoted by <strong>【】</strong> brackets.) The goal is to equip students with both the knowledge and the <em>research mindset</em> to navigate and contribute to the fast-evolving landscape of modern AI. Each week's readings include seminal papers and very recent preprints so that we remain up-to-date with the <strong>state of the art</strong>.</p>
+
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #4facfe;">
+                    <p id="ref1"><strong>[1]</strong> How to try MusicLM from Google's AI Test Kitchen<br>
+                    <a href="https://blog.google/technology/ai/musiclm-google-ai-test-kitchen/" target="_blank">https://blog.google/technology/ai/musiclm-google-ai-test-kitchen/</a></p>
+
+                    <p id="ref2"><strong>[2]</strong> AlphaFold - Wikipedia<br>
+                    <a href="https://en.wikipedia.org/wiki/AlphaFold" target="_blank">https://en.wikipedia.org/wiki/AlphaFold</a></p>
+
+                    <p id="ref3"><strong>[3]</strong> <span id="ref4"><strong>[4]</strong></span> AI Scientist 2.0: A Step Closer to AGI?<br>
+                    <a href="https://www.richwashburn.com/post/ai-scientist-2-0-a-step-closer-to-agi" target="_blank">https://www.richwashburn.com/post/ai-scientist-2-0-a-step-closer-to-agi</a></p>
+
+                    <p id="ref5"><strong>[5]</strong> CS372 - AI For Reasoning, Planning, and Decision Making (Spring 2025) | PDF | Artificial Intelligence | Intelligence (AI) & Semantics<br>
+                    <a href="https://www.scribd.com/document/848982882/CS372-AI-for-Reasoning-Planning-and-Decision-Making-Spring-2025" target="_blank">https://www.scribd.com/document/848982882/CS372-AI-for-Reasoning-Planning-and-Decision-Making-Spring-2025</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

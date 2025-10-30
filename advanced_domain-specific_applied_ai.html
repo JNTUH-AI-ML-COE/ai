@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Domain-Specific Applied AI - Graduate Syllabus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin: 40px 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #f0f3f7;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        h2:hover::after {
+            width: 200px;
+        }
+
+        .section {
+            margin: 30px 0;
+            background: #f8f9fc;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .week-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .week-header:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .week-header h3 {
+            color: white;
+            margin: 0;
+            padding: 0;
+            border: none;
+            font-size: 1.3em;
+        }
+
+        .dropdown-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-icon.active {
+            transform: rotate(180deg);
+        }
+
+        .week-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+            opacity: 0;
+            padding: 0 25px;
+        }
+
+        .week-content.active {
+            max-height: 5000px;
+            opacity: 1;
+            padding: 25px;
+        }
+
+        .topic {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .topic:hover {
+            border-left-width: 6px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+        }
+
+        .topic h4 {
+            color: #764ba2;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        li::marker {
+            color: #667eea;
+        }
+
+        p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+
+        strong {
+            color: #764ba2;
+        }
+
+        em {
+            color: #667eea;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: #764ba2;
+            border-bottom: 1px solid #764ba2;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .week-header h3 {
+                font-size: 1.1em;
+            }
+        }
+
+        .objectives-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .objectives-list li {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .objectives-list li:hover {
+            border-left-width: 6px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+        }
+            header {
+      background: linear-gradient(90deg, #32427b 0%, #64b3f4 100%);
+      padding: 2rem 1rem 1rem 1rem;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(65, 89, 178, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-weight: bold;
+      font-size: 2.3rem;
+      margin: 0 0 1rem 0;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 4px;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn {
+      flex: 1;
+      padding: 12px 24px;
+      background: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-btn:hover::before {
+      left: 100%;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-btn.active {
+      background: white;
+      color: #32427b;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-btn.active::before {
+      display: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Advanced Domain-Specific Applied AI</h1>
+            <p class="subtitle">Graduate Syllabus, 2025</p>
+            <div class="nav-bar">
+            <button class="nav-btn active" onclick="showSection('detailed')">Detailed Syllabus</button>
+            <button class="nav-btn" onclick="window.location.href='course_timeline.html'">Course Schedule</button>
+
+    </div>
+        </header>
+
+        <div class="content">
+            <h2>Course Overview</h2>
+            <p>This two-semester graduate sequence explores cutting-edge techniques for developing <strong>domain-specific AI models</strong> across multiple industries. Students will learn how to adapt and specialize AI (especially modern deep learning and foundation models) for domains such as <strong>healthcare</strong>, <strong>finance</strong>, <strong>legal</strong>, <strong>retail</strong>, and more. The course emphasizes a balance of theoretical foundations and hands-on implementation, drawing on <em>2024-2025 research advances</em> in areas like transfer learning, domain adaptation, knowledge distillation, synthetic data generation, and efficient fine-tuning. By the end, students will understand how to build <strong>world-class specialized AI models</strong> that meet domain-specific needs (accuracy, efficiency, fairness, etc.) and will have implemented projects in several application areas.</p>
+
+            <p><strong>Key themes include</strong>: adapting large pre-trained models to niche domains, handling domain-specific data constraints (e.g. privacy in health records or jargon in legal text), using teacher–student training (knowledge distillation) to compress models, <em>instruction/"professor" tuning</em> via multi-stage distillation, and generating synthetic data to overcome data scarcity. Throughout, we will connect methods to real-world applications – e.g. fine-tuning language models for clinical diagnosis or legal document analysis, building recommender systems for retail, and deploying AI in high-stakes settings with appropriate safeguards.</p>
+
+            <h2>Learning Objectives</h2>
+            <div class="highlight-box">
+                <p>By completing this course, students will be able to:</p>
+                <ul class="objectives-list">
+                    <li><strong>Adapt Pre-trained Models to Domains:</strong> Utilize transfer learning and domain adaptation techniques to customize large AI models (e.g. large language models, vision models) for specific industries. This includes methods like fine-tuning, prompt tuning, and <em>parameter-efficient fine-tuning (PEFT)</em> (e.g. LoRA) to avoid full retraining.</li>
+                    
+                    <li><strong>Apply Knowledge Distillation:</strong> Understand and implement knowledge distillation, where a large <em>teacher</em> model guides a smaller <em>student</em> model. Experiment with advanced schemes such as multi-stage distillation (Professor→Teacher→Student) to retain performance while compressing models.</li>
+                    
+                    <li><strong>Generate and Leverage Synthetic Data:</strong> Use generative models to create synthetic datasets for domains with limited real data (e.g. medical images, financial records), and evaluate the benefits and pitfalls of synthetic data augmentation.</li>
+                    
+                    <li><strong>Build Domain-Specific AI Solutions:</strong> Design AI solutions tailored to at least <strong>4–7 vertical domains</strong> (healthcare, finance, law, retail, manufacturing, education, etc.), understanding each domain's unique challenges, data types, and ethical considerations.</li>
+                    
+                    <li><strong>Balance Theory and Practice:</strong> Critically read recent research papers (2024–2025) on applied AI techniques, and translate those ideas into practical implementations. Conduct hands-on projects that demonstrate both an understanding of theoretical concepts and the ability to apply and innovate on them in real-world scenarios.</li>
+                </ul>
+            </div>
+
+            <h2>Prerequisites</h2>
+            <p>Students should have a strong foundation in machine learning and deep learning (e.g. prior coursework in machine learning, neural networks or equivalent experience). Familiarity with Python and frameworks (PyTorch/TensorFlow) is required for assignments. Basic knowledge of AI ethics and data privacy is recommended (some domain-specific regulatory issues will be introduced as needed).</p>
+
+            <h2>Course Structure</h2>
+            <div class="highlight-box">
+                <p><strong>Duration:</strong> Two semesters (Fall 2025 and Spring 2026) with ~12–13 weeks of instruction each semester, plus project presentations.</p>
+                <ul>
+                    <li><strong>Semester 1 – Foundations & Core Domains:</strong> Fundamental techniques for domain-specific AI and detailed case studies in several domains. Includes smaller projects/assignments to practice methods (e.g. fine-tuning a model, synthetic data generation, etc.).</li>
+                    
+                    <li><strong>Semester 2 – Advanced Topics & Additional Domains:</strong> Deeper exploration of advanced research topics (efficient adaptation, multi-modal domain AI, etc.), plus case studies in more domains. Emphasis on a capstone project where students apply course techniques to a domain of their choice.</li>
+                    
+                    <li><strong>Format:</strong> Weekly lectures (covering theory and case studies), discussion of recent research <strong>papers</strong>, and lab sessions for implementation. Guest lectures from industry or academia will provide perspective in specific domains (e.g. a clinician on AI in medicine, or a finance expert on AI in trading).</li>
+                    
+                    <li><strong>Assessment:</strong> Problem sets (especially in Semester 1) to exercise technical concepts, paper review summaries, and <strong>projects</strong>. A midterm mini-project will focus on one domain application, and a final <strong>capstone project</strong> (semester 2) will be presented/demonstrated (ideally targeting a publishable or competitive submission in an applied AI venue).</li>
+                </ul>
+            </div>
+
+            <p><strong>Text and Readings:</strong> No single textbook covers this emerging area. We will use a combination of online resources, research papers, and selected chapters from machine learning texts. For example, readings from <em>MIT Deep Learning</em> lectures (on transfer learning, distillation, etc.), industry research blogs, and domain-specific case studies (e.g. <em>Nature</em> or <em>IEEE</em> articles on medical AI). All reading materials will be provided via the course website. Students are expected to stay current with new developments (e.g. breakthroughs reported in late 2024) as part of class discussions.</p>
+
+            <h2>Semester 1: Foundations of Domain-Specific AI (Fall 2025)</h2>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 1–2: Introduction to Domain-Specific AI</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>What & Why:</h4>
+                        <p>Overview of how and why to specialize AI models for specific domains. Discussion of examples where generic AI falls short and domain-specific expertise is needed. For instance, general NLP vs. medical or legal NLP – understanding domain terminology, style, and high stakes of errors.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Challenges:</h4>
+                        <p>Data scarcity or imbalance in certain fields (e.g. few labeled medical images for rare diseases), distribution shifts (train vs. deployment domain differences), and the need for <em>domain knowledge integration</em> (e.g. medical ontologies, financial regulations).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>State of the Art:</h4>
+                        <p>Survey of existing domain-specific models and systems. <em>Example:</em> <strong>BloombergGPT</strong> – a 50-billion parameter finance-specific language model trained on financial data. BloombergGPT demonstrates that the unique terminology and tasks in finance <em>"warrant a domain-specific model"</em> and outperforms general models on financial NLP tasks. Likewise, Google's <strong>Med-PaLM 2</strong> was <strong>aligned to the medical domain</strong>, becoming the first LLM to achieve expert-level performance on medical exam questions (over 85% on USMLE-style Q&A). These cases illustrate the trend toward large models <em>purpose-built</em> for domains, mixing domain-specific data with general training to excel in specialized applications.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Discussion:</h4>
+                        <p>We will discuss when a <em>domain-specific model</em> is preferable to a general model. Topics include regulatory requirements (FDA approval for AI diagnostics), ethical concerns (bias, fairness in loan approval AI), and maintenance (updating models with domain shifts, e.g. new laws or medical research). Students will form teams and pick a domain of interest as we'll revisit these choices for project work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 3–4: Transfer Learning and Domain Adaptation</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Leveraging Pretrained Models:</h4>
+                        <p>In-depth look at transfer learning techniques to adapt models to new domains. This includes <strong>continued pre-training</strong> on domain corpora and <strong>fine-tuning</strong> on domain-specific tasks. We emphasize that fine-tuning allows a model to <em>"internalize stable, domain-specific knowledge"</em> for improved accuracy in niche areas.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Domain Adaptation:</h4>
+                        <p>Techniques for adapting to distribution shifts between source (pretraining) and target (new domain) data. We cover <strong>feature alignment</strong> and <strong>domain-adversarial training</strong> (for vision and text), unsupervised domain adaptation (when labeled data in target domain is scarce), and multi-domain training. <em>Example:</em> <em>Aligning and Distilling for Domain Adaptive Object Detection</em> (reading: Li et al. 2022) which unifies feature alignment with distillation to improve object detectors under domain shift.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Efficient Adaptation Methods:</h4>
+                        <p>Introduction to <em>Parameter-Efficient Fine-Tuning (PEFT)</em> methods such as <strong>LoRA (Low-Rank Adaptation)</strong> and adapter modules. These approaches update only small portions of a model's parameters during fine-tuning, drastically reducing computational cost and avoiding <em>"catastrophic forgetting"</em> of the model's general knowledge. We discuss when PEFT vs. full fine-tuning is appropriate, and also cover alternatives like <strong>prompt tuning</strong> and <strong>in-context learning</strong> for quick domain adaptation (per Meta AI's adaptation strategy).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Lab Assignment 1:</h4>
+                        <p>Fine-tune a pretrained model on a chosen domain dataset. For example, students might fine-tune a BERT model on financial news for sentiment analysis, or a ViT (Vision Transformer) on a medical x-ray dataset for disease classification. This assignment will let students experiment with full fine-tuning vs. PEFT (e.g. applying LoRA) and evaluate performance vs. compute trade-offs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 5–6: Knowledge Distillation & "Teacher/Professor" Models</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Knowledge Distillation Theory:</h4>
+                        <p>Students learn how <strong>knowledge distillation</strong> trains a smaller <em>student</em> model to replicate a larger <em>teacher</em> model's behavior. We'll cover classic distillation (teacher's soft predictions as training targets) and its benefits: model compression for efficiency (deploy domain models on limited hardware) and sometimes even improved generalization.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Advanced Distillation Methods:</h4>
+                        <p>Cutting-edge variations are discussed. This includes <strong>multi-teacher distillation</strong> (leveraging ensembles), <strong>self-distillation</strong> (iteratively distilling a model into itself), and the new concept of <strong>two-stage "professor–teacher–student" training</strong>. In <em>multi-stage distillation</em>, a very large model (nicknamed the "professor") can first distill knowledge into an intermediate <em>teacher</em> (smaller, somewhat specialized), which in turn is distilled into an even smaller <em>student</em> for deployment. We examine a 2024 case study: the <strong>QUILL</strong> approach for search query intent modeling, where a retrieval-augmented LLM professor is distilled into a smaller teacher (without retrieval) and then to a tiny student – retaining much of the performance gain while massively cutting model size and latency. This illustrates how <em>"two-stage distillation retains much of the retrieval-augmented model's performance gains while reducing computational costs."</em></p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Practical Application:</h4>
+                        <p>Students will implement a simple distillation exercise – e.g. use a large CNN (teacher) and a smaller CNN (student) on an image domain dataset or distill a domain-tuned transformer into a smaller one. We also discuss when distillation is especially useful (e.g. deploying models on edge devices in healthcare for privacy, or on low-latency trading systems in finance).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Reading Discussion:</h4>
+                        <p><em>"Knowledge Distillation with Training Wheels" (Liu et al, 2025)</em> which introduces a framework where the student not only learns from the teacher during training but also <em>learns when to ask the teacher for help at inference</em>, via an entropy-based criterion. This hybrid of distillation and test-time assistance could be valuable in critical domains – we'll debate its pros/cons.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 7–8: Synthetic Data Generation & Data Augmentation Techniques</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Motivation:</h4>
+                        <p>Often <strong>"real data" is limited or sensitive in domains like healthcare and finance.</strong> We explore how generative AI can create <strong>synthetic datasets</strong> to supplement real data, improving model training while mitigating privacy or imbalance issues. For example, generating realistic but fake patient records or transaction logs.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Techniques:</h4>
+                        <p>Overview of generative models used for synthetic data: GANs, VAEs, and the modern approach of using Diffusion Models or Large Language Models for data synthesis. Cases include synthetic <strong>images</strong> (e.g. using GANs to create medical images of rare conditions), <strong>text</strong> (LLMs generating legal documents or customer service scenarios), and <strong>tabular data</strong> (models like CTGAN for financial records). We also cover simulation environments (e.g. using game engines to generate sensor data for manufacturing or autonomous driving).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Case Study – Healthcare:</h4>
+                        <p>The <strong>RoentGen</strong> model at Stanford, which is a text-to-image generator that produces <em>"lifelike and convincing X-rays from medically relevant text prompts."</em> RoentGen demonstrates a future where <em>"a considerable share of data used to train new AI models are synthesized"</em>, potentially allowing infinite data generation for model training. The synthetic X-rays can fill gaps in datasets (e.g. generate under-represented patient groups) and preserve privacy since they aren't real patient images. We also discuss synthetic data in drug discovery (simulating chemical data) and in finance (creating market scenarios to train trading algorithms).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Ethical & Validation Concerns:</h4>
+                        <p>While synthetic data is promising, we stress the <em>"go-slow"</em> warnings from experts. Students must consider risks: synthetic data might inadvertently introduce artifacts or not perfectly represent reality, and over-reliance could give a <em>false sense of model confidence</em>. We discuss methods to validate synthetic data quality and realism (e.g. discriminate with real vs fake, evaluate model performance improvement).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Lab Assignment 2:</h4>
+                        <p>Students will use a generative model to create a small synthetic dataset and test its effect. For instance, generate additional training examples for a domain with few data points (such as creating synthetic legal questions to fine-tune a QA model, or using Stable Diffusion to create retail product images for a classification task). Evaluate whether adding this data improves the model versus using the original data alone.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 9–10: Domain Focus – AI in Healthcare</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Domain Problems & Data:</h4>
+                        <p>We explore the variety of AI applications in healthcare: diagnostic image analysis (radiology, pathology), predictive analytics on electronic health records (risk scoring, disease progression), natural language processing for clinical notes, and even drug discovery with ML. Key data types: medical images (X-rays, MRI), clinical text, time-series signals (heart rate, EEG), and multi-modal combinations.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Techniques & Models:</h4>
+                        <p>Special considerations for healthcare models include the need for interpretability (doctors must trust and understand an AI's recommendation) and strict evaluation standards. We discuss how large models are adapted to this domain: e.g. <strong>Large Language Models in medicine</strong> for question-answering and decision support. Google's Med-PaLM 2 is highlighted as a model <em>"aligned to the medical domain to more accurately and safely answer medical questions,"</em> achieving expert-level exam performance. We also look at domain-specific language models like <em>BioBERT/BioGPT</em> trained on biomedical literature, and how they outperform generic NLP on tasks like extracting gene–disease relations.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Challenges:</h4>
+                        <p>Medical data is often small, sensitive, and <strong>requires privacy</strong>. Techniques like federated learning (training across hospitals without centralizing data) might be mentioned. We tie back to earlier topics: knowledge distillation can compress heavy models to deploy on-premises at clinics, and synthetic data can generate additional training examples (e.g. to augment rare disease cases). <em>Fairness</em> is crucial – if an AI model has lower accuracy for certain demographic groups, it can literally be life-threatening; we discuss bias mitigation strategies in model training.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Case Study:</h4>
+                        <p><em>Sepsis Early Warning Systems</em> – e.g. training ML models on electronic health record data to predict sepsis risk. We review a 2023 study on factors affecting clinician adoption of an AI sepsis warning tool. The discussion highlights that beyond model accuracy, practical deployment requires trust, integration with workflow, and regulatory approval.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Hands-on Component:</h4>
+                        <p>Students analyze a provided healthcare dataset (de-identified). For example, train a model to predict patient outcomes or classify medical images. Emphasis on applying domain adaptation: if the model was pre-trained on general data (ImageNet or general text), how to fine-tune it to this medical task and evaluate improvements.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Guest Speaker:</h4>
+                        <p>A guest lecture from a healthcare AI practitioner (if possible) will address real-world translation of AI to healthcare practice, and current frontiers like using GPT-4 as a medical assistant. <em>(Interestingly, GPT-4 has shown surprising competency in medical Q&A out-of-the-box, but domain tuning is needed for reliability.)</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 11–12: Domain Focus – AI in Finance</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Domain Problems & Data:</h4>
+                        <p>Key AI applications in finance include algorithmic trading, portfolio management, credit scoring and lending decisions, fraud detection, and financial forecasting (market trends, risk management). Data is often <strong>time-series (stock prices, transactions)</strong>, <strong>textual (news, earnings reports)</strong>, and structured tabular data. Real-time performance can be critical (e.g. trade models).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Domain-Specific Modeling:</h4>
+                        <p>We cover how language models and other AI are tailored to finance. A prime example is <strong>BloombergGPT</strong>, a large language model trained on a vast corpus of financial data (reports, filings, news) in addition to general text. BloombergGPT significantly outperforms similarly sized general models on financial NLP tasks (sentiment analysis of news, named entity recognition for financial terms, etc.). <em>Quote:</em> The creators note <em>"the complexity and unique terminology of the financial domain warrant a domain-specific model"</em> – underlining why this model was built from scratch for finance. We also mention smaller models like FinBERT (BERT tuned for financial sentiment) and approaches for time-series (using RNNs, Transformers for sequence data).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Techniques:</h4>
+                        <p>Financial data often faces concept drift (markets change), so continuous learning or adaptive models are important. We discuss using online learning or periodic fine-tuning with new data. An interesting 2025 topic is using <strong>reinforcement learning</strong> for trading strategies (e.g. Deep RL that learns to allocate assets). We will caution that evaluating these models is tricky – backtest overfitting is a risk.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Regulatory & Ethical Aspects:</h4>
+                        <p>AI in finance must contend with fairness (avoiding bias in lending algorithms), transparency (for model-driven trading decisions or loan rejections, explanations may be legally required), and robustness (adversarial behavior could be catastrophic in markets). We'll review cases like AI models inadvertently picking up biases in credit data, and the need for fairness-aware training.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Lab/Case:</h4>
+                        <p>Students might be given a financial dataset (e.g. historical stock prices with news headlines) and asked to implement a simple predictor or classifier, applying techniques from class (perhaps try a language model on sentiment of headlines to predict stock moves, illustrating how domain data improves performance). Another mini-case: fraud detection on transactions – dealing with highly imbalanced data (extremely few fraud cases, connects to synthetic data generation for rare fraud examples).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Reading:</h4>
+                        <p>Excerpt from <em>Stanford HAI's "Responsible Financial AI"</em> report, to spark discussion on how strictly the finance industry should regulate AI models that can be opaque but influential.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Week 13: Domain Focus – AI in Legal</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <p><em>(Note: Semester 1 has 13 weeks of content here; Week 14 would be reserved for review or a buffer. Instructors may adjust pacing. Students should be starting to propose ideas for the spring capstone by end of sem1.)</em></p>
+                    
+                    <div class="topic">
+                        <h4>Applications:</h4>
+                        <p>AI in the legal domain ranges from <strong>document review</strong> (e-discovery in litigation, contract analysis), <strong>legal research</strong> (finding relevant case law via NLP search), to drafting assistance (AI helping write contracts or briefs). Data is primarily <strong>text</strong> – but highly specialized, formal text (cases, statutes, contracts). Even slight changes in language can have significant legal implications, so accuracy is paramount.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Domain Adaptation of LLMs:</h4>
+                        <p>We discuss how large LLMs are being applied to law. Notably, <strong>GPT-4</strong> without specific legal training has already <em>"passed a simulated bar exam in the top 10% of test takers"</em>, a dramatic leap from GPT-3.5 which was bottom 10%. This demonstrates general models' power, but fully reliable legal AI likely needs further alignment (for example, ensuring the model cites relevant law and doesn't fabricate cases). There are emerging legal-specific models (e.g. <em>CaseLaw GPT</em> or <em>LexisNexis AI</em>) that incorporate databases of court decisions. Students will consider whether fine-tuning on legal datasets (court opinions, legislation) can improve an LLM's consistency and usefulness for lawyers.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Challenges:</h4>
+                        <p>A key issue is <strong>verification</strong> – legal AI tools must avoid <em>"hallucinating"</em> (making up nonexistent legal precedents) and need mechanisms to back up answers with sources. Retrieval-Augmented Generation (RAG) is often used (have the model pull relevant documents from a law database). We tie this to the earlier material: multi-stage distillation or instructor signals might be used to ensure an LLM adheres to legal reasoning steps. Also, <strong>ethics</strong>: the use of AI in law raises concerns about unauthorized practice of law, bias in judicial decisions if AI is used by courts or parole boards, etc. We discuss emerging guidelines (e.g. some courts banning or restricting use of ChatGPT-like tools for submissions).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Exercise:</h4>
+                        <p>We might analyze a sample output of a legal AI system vs. a human-written analysis to identify strengths and weaknesses. If feasible, a guest lecture by a legal scholar or practitioner on how AI is currently used in law firms and the roadblocks (data privacy with client documents, etc.).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Mini-project checkpoint:</h4>
+                        <p>Teams submit a proposal for their spring capstone project, including which domain and what problem they plan to tackle, ensuring a variety across the class (with instructor feedback to refine scope).</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Semester 2: Advanced Topics and Capstone (Spring 2026)</h2>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 1–2: Advanced Fine-Tuning & Adaptation Strategies</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Instruction Tuning & Alignment:</h4>
+                        <p>Building on the fine-tuning basics from sem1, we now cover <strong>instruction tuning</strong> (fine-tuning models to better follow instructions or domain-specific formats). For example, fine-tuning an LLM on <em>domain-specific Q&A pairs</em> or using <em>reinforcement learning from human feedback (RLHF)</em> where the feedback is tailored to domain preferences (e.g. legal correctness, medical risk aversion in answers). We discuss how <strong>RLHF</strong> was key to aligning models like ChatGPT to general user preferences, and speculate on using similar methods to align to <em>domain expert preferences</em>.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Multi-Domain and Continual Learning:</h4>
+                        <p>Methods for handling multiple domains or evolving data. We explore <strong>continual learning</strong> techniques that allow a model to sequentially learn new tasks (e.g. a model that first learned medicine, then finance, without forgetting the former). Topics include catastrophic forgetting solutions (regularization, replay of data) and <strong>modular networks</strong> (where different domain expertise can be toggled). This is cutting-edge as 2025 research tries to create <em>foundation models that can specialize on-the-fly</em>.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Cross-Domain Transfer:</h4>
+                        <p>We also examine cases of transfer learning <em>between domains</em> – e.g. can techniques from retail personalization inform healthcare personalization? Meta-learning concepts might be touched upon for quickly adapting to a new domain with few samples (few-shot learning in a domain context).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Hands-on:</h4>
+                        <p>If a new popular method emerged in late 2025 (for example, a new adapter technique or a breakthrough in training efficiency), we will incorporate a small exercise using it. Students might try an <em>open-source domain-specific model toolkit</em> (if available) to fine-tune a foundation model with minimal code, reflecting industry trends of easier customization.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 3–4: Multi-Modal and Knowledge-Integrated Domain AI</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Multi-Modal Models:</h4>
+                        <p>Many domains require AI that handles multiple data types together. We study examples like healthcare (combining imaging + clinical text data for diagnosis), retail (vision of products + text reviews + customer profiles), or manufacturing (sensor readings + equipment images). The class covers architectures for multi-modal fusion (e.g. vision-language models like CLIP, and how they can be adapted to specific domains such as medical imaging with text reports).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Domain Knowledge Integration:</h4>
+                        <p>Techniques to incorporate structured domain knowledge (ontologies, knowledge graphs, rules) into AI models. For instance, adding a medical knowledge graph to an LLM so that it can reason with known biomedical relationships, or encoding legal rules into a model used for compliance checking. We review research on combining symbolic knowledge with neural networks for improved reasoning in specialized fields.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Project Tie-in:</h4>
+                        <p>Students working on multi-modal or knowledge-integrative projects can get feedback during this module. For example, a student building an AI tutor (education domain) might integrate a knowledge graph of educational concepts; this module would support that effort.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Reading:</h4>
+                        <p>Recent <em>Nature</em> or <em>Science</em> articles demonstrating multi-modal AI applied in domains (e.g. an AI model taking radiology images + patient history text to recommend treatments). We want to highlight how the frontier of applied AI is not just bigger models, but smarter use of diverse data and expert knowledge.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Week 5: Domain Focus – AI in Retail & E-commerce</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Applications:</h4>
+                        <p>Personalized recommendation systems (product recommendations, ads), demand forecasting (inventory optimization), supply chain optimization, customer service chatbots, and visual search (e.g. "find similar item" using images). Retail has both <strong>customer-facing AI</strong> (recommendations, personalization) and <strong>operations AI</strong> (logistics, pricing). Data includes user behavior logs, product descriptions, images, and sales data.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Techniques:</h4>
+                        <p>We discuss how <em>recommender systems</em> evolved with deep learning (matrix factorization to deep collaborative filtering, and now transformers for sequential recommendations). Also, how <strong>generative AI</strong> is changing retail: e.g. generating product content. A 2024 example from the UK's <strong>The Very Group</strong> used Amazon's generative AI to auto-generate product descriptions, which <em>"improved productivity ... and quality of product descriptions."</em> This shows domain adaptation of foundation models to handle retail catalog data and optimize text for SEO and customer appeal. We also mention chatbots for customer support – many retailers deploy AI agents (often powered by fine-tuned LLMs) to answer customer queries, handle returns, etc., with integration into knowledge bases.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Case Study:</h4>
+                        <p><strong>Hyper-personalization</strong> – using AI to tailor the shopping experience. We reference that according to McKinsey, such personalization (often via AI) can <em>lift retail revenues by 10–15%</em> and consumers now expect it. We look at how retrieval-augmented LLMs (maybe via Amazon Bedrock) allow a chatbot to pull product info and answer detailed questions, improving customer satisfaction. The technical angle: combining a retail product database with an LLM (domain adaptation via retrieval).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Project Ideas:</h4>
+                        <p>How to measure success of retail AI (A/B testing improvements in conversion rates, etc.). Students interested in this domain might prototype a recommendation model or a Q&A bot fine-tuned on a small product catalog.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Week 6: Domain Focus – AI in Manufacturing & Industry 4.0</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Applications:</h4>
+                        <p>Predictive maintenance (predict equipment failures from sensor data), quality control (defect detection via image analysis), robotics in manufacturing (robots picking, assembly with AI vision), and optimizing processes (scheduling, supply chain timing). Data can be <strong>IoT sensor streams</strong>, images (for visual inspection), and sometimes simulation data.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Techniques:</h4>
+                        <p>We highlight domain adaptation for <strong>sensor data</strong> (e.g. vibration sensor patterns indicating machine issues – often requiring custom feature extraction or time-series DL models). Also, the concept of <strong>sim-to-real transfer</strong>: using simulations to train robots or systems (a form of synthetic data) and then adapting to real world. For instance, training a robot in a virtual environment and using domain adaptation to overcome the reality gap (randomizing textures, etc., in simulation, which is effectively synthetic data generation).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Example:</h4>
+                        <p><em>AI in manufacturing defect detection</em> – a model might be trained on one factory's images and need adaptation to another factory's lighting or camera. Domain adaptation methods (like fine-tuning on a small set of new images or using unsupervised alignment) are applied. Also mention how companies like Siemens use deep learning to predict part failures in advance, saving cost. If available, we incorporate a snippet from an industry case study (e.g. a 2025 press release of a factory AI deployment).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Discussion:</h4>
+                        <p>The ROI of AI in manufacturing – efficiency gains vs. challenges like requiring frontline worker trust and integration with legacy systems. We connect to knowledge distillation: often edge deployment (on machines) needs smaller models, so again compressing a big model into a microcontroller-friendly version via distillation is useful.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Lab:</h4>
+                        <p>Possibly a small dataset of manufacturing (like a public dataset of sensor readings for equipment failures) for students to experiment with a predictive maintenance model. Emphasize evaluating false negatives (missing a failure) vs. false positives (unnecessary maintenance) – tying to domain-specific cost considerations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Week 7: Domain Focus – AI in Education</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Applications:</h4>
+                        <p>Intelligent Tutoring Systems, automated grading and feedback, personalized learning plans, and educational content generation (e.g. using GPT to create practice questions or explanations). Data might include student performance data, text of educational content, and interactions (chat tutoring logs).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Adapting AI to Education:</h4>
+                        <p>We discuss how an LLM can be fine-tuned to become a <strong>tutor</strong> that adapts to student level and curriculum standards. There's active research in 2025 on "AI for education" where models like GPT-4 are being tuned to follow pedagogical strategies. Key considerations: correctness (no misinformation allowed when teaching), <strong>adaptivity</strong> (identifying when a student is struggling and adjusting), and alignment with educational goals (e.g. encouraging critical thinking, not just giving answers). An example could be a project like Google's <strong>"Tutor LM"</strong> (if such exists by 2025) or academic research on using AI to generate hints for students.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Challenges:</h4>
+                        <p>Ensuring fairness (AI doesn't favor certain learning styles only), privacy of student data, and the role of human teachers. We'll debate how far AI tutors should go – assistive vs. replacing aspects of teaching – and what the latest deployments (some schools using AI for personalized practice) show. We'll also mention tools like automated essay scoring and how they have improved (or not) with domain adaptation (training on diverse student writing).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Mini-case:</h4>
+                        <p>Use a small corpus of, say, middle school science questions, have a fine-tuned model generate explanations for answers. Evaluate if the tone and clarity are appropriate for the target age – illustrating the need for domain-specific tuning (education level is a "domain" of its own).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Ethical discussion:</h4>
+                        <p>A short discussion on the ethics of AI in classroom – when does helping cross into cheating? How to transparently use AI as a tool for learning. This ties into responsible AI but in a different context.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 8–10: Capstone Project Development</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <p>At this stage, the course shifts focus to the <strong>capstone projects</strong>. Students (individually or in small teams) will by now have an approved project proposal to build a domain-specific AI solution leveraging the techniques learned. These weeks function as a mix of independent work, lab support sessions, and targeted mini-lectures relevant to projects.</p>
+                    
+                    <div class="topic">
+                        <h4>Project Work:</h4>
+                        <p>Students will design, implement, and evaluate their specialized AI models. Example project ideas: <em>"Develop a legal Q&A assistant fine-tuned on a dataset of civil law cases"</em>, <em>"Use knowledge distillation to compress a medical image diagnosis model for mobile deployment"</em>, <em>"Apply a generative model to create synthetic financial time series for stress-testing a trading algorithm"</em>, or <em>"Build a recommendation system for an e-commerce niche using an LLM with retrieval of product data"</em>. Each project must incorporate at least one <strong>advanced method</strong> from the course (e.g. use synthetic data, or do multi-stage distillation, or integrate a knowledge graph, etc.) and target a specific domain problem.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Checkpoints:</h4>
+                        <p>Weekly update meetings will be scheduled. In Week 8, teams present a brief outline of progress and any obstacles (peer feedback encouraged). In Week 9, a <strong>draft results review</strong> – teams share preliminary findings (e.g. model performance, interesting failure analysis). The instructor and TAs will provide advice, especially focusing on proper evaluation: does the project really demonstrate an improvement from applying domain-specific techniques? Are there any domain-specific error patterns?</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Optional Lectures:</h4>
+                        <p>If common needs arise (for instance, many projects dealing with limited data), instructors may give short talks on additional tools (like data augmentation libraries, or hyperparameter tuning tricks for fine-tuning large models) to help projects. We remain flexible to address student project needs with just-in-time teaching.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <h3>Weeks 11–12: Project Presentations and Wrap-up</h3>
+                    <span class="dropdown-icon">▼</span>
+                </div>
+                <div class="week-content">
+                    <div class="topic">
+                        <h4>Final Presentations:</h4>
+                        <p>Each project team will give a presentation or demo of their work. This serves as the "final exam" of the course. They will describe the domain challenge tackled, the solution approach (and which course techniques were used – e.g. "we used knowledge distillation to compress a 6B parameter medical LLM to 600M for use on a clinic laptop, with only 2% accuracy loss"), show results (quantitative metrics and possibly a live demo), and discuss lessons learned. The class celebrates the breadth of domains covered, applying a common toolkit to very different problems.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Cross-Domain Synthesis:</h4>
+                        <p>After presentations, we hold a concluding discussion to synthesize insights. We compare experiences across domains: What techniques generalized well, and what needed significant customization? For example, we might note that <em>synthetic data was a big help in healthcare for privacy reasons</em>, whereas in finance, <em>time-series augmentation needed different approaches</em>. Or that <em>knowledge distillation worked nicely for compressing models in most domains, but some domain tasks (like explaining legal reasoning) still required large models for quality</em>.</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Future Outlook:</h4>
+                        <p>The instructors will highlight emerging trends beyond 2025. This might include the rise of <em>foundation models that come pre-trained in multi-domain manner</em>, or more likely, the need for <strong>responsible AI frameworks</strong> to keep up with domain-specific deployments. We touch on open research questions: e.g. how to ensure an AI model remains up-to-date with domain knowledge (continuous learning without forgetting), how to better incorporate causal domain knowledge (an active research area), and how regulations might shape domain-specific AI (such as new laws for AI in healthcare or finance).</p>
+                    </div>
+                    
+                    <div class="topic">
+                        <h4>Course Reflection:</h4>
+                        <p>Finally, students provide feedback on what they found most challenging and most rewarding. The goal is that they leave equipped to be leaders in applying AI to whichever domain they work in – understanding both the cutting-edge methods and the context needed to deploy AI responsibly and effectively.</p>
+                    </div>
+                </div>
+            </div>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .reference-group {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #e1e8ed;
+        }
+
+        .dropdown-header {
+            padding: 20px 25px;
+            background: #ffffff;
+            color: #2c3e50;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.15em;
+            font-weight: 600;
+            user-select: none;
+            border-bottom: 2px solid #e1e8ed;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-header:hover {
+            background: #f8f9fa;
+        }
+
+        .dropdown-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            color: #7f8c8d;
+        }
+
+        .dropdown-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #fafbfc;
+        }
+
+        .dropdown-content.open {
+            max-height: 2000px;
+        }
+
+        .reference-item {
+            padding: 20px 25px;
+            border-bottom: 1px solid #e1e8ed;
+            transition: background-color 0.2s ease;
+        }
+
+        .reference-item:last-child {
+            border-bottom: none;
+        }
+
+        .reference-item:hover {
+            background-color: #f0f3f7;
+        }
+
+        .reference-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .reference-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #2c3e50;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .reference-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            line-height: 1.4;
+        }
+
+        .reference-link {
+            color: #34495e;
+            text-decoration: none;
+            font-size: 0.92em;
+            word-break: break-all;
+            display: block;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #e1e8ed;
+            transition: all 0.2s ease;
+        }
+
+        .reference-link:hover {
+            border-color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .count-badge {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        .topic-icon {
+            margin-right: 10px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .dropdown-header {
+                padding: 15px 20px;
+                font-size: 1em;
+            }
+
+            .reference-item {
+                padding: 15px 20px;
+            }
+
+            .reference-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Reference Library</h1>
+
+        <div class="reference-group">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="topic-icon">🤖</span>AI & Machine Learning Techniques <span class="count-badge">5 refs</span></span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="reference-item">
+                    <div class="reference-title">Query Intent via Retrieval Augmentation and Model Distillation – DEJAN</div>
+                    <a href="https://dejan.ai/blog/query-intent-via-retrieval-augmentation-and-model-distillation/" target="_blank" class="reference-link">
+                        https://dejan.ai/blog/query-intent-via-retrieval-augmentation-and-model-distillation/
+                    </a>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-title">PEFT, LoRA & QLoRA: Smarter, Faster Fine-Tuning for Domain LLMs | by Akanksha Sinha | Medium</div>
+                    <a href="https://medium.com/@akankshasinha247/peft-lora-qlora-smarter-faster-fine-tuning-for-domain-llms-3d7b7fdf9671" target="_blank" class="reference-link">
+                        https://medium.com/@akankshasinha247/peft-lora-qlora-smarter-faster-fine-tuning-for-domain-llms-3d7b7fdf9671
+                    </a>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-title">Knowledge distillation with training wheels - Amazon Science</div>
+                    <a href="https://www.amazon.science/publications/knowledge-distillation-with-training-wheels" target="_blank" class="reference-link">
+                        https://www.amazon.science/publications/knowledge-distillation-with-training-wheels
+                    </a>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-title">6.7960 Deep Learning, Fall 2024</div>
+                    <a href="https://phillipi.github.io/6.7960/" target="_blank" class="reference-link">
+                        https://phillipi.github.io/6.7960/
+                    </a>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-title">6.7930/HST.956: Machine Learning for Healthcare</div>
+                    <a href="https://mlhcmit.github.io/" target="_blank" class="reference-link">
+                        https://mlhcmit.github.io/
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="reference-group">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="topic-icon">🔬</span>Synthetic Data & AI Innovation <span class="count-badge">1 ref</span></span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="reference-item">
+                    <div class="reference-title">AI steps into the looking glass with synthetic data</div>
+                    <a href="https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/" target="_blank" class="reference-link">
+                        https://stanmed.stanford.edu/generative-ai-synthetic-data-promise/
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="reference-group">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="topic-icon">🏢</span>Domain-Specific Language Models <span class="count-badge">3 refs</span></span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="reference-item">
+                    <div class="reference-title">Introducing BloombergGPT, Bloomberg's 50-billion parameter large language model, purpose-built from scratch for finance | Press | Bloomberg LP</div>
+                    <a href="https://www.bloomberg.com/company/press/bloomberggpt-50-billion-parameter-llm-tuned-finance/" target="_blank" class="reference-link">
+                        https://www.bloomberg.com/company/press/bloomberggpt-50-billion-parameter-llm-tuned-finance/
+                    </a>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-title">Sharing Google's Med-PaLM 2 medical large language model, or LLM | Google Cloud Blog</div>
+                    <a href="https://cloud.google.com/blog/topics/healthcare-life-sciences/sharing-google-med-palm-2-medical-large-language-model" target="_blank" class="reference-link">
+                        https://cloud.google.com/blog/topics/healthcare-life-sciences/sharing-google-med-palm-2-medical-large-language-model
+                    </a>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-title">GPT-4 | OpenAI</div>
+                    <a href="https://openai.com/index/gpt-4-research/" target="_blank" class="reference-link">
+                        https://openai.com/index/gpt-4-research/
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="reference-group">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span><span class="topic-icon">🛍️</span>Industry Applications <span class="count-badge">1 ref</span></span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="reference-item">
+                    <div class="reference-title">How generative AI and data are redefining retail experiences | AWS for Industries</div>
+                    <a href="https://aws.amazon.com/blogs/industries/how-generative-ai-and-data-are-redefining-retail-experiences/" target="_blank" class="reference-link">
+                        https://aws.amazon.com/blogs/industries/how-generative-ai-and-data-are-redefining-retail-experiences/
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.dropdown-icon');
+            
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+    </script>
+    <script>
+        function toggleWeek(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.dropdown-icon');
+            
+            content.classList.toggle('active');
+            icon.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

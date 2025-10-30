@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Modern Software Development - Course Schedule</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg,  100%);
+      color: #2d3748;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #718096;
+      font-weight: 500;
+    }
+
+    .week-section {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInUp 0.6s ease-out backwards;
+    }
+
+    .week-section:nth-child(1) { animation-delay: 0.1s; }
+    .week-section:nth-child(2) { animation-delay: 0.2s; }
+    .week-section:nth-child(3) { animation-delay: 0.3s; }
+    .week-section:nth-child(4) { animation-delay: 0.4s; }
+    .week-section:nth-child(5) { animation-delay: 0.5s; }
+    .week-section:nth-child(6) { animation-delay: 0.6s; }
+    .week-section:nth-child(7) { animation-delay: 0.7s; }
+    .week-section:nth-child(8) { animation-delay: 0.8s; }
+    .week-section:nth-child(9) { animation-delay: 0.9s; }
+    .week-section:nth-child(10) { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .week-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .week-header {
+      background:  linear-gradient(135deg, #667eea 100%);
+      color: white;
+      padding: 25px 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .week-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .week-header:hover::before {
+      left: 100%;
+    }
+
+    .week-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    .toggle-icon {
+      font-size: 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+
+    .week-section.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .week-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s ease;
+    }
+
+    .week-section.active .week-content {
+      max-height: 10000px;
+      padding: 30px;
+    }
+
+    .day-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid #667eea;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .day-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #667eea, #764ba2);
+      transition: width 0.3s ease;
+    }
+
+    .day-card:hover::before {
+      width: 8px;
+    }
+
+    .day-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+    }
+
+    .day-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #667eea;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .day-title::before {
+      content: '📅';
+      font-size: 1.5rem;
+    }
+
+    .session-goal {
+      background: rgba(102, 126, 234, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 3px solid #667eea;
+    }
+
+    .module {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .module:hover {
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .module-title {
+      font-weight: 700;
+      color: #764ba2;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .module-title::before {
+      content: '▶';
+      color: #667eea;
+      font-size: 0.8rem;
+    }
+
+    .module ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    .module li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .module li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    .readings {
+      background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+      border-left: 4px solid #f56565;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .readings h4 {
+      color: #c53030;
+      margin-bottom: 15px;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .readings h4::before {
+      content: '📚';
+    }
+
+    .readings ul {
+      list-style: none;
+    }
+
+    .readings li {
+      padding: 8px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .readings li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #f56565;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .readings a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .readings a:hover {
+      color: #764ba2;
+      text-decoration: underline;
+    }
+
+    .lab-section {
+      background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+      border-left: 4px solid #48bb78;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    .lab-section h4 {
+      color: #2f855a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lab-section h4::before {
+      content: '🔬';
+    }
+
+    .deliverables {
+      background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);
+      border-left: 4px solid #9f7aea;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .deliverables h3 {
+      color: #6b46c1;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .deliverables h3::before {
+      content: '✅';
+    }
+
+    strong {
+      color: #667eea;
+      font-weight: 700;
+    }
+
+    em {
+      color: #764ba2;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .week-header h2 {
+        font-size: 1.2rem;
+      }
+
+      .day-title {
+        font-size: 1.1rem;
+      }
+
+      .week-content {
+        padding: 20px 15px;
+      }
+
+      .day-card {
+        padding: 15px;
+      }
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AI-Powered Modern Software Development</h1>
+      <p>Detailed Course Schedule - Weeks 1-10</p>
+    </header>
+
+    <!-- Week 1 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 1 — Introduction to Coding LLMs & AI Development</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 9/22 — Introduction & "How an LLM is made"</div>
+          <div class="session-goal">
+            <strong>Session goals:</strong> Ground students in what coding LLMs are, why they're changing the SDLC, and how to talk to them precisely.
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 1 — LLMs for code: mental model & capabilities</div>
+            <ul>
+              <li><em>Sub-module 1.1:</em> Tokenization → probabilities → decoding; code vs. natural-language priors; failure modes (hallucination, "strong wrongs").</li>
+              <li><em>Sub-module 1.2:</em> Where LLM coding assistants shine today (completion, search, refactor planning) vs. open problems (deep reasoning across large repos).</li>
+              <li>Tie to <strong>retrieval+embedding advances</strong> that raised acceptance rates in IDEs in late 2025.</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 2 — Prompt engineering for developers (2025 edition)</div>
+            <ul>
+              <li><em>2.1 Prompt anatomy:</em> task, constraints, style, spec, test oracle; <em>avoid</em> ambiguity; add guard-clauses ("validate input", "avoid deprecated APIs").</li>
+              <li><em>2.2 Failure-recovery prompts:</em> ask for unit tests, threat model, and diffs; "why might this be unsafe?" to surface silent risks highlighted by <strong>2025 secure-vibe-coding</strong> analyses.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Hands-on micro-lab</h4>
+            <ul>
+              <li><em>Lab A:</em> Given an underspecified feature request, write two prompts: (a) "fast prototype", (b) "production-ready with security & tests". Compare outputs; add constraints until tests pass.</li>
+              <li><em>Deliverable:</em> 1-page "prompt spec" with acceptance criteria & negative tests.</li>
+            </ul>
+          </div>
+
+          <div class="readings">
+            <h4>Readings (Feb–Oct 2025):</h4>
+            <ul>
+              <li>GitHub: <strong>New embedding model</strong> meaningfully boosts relevant snippet retrieval and <strong>doubles code-acceptance</strong> for Java/C# (context matters).</li>
+              <li>GitHub blog: per-language acceptance lifts (<strong>+110% C#, +113% Java</strong>) via improved project-aware embeddings.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 9/26 — Power prompting for LLMs</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 3 — System, developer, and tool prompts</div>
+            <ul>
+              <li><em>3.1:</em> Role prompts vs. inline instructions; <em>style transfer</em> for codebase idioms.</li>
+              <li><em>3.2:</em> "Self-check" scaffolds (chain-of-verification, request tests first).</li>
+              <li><em>3.3:</em> Governance prompts: ask for <em>SBOM of suggested deps</em>, license hints, and supply-chain notes.</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 4 — Prompt patterns for repo-scale tasks</div>
+            <ul>
+              <li><em>4.1:</em> Retrieval recipes: embedding search → context window budgeting → <em>"matryoshka"</em> multi-granularity vectors (how IDEs do it).</li>
+              <li><em>4.2:</em> Delta prompts (diff-aware instructions) for safe PRs.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Studio</h4>
+            <ul>
+              <li><em>Prompt bake-off:</em> Teams iteratively harden prompts for the same task; track compile/test success and human edit distance.</li>
+            </ul>
+          </div>
+
+          <div class="readings">
+            <h4>Reading:</h4>
+            <ul>
+              <li>Wired's 2025 explainer on <em>vibe coding</em> risks & the need for oversight (great debate fodder for next week's labs).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Week 2 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 2 — The Anatomy of Coding Agents</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 9/29 — Build a coding agent from scratch</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 5 — Agent architecture</div>
+            <ul>
+              <li><em>5.1:</em> Planner, controller, skills/tools, memory, critic/evaluator; finite-loop safety; uncertainty gates.</li>
+              <li><em>5.2:</em> Function-calling & tool schemas; <em>state graph vs. simple REPL loops</em>.</li>
+              <li><em>5.3:</em> Autonomy levels & approval checkpoints (preview for Week 4).</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 6 — Implement minimal agent</div>
+            <ul>
+              <li><em>Hands-on scaffold:</em> Codegen → run in sandbox → parse failure → retry plan; add stop rules and telemetry logs.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Lab & check-off</h4>
+            <ul>
+              <li><em>Deliverable:</em> CLI agent that writes a function + unit tests, executes them, and proposes a fix on failure (3-iteration cap).</li>
+            </ul>
+          </div>
+
+          <div class="readings">
+            <h4>Anchors:</h4>
+            <ul>
+              <li>2025 <strong>agentic surveys</strong> (taxonomy for planning, tool-use, monitoring).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 10/3 — MCP (Model Context Protocol) & custom servers</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 7 — What MCP enables (2025)</div>
+            <ul>
+              <li><em>7.1:</em> One protocol to expose <strong>tools/resources/prompts/sampling</strong> to agents; why this beats bespoke integrations.</li>
+              <li><em>7.2:</em> <strong>VS Code ships full MCP spec support</strong> (June 2025) → agents inside your IDE can talk to any MCP server.</li>
+              <li><em>7.3:</em> <strong>Copilot GA MCP in VS Code</strong> (July 2025) for prod environments.</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 8 — Build & secure a tiny MCP server</div>
+            <ul>
+              <li><em>8.1:</em> Resources vs. tools; auth (scoped tokens/OAuth), rate-limits, audit logging; least-privilege by default.</li>
+              <li><em>8.2:</em> Register server; enumerate capabilities; test from IDE.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Lab</h4>
+            <ul>
+              <li><em>Deliverable:</em> MCP server exposing "DesignDoc" resource & "OpenPR" tool; demo: agent reads PRD → opens scaffolded PR.</li>
+              <li><em>Reference:</em> Enterprise MCP usage & context wiring for <em>real</em> ops agents.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Week 3 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 3 — The AI IDE</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 10/6 — From first prompt to optimal IDE setup</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 9 — Context management in IDEs</div>
+            <ul>
+              <li><em>9.1:</em> Project embeddings (function/class/symbol graphs), file-on-demand, summaries; <strong>why Copilot's 2025 embedding upgrades matter</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 10 — AI-aided design docs (PRDs for agents)</div>
+            <ul>
+              <li><em>10.1:</em> Design-doc template fields (user story, data contracts, NFRs, security & test oracles) → agent wiring.</li>
+              <li><em>10.2:</em> Store PRDs as MCP resources for reuse (tie back to Week 2).</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Lab</h4>
+            <ul>
+              <li>Configure your IDE: embeddings on, code-search, MCP client; create a PRD and ask the IDE agent to scaffold modules and tests.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 10/10 — Guest: Silas Alberti (Cognition)</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 11 — Research frontiers in coding agents</div>
+            <ul>
+              <li>Dataflow-aware reasoning, multi-tool orchestration, and evaluator agents. (Context: 2025 agentic surveys.)</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>00:30–01:00 | Demo & Q&A</h4>
+            <h4>01:00–01:30 | Studio: model-swap experiment</h4>
+            <ul>
+              <li>Compare two LLMs on the same refactor task; measure acceptance and edits.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Week 4 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 4 — Coding Agent Patterns</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 10/13 — How to be an agent manager</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 12 — Autonomy patterns</div>
+            <ul>
+              <li>Manual → assist → <strong>agent mode</strong> (bounded) → fully autonomous ("YOLO" only in sandboxes).</li>
+              <li>Terminal/IDE guardrails: <strong>ask-to-run, allow/deny lists, run-until-completion with kill switch</strong> (Warp docs, updated 1 mo. ago).</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 13 — Human-in-the-loop breakpoints</div>
+            <ul>
+              <li>Approval checkpoints (test pass, coverage delta, SAST pass); uncertainty prompts; rollback plans.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Exercise</h4>
+            <ul>
+              <li>Draft an "Autonomy Charter" for your project agent (permissions grid + MCP scope + audit plan).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 10/17 — Guest: Boris Cherney (Claude Code)</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 14 — Multi-agent collaboration patterns</div>
+            <ul>
+              <li>Orchestrator + specialists; planner/solver/critic.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>00:30–01:00 | Code-along:</h4>
+            <ul>
+              <li>Orchestrator agent delegates UI vs. API tasks, merges diffs, opens PR.</li>
+            </ul>
+            <h4>01:00–01:30 | Retro:</h4>
+            <ul>
+              <li>Where autonomy helped vs. hurt; what to gate next sprint.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Week 5 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 5 — The Modern Terminal</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 10/20 — Autonomous execution environments</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 15 — AI-enhanced CLI UX</div>
+            <ul>
+              <li>NL→command; attach context (error output); <em>self-correction</em> on failed commands; <strong>request-to-run</strong> permissions.</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 16 — Sandboxing & policy</div>
+            <ul>
+              <li>Docker/VM sandboxes, read-only profiles, irreversible-command fences; prod vs. dev agent profiles.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Lab:</h4>
+            <ul>
+              <li>Build a "danger-aware" shell agent profile (allowlist: ls/grep/find; denylist: rm/chmod/chown; auto-approve OFF).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 10/24 — Guest: Zach Lloyd (Warp)</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 17 — Agents as the future of the terminal</div>
+            <ul>
+              <li>From commands → prompts, orchestrating workflows.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>00:30–01:00 | Demo:</h4>
+            <ul>
+              <li>Multi-step deploy via Warp Agent with approvals; switch to "run until completion" in a sandbox.</li>
+            </ul>
+            <h4>01:00–01:30 | Exercise:</h4>
+            <ul>
+              <li>Write a terminal runbook the agent can follow end-to-end; include stop conditions.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Week 6 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 6 — AI Testing & Security</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 10/27 — AI QA, SAST, DAST, and beyond</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 18 — AI-generated test suites</div>
+            <ul>
+              <li>Unit/property/fuzz test generation; coverage budgets; review pitfalls (oracle duplication).</li>
+              <li>2025 surveys on Automated Program Repair (APR) and input-reduction for long prompts.</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 19 — "Secure vibe coding" risks & defenses</div>
+            <ul>
+              <li>Silent-killer vulns when security isn't asked for; secrets leakage; outdated API patterns; <strong>defense = secure prompting + SAST pass gates</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Lab:</h4>
+            <ul>
+              <li>Prompt an agent to (a) write feature, (b) write tests, (c) threat-model, (d) pass SAST rules; submit diff & security notes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 10/31 — Guest: Isaac Evans (Semgrep)</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 20 — Modern static analysis with AI assist</div>
+            <ul>
+              <li>AI-prioritized findings; reduce noise; explain-in-English.</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 21 — Defender tools in 2025</div>
+            <ul>
+              <li><em>Case:</em> DeepMind's <strong>CodeMender</strong> auto-finds/fixes vulns with fuzzing/static/differential tests; human review required.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Exercise:</h4>
+            <ul>
+              <li>Run SAST+DAST on your repo; triage w/ AI; tag "autofixable" vs. "human-only".</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Week 7 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 7 — Modern Software Support</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 11/3 — AI Code Review</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 22 — AI as junior reviewer (what to trust)</div>
+            <ul>
+              <li>Scope: nitpicks, bug patterns, security smells vs. architectural intent.</li>
+              <li>2025 reality check: <strong>Graphite's AI code review</strong> (ex-"Diamond") launched Mar '25; now part of <em>Graphite Agent</em>.</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 23 — Setting up AI review gates</div>
+            <ul>
+              <li>PR size budgets; stacked PRs; require tests & SAST clean before AI review; then human final pass.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Lab:</h4>
+            <ul>
+              <li>Enable AI review on a PR; accept/reject with rationale; capture "trust log".</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 11/7 — Guest: Tomas Reimers (Graphite)</div>
+
+          <div class="lab-section">
+            <h4>00:00–00:30 | Deep-dive:</h4>
+            <ul>
+              <li>How Graphite evaluates reliability (latency, comment quality, hallucination rate). (See engineering write-ups, Aug '25).</li>
+            </ul>
+            <h4>00:30–01:00 | Exercise:</h4>
+            <ul>
+              <li>Author a "review rubric" prompt pack for your repo (style, safety, performance).</li>
+            </ul>
+            <h4>01:00–01:30 | Retro:</h4>
+            <ul>
+              <li>AI vs. human comments; where AI added the most value.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Week 8 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 8 — Automated UI & App Building</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 11/10 — End-to-end apps with a single prompt</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 24 — Text-to-UI and prompt-to-app tooling (2025)</div>
+            <ul>
+              <li>From wireframe/photo → code; PRD-driven scaffolds; "CRUD is easy, domain logic is hard."</li>
+              <li><em>Fresh dev tooling:</em> <strong>Figma Make + MCP server</strong> opens designs/app code to agents across IDEs/browsers.</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 25 — Accessibility & i18n by prompt</div>
+            <ul>
+              <li>Bake in a11y checks (contrast, focus order, ARIA), i18n extraction; add tests.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Lab:</h4>
+            <ul>
+              <li>Generate a UI from a PRD; agent adds a11y tests; ship a demo.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 11/14 — Guest: Eric Simons (Bolt/StackBlitz)</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 26 — One-prompt internal tools: reality vs. hype</div>
+          </div>
+
+          <div class="lab-section">
+            <h4>00:30–01:00 | Exercise:</h4>
+            <ul>
+              <li>Constrain a prompt-built app to your stack (deps policy, security baseline); run perf budget.</li>
+            </ul>
+            <h4>01:00–01:30 | Retro:</h4>
+            <ul>
+              <li>Maintainability pass (lint rules, codeowners, test debt list).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Week 9 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 9 — Agents Post-Deployment</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 11/17 — Incident response & DevOps</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 27 — Observability for AI systems</div>
+            <ul>
+              <li>Log prompts/responses safely; drift detection; model/service SLOs (latency, error distribution, false-positive audits).</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 28 — AI SRE agents (2025 landscape)</div>
+            <ul>
+              <li><em>NeuBird Hawkeye</em> pattern: <strong>contextual telemetry via MCP, cross-tool correlation, guarded autonomy</strong> in hybrid clouds.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Lab:</h4>
+            <ul>
+              <li>Simulated outage → AI triage → human approves rollback; produce an incident timeline.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 11/21 — Guest: Mayank Agarwal (Resolve)</div>
+
+          <div class="lab-section">
+            <h4>00:00–00:30 | Demo:</h4>
+            <ul>
+              <li>Automated RCA draft; evidence links; playbook recommendations.</li>
+            </ul>
+            <h4>00:30–01:00 | Exercise:</h4>
+            <ul>
+              <li>Define "no-regret" auto-actions vs. human-only actions; implement in your agent policy.</li>
+            </ul>
+            <h4>01:00–01:30 | Retro:</h4>
+            <ul>
+              <li>MTTA/MTTR comparison (manual vs. AI-assisted).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Week 10 -->
+    <div class="week-section">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <h2>Week 10 — What's Next for AI Software Engineering</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="week-content">
+        
+        <div class="day-card">
+          <div class="day-title">Mon 12/1 — Software development in 10 years</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Module 29 — Roles & skills forecast</div>
+            <ul>
+              <li>Toolsmiths, evaluators, AI auditors; foundational CS stays vital even as AI writes more code (context-aware IDE evidence).</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <div class="module-title">00:30–01:00 | Module 30 — Open problems</div>
+            <ul>
+              <li>Verified generation, robust multi-agent coordination, memory at repo scale; research themes from 2025 surveys.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>01:00–01:30 | Studio:</h4>
+            <ul>
+              <li>Final project "hardening" sprint; autonomy charter + safety checklist.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-title">Fri 12/5 — Guest: Martin Casado (a16z)</div>
+
+          <div class="module">
+            <div class="module-title">00:00–00:30 | Talk:</div>
+            <ul>
+              <li>Macro trends: why startups and enterprises are spending on <strong>vibe-coding</strong> tools; where it works/doesn't.</li>
+            </ul>
+          </div>
+
+          <div class="lab-section">
+            <h4>00:30–01:00 | Panel:</h4>
+            <ul>
+              <li>AI productivity vs. security debt—balancing speed and rigor (tie back to Week 6).</li>
+            </ul>
+            <h4>01:00–01:30 | Closing:</h4>
+            <ul>
+              <li>Showcase & feedback.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Deliverables Section -->
+    <div class="deliverables">
+      <h3>Weekly Deliverables & Assessment Hooks</h3>
+      <ul>
+        <li><strong>Week 1–2:</strong> Prompt spec; minimal agent + tests; MCP server check-off.</li>
+        <li><strong>Week 3–4:</strong> IDE+MCP workspace; Autonomy Charter.</li>
+        <li><strong>Week 5:</strong> Sandbox profile & runbooks.</li>
+        <li><strong>Week 6:</strong> Secure-vibe coding pipeline (tests + SAST pass).</li>
+        <li><strong>Week 7:</strong> AI code-review rubric & PR trial.</li>
+        <li><strong>Week 8:</strong> Prompt-to-app demo with a11y tests.</li>
+        <li><strong>Week 9:</strong> Incident drill with RCA doc.</li>
+        <li><strong>Week 10:</strong> Final project hardening.</li>
+      </ul>
+    </div>
+
+    <!-- Reading Pack Section -->
+    <div class="readings" style="margin-top: 30px;">
+      <h4>Fresh Reading & Reference Pack (Feb–Oct 2025 only)</h4>
+      
+      <div class="module">
+        <div class="module-title">Agents, IDEs & MCP</div>
+        <ul>
+          <li><strong>VS Code:</strong> <em>Full MCP spec support</em> (Prompts, Resources, Sampling; June 12, 2025).</li>
+          <li><strong>GitHub Copilot:</strong> <em>MCP GA in VS Code</em> (July 14, 2025).</li>
+          <li><strong>Agentic surveys (2025):</strong> Architectures, planning, tool use, execution monitoring.</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-title">Context & retrieval in IDEs</div>
+        <ul>
+          <li><strong>InfoQ (Oct 2025):</strong> New Copilot embedding model; <strong>acceptance roughly doubled</strong> for Java/C#.</li>
+          <li><strong>GitHub blog (Sep 24, 2025):</strong> Per-language acceptance lifts; agent, chat, edit modes all benefit.</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-title">Security, testing, program repair</div>
+        <ul>
+          <li><strong>The Hacker News (Jun 19, 2025):</strong> <em>Secure Vibe Coding — Complete Guide</em>; silent-killer vulns & secure prompting.</li>
+          <li><strong>DeepMind (news, Oct 2025):</strong> <em>CodeMender</em> auto-detects/repairs vulns (with human review).</li>
+          <li><strong>APR survey (Jun 2025) & follow-on (Jul 2025):</strong> Taxonomy of LLM-based repairs; input-reduction to fix "lost-in-the-middle".</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-title">Terminal & agent autonomy</div>
+        <ul>
+          <li><strong>Warp docs (updated recently):</strong> Agent permissions, allow/deny lists, <strong>run-until-completion</strong>, and multi-agent mgmt.</li>
+          <li><strong>Warp (podcast Sep 2025):</strong> The terminal as a <em>prompt-first agent platform</em>.</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-title">Design/UI automation</div>
+        <ul>
+          <li><strong>The Verge (late Sep 2025):</strong> <strong>Figma Make + MCP</strong> opens prompt-to-app coding to remote agents & IDEs.</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-title">Code review & docs</div>
+        <ul>
+          <li><strong>Graphite (Mar–Oct 2025):</strong> Launch of <em>Diamond</em> AI reviewer → folded into <strong>Graphite Agent</strong>; stance that AI augments, not replaces, human review.</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-title">Market trend context</div>
+        <ul>
+          <li><strong>Wired (Oct 2025):</strong> <em>Vibe coding</em> security/quality debate.</li>
+          <li><strong>Business Insider (Oct 2025):</strong> a16z+Mercury data: startups' spend signals vibe-coding tools going mainstream (Replit, Cursor, etc.).</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+  <script>
+    function toggleWeek(header) {
+      const section = header.parentElement;
+      section.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Add stagger animation on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.week-section');
+      sections.forEach((section, index) => {
+        section.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+  </script>
+</body>
+</html>

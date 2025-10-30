@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Modern AI: From Experiments to Production</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: #f6f8fa;
+      color: #2b2f44;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #32427b 0%, #64b3f4 100%);
+      padding: 2rem 1rem 1rem 1rem;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(65, 89, 178, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-weight: bold;
+      font-size: 2.3rem;
+      margin: 0 0 1rem 0;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 4px;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn {
+      flex: 1;
+      padding: 12px 24px;
+      background: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-btn:hover::before {
+      left: 100%;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-btn.active {
+      background: white;
+      color: #32427b;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-btn.active::before {
+      display: none;
+    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e8ecf1;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        li:hover {
+            transform: translateX(5px);
+        }
+
+        strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        em {
+            color: #764ba2;
+            font-style: italic;
+        }
+
+        .week-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .week-item:hover {
+            background: linear-gradient(135deg, #e8ecff 0%, #dce4ff 100%);
+            border-left-width: 6px;
+        }
+
+        .objectives-list {
+            background: linear-gradient(135deg, #fff9f0 0%, #fff4e8 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .sources {
+            background: linear-gradient(135deg, #f0fdf4 0%, #e8faf0 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #10b981;
+            margin-top: 40px;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .semester-header {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
+        }
+
+        .semester-description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: white;
+            opacity: 0.95;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Full Stack Modern AI: From Experiments to Production</h1>
+            <p class="subtitle">Graduate Level Course</p>
+            <div class="nav-bar">
+            <button class="nav-btn active" onclick="showSection('detailed')">Detailed Syllabus</button>
+            <button class="nav-btn" onclick="window.location.href='course_timeline_for_fullstack.html'">Course Schedule</button>
+
+    </div>
+        </header>
+
+        <div class="section">
+            <h2>Course Overview</h2>
+            <p>In this two-semester graduate sequence, students learn to design, build, and deploy AI systems end-to-end, evolving machine learning experiments into robust, production-ready applications. Building a great model is only <strong>half the journey</strong> – the true challenge lies in operationalizing that model as a scalable, maintainable product. This course emphasizes <strong>full-stack AI engineering</strong>, covering the entire AI development lifecycle: data pipelines, model development, deployment infrastructure, and post-deployment monitoring. Students will explore cutting-edge practices (MLOps, LLMOps, AgentOps, AI SecOps) and latest research for <strong>high-maturity ML pipelines</strong>, including large language model applications, autonomous AI agents, on-device and federated learning, and secure & ethical AI operations.</p>
+
+            <div class="objectives-list">
+                <h3>Learning Objectives:</h3>
+                <p>By the end of the course, students will be able to:</p>
+                <ul>
+                    <li><strong>Architect and automate ML pipelines</strong> for continuous data ingest, training, testing, and deployment, with built-in versioning and reproducibility.</li>
+                    <li><strong>Deploy and scale</strong> models as reliable services on cloud and edge infrastructure, meeting targets for latency, throughput, and uptime.</li>
+                    <li><strong>Monitor, evaluate, and maintain</strong> ML systems in production, detecting data drift, model performance degradation, and triggering retraining or rollbacks.</li>
+                    <li><strong>Ensure trustworthiness and compliance</strong> of AI solutions by design – addressing privacy, security, fairness, and ethical considerations in the ML lifecycle.</li>
+                    <li><strong>Leverage advanced AI models and tools</strong> – effectively use large pre-trained models (LLMs, foundation models), fine-tune them for specific tasks, build AI agents, and integrate frameworks for LLM-based applications.</li>
+                    <li><strong>Work across tech stacks:</strong> Gain experience with multiple ML platforms and frameworks (e.g. TensorFlow and PyTorch on cloud services like GCP/AWS), and compare industry tools (e.g. MLflow, Kubeflow, Databricks) for managing data, models, and deployments.</li>
+                    <li><strong>Lead full-stack ML projects:</strong> Plan and execute a project from problem definition through deployment and monitoring, collaborating in teams and communicating results. (A two-semester capstone project will involve building a fully functional AI-powered application, possibly simulating service for millions of users.)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="semester-header">
+                <h2 style="color: white; border: none; padding: 0; margin: 0;">Semester 1: Foundations of AI Engineering in Production</h2>
+                <p class="semester-description">Semester 1 focuses on MLOps fundamentals and core skills for taking an ML model from development to initial production deployment. Students progress from basic pipelines to deploying a simple ML service with monitoring, while addressing data management and responsible AI practices.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 1: Introduction to MLOps and Full-Stack AI</h3>
+                <p>Overview of the machine learning development lifecycle vs. traditional software. Why <strong>ML systems fail</strong> when transitioning from lab to production; the need for MLOps to bridge this gap. Roles in an AI project (data scientist, ML engineer, DevOps) and course logistics.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 2: Machine Learning Pipeline & Process</h3>
+                <p>Detailed walkthrough of an end-to-end ML pipeline (from data acquisition to model serving). Version control for code and data, environment reproducibility, and setting up experiments. Introduction to tools for collaboration (Git, notebooks, project structure). Students learn how to plan for <strong>operational excellence of ML systems</strong>, ensuring each stage (data, model, code) can be tracked and automated.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 3: Data Engineering for ML</h3>
+                <p>Data governance and preparation in production ML. Building data pipelines (ETL/ELT) and feature engineering workflows that can run continuously. Data versioning and dataset management for reproducibility (e.g. using DVC or Delta Lake). Introduction to feature stores for reusability of features. Handling data quality issues and biases early. <strong>Privacy considerations</strong> in data pipelines (PII handling, anonymization).</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 4: Experiment Tracking and Model Development</h3>
+                <p>Emphasis on reproducible experimentation. Students use experiment tracking tools (e.g. MLflow or Weights & Biases) to log training runs, hyperparameters, and results. Best practices for model development in teams: modular code, pipeline configuration, and unit tests for model code. Techniques for reliable model training, debugging model errors, and understanding model behavior <em>before</em> deployment.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 5: Model Deployment I – Packaging and Serving</h3>
+                <p>Techniques to turn a trained model into a web service. Introduction to containerization with Docker to encapsulate models and their dependencies. Creating RESTful API endpoints or cloud functions to serve predictions. Deployment patterns (batch vs real-time serving). Students containerize a simple model and deploy it locally and on a cloud instance.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 6: Model Deployment II – CI/CD and Automation</h3>
+                <p>Applying DevOps practices to ML. Setting up automated workflows for continuous integration, testing, and deployment of ML models. Infrastructure-as-Code basics for reproducible environments. <strong>Continuous training</strong> pipelines: automating model retraining on new data and continuous delivery to production. Students implement a CI/CD pipeline that retrains a model and deploys updates (e.g. using GitHub Actions or Jenkins for ML).</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 7: AI Application Integration (APIs & User Interface)</h3>
+                <p>Exposing ML models to end-users and integrating with products. Design of <strong>API endpoints</strong> for inference and best practices for client-side integration (e.g. building a simple front-end or mobile app consuming the model's API). Considerations for user experience with AI (e.g. how to communicate uncertainty or errors to users). Logging user interactions and feedback for continuous improvement. <em>(Mini-project: students build a minimal app (web UI or mobile demo) that uses their deployed model.)</em></p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 8: Monitoring and Observability</h3>
+                <p><strong>Post-deployment monitoring</strong> of ML systems to ensure models perform as expected in the real world. Instrumentation to collect telemetry: model response latencies, throughput, resource usage, prediction distributions. Data drift and concept drift detection techniques. Setting up dashboards/alerts for model metrics (using tools like Prometheus, Grafana, or cloud monitoring services). Students learn to implement logging and monitoring agents in their deployed app, and simulate production scenarios to see how monitoring catches issues.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 9: Testing and Quality Assurance for ML Systems</h3>
+                <p>Ensuring reliability through rigorous testing. Going beyond offline accuracy to test the <strong>entire ML pipeline and system</strong> end-to-end. Techniques include unit tests for data processing, integration tests for model serving, and A/B testing or canary releases for new model versions. Evaluation of model predictions in production (using shadow deployments or continuous evaluation against ground truth when available). Students practice writing tests for their pipelines and deploying a canary model update.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 10: Responsible AI – Ethics, Fairness, and Safety</h3>
+                <p>Addressing the <strong>ethical and compliance aspects</strong> of production AI. Topics include bias detection and mitigation in models, fairness across user groups, model explainability requirements in high-stakes domains, and regulatory compliance (GDPR, etc.). <strong>AI safety and robustness:</strong> introduction to adversarial examples and how models can be exploited or fail; importance of monitoring for anomalous inputs. Privacy-preserving techniques like data anonymization, differential privacy basics. This module highlights the responsibilities of an ML engineer to anticipate and design for these issues from the start.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 11: Industry Tools & MLOps Platforms</h3>
+                <p>Survey of the modern MLOps ecosystem and "full-stack" ML platforms. Comparison of tool stacks from different providers: e.g. <strong>Databricks Lakehouse</strong> (integrated data + ML platform), <strong>AWS SageMaker</strong>, <strong>Google Vertex AI</strong>, and open-source pipelines (Kubeflow, MLflow, Airflow). Students learn criteria for choosing tools and how to integrate components (feature store, model registry, workflow orchestrators) into a cohesive platform. Guest lecture or case study from industry on deploying at scale with one of these platforms.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 12: Project Phase I – Building a Production ML Pipeline</h3>
+                <p>Students apply Semester 1 skills in a small project. Teams design and implement an ML pipeline for a given problem (e.g. a recommendation system or classifier), taking it through training to a deployed microservice with monitoring. Emphasis on <strong>"pipeline maturity"</strong>: code quality, automation, documentation of your service. Milestone: In-class demo of the working pipeline and initial web app in a controlled setting. <em>(This sets the stage for an expanded project in Semester 2.)</em></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="semester-header">
+                <h2 style="color: white; border: none; padding: 0; margin: 0;">Semester 2: Advanced Topics in AI Production and Operations</h2>
+                <p class="semester-description">Semester 2 builds on the fundamentals to tackle advanced and emerging areas in deploying AI at scale. We delve into cutting-edge practices for large-scale and modern AI (LLMs, AI agents, federated learning, security) to achieve state-of-the-art production readiness. The semester is highly applied, with a major capstone project running through it.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 1: From Models to Foundation Models – The new paradigm</h3>
+                <p>Understanding the shift from task-specific models to large pre-trained <strong>foundation models</strong> (e.g. GPT-4, Vision Transformers). Differences in system architecture and deployment needs for traditional ML models vs. large AI/GPT models. Students examine how using an API for an LLM differs from hosting a custom model (latency, cost, data needs). Discussion of when to fine-tune a model versus use out-of-the-box or via prompt.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 2: LLMOps – Building with Large Language Models</h3>
+                <p>Tools and techniques for operationalizing LLMs in applications. <strong>Prompt engineering</strong> strategies to reliably get desired outputs; managing prompt versions and template libraries. <strong>Retrieval-Augmented Generation (RAG)</strong> for grounding LLMs with enterprise data (introduction to vector databases and knowledge retrieval). Frameworks like LangChain and LlamaIndex for composing LLM pipelines and agents. Students will build a small LLM-powered feature (e.g. Q&A bot) using an API or open-source model, focusing on prompt design and result evaluation.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 3: Fine-Tuning and Optimizing Models</h3>
+                <p>How to adapt pre-trained models to specific tasks and deploy them efficiently. Techniques for <strong>fine-tuning LLMs</strong> on domain data, including low-code fine-tuning (PEFT, LoRA) to reduce computational cost. <strong>Model optimization</strong> for inference: knowledge distillation, quantization, model compression for deploying large models on limited hardware. Students practice fine-tuning a smaller model or use a parameter-efficient method, and deploy the optimized model, measuring performance improvements.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 4: AI Agents and AgentOps</h3>
+                <p>Introduction to <strong>agentic AI systems</strong> that use LLMs to make decisions and take actions autonomously. Architecture of AI agents (planning, tool use, memory) and examples of agent frameworks (AutoGPT, BabyAGI, etc.). The emerging field of <strong>AgentOps</strong> focuses on managing the lifecycle of these autonomous agents. Key challenges: non-deterministic behavior, long-horizon tasks, and ensuring reliability in agents that "think" for themselves. Students design a simple agent (e.g. an LLM agent that uses tools like web search or database queries) and instrument it for observability.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 5: Agent Observability and Evaluation</h3>
+                <p>Techniques to monitor and evaluate AI agents in production. Logging and <strong>replaying agent decisions</strong> step-by-step to debug behavior. Evaluating agent outcomes when there is no single correct answer – introducing new metrics for goal completion, consistency, and correctness in agent actions. Students incorporate analytics to track their agent's performance (e.g. number of successful task completions, errors) and experiment with improving prompt chains or tool selections based on observations.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 6: Security & AI SecOps</h3>
+                <p><strong>Securing AI systems</strong> against adversarial and malicious threats. Real-world adversarial attacks on ML (perturbed inputs that cause failures, prompt injections for LLMs) and defenses (robust model training, input sanitization, OpenAI-style content filters). Hardening model endpoints: authentication, access control, and using model monitoring to detect abnormal usage patterns or model drift that could indicate attacks. <strong>AI SecOps</strong> practices for responding to incidents involving AI (e.g. model providing disallowed outputs). Students review case studies of AI failures/security breaches and implement basic <strong>guardrails</strong> for their deployed models or agents (such as adversarial input detection or safe prompting techniques).</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 7: Privacy-Preserving ML and Federated Learning</h3>
+                <p>Techniques for ML when data is sensitive or distributed. <strong>Federated learning</strong> concepts: training models across decentralized devices or silos without centralizing data, to enhance privacy. Challenges of federated optimization and handling heterogeneous data. <strong>Trusted execution and private compute</strong>: using secure enclaves (TEE) or homomorphic encryption for sensitive ML tasks, and differential privacy to protect individual data contributions. Regulatory compliance (HIPAA, GDPR) from an engineering perspective. Students experiment with a federated learning simulation or apply differential privacy noise to a dataset to see trade-offs in performance.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 8: Scaling AI Systems and Infrastructure</h3>
+                <p>Designing for <strong>scale and reliability</strong> in AI services. Architectures for large-scale data processing and model serving (streaming vs batch, data lakes, and real-time feature pipelines). Deployment on Kubernetes (K8s) for orchestrating containers and enabling autoscaling to handle millions of requests. Using GPU clusters for serving and the concept of model parallelism for large models. Cost optimization strategies (optimized hardware, serverless ML inference). This week includes hands-on with deploying a service to a Kubernetes cluster and using load testing to observe scaling behavior.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 9: Continuous Learning and Model Evolution</h3>
+                <p>Handling the <strong>life-after-deployment</strong> of models. Setting up systems for ongoing model improvement: collecting feedback and new data from users, performing periodic re-training or online learning to keep models fresh. Managing model version rollback and deployment of improved models safely (avoiding regressions). Introduction to AutoML in production (automating parts of feature engineering or model selection for retraining). Students implement a workflow that takes new data collected by their app/agent and updates the model, evaluating if it improved.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 10: ML Platform Engineering & Case Studies</h3>
+                <p>A deeper look at integrating all components into a cohesive <strong>AI platform</strong> within an organization. <strong>Feature stores</strong> for consistent data between training and inference, model registries and CI/CD pipelines at enterprise scale, and workflow schedulers (Airflow, Kubeflow Pipelines) for automation. Case studies from tech companies on their ML platforms (e.g. Uber's Michelangelo, Meta's FBLearner, Netflix's MLOps, etc.) and lessons learned. Guest speakers from industry share architectures of real-world AI systems and how they achieve high reliability and agility.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 11: AI Governance and Policy</h3>
+                <p>Ensuring proper <strong>governance of AI systems</strong> in production. Model documentation and auditing (model cards, datasheets for datasets). Monitoring for bias or unintended outcomes in production and instituting feedback loops with stakeholders (e.g. model behavior review committees). <strong>Regulatory landscape</strong> for AI in 2025: standards for AI risk management, audit requirements in certain industries, and how to implement compliance checks in the ML pipeline. Discussion of upcoming trends like AI licensing, and how engineers can prepare for stricter oversight.</p>
+            </div>
+
+            <div class="week-item">
+                <h3>Week 12: Capstone Project Demo and Wrap-up</h3>
+                <p>Teams present the end-to-end AI applications they have built over the year. Each project is expected to demonstrate the full stack: from data ingestion and model training to a deployed AI service with a user interface, plus monitoring and a plan for maintenance. Projects are evaluated on not just model accuracy, but <strong>production readiness</strong> – code quality, pipeline automation, scalability, and the handling of ethical/security considerations. (For example, a team might demo a <strong>movie recommendation system serving 1M+ users</strong>, showing how they dealt with scaling, drift, and fairness.) Course wrap-up will highlight key takeaways, emerging areas for future learning (e.g. new research in AgentOps or federated AI), and encourage students to continue practicing responsible, full-stack AI development in their careers.</p>
+            </div>
+        </div>
+
+        <div class="section sources">
+            <h2 style="color: #10b981;">Sources</h2>
+            <p><strong>Sources:</strong> The syllabus content was inspired by and adapted from several 2025 course offerings at leading institutions, including Harvard's <em>MLOps & LLMOps: Production AI Systems</em>, Carnegie Mellon's <em>Machine Learning in Production / AI Engineering</em> course, University of Washington's <em>MLOps</em> curriculum, Stanford's <em>Trustworthy ML (Agentic Systems)</em> syllabus, and contemporary industry practices in AI engineering. Each week's topics integrate state-of-the-art research and tools, preparing students to become <strong>product-oriented ML engineers</strong> capable of bringing the latest AI advances into real-world production with rigor and confidence.</p>
+            
+            <p style="margin-top: 20px;"><strong>Reference Links:</strong></p>
+            <ul>
+                <li>AC215: MLOps, LLMOps & AIOps - Productionizing AI Systems | AC215<br>
+                <a href="https://harvard-iacs.github.io/2025-AC215/">https://harvard-iacs.github.io/2025-AC215/</a></li>
+                
+                <li>Microsoft Word - MLOps<br>
+                <a href="https://peden.ece.uw.edu/pmp/wp-content/uploads/sites/2/2025/05/MLOps.pdf">https://peden.ece.uw.edu/pmp/wp-content/uploads/sites/2/2025/05/MLOps.pdf</a></li>
+                
+                <li>17-445 Machine Learning in Production / AI Engineering<br>
+                <a href="https://mlip-cmu.github.io/s2025/">https://mlip-cmu.github.io/s2025/</a></li>
+                
+                <li>What is AgentOps? | IBM<br>
+                <a href="https://www.ibm.com/think/topics/agentops">https://www.ibm.com/think/topics/agentops</a></li>
+                
+                <li>Why Databricks is the Key for MLOps Success in 2025 and Beyond!<br>
+                <a href="https://www.advancinganalytics.co.uk/blog/why-databricks-is-the-key-for-mlops-success-in-2025-and-beyond">https://www.advancinganalytics.co.uk/blog/why-databricks-is-the-key-for-mlops-success-in-2025-and-beyond</a></li>
+                
+                <li>CS 329T | Syllabus<br>
+                <a href="https://web.stanford.edu/class/cs329t/syllabus.html">https://web.stanford.edu/class/cs329t/syllabus.html</a></li>
+                
+                <li>Federated Learning – CS-E4740 (Spring 2025, Aalto University)<br>
+                <a href="https://github.com/alexjungaalto/FederatedLearning">https://github.com/alexjungaalto/FederatedLearning</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
